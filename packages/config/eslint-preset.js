@@ -11,6 +11,9 @@ module.exports = {
     'airbnb',
     'airbnb/hooks',
     'plugin:@next/next/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:import/typescript',
     'prettier',
   ],
   settings: {
@@ -18,6 +21,7 @@ module.exports = {
       rootDir: ['apps/*/', 'packages/*/'],
     },
   },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
