@@ -11,7 +11,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>User App | SIPR</title>
       </Head>
-      <Component {...pageProps} />
+      <div className="min-h-screen font-sans text-gray-900">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }

@@ -9,11 +9,12 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    color: {
+    colors: {
       transparent: 'transparent',
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
+      gray: colors.neutral,
       primary: colors.blue,
       accent: colors.amber,
       red: colors.rose,

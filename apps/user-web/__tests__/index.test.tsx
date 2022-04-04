@@ -8,7 +8,7 @@ describe('Home', () => {
     render(<Home />);
 
     const heading = screen.getByRole('heading', {
-      name: /User Client/i,
+      name: /Sistem Informasi Penjadwalan Rapat/i,
     });
 
     expect(heading).toBeInTheDocument();
