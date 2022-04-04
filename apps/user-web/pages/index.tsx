@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Button } from 'ui';
 
 export default function Home() {
   useEffect(() => {
@@ -8,8 +7,9 @@ export default function Home() {
 
   return (
     <div>
-      <h1>User Client</h1>
-      <Button />
+      <h1 className="my-4 text-center text-4xl font-bold text-red-600">
+        User Client
+      </h1>
     </div>
   );
 }
