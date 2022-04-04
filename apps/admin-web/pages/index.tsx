@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'ui';
 
-export default function Docs() {
+export default function Home() {
   return (
     <div>
       <h1>Admin</h1>

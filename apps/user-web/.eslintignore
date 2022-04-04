@@ -1,4 +1,5 @@
 # .estlintignore file
 .next
+.turbo
 dist
 node_modules/

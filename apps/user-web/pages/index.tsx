@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'ui';
 
-export default function Web() {
-  const [data, setData] = useState('');
-
+export default function Home() {
   useEffect(() => {
-    setData((cv) => `Hello ${cv}`);
-    console.log(data);
-  }, [data]);
+    console.log('Hello World');
+  }, []);
 
   return (
     <div>
