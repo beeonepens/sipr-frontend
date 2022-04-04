@@ -1,4 +1,5 @@
-import { Button } from "ui";
+import React from 'react';
+import { Button } from 'ui';
 
 export default function Docs() {
   return (
