@@ -4,12 +4,14 @@ import React from 'react';
 
 export default function AuthenticationLinks() {
   return (
-    <div className="flex flex-row items-center justify-center gap-8">
+    <div className="mx-auto grid w-full grid-cols-1 items-center justify-center gap-8 md:w-1/5 md:grid-cols-2">
       <LinkTo to="/register">
-        <PrimaryButton variant="outline">Register</PrimaryButton>
+        <PrimaryButton fullWidth variant="outline">
+          Register
+        </PrimaryButton>
       </LinkTo>
       <LinkTo to="/login">
-        <PrimaryButton>Login</PrimaryButton>
+        <PrimaryButton fullWidth>Login</PrimaryButton>
       </LinkTo>
     </div>
   );

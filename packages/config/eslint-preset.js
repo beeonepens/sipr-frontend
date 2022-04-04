@@ -47,5 +47,6 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
+    'jsx-a11y/label-has-associated-control': [2, { assert: 'htmlFor' }],
   },
 };
