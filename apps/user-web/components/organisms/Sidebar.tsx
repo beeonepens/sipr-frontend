@@ -6,6 +6,7 @@ import CalendarIcon from '@components/atoms/Icon/CalendarIcon';
 import HomeIcon from '@components/atoms/Icon/HomeIcon';
 import UserGroupIcon from '@components/atoms/Icon/UserGroupIcon';
 import SidebarMenu from '@components/molecules/Sidebar/SidebarMenu';
+import UserCircleIcon from '@components/atoms/Icon/UserCircleIIcon';
 
 const SideMenu = [
   {
@@ -46,6 +47,12 @@ export default function Sidebar() {
           <SidebarMenu menu={menu} pathname={pathname} key={menu.slug} />
         ))}
       </div>
+
+      <SidebarMenu
+        menu={{ slug: '/profile', label: 'Profile', icon: <UserCircleIcon /> }}
+        pathname={pathname}
+        key="/profile"
+      />
     </aside>
   );
 }

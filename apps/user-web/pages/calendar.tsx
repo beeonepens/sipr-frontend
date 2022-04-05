@@ -1,6 +1,4 @@
 import React from 'react';
-// import Sidebar from '@components/organisms/Sidebar';
-// import Header from '@components/organisms/Header';
 
 export default function Calendar() {
   return (
