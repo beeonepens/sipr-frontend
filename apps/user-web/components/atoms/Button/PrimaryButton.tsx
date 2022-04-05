@@ -24,7 +24,7 @@ export default function PrimaryButton({
       // eslint-disable-next-line react/button-has-type
       type={type}
       className={clsx(
-        'rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in',
+        'border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in',
         variant === 'solid' &&
           'bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white',
         variant === 'outline' &&

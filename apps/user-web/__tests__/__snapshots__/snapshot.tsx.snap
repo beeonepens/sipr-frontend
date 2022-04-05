@@ -1,5 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders dashboard page unchanged 1`] = `
+<div>
+  <article
+    class="p-4"
+  >
+    <h2>
+      Dashboard Page
+    </h2>
+  </article>
+</div>
+`;
+
+exports[`renders error 404 page unchanged 1`] = `
+<div>
+  <div
+    class="flex h-screen w-full flex-col items-center justify-center gap-6"
+  >
+    <div
+      class="flex flex-row justify-center gap-4 text-lg text-gray-800"
+    >
+      <h2
+        class="font-bold"
+      >
+        404
+      </h2>
+      <h2>
+        |
+      </h2>
+      <h2>
+        This page could not be found.
+      </h2>
+    </div>
+    <a
+      class="hover:border-primary-600 text-primary-700 hover:text-primary-600 flex flex-row items-center justify-center gap-3 border-b border-transparent pb-2 hover:border-dashed"
+      href="/"
+    >
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span>
+        Back To Homepage
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
 exports[`renders homepage unchanged 1`] = `
 <div>
   <article
@@ -23,7 +81,7 @@ exports[`renders homepage unchanged 1`] = `
         href="/register"
       >
         <button
-          class="rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in border-primary-950 text-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent hover:bg-black hover:bg-opacity-10 w-full rounded-md"
+          class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in border-primary-950 text-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent hover:bg-black hover:bg-opacity-10 w-full rounded-md"
           type="button"
         >
           Register
@@ -34,12 +92,128 @@ exports[`renders homepage unchanged 1`] = `
         href="/login"
       >
         <button
-          class="rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-md"
+          class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-md"
           type="button"
         >
           Login
         </button>
       </a>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`renders login page unchanged 1`] = `
+<div>
+  <article
+    class="flex min-h-screen flex-row items-center justify-center bg-black bg-opacity-50"
+  >
+    <div
+      class="w-4/5 rounded-md bg-white p-12 md:w-2/5 lg:w-1/4"
+    >
+      <a
+        class="hover:text-primary-500 text-primary-700"
+        href="/"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+      <h2
+        class="text-primary-900 text-center text-4xl font-bold"
+      >
+        SIPR
+      </h2>
+      <h1
+        class="text-center text-lg font-medium"
+      >
+        Welcome back!
+      </h1>
+      <form
+        class="mt-6"
+      >
+        <div
+          class="grid grid-cols-1 gap-4 md:gap-5"
+        >
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="email"
+            >
+              Email
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="email"
+              name="email"
+              type="email"
+            />
+          </div>
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="password"
+            >
+              Password
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="password"
+              name="password"
+              type="password"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-auto mt-6 flex w-full flex-row justify-center"
+        >
+          <button
+            class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-lg"
+            type="submit"
+          >
+            Login
+          </button>
+        </div>
+        <p
+          class="mt-8 text-center text-gray-800"
+        >
+          Need an account?
+           
+          <a
+            class="hover:text-primary-500 text-primary-700 underline"
+            href="/register"
+          >
+            Register
+          </a>
+        </p>
+        <p
+          class="mt-2 text-center text-gray-800"
+        >
+          Forgot your password?
+           
+          <a
+            class="hover:text-primary-500 text-primary-700 underline"
+            href="/reset-password"
+          >
+            Reset Password
+          </a>
+        </p>
+      </form>
     </div>
   </article>
 </div>
@@ -189,7 +363,7 @@ exports[`renders register page unchanged 1`] = `
           class="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2"
         >
           <button
-            class="rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-lg"
+            class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-lg"
             type="submit"
           >
             Register
