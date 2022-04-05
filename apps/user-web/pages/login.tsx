@@ -17,7 +17,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Dashboard | SIPR</title>
+        <title>Login | SIPR</title>
       </Head>
 
       <article className="flex min-h-screen flex-row items-center justify-center bg-black bg-opacity-50">

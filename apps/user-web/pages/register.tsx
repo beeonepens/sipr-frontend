@@ -9,7 +9,7 @@ export default function Register() {
   return (
     <>
       <Head>
-        <title>Dashboard | SIPR</title>
+        <title>Register | SIPR</title>
       </Head>
 
       <article className="flex min-h-screen flex-row items-center justify-center bg-black bg-opacity-50">

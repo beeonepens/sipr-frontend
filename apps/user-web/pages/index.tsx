@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Dashboard | SIPR</title>
+        <title>Welcome to SIPR</title>
       </Head>
 
       <article className="bg-primary-50 py-16">
