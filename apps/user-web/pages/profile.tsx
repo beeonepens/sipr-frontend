@@ -1,6 +1,6 @@
+import React from 'react';
 import DangerButton from '@components/atoms/Button/DangerButton';
 import LinkTo from '@components/atoms/LinkTo';
-import React from 'react';
 
 export default function Profile() {
   return (

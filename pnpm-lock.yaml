@@ -82,6 +82,7 @@ importers:
       tsconfig: workspace:*
       typescript: ^4.5.3
       ui: workspace:*
+      zustand: ^3.7.1
     dependencies:
       '@headlessui/react': 1.5.0_react-dom@17.0.2+react@17.0.2
       clsx: 1.1.1
@@ -89,6 +90,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       ui: link:../../packages/ui
+      zustand: 3.7.1_react@17.0.2
     devDependencies:
       '@tailwindcss/forms': 0.5.0_tailwindcss@3.0.23
       '@testing-library/jest-dom': 5.16.3
@@ -4928,3 +4930,15 @@ packages:
       y18n: 5.0.8
       yargs-parser: 20.2.9
     dev: true
+
+  /zustand/3.7.1_react@17.0.2:
+    resolution: {integrity: sha512-wHBCZlKj+bg03/hP+Tzv24YhnqqP8MCeN9ECPDXoF01062SIbnfl3j9O0znkDw1lNTY0a8WN3F///a0UhhaEqg==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      react: '>=16.8'
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dependencies:
+      react: 17.0.2
+    dev: false
