@@ -8,6 +8,7 @@ export default function Register() {
   return (
     <main className="flex min-h-screen flex-row items-center justify-center bg-black bg-opacity-50">
       <div className="w-4/5 rounded-md bg-white p-12 md:w-3/5 lg:w-2/5">
+        {/* back icon */}
         <LinkTo to="/" className="hover:text-primary-500 text-primary-700">
           <ArrowLeftIcon />
         </LinkTo>
