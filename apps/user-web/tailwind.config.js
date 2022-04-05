@@ -15,7 +15,11 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.neutral,
-      primary: colors.blue,
+      primary: {
+        ...colors.blue,
+        850: '#1762AB',
+        950: '#14487A',
+      },
       accent: colors.amber,
       red: colors.rose,
       green: colors.emerald,

@@ -7,6 +7,7 @@ interface Props {
   variant?: 'solid' | 'outline';
   fullWidth?: boolean;
   rounded?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
+  onClick?: () => void;
 }
 
 export default function PrimaryButton({
@@ -15,17 +16,19 @@ export default function PrimaryButton({
   variant = 'solid',
   fullWidth,
   rounded = 'md',
+  onClick,
 }: Props) {
   return (
     <button
+      onClick={onClick}
       // eslint-disable-next-line react/button-has-type
       type={type}
       className={clsx(
-        'rounded-md border-2 py-2.5 px-6 font-semibold transition duration-150 ease-in',
+        'rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in',
         variant === 'solid' &&
-          'bg-primary-900 border-primary-900 hover:bg-primary-700 hover:border-primary-700 text-white',
+          'bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white',
         variant === 'outline' &&
-          'border-primary-900 text-primary-900 hover:text-primary-800 hover:border-primary-700 bg-transparent hover:bg-black hover:bg-opacity-10',
+          'border-primary-950 text-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent hover:bg-black hover:bg-opacity-10',
         fullWidth && 'w-full',
         rounded === 'none' && 'rounded-none',
         rounded === 'sm' && 'rounded-sm',
