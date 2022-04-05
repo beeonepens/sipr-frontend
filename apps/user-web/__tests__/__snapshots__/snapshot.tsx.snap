@@ -19,6 +19,7 @@ exports[`renders homepage unchanged 1`] = `
       class="mx-auto grid w-full grid-cols-1 items-center justify-center gap-8 md:w-1/5 md:grid-cols-2"
     >
       <a
+        class="hover:text-primary-500 text-primary-700 underline"
         href="/register"
       >
         <button
@@ -29,6 +30,7 @@ exports[`renders homepage unchanged 1`] = `
         </button>
       </a>
       <a
+        class="hover:text-primary-500 text-primary-700 underline"
         href="/login"
       >
         <button
@@ -38,6 +40,174 @@ exports[`renders homepage unchanged 1`] = `
           Login
         </button>
       </a>
+    </div>
+  </article>
+</div>
+`;
+
+exports[`renders register page unchanged 1`] = `
+<div>
+  <article
+    class="flex min-h-screen flex-row items-center justify-center bg-black bg-opacity-50"
+  >
+    <div
+      class="w-4/5 rounded-md bg-white p-12 md:w-3/5 lg:w-2/5"
+    >
+      <a
+        class="hover:text-primary-500 text-primary-700"
+        href="/"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+      <h2
+        class="text-primary-900 text-center text-4xl font-bold"
+      >
+        SIPR
+      </h2>
+      <h1
+        class="text-center text-lg font-medium"
+      >
+        Create your free account
+      </h1>
+      <form
+        class="mt-6"
+      >
+        <div
+          class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
+        >
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="name"
+            >
+              Name
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="name"
+              name="name"
+              type="text"
+            />
+          </div>
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="email"
+            >
+              Email
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="email"
+              name="email"
+              type="email"
+            />
+          </div>
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="password"
+            >
+              Password
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="password"
+              name="password"
+              type="password"
+            />
+          </div>
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="confirm-password"
+            >
+              Confirm Password
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="confirm-password"
+              name="confirm-password"
+              type="password"
+            />
+          </div>
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="username"
+            >
+              Username
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="username"
+              name="username"
+              type="text"
+            />
+          </div>
+          <div
+            class="flex flex-col justify-start gap-1"
+          >
+            <label
+              class="text-sm font-medium text-gray-700"
+              for="address"
+            >
+              Address
+            </label>
+            <input
+              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              id="address"
+              name="address"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2"
+        >
+          <button
+            class="rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-lg"
+            type="submit"
+          >
+            Register
+          </button>
+        </div>
+        <p
+          class="mt-8 text-center text-gray-800"
+        >
+          Already have an account?
+           
+          <a
+            class="hover:text-primary-500 text-primary-700 underline"
+            href="/login"
+          >
+            Login
+          </a>
+        </p>
+      </form>
     </div>
   </article>
 </div>

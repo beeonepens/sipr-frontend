@@ -7,6 +7,7 @@ export default function Header() {
   const { pathname } = useRouter();
   const { isMini, toggleMini, toggleFullSize } = useMiniSidebar();
 
+  console.log({ pathname });
   return (
     <header className="flex flex-row items-center gap-4 border-b border-gray-300 py-4 px-8 text-xl font-semibold text-blue-800">
       <MenuIcon

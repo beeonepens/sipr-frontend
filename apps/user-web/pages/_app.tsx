@@ -16,12 +16,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <div
       className={clsx(
         'min-h-screen font-sans text-gray-900',
-        !isPublicUrl(pathname) && 'flex min-h-screen flex-row justify-between'
+        !isPublicUrl(pathname)
+          ? 'flex min-h-screen flex-row justify-between'
+          : ''
       )}
     >
       {/* only show sidebar in non-public url */}
       {!isPublicUrl(pathname) && <Sidebar />}
-      <main className={!isPublicUrl(pathname) && 'w-full md:w-[85%]'}>
+      <main className={!isPublicUrl(pathname) ? 'w-full md:w-[85%]' : ''}>
         {/* only show header in non-public url */}
         {!isPublicUrl(pathname) && <Header />}
         <Component {...pageProps} />

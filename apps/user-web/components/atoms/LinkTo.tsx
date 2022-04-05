@@ -7,7 +7,11 @@ interface Props {
   className?: string;
 }
 
-export default function LinkTo({ to, children = 'Link', className }: Props) {
+export default function LinkTo({
+  to,
+  children = 'Link',
+  className = 'hover:text-primary-500 text-primary-700 underline',
+}: Props) {
   return (
     <Link href={to} passHref>
       <a href="/" className={className}>
