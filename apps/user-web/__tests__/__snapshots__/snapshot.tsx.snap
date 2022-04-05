@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<div>
+  <article
+    class="bg-primary-50 py-16"
+  >
+    <h3
+      class="text-center text-2xl font-bold text-gray-800"
+    >
+      Welcome to
+    </h3>
+    <h1
+      class="text-primary-900 mt-1 mb-8 text-center text-4xl font-bold"
+    >
+      Sistem Informasi Penjadwalan Rapat
+    </h1>
+    <div
+      class="mx-auto grid w-full grid-cols-1 items-center justify-center gap-8 md:w-1/5 md:grid-cols-2"
+    >
+      <a
+        href="/register"
+      >
+        <button
+          class="rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in border-primary-950 text-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent hover:bg-black hover:bg-opacity-10 w-full rounded-md"
+          type="button"
+        >
+          Register
+        </button>
+      </a>
+      <a
+        href="/login"
+      >
+        <button
+          class="rounded-md border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-md"
+          type="button"
+        >
+          Login
+        </button>
+      </a>
+    </div>
+  </article>
+</div>
+`;
