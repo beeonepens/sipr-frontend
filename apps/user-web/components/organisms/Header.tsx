@@ -9,7 +9,7 @@ export default function Header() {
 
   console.log({ pathname });
   return (
-    <header className="flex flex-row items-center gap-4 border-b border-gray-300 py-4 px-8 text-xl font-semibold text-blue-800">
+    <header className="flex flex-row items-center gap-4 border-b border-gray-300 py-4 px-4 text-xl font-semibold text-blue-800 md:px-8">
       <MenuIcon
         className="h-6 w-6 cursor-pointer hover:text-blue-600"
         onClick={isMini ? toggleFullSize : toggleMini}

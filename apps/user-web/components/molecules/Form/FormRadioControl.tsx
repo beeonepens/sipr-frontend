@@ -19,7 +19,7 @@ export default function FormRadioControl({
   options,
 }: Props) {
   return (
-    <div className="mt-1 flex flex-row items-center justify-between">
+    <div className="mt-1 flex flex-row items-center justify-between gap-3">
       {/* <legend className="w-1/3 text-gray-700">{title}</legend> */}
       <span className="mb-0.5 w-1/3">
         <Label id="meeting-status">{title}</Label>

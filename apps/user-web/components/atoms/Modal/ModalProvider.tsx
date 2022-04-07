@@ -30,7 +30,7 @@ export default function ModalProvider({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md backdrop-filter" />
+            <Dialog.Overlay className="fixed inset-0 md:bg-black md:bg-opacity-50 md:backdrop-blur-md md:backdrop-filter" />
           </Transition.Child>
 
           {/* modal helper */}

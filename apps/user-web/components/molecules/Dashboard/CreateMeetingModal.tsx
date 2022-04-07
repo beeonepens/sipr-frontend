@@ -32,7 +32,7 @@ export default function CreateMeetingModal({
 
   return (
     <ModalProvider isModalOpen={isModalOpen} toggleModal={toggleModal}>
-      <section className="my-8 inline-block w-full max-w-md transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+      <section className="m-0 inline-block h-screen w-full max-w-md transform overflow-hidden rounded-none bg-white p-6 text-left align-middle shadow-xl transition-all md:my-8 md:mx-2 md:h-auto md:rounded-xl">
         <Dialog.Title
           as="h3"
           className="text-primary-950 mb-2 text-2xl font-semibold leading-6"
@@ -44,7 +44,7 @@ export default function CreateMeetingModal({
         </Dialog.Description>
 
         {/* modal content */}
-        <form className="my-8">
+        <form className="mt-8">
           <div className="grid grid-cols-1 gap-3">
             <FormControl label="Name" id="meeting-name" type="text" />
             <FormAreaControl label="Description" id="meeting-desc" />
