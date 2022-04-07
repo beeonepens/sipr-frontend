@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import CreateMeetingButton from '@components/molecules/Dashboard/CreateMeetingButton';
 
 export default function Dashboard() {
   return (
@@ -9,7 +10,13 @@ export default function Dashboard() {
       </Head>
 
       <article className="p-4">
-        <h2>Dashboard Page</h2>
+        <div className="grid grid-cols-2 items-center gap-4">
+          <div>
+            <CreateMeetingButton onClick={() => console.log('click')} />
+          </div>
+
+          <h2 className="text-primary-950 text-3xl font-bold">Today</h2>
+        </div>
       </article>
     </>
   );

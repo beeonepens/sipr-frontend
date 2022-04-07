@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 interface Props {
-  children: string;
+  children: string | JSX.Element;
   type?: 'button' | 'reset' | 'submit';
   variant?: 'solid' | 'outline';
   fullWidth?: boolean;
