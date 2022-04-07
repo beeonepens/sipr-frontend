@@ -12,7 +12,7 @@ export default function Dashboard() {
       <article className="p-4">
         <div className="grid grid-cols-2 items-center gap-4">
           <div>
-            <CreateMeetingButton onClick={() => console.log('click')} />
+            <CreateMeetingButton />
           </div>
 
           <h2 className="text-primary-950 text-3xl font-bold">Today</h2>
