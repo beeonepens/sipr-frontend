@@ -13,7 +13,10 @@ interface Props {
   placeholder?: string;
   readOnly?: boolean;
   intervals?: number;
-  dateFormat?: 'MMMM d, yyyy h:mm aa' | 'd MMMM yyyy, HH:mm';
+  dateFormat?:
+    | 'MMMM d, yyyy h:mm aa'
+    | 'd MMMM yyyy, HH:mm'
+    | 'dd/MM/yyyy HH:mm';
   timeFormat?: 'HH:mm';
 }
 
@@ -26,7 +29,7 @@ export default function DateTimePicker({
   readOnly = false,
   placeholder,
   intervals = 15,
-  dateFormat = 'd MMMM yyyy, HH:mm',
+  dateFormat = 'dd/MM/yyyy HH:mm',
   timeFormat = 'HH:mm',
 }: Props) {
   return (
@@ -54,6 +57,9 @@ export default function DateTimePicker({
         timeFormat={timeFormat}
         dateFormat={dateFormat}
         readOnly={readOnly}
+        // showMonthDropdown
+        // showYearDropdown
+        // dropdownMode="select"
       />
       <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-lg text-gray-500" />
     </div>

@@ -5,11 +5,17 @@ import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import FormControl from '../Form/FormControl';
 import FormAreaControl from '../Form/FormAreaControl';
 import FormDateTimeControl from '../Form/FormDateTimeControl';
+import FormRadioControl from '../Form/FormRadioControl';
 
 interface Props {
   isModalOpen: boolean;
   toggleModal: () => void;
 }
+
+const MeetingStatusOptions = [
+  { label: 'Online', value: 'online' },
+  { label: 'Offline (in progress)', value: 'offline' },
+];
 
 export default function CreateMeetingModal({
   isModalOpen,
@@ -53,6 +59,17 @@ export default function CreateMeetingModal({
               value={endDate}
               onChange={onEndDateChange}
               id="meeting-end-time"
+            />
+            <FormRadioControl
+              title="Status"
+              options={MeetingStatusOptions}
+              disabled="offline"
+              selected="online"
+            />
+            <FormControl
+              label="Link to Meeting"
+              id="meeting-location"
+              type="text"
             />
           </div>
 
