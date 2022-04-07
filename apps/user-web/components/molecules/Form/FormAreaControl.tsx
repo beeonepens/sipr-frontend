@@ -1,24 +1,22 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import Input from '@components/atoms/Form/Input';
+import TextArea from '@components/atoms/Form/TextArea';
 import Label from '@components/atoms/Form/Label';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   id: string;
-  type: string;
   readOnly?: boolean;
   placeholder?: string;
   helperText?: string;
 }
 
-export default function FormControl({
+export default function FormAreaControl({
   label,
   id,
-  type,
   placeholder,
+  readOnly,
   helperText,
-  readOnly = false,
   ...others
 }: Props) {
   const {
@@ -28,9 +26,8 @@ export default function FormControl({
   return (
     <div className="flex flex-col justify-start gap-1">
       <Label id={id}>{label}</Label>
-      <Input
+      <TextArea
         id={id}
-        type={type}
         readOnly={readOnly}
         placeholder={placeholder}
         {...others}

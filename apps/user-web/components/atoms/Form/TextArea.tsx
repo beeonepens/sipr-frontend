@@ -2,23 +2,23 @@ import clsx from 'clsx';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  type: string;
+interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   id: string;
+  rows?: number;
 }
 
-export default function Input({ type = 'text', id, ...others }: Props) {
+export default function TextArea({ id, rows = 3, ...others }: Props) {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
   return (
-    <input
+    <textarea
       {...register(id)}
-      type={type}
       id={id}
       name={id}
+      rows={rows}
       {...others}
       className={clsx(
         'rounded-lg sm:text-sm',

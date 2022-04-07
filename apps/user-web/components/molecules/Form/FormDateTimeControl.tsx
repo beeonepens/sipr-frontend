@@ -1,24 +1,23 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import Input from '@components/atoms/Form/Input';
 import Label from '@components/atoms/Form/Label';
+import DateTimePicker from '@components/atoms/Form/DateTimePicker';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props {
   label: string;
   id: string;
-  type: string;
-  readOnly?: boolean;
   placeholder?: string;
+  readOnly?: boolean;
+  intervals?: number;
   helperText?: string;
+  dateFormat?: 'MMMM d, yyyy h:mm aa';
+  timeFormat?: 'HH:mm';
 }
 
-export default function FormControl({
+export default function FormDateTimeControl({
   label,
   id,
-  type,
-  placeholder,
   helperText,
-  readOnly = false,
   ...others
 }: Props) {
   const {
@@ -28,13 +27,7 @@ export default function FormControl({
   return (
     <div className="flex flex-col justify-start gap-1">
       <Label id={id}>{label}</Label>
-      <Input
-        id={id}
-        type={type}
-        readOnly={readOnly}
-        placeholder={placeholder}
-        {...others}
-      />
+      <DateTimePicker id={id} {...others} />
       <div>
         {helperText !== '' && (
           <p className="text-xs text-gray-500">{helperText}</p>
