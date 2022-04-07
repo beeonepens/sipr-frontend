@@ -3,20 +3,20 @@ import { Dialog, Transition } from '@headlessui/react';
 
 interface Props {
   isModalOpen: boolean;
-  toggleModal: () => void;
+  onClose: () => void;
   children: JSX.Element;
 }
 
 export default function ModalProvider({
   isModalOpen,
   children,
-  toggleModal,
+  onClose,
 }: Props) {
   return (
     <Transition show={isModalOpen} as={React.Fragment}>
       <Dialog
         as="div"
-        onClose={toggleModal}
+        onClose={onClose}
         className="fixed inset-0 z-10 overflow-y-auto"
       >
         <div className="flex min-h-screen items-center justify-center">

@@ -1,5 +1,9 @@
 import React from 'react';
 import { Dialog } from '@headlessui/react';
+import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { MeetingStatusOptions } from '@utils/constant';
 import PrimaryButton from '@components/atoms/Button/PrimaryButton';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import FormControl from '../Form/FormControl';
@@ -12,26 +16,47 @@ interface Props {
   toggleModal: () => void;
 }
 
-const MeetingStatusOptions = [
-  { label: 'Online', value: 'online' },
-  { label: 'Offline (in progress)', value: 'offline' },
-];
+/** Schema for new meeting forms */
+const FormSchema = z.object({
+  name: z.string().min(1, { message: 'Required' }),
+  description: z.string().optional(),
+  startDate: z.date(),
+  endDate: z.date(),
+  isOnline: z.boolean().optional(),
+  location: z.string().min(1, { message: 'Required' }),
+});
+
+/** TS types for the input form */
+export type NewMeetingTypes = z.infer<typeof FormSchema>;
 
 export default function CreateMeetingModal({
   isModalOpen,
   toggleModal,
 }: Props) {
-  const [startDate, setStartDate] = React.useState(new Date());
-  const [endDate, setEndDate] = React.useState(new Date());
-  function onStartDateChange(date: Date) {
-    setStartDate(date);
-  }
-  function onEndDateChange(date: Date) {
-    setEndDate(date);
-  }
+  /** hooks for forms control & submit action */
+  const methods = useForm<NewMeetingTypes>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      isOnline: true,
+    },
+  });
+
+  /** function that run on form-submit */
+  const onSubmit: SubmitHandler<NewMeetingTypes> = (data) => {
+    console.log(data);
+  };
+
+  /** function that run to close modal */
+  const handleCloseModal = () => {
+    toggleModal();
+    methods.reset();
+  };
+
+  /** form error log */
+  if (methods.formState.errors) console.log(methods.formState.errors);
 
   return (
-    <ModalProvider isModalOpen={isModalOpen} toggleModal={toggleModal}>
+    <ModalProvider isModalOpen={isModalOpen} onClose={handleCloseModal}>
       <section className="m-0 inline-block h-screen w-full max-w-md transform overflow-hidden rounded-none bg-white p-6 text-left align-middle shadow-xl transition-all md:my-8 md:mx-2 md:h-auto md:rounded-xl">
         <Dialog.Title
           as="h3"
@@ -44,49 +69,51 @@ export default function CreateMeetingModal({
         </Dialog.Description>
 
         {/* modal content */}
-        <form className="mt-8">
-          <div className="grid grid-cols-1 gap-3">
-            <FormControl label="Name" id="meeting-name" type="text" />
-            <FormAreaControl label="Description" id="meeting-desc" />
-            <FormDateTimeControl
-              label="Start Time"
-              value={startDate}
-              onChange={onStartDateChange}
-              id="meeting-start-time"
-            />
-            <FormDateTimeControl
-              label="End Time"
-              value={endDate}
-              onChange={onEndDateChange}
-              id="meeting-end-time"
-            />
-            <FormRadioControl
-              title="Status"
-              options={MeetingStatusOptions}
-              disabled="offline"
-              selected="online"
-            />
-            <FormControl
-              label="Link to Meeting"
-              id="meeting-location"
-              type="text"
-            />
-          </div>
+        <FormProvider {...methods}>
+          <form className="mt-8" onSubmit={methods.handleSubmit(onSubmit)}>
+            <div className="grid grid-cols-1 gap-3">
+              <FormControl
+                label="Name"
+                id="name"
+                aria-label="meeting name"
+                type="text"
+              />
+              <FormAreaControl
+                label="Description"
+                id="description"
+                aria-label="meeting description"
+              />
+              <FormDateTimeControl label="Start Time" id="startDate" />
+              <FormDateTimeControl label="End Time" id="endDate" />
+              <FormRadioControl
+                title="Status"
+                options={MeetingStatusOptions}
+                disabled="offline"
+                selected="online"
+              />
+              <FormControl
+                label="Link to Meeting"
+                id="location"
+                aria-label="meeting location"
+                type="text"
+              />
+            </div>
 
-          <div className="mt-8 flex flex-row items-center justify-end gap-4">
-            <PrimaryButton
-              text="sm"
-              type="button"
-              variant="outline"
-              onClick={toggleModal}
-            >
-              Cancel
-            </PrimaryButton>
-            <PrimaryButton text="sm" type="submit">
-              Save
-            </PrimaryButton>
-          </div>
-        </form>
+            <div className="mt-8 grid grid-cols-2 items-center justify-end gap-4 md:flex md:flex-row">
+              <PrimaryButton
+                text="sm"
+                type="button"
+                variant="outline"
+                onClick={handleCloseModal}
+              >
+                Cancel
+              </PrimaryButton>
+              <PrimaryButton text="sm" type="submit">
+                Save
+              </PrimaryButton>
+            </div>
+          </form>
+        </FormProvider>
       </section>
     </ModalProvider>
   );

@@ -38,7 +38,7 @@ export default function FormRadioControl({
               type="radio"
               id={value}
               disabled={value === disabled}
-              checked={value === selected}
+              defaultChecked={value === selected}
               name="radio-direct"
               value={value}
             />
