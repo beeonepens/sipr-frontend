@@ -37,6 +37,7 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'react/jsx-props-no-spreading': 0,
     'react/require-default-props': 0,
+    'react/jsx-no-bind': [1, { allowFunctions: true }],
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
