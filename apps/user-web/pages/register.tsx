@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Button } from 'ui';
+import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
-import ArrowLeftIcon from '@components/atoms/Icon/ArrowLeftIcon';
 
 /** Schema for register forms */
 const FormSchema = z

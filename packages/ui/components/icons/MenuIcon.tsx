@@ -2,11 +2,13 @@ import React from 'react';
 
 interface Props {
   className?: string;
+  onClick?: () => void;
 }
 
-export default function ClockIcon({ className = 'h-6 w-6' }: Props) {
+export function MenuIcon({ className = 'h-6 w-6', onClick }: Props) {
   return (
     <svg
+      onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       fill="none"
@@ -17,7 +19,7 @@ export default function ClockIcon({ className = 'h-6 w-6' }: Props) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        d="M4 6h16M4 12h8m-8 6h16"
       />
     </svg>
   );

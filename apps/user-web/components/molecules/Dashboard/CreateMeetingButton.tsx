@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from 'ui';
-import PlusIcon from '@components/atoms/Icon/PlusIcon';
+import { Button, PlusIcon } from 'ui';
 
 interface Props {
   onClick: () => void;

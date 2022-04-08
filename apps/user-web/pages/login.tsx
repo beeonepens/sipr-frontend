@@ -4,8 +4,7 @@ import Head from 'next/head';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Button } from 'ui';
-import ArrowLeftIcon from '@components/atoms/Icon/ArrowLeftIcon';
+import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
 

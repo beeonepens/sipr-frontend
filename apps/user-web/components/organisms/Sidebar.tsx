@@ -1,13 +1,15 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
-import BellIcon from '@components/atoms/Icon/BellIcon';
-import CalendarIcon from '@components/atoms/Icon/CalendarIcon';
-import HomeIcon from '@components/atoms/Icon/HomeIcon';
-import UserGroupIcon from '@components/atoms/Icon/UserGroupIcon';
 import SidebarMenu from '@components/molecules/Sidebar/SidebarMenu';
-import UserCircleIcon from '@components/atoms/Icon/UserCircleIIcon';
 import useMiniSidebar from '@utils/store/useMiniSidebar';
+import {
+  BellIcon,
+  CalendarIcon,
+  HomeIcon,
+  UserGroupIcon,
+  UserCircleIcon,
+} from 'ui';
 
 const SideMenu = [
   {

@@ -1,13 +1,14 @@
 import React from 'react';
-import Link from 'next/link';
+import LinkTo from '@components/atoms/LinkTo';
+import { Button } from 'ui';
 
 export default function Login() {
   return (
-    <div>
+    <div className="container mx-auto py-4">
       <h1>Login Page</h1>
-      <Link href="/dashboard" passHref>
-        <a href="/">Login</a>
-      </Link>
+      <LinkTo to="/dashboard">
+        <Button>Login</Button>
+      </LinkTo>
     </div>
   );
 }
