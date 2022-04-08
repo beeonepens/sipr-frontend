@@ -2,13 +2,11 @@ import React from 'react';
 
 interface Props {
   className?: string;
-  onClick?: () => void;
 }
 
-export default function MenuIcon({ className = 'h-6 w-6', onClick }: Props) {
+export function UserCircleIcon({ className = 'h-6 w-6' }: Props) {
   return (
     <svg
-      onClick={onClick}
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       fill="none"
@@ -19,7 +17,7 @@ export default function MenuIcon({ className = 'h-6 w-6', onClick }: Props) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M4 6h16M4 12h8m-8 6h16"
+        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
       />
     </svg>
   );

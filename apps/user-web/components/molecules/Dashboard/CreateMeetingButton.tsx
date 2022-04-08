@@ -1,6 +1,5 @@
 import React from 'react';
-import PrimaryButton from '@components/atoms/Button/PrimaryButton';
-import PlusIcon from '@components/atoms/Icon/PlusIcon';
+import { Button, PlusIcon } from 'ui';
 
 interface Props {
   onClick: () => void;
@@ -8,11 +7,11 @@ interface Props {
 
 export default function CreateMeetingButton({ onClick }: Props) {
   return (
-    <PrimaryButton onClick={onClick}>
+    <Button color="primary" onClick={onClick}>
       <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
         <PlusIcon />
         Create
       </span>
-    </PrimaryButton>
+    </Button>
   );
 }

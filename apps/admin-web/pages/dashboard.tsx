@@ -1,24 +1,14 @@
 import React from 'react';
-import Link from 'next/link';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import LinkTo from '@components/atoms/LinkTo';
+import { Button } from 'ui';
 
 export default function Dashboard() {
   return (
-    <Container sx={{ padding: '4rem' }}>
-      <Stack direction="column" mb="1rem" spacing={1}>
-        <Typography variant="h3" component="h1" sx={{ fontWeight: 500 }}>
-          Admin Dashboard Page
-        </Typography>
-      </Stack>
-
-      <Link href="/" passHref>
-        <Button size="large" color="error" LinkComponent="a">
-          Logout
-        </Button>
-      </Link>
-    </Container>
+    <div className="container mx-auto py-4">
+      <h1 className="mb-4 text-lg font-semibold">Dashboard Page</h1>
+      <LinkTo to="/">
+        <Button color="danger">Logout</Button>
+      </LinkTo>
+    </div>
   );
 }

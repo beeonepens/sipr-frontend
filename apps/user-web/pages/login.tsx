@@ -4,8 +4,7 @@ import Head from 'next/head';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import PrimaryButton from '@components/atoms/Button/PrimaryButton';
-import ArrowLeftIcon from '@components/atoms/Icon/ArrowLeftIcon';
+import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
 
@@ -66,9 +65,9 @@ export default function Login() {
 
               {/* forms submit button */}
               <div className="mx-auto mt-6 flex w-full flex-row justify-center">
-                <PrimaryButton rounded="lg" type="submit" fullWidth>
+                <Button rounded="lg" type="submit" fullWidth>
                   Login
-                </PrimaryButton>
+                </Button>
               </div>
             </form>
           </FormProvider>

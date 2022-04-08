@@ -1,5 +1,5 @@
-import React from 'React';
-import ArrowLeftIcon from '@components/atoms/Icon/ArrowLeftIcon';
+import React from 'react';
+import { ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 
 export default function CustomError() {

@@ -1,25 +1,22 @@
 import React from 'react';
-import Link from 'next/link';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import LinkTo from '@components/atoms/LinkTo';
+import { Button } from 'ui';
 
 export default function HomePage() {
   return (
-    <Container sx={{ padding: '4rem' }}>
-      <Stack direction="column" mb="1rem" spacing={1}>
-        <Typography variant="h4">Welcome to</Typography>
-        <Typography variant="h2" component="h1" sx={{ fontWeight: 'bold' }}>
-          SIPR Admin Page
-        </Typography>
-      </Stack>
+    <article className="bg-primary-50 dark:bg-primary-950 py-16">
+      <h3 className="text-center text-2xl font-bold text-gray-800 dark:text-gray-100">
+        Welcome to
+      </h3>
+      <h1 className="text-primary-900 dark:text-primary-100 mt-1 mb-8 text-center text-4xl font-bold">
+        SIPR Admin Page
+      </h1>
 
-      <Link href="/login" passHref>
-        <Button size="large" LinkComponent="a">
-          Login
-        </Button>
-      </Link>
-    </Container>
+      <div className="flex flex-row justify-center">
+        <LinkTo to="/login">
+          <Button>Login as Admin</Button>
+        </LinkTo>
+      </div>
+    </article>
   );
 }

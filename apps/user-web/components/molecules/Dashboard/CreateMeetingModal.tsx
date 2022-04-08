@@ -3,8 +3,8 @@ import { Dialog } from '@headlessui/react';
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { Button } from 'ui';
 import { MeetingStatusOptions } from '@utils/constant';
-import PrimaryButton from '@components/atoms/Button/PrimaryButton';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import FormControl from '../Form/FormControl';
 import FormAreaControl from '../Form/FormAreaControl';
@@ -100,17 +100,17 @@ export default function CreateMeetingModal({
             </div>
 
             <div className="mt-8 grid grid-cols-2 items-center justify-end gap-4 md:flex md:flex-row">
-              <PrimaryButton
+              <Button
                 text="sm"
                 type="button"
                 variant="outline"
                 onClick={handleCloseModal}
               >
                 Cancel
-              </PrimaryButton>
-              <PrimaryButton text="sm" type="submit">
+              </Button>
+              <Button text="sm" type="submit">
                 Save
-              </PrimaryButton>
+              </Button>
             </div>
           </form>
         </FormProvider>

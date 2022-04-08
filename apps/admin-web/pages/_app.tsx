@@ -1,12 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import { AppProps } from 'next/app';
-import { createTheme, ThemeProvider } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 
-const theme = createTheme({
-  palette: { mode: 'dark' },
-});
+import '../styles/globals.css';
+
+import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,10 +13,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>SIPR Admin Page</title>
       </Head>
 
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+      <div className="min-h-screen font-sans text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <Component {...pageProps} />
-      </ThemeProvider>
+      </div>
     </>
   );
 }

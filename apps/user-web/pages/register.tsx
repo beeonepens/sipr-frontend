@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import PrimaryButton from '@components/atoms/Button/PrimaryButton';
+import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
-import ArrowLeftIcon from '@components/atoms/Icon/ArrowLeftIcon';
 
 /** Schema for register forms */
 const FormSchema = z
@@ -85,9 +84,9 @@ export default function Register() {
 
               {/* forms submit button */}
               <div className="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2">
-                <PrimaryButton rounded="lg" type="submit" fullWidth>
+                <Button rounded="lg" type="submit" fullWidth>
                   Register
-                </PrimaryButton>
+                </Button>
               </div>
             </form>
           </FormProvider>

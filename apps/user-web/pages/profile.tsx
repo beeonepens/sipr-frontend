@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import DangerButton from '@components/atoms/Button/DangerButton';
+import { Button } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 
 export default function Profile() {
@@ -14,7 +14,7 @@ export default function Profile() {
         <h2 className="mb-6">Profile Page</h2>
 
         <LinkTo to="/">
-          <DangerButton>Logout</DangerButton>
+          <Button color="danger">Logout</Button>
         </LinkTo>
       </article>
     </>

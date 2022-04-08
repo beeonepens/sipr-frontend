@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import MenuIcon from '@components/atoms/Icon/MenuIcon';
+import { MenuIcon } from 'ui';
 import useMiniSidebar from '@utils/store/useMiniSidebar';
 
 export default function Header() {
