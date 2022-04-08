@@ -5,19 +5,25 @@ interface Props {
   children: string | JSX.Element;
   type?: 'button' | 'reset' | 'submit';
   variant?: 'solid' | 'outline';
-  fullWidth?: boolean;
   rounded?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
-  onClick?: () => void;
   text?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'danger';
+  isLoading?: boolean;
+  isDisabled?: boolean;
+  fullWidth?: boolean;
+  onClick?: () => void;
 }
 
-export default function PrimaryButton({
+export function Button({
   children = 'Button',
   type = 'button',
   variant = 'solid',
-  fullWidth,
   rounded = 'md',
   text = 'md',
+  color = 'primary',
+  isLoading = false,
+  isDisabled = false,
+  fullWidth,
   onClick,
 }: Props) {
   return (
@@ -27,10 +33,18 @@ export default function PrimaryButton({
       type={type}
       className={clsx(
         'border-2 py-2.5 px-6 transition duration-100 ease-in',
-        variant === 'solid' &&
-          'bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white',
-        variant === 'outline' &&
-          'border-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10',
+        color === 'primary' && [
+          variant === 'solid' &&
+            'bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white',
+          variant === 'outline' &&
+            'border-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10',
+        ],
+        color === 'danger' && [
+          variant === 'solid' &&
+            'border-red-600 bg-red-600 text-white hover:border-red-700 hover:bg-red-700',
+          variant === 'outline' &&
+            'border-red-600 bg-transparent text-red-600 hover:border-red-700 hover:bg-black hover:bg-opacity-10 hover:text-red-700',
+        ],
         fullWidth && 'w-full',
         rounded === 'none' && 'rounded-none',
         rounded === 'sm' && 'rounded-sm',

@@ -1,2 +1,2 @@
 import React from 'react';
-export * from './Button';
+export * from './components/buttons';
