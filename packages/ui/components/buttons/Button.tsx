@@ -35,15 +35,15 @@ export function Button({
         'border-2 py-2.5 px-6 transition duration-100 ease-in',
         color === 'primary' && [
           variant === 'solid' &&
-            'bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white',
+            'bg-primary-950 border-primary-950 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-950 hover:bg-primary-850 hover:border-primary-850 dark:border-primary-300 dark:hover:border-primary-400 text-white',
           variant === 'outline' &&
-            'border-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10',
+            'border-primary-950 dark:border-primary-300 hover:text-primary-850 hover:border-primary-850 dark:text-primary-300 dark:hover:bg-primary-300 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 dark:hover:bg-opacity-20 ',
         ],
         color === 'danger' && [
           variant === 'solid' &&
-            'border-red-600 bg-red-600 text-white hover:border-red-700 hover:bg-red-700',
+            'border-red-600 bg-red-600 text-white hover:border-red-700 hover:bg-red-700 dark:border-red-200 dark:bg-red-200 dark:text-red-800 dark:hover:border-red-300 dark:hover:bg-red-300',
           variant === 'outline' &&
-            'border-red-600 bg-transparent text-red-600 hover:border-red-700 hover:bg-black hover:bg-opacity-10 hover:text-red-700',
+            'border-red-600 bg-transparent text-red-600 hover:border-red-700 hover:bg-black hover:bg-opacity-10 hover:text-red-600 dark:border-red-400 dark:text-red-400 dark:hover:bg-red-200 dark:hover:bg-opacity-20',
         ],
         fullWidth && 'w-full',
         rounded === 'none' && 'rounded-none',

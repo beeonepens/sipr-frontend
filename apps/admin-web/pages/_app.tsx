@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>SIPR Admin Page</title>
       </Head>
 
-      <div className="font-sans text-gray-900">
+      <div className="min-h-screen font-sans text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <Component {...pageProps} />
       </div>
     </>
