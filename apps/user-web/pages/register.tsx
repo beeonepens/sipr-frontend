@@ -1,11 +1,51 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import PrimaryButton from '@components/atoms/Button/PrimaryButton';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
 import ArrowLeftIcon from '@components/atoms/Icon/ArrowLeftIcon';
 
+/** Schema for register forms */
+const FormSchema = z
+  .object({
+    name: z.string().min(1, { message: 'Required' }),
+    email: z
+      .string()
+      .email({ message: 'Invalid email address' })
+      .min(1, { message: 'Required' }),
+    password: z.string().min(1, { message: 'Required' }),
+    confirmPassword: z.string().min(1, { message: 'Required' }),
+    username: z.string().min(1, { message: 'Required' }),
+    address: z.string().optional().default(''),
+  })
+  .refine((data) => data.confirmPassword === data.password, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
+
+/** TS types for the input form */
+export type RegisterTypes = z.infer<typeof FormSchema>;
+
 export default function Register() {
+  const router = useRouter();
+  /** hooks for forms control & submit action */
+  const methods = useForm<RegisterTypes>({
+    resolver: zodResolver(FormSchema),
+  });
+
+  /** function hadle login action */
+  const onSubmit: SubmitHandler<RegisterTypes> = (data) => {
+    console.log(data);
+    router.push('/dashboard');
+  };
+
+  /** form error log */
+  if (methods.formState.errors) console.log(methods.formState.errors);
+
   return (
     <>
       <Head>
@@ -27,39 +67,40 @@ export default function Register() {
             Create your free account
           </h1>
 
-          <form className="mt-6">
-            {/* forms input */}
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-              <FormControl id="name" label="Name" type="text" />
-              <FormControl id="email" label="Email" type="email" />
-              <FormControl id="password" label="Password" type="password" />
-              <FormControl
-                id="confirm-password"
-                label="Confirm Password"
-                type="password"
-              />
-              <FormControl id="username" label="Username" type="text" />
-              <FormControl id="address" label="Address" type="text" />
-            </div>
+          <FormProvider {...methods}>
+            <form className="mt-6" onSubmit={methods.handleSubmit(onSubmit)}>
+              {/* forms input */}
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+                <FormControl id="name" label="Name" type="text" />
+                <FormControl id="email" label="Email" type="email" />
+                <FormControl id="password" label="Password" type="password" />
+                <FormControl
+                  id="confirmPassword"
+                  label="Confirm Password"
+                  type="password"
+                />
+                <FormControl id="username" label="Username" type="text" />
+                <FormControl id="address" label="Address" type="text" />
+              </div>
 
-            {/* forms submit button */}
-            <div className="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2">
-              <PrimaryButton rounded="lg" type="submit" fullWidth>
-                Register
-              </PrimaryButton>
-            </div>
-
-            {/* link to login */}
-            <p className="mt-8 text-center text-gray-800">
-              Already have an account?{' '}
-              <LinkTo
-                to="/login"
-                className="hover:text-primary-500 text-primary-700 underline"
-              >
-                Login
-              </LinkTo>
-            </p>
-          </form>
+              {/* forms submit button */}
+              <div className="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2">
+                <PrimaryButton rounded="lg" type="submit" fullWidth>
+                  Register
+                </PrimaryButton>
+              </div>
+            </form>
+          </FormProvider>
+          {/* link to login */}
+          <p className="mt-8 text-center text-gray-800">
+            Already have an account?{' '}
+            <LinkTo
+              to="/login"
+              className="hover:text-primary-500 text-primary-700 underline"
+            >
+              Login
+            </LinkTo>
+          </p>
         </div>
       </article>
     </>
