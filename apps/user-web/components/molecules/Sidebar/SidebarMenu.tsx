@@ -19,11 +19,10 @@ export default function SidebarMenu({ pathname, menu }: Props) {
     <LinkTo
       to={menu.slug}
       className={clsx(
-        'flex flex-row items-center gap-4 rounded-md py-3.5 px-3 font-medium transition duration-200 ease-in',
+        'flex w-full flex-row items-center gap-4 rounded-md py-3.5 px-3.5 font-medium transition duration-100 ease-in',
         pathname === menu.slug
           ? 'bg-accent-400 text-primary-950'
           : 'hover:bg-primary-850 bg-transparent'
-        // isMini ? 'px-3' : 'px-4'
       )}
     >
       <>
@@ -31,7 +30,7 @@ export default function SidebarMenu({ pathname, menu }: Props) {
         <span
           className={clsx(
             isMini ? 'hidden' : 'flex',
-            'origin-left duration-200'
+            'origin-left duration-100'
           )}
         >
           {menu.label}
