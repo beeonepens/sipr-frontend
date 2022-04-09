@@ -59,7 +59,7 @@ export default function Login() {
             <form className="mt-6" onSubmit={methods.handleSubmit(onSubmit)}>
               {/* forms input */}
               <div className="grid grid-cols-1 gap-4 md:gap-5">
-                <FormControl id="email" label="Email" type="email" />
+                <FormControl id="email" label="Email" type="text" />
                 <FormControl id="password" label="Password" type="password" />
               </div>
 

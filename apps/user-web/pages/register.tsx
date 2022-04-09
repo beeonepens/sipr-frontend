@@ -71,7 +71,7 @@ export default function Register() {
               {/* forms input */}
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
                 <FormControl id="name" label="Name" type="text" />
-                <FormControl id="email" label="Email" type="email" />
+                <FormControl id="email" label="Email" type="text" />
                 <FormControl id="password" label="Password" type="password" />
                 <FormControl
                   id="confirmPassword"
