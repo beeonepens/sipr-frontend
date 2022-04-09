@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "jest --watch",
     "cypress": "cypress open",
-    "cypress:headless": "cypress run"
+    "cypress:headless": "cypress run --record --key a12d4172-f5b3-42be-b54e-cd0ab5cc43fa"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
