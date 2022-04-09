@@ -29,7 +29,7 @@ export default function SidebarMenu({ pathname, menu }: Props) {
         <span>{menu.icon}</span>
         <span
           className={clsx(
-            isMini ? 'hidden' : 'flex',
+            isMini ? 'hidden opacity-0' : 'flex opacity-100',
             'origin-left duration-100'
           )}
         >

@@ -23,12 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     >
       {/* only show sidebar in non-public url */}
       {!isPublicUrl(pathname) && <Sidebar />}
-      <main
-        className={
-          // eslint-disable-next-line no-nested-ternary
-          'w-full duration-300'
-        }
-      >
+      <main className="relative z-0 w-full duration-300">
         {/* only show header in non-public url */}
         {!isPublicUrl(pathname) && <Header />}
         <Component {...pageProps} />

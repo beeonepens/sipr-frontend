@@ -5,6 +5,7 @@ export * from './CalendarIcon';
 export * from './ClockIcon';
 export * from './HomeIcon';
 export * from './MenuIcon';
+export * from './MenuIconFull';
 export * from './PlusIcon';
 export * from './UserCircleIIcon';
 export * from './UserGroupIcon';
