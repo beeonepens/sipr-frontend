@@ -13,6 +13,7 @@ module.exports = {
     'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
+    'plugin:cypress/recommended',
     'prettier',
   ],
   settings: {
