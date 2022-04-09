@@ -8,9 +8,11 @@ import Header from '@components/organisms/Header';
 import '../styles/globals.css';
 
 import type { AppProps } from 'next/app';
+import useMiniSidebar from '@utils/store/useMiniSidebar';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
+  const { isMini } = useMiniSidebar();
 
   return (
     <div
@@ -23,7 +25,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     >
       {/* only show sidebar in non-public url */}
       {!isPublicUrl(pathname) && <Sidebar />}
-      <main className={!isPublicUrl(pathname) ? 'w-full md:w-[85%]' : ''}>
+      <main
+        className={
+          // eslint-disable-next-line no-nested-ternary
+          !isPublicUrl(pathname)
+            ? isMini
+              ? 'w-full md:w-[95%]'
+              : 'w-full md:w-[85%]'
+            : 'duration-300'
+        }
+      >
         {/* only show header in non-public url */}
         {!isPublicUrl(pathname) && <Header />}
         <Component {...pageProps} />
