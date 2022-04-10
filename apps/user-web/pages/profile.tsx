@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Head from 'next/head';
 import { Button } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';

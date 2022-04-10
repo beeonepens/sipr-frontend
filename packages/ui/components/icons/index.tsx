@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 export * from './ArrowLeftIcon';
 export * from './BellIcon';
 export * from './CalendarIcon';

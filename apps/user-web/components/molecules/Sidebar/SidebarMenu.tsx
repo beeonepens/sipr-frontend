@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import LinkTo from '@components/atoms/LinkTo';
 import clsx from 'clsx';
 import useMiniSidebar from '@utils/store/useMiniSidebar';

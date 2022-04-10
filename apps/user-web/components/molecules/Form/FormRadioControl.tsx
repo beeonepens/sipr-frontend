@@ -1,6 +1,6 @@
 import Label from '@components/atoms/Form/Label';
 import clsx from 'clsx';
-import React from 'react';
+import * as React from 'react';
 
 interface Props {
   title: string;

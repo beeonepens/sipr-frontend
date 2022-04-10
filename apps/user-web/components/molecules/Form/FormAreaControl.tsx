@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
 import TextArea from '@components/atoms/Form/TextArea';
 import Label from '@components/atoms/Form/Label';

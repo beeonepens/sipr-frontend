@@ -1,6 +1,6 @@
 import { Button } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
-import React from 'react';
+import * as React from 'react';
 
 export default function AuthenticationLinks() {
   return (

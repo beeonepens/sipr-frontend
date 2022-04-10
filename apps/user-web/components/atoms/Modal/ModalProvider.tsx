@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
 interface Props {

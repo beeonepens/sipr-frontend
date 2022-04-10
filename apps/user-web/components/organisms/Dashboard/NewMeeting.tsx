@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import CreateMeetingButton from '@components/molecules/Dashboard/CreateMeetingButton';
 import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
 

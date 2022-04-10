@@ -1,3 +1,3 @@
-import React from 'react';
+import * as React from 'react';
 export * from './components/buttons';
 export * from './components/icons';
