@@ -1,12 +1,14 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
+
+import type { SubmitHandler } from 'react-hook-form';
 
 /** Schema for login forms */
 const FormSchema = z.object({
