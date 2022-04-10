@@ -1,6 +1,8 @@
+import type { SubmitHandler } from 'react-hook-form';
+
 import React from 'react';
 import { Dialog } from '@headlessui/react';
-import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from 'ui';
@@ -44,6 +46,7 @@ export default function CreateMeetingModal({
   /** function that run on form-submit */
   const onSubmit: SubmitHandler<NewMeetingTypes> = (data) => {
     console.log(data);
+    toggleModal();
   };
 
   /** function that run to close modal */

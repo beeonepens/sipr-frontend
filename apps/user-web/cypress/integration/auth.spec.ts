@@ -60,7 +60,7 @@ describe('User Authentication', () => {
     cy.get('h2').contains('Today');
   });
 
-  it('should login with correct format', () => {
+  it('should be able to login with correct format', () => {
     // Start from the index page
     cy.visit('http://localhost:3003/');
 
