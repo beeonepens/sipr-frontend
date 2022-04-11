@@ -4,12 +4,11 @@
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-const withTM = require('next-transpile-modules')(['ui']);
 const { withSentryConfig } = require('@sentry/nextjs');
 
-const moduleExports = withTM({
-  reactStrictMode: true,
-});
+const moduleExports = {
+  // Your existing module.exports
+};
 
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
