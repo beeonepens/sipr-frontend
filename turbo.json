@@ -10,6 +10,12 @@
     "test": {
       "outputs": []
     },
+    "cypress": {
+      "outputs": []
+    },
+    "cypress:headless": {
+      "outputs": []
+    },
     "dev": {
       "cache": false
     }

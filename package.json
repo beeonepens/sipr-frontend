@@ -11,7 +11,9 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run --record --key a12d4172-f5b3-42be-b54e-cd0ab5cc43fa"
   },
   "devDependencies": {
     "prettier": "^2.6.2",
