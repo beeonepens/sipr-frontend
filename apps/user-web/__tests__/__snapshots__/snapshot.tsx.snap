@@ -3,11 +3,43 @@
 exports[`renders dashboard page unchanged 1`] = `
 <div>
   <article
-    class="p-4"
+    class="h-[120vh] p-4"
   >
-    <h2>
-      Dashboard Page
-    </h2>
+    <div
+      class="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-4"
+    >
+      <div>
+        <button
+          class="border-2 py-2.5 px-6 transition duration-100 ease-in bg-primary-950 border-primary-950 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-950 hover:bg-primary-850 hover:border-primary-850 dark:border-primary-300 dark:hover:border-primary-400 text-white rounded-md text-base font-medium"
+          type="button"
+        >
+          <span
+            class="flex flex-row items-center justify-center gap-2 text-sm font-normal"
+          >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 4v16m8-8H4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Create
+          </span>
+        </button>
+      </div>
+      <h2
+        class="text-primary-950 text-3xl font-bold"
+      >
+        Today
+      </h2>
+    </div>
   </article>
 </div>
 `;
@@ -74,14 +106,14 @@ exports[`renders homepage unchanged 1`] = `
       Sistem Informasi Penjadwalan Rapat
     </h1>
     <div
-      class="mx-auto grid w-full grid-cols-1 items-center justify-center gap-8 md:w-1/5 md:grid-cols-2"
+      class="mx-auto grid w-full grid-cols-1 items-center justify-center gap-8 px-4 md:w-96 md:grid-cols-2"
     >
       <a
         class="hover:text-primary-500 text-primary-700 underline"
         href="/register"
       >
         <button
-          class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in border-primary-950 text-primary-950 hover:text-primary-850 hover:border-primary-850 bg-transparent hover:bg-black hover:bg-opacity-10 w-full rounded-md"
+          class="border-2 py-2.5 px-6 transition duration-100 ease-in border-primary-950 dark:border-primary-300 hover:text-primary-850 hover:border-primary-850 dark:text-primary-300 dark:hover:bg-primary-300 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 dark:hover:bg-opacity-20  w-full rounded-md text-base font-medium"
           type="button"
         >
           Register
@@ -92,7 +124,7 @@ exports[`renders homepage unchanged 1`] = `
         href="/login"
       >
         <button
-          class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-md"
+          class="border-2 py-2.5 px-6 transition duration-100 ease-in bg-primary-950 border-primary-950 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-950 hover:bg-primary-850 hover:border-primary-850 dark:border-primary-300 dark:hover:border-primary-400 text-white w-full rounded-md text-base font-medium"
           type="button"
         >
           Login
@@ -156,11 +188,16 @@ exports[`renders login page unchanged 1`] = `
               Email
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
               id="email"
               name="email"
-              type="email"
+              type="text"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
           <div
             class="flex flex-col justify-start gap-1"
@@ -172,48 +209,53 @@ exports[`renders login page unchanged 1`] = `
               Password
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
               id="password"
               name="password"
               type="password"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
         </div>
         <div
           class="mx-auto mt-6 flex w-full flex-row justify-center"
         >
           <button
-            class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-lg"
+            class="border-2 py-2.5 px-6 transition duration-100 ease-in bg-primary-950 border-primary-950 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-950 hover:bg-primary-850 hover:border-primary-850 dark:border-primary-300 dark:hover:border-primary-400 text-white w-full rounded-lg text-base font-medium"
             type="submit"
           >
             Login
           </button>
         </div>
-        <p
-          class="mt-8 text-center text-gray-800"
-        >
-          Need an account?
-           
-          <a
-            class="hover:text-primary-500 text-primary-700 underline"
-            href="/register"
-          >
-            Register
-          </a>
-        </p>
-        <p
-          class="mt-2 text-center text-gray-800"
-        >
-          Forgot your password?
-           
-          <a
-            class="hover:text-primary-500 text-primary-700 underline"
-            href="/reset-password"
-          >
-            Reset Password
-          </a>
-        </p>
       </form>
+      <p
+        class="mt-8 text-center text-gray-800"
+      >
+        Need an account?
+         
+        <a
+          class="hover:text-primary-500 text-primary-700 underline"
+          href="/register"
+        >
+          Register
+        </a>
+      </p>
+      <p
+        class="mt-2 text-center text-gray-800"
+      >
+        Forgot your password?
+         
+        <a
+          class="hover:text-primary-500 text-primary-700 underline"
+          href="/reset-password"
+        >
+          Reset Password
+        </a>
+      </p>
     </div>
   </article>
 </div>
@@ -272,11 +314,16 @@ exports[`renders register page unchanged 1`] = `
               Name
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
               id="name"
               name="name"
               type="text"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
           <div
             class="flex flex-col justify-start gap-1"
@@ -288,11 +335,16 @@ exports[`renders register page unchanged 1`] = `
               Email
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
               id="email"
               name="email"
-              type="email"
+              type="text"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
           <div
             class="flex flex-col justify-start gap-1"
@@ -304,27 +356,37 @@ exports[`renders register page unchanged 1`] = `
               Password
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
               id="password"
               name="password"
               type="password"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
           <div
             class="flex flex-col justify-start gap-1"
           >
             <label
               class="text-sm font-medium text-gray-700"
-              for="confirm-password"
+              for="confirmPassword"
             >
               Confirm Password
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
-              id="confirm-password"
-              name="confirm-password"
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
+              id="confirmPassword"
+              name="confirmPassword"
               type="password"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
           <div
             class="flex flex-col justify-start gap-1"
@@ -336,11 +398,16 @@ exports[`renders register page unchanged 1`] = `
               Username
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
               id="username"
               name="username"
               type="text"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
           <div
             class="flex flex-col justify-start gap-1"
@@ -352,36 +419,41 @@ exports[`renders register page unchanged 1`] = `
               Address
             </label>
             <input
-              class="focus:border-primary-800 focus:ring-primary-800 rounded-lg border-gray-300 sm:text-sm "
+              class="rounded-lg sm:text-sm focus:border-primary-850 focus:ring-primary-850 border-gray-300"
               id="address"
               name="address"
               type="text"
             />
+            <div>
+              <p
+                class="text-xs text-gray-500"
+              />
+            </div>
           </div>
         </div>
         <div
           class="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2"
         >
           <button
-            class="border-2 py-2.5 px-6 font-semibold transition duration-100 ease-in bg-primary-950 border-primary-950 hover:bg-primary-850 hover:border-primary-850 text-white w-full rounded-lg"
+            class="border-2 py-2.5 px-6 transition duration-100 ease-in bg-primary-950 border-primary-950 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-950 hover:bg-primary-850 hover:border-primary-850 dark:border-primary-300 dark:hover:border-primary-400 text-white w-full rounded-lg text-base font-medium"
             type="submit"
           >
             Register
           </button>
         </div>
-        <p
-          class="mt-8 text-center text-gray-800"
-        >
-          Already have an account?
-           
-          <a
-            class="hover:text-primary-500 text-primary-700 underline"
-            href="/login"
-          >
-            Login
-          </a>
-        </p>
       </form>
+      <p
+        class="mt-8 text-center text-gray-800"
+      >
+        Already have an account?
+         
+        <a
+          class="hover:text-primary-500 text-primary-700 underline"
+          href="/login"
+        >
+          Login
+        </a>
+      </p>
     </div>
   </article>
 </div>

@@ -9,9 +9,13 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "start": "turbo run start --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test:ci": "turbo run test:ci",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "cypress": "turbo run cypress",
+    "cypress:headless": "turbo run cypress:headless"
   },
   "devDependencies": {
     "prettier": "^2.6.2",

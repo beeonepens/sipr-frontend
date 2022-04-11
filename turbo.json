@@ -4,10 +4,22 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "start": {
+      "outputs": []
+    },
     "lint": {
       "outputs": []
     },
     "test": {
+      "outputs": []
+    },
+    "test:ci": {
+      "outputs": []
+    },
+    "cypress": {
+      "outputs": []
+    },
+    "cypress:headless": {
       "outputs": []
     },
     "dev": {

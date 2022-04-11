@@ -7,17 +7,15 @@ describe('Dashboard', () => {
   it('show a header title', () => {
     render(<Dashboard />);
 
-    const headerTitle = screen.getByRole('heading', {
-      name: /Dashboard/i,
-    });
+    const headerTitle = screen.getByText('Today');
 
     expect(headerTitle).toBeInTheDocument();
   });
 
-  it('show a page content', () => {
+  it('show a create button', () => {
     render(<Dashboard />);
 
-    const pageContent = screen.getByText(/Dashboard Page/i);
+    const pageContent = screen.getByRole('button', { name: 'Create' });
 
     expect(pageContent).toBeInTheDocument();
   });
