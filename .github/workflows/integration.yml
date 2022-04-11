@@ -124,7 +124,11 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          # we have already installed all dependencies above
+          install: false
+          command: pnpm cypress:headless
           build: pnpm run build
           start: pnpm run start
+          wait-on: 'https://localhost:3003'
           browser: chrome
           headless: true
