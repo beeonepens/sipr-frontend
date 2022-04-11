@@ -17,7 +17,11 @@ const customJestConfig = {
     '@utils/(.*)': '<rootDir>/utils/$1',
     '@pages/(.*)': '<rootDir>/pages/$1',
   },
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/cypress/',
+  ],
   testEnvironment: 'jest-environment-jsdom',
 };
 

@@ -93,7 +93,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm run test
+      - run: pnpm run test:ci
   integration-test:
     runs-on: ubuntu-latest
 
@@ -121,7 +121,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
       - run: pnpm install
-      - uses: cypress-io/github-action@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
+          build: pnpm run build
+          start: pnpm run start
           browser: chrome
           headless: true
