@@ -70,17 +70,15 @@ export default function Calendar() {
         <title>Calendar | SIPR</title>
       </Head>
 
-      <article className="p-4">
-        <div className="h-[75vh] lg:max-h-[700px] xl:h-[83vh]">
-          <BigCalendar
-            localizer={localizer}
-            events={events}
-            onSelectEvent={handleSelectEvent}
-            selectable
-            startAccessor="start"
-            endAccessor="end"
-          />
-        </div>
+      <article className="h-[75vh] p-4 lg:max-h-[700px] xl:h-[83vh]">
+        <BigCalendar
+          localizer={localizer}
+          events={events}
+          onSelectEvent={handleSelectEvent}
+          selectable
+          startAccessor="start"
+          endAccessor="end"
+        />
       </article>
     </>
   );
