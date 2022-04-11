@@ -9,7 +9,7 @@ export default function Dashboard() {
         <title>Dashboard | SIPR</title>
       </Head>
 
-      <article className="p-4">
+      <article className="h-[120vh] p-4">
         <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-4">
           <NewMeeting />
 

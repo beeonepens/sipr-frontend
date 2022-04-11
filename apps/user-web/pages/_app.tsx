@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     >
       {/* only show sidebar in non-public url */}
       {!isPublicUrl(pathname) && <Sidebar />}
-      <main className="relative z-0 w-full duration-300">
+      <main className="relative z-0 min-h-screen w-full duration-300">
         {/* only show header in non-public url */}
         {!isPublicUrl(pathname) && <Header />}
         <Component {...pageProps} />
