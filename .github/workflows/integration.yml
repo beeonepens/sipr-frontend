@@ -9,6 +9,13 @@ on:
   pull_request:
     branches: [develop]
 
+env:
+  SENTRY_URL: https://sentry.io/
+  SENTRY_ORG: beeone
+  SENTRY_PROJECT: sipr-user
+  SENTRY_AUTH_TOKEN: 76ba000397bc4260bc12336d252b1436d238a4c3adea47ad8158e2faf7843dc7
+  SENTRY_DSN: https://9362132cd09c4aae825142b1c9899fb7@o1200392.ingest.sentry.io/6324354
+
 jobs:
   lint:
     runs-on: ubuntu-latest
