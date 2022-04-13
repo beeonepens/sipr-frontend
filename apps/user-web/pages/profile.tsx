@@ -1,7 +1,10 @@
 import * as React from 'react';
 import Head from 'next/head';
-import { Button } from 'ui';
+import { Button, EditPenIcon, LogoutIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
+import Image from 'next/image';
+import { rgbDataURL } from '@utils/formatImage';
+import { placeholderAvatar } from '@utils/constant';
 
 export default function Profile() {
   return (
@@ -15,9 +18,9 @@ export default function Profile() {
           User Details
         </h2>
 
-        <div className="my-8 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-4">
+        <div className="my-8 flex flex-col-reverse gap-8 xl:flex-row xl:items-start xl:justify-between">
           <section className="col-span-1 grid grid-cols-1 gap-4 lg:col-span-2 xl:grid-cols-2">
-            <div className="flex flex-col justify-start text-gray-900">
+            <div className="flex flex-col justify-start text-black">
               <p className="text-sm font-semibold uppercase">Full Name</p>
               <p className="text-xl text-gray-600">M Arya Putra</p>
             </div>
@@ -39,18 +42,36 @@ export default function Profile() {
 
           <div className="hidden xl:col-span-1 xl:flex" />
 
-          <div className="col-span-1 border border-gray-800">
-            <p>Avatar Img </p>
-            <p>Avatar Img </p>
-            <p>Avatar Img </p>
-            <p>Avatar Img </p>
-            <p>Avatar Img </p>
-          </div>
+          <figure className="col-span-1 mx-auto rounded-xl">
+            <Image
+              className="rounded-xl border border-gray-300"
+              src={placeholderAvatar}
+              alt="avatar"
+              height="240"
+              width="240"
+              placeholder="blur"
+              blurDataURL={rgbDataURL(220, 220, 220)}
+            />
+          </figure>
         </div>
 
-        <LinkTo to="/">
-          <Button color="danger">Logout</Button>
-        </LinkTo>
+        <div className="grid w-full grid-cols-2 gap-6 md:w-80">
+          <LinkTo to="/">
+            <Button fullWidth variant="outline" color="danger">
+              <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+                <LogoutIcon className="h-5 w-5" />
+                Logout
+              </span>
+            </Button>
+          </LinkTo>
+
+          <Button fullWidth variant="outline" color="primary">
+            <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+              <EditPenIcon className="h-5 w-5" />
+              Edit
+            </span>
+          </Button>
+        </div>
       </article>
     </>
   );

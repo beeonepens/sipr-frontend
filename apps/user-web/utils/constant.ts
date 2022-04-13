@@ -6,6 +6,8 @@ export const PUBLIC_URL = [
   '/404',
 ];
 
+export const placeholderAvatar = '/uploads/avatar-man.png';
+
 export function isPublicUrl(pathname: string) {
   if (PUBLIC_URL.includes(pathname)) return true;
   return false;
