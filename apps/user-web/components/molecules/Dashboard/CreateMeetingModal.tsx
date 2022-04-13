@@ -4,10 +4,10 @@ import * as React from 'react';
 import { Dialog } from '@headlessui/react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { Button } from 'ui';
 import { MeetingStatusOptions } from '@utils/constant';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
+import { NewMeetingInput, NewMeetingSchema } from '@utils/validations';
 import FormControl from '../Form/FormControl';
 import FormAreaControl from '../Form/FormAreaControl';
 import FormDateTimeControl from '../Form/FormDateTimeControl';
@@ -18,33 +18,20 @@ interface Props {
   toggleModal: () => void;
 }
 
-/** Schema for new meeting forms */
-const FormSchema = z.object({
-  name: z.string().min(1, { message: 'Required' }),
-  description: z.string().optional(),
-  startDate: z.date(),
-  endDate: z.date(),
-  isOnline: z.boolean().optional(),
-  location: z.string().min(1, { message: 'Required' }),
-});
-
-/** TS types for the input form */
-export type NewMeetingTypes = z.infer<typeof FormSchema>;
-
 export default function CreateMeetingModal({
   isModalOpen,
   toggleModal,
 }: Props) {
   /** hooks for forms control & submit action */
-  const methods = useForm<NewMeetingTypes>({
-    resolver: zodResolver(FormSchema),
+  const methods = useForm<NewMeetingInput>({
+    resolver: zodResolver(NewMeetingSchema),
     defaultValues: {
       isOnline: true,
     },
   });
 
   /** function that run on form-submit */
-  const onSubmit: SubmitHandler<NewMeetingTypes> = (data) => {
+  const onSubmit: SubmitHandler<NewMeetingInput> = (data) => {
     console.log(data);
     toggleModal();
   };

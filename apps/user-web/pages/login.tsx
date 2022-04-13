@@ -3,34 +3,22 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
+import { LoginSchema, LoginInput } from '@utils/validations';
 
 import type { SubmitHandler } from 'react-hook-form';
-
-/** Schema for login forms */
-const FormSchema = z.object({
-  email: z
-    .string()
-    .email({ message: 'Invalid email address' })
-    .min(1, { message: 'Required' }),
-  password: z.string().min(1, { message: 'Required' }),
-});
-
-/** TS types for the input form */
-export type LoginTypes = z.infer<typeof FormSchema>;
 
 export default function Login() {
   const router = useRouter();
   /** hooks for forms control & submit action */
-  const methods = useForm<LoginTypes>({
-    resolver: zodResolver(FormSchema),
+  const methods = useForm<LoginInput>({
+    resolver: zodResolver(LoginSchema),
   });
 
   /** function hadle login action */
-  const onSubmit: SubmitHandler<LoginTypes> = (data) => {
+  const onSubmit: SubmitHandler<LoginInput> = (data) => {
     console.log(data);
     router.push('/dashboard');
   };
