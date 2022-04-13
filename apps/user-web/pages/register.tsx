@@ -3,43 +3,22 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
+import { RegisterInput, RegisterSchema } from '@utils/validations';
 
 import type { SubmitHandler } from 'react-hook-form';
-
-/** Schema for register forms */
-const FormSchema = z
-  .object({
-    name: z.string().min(1, { message: 'Required' }),
-    email: z
-      .string()
-      .email({ message: 'Invalid email address' })
-      .min(1, { message: 'Required' }),
-    password: z.string().min(1, { message: 'Required' }),
-    confirmPassword: z.string().min(1, { message: 'Required' }),
-    username: z.string().min(1, { message: 'Required' }),
-    address: z.string().optional().default(''),
-  })
-  .refine((data) => data.confirmPassword === data.password, {
-    message: "Passwords don't match",
-    path: ['confirmPassword'],
-  });
-
-/** TS types for the input form */
-export type RegisterTypes = z.infer<typeof FormSchema>;
 
 export default function Register() {
   const router = useRouter();
   /** hooks for forms control & submit action */
-  const methods = useForm<RegisterTypes>({
-    resolver: zodResolver(FormSchema),
+  const methods = useForm<RegisterInput>({
+    resolver: zodResolver(RegisterSchema),
   });
 
   /** function hadle register action */
-  const onSubmit: SubmitHandler<RegisterTypes> = (data) => {
+  const onSubmit: SubmitHandler<RegisterInput> = (data) => {
     console.log(data);
     router.push('/dashboard');
   };
@@ -53,8 +32,8 @@ export default function Register() {
         <title>Register | SIPR</title>
       </Head>
 
-      <article className="flex min-h-screen flex-row items-center justify-center bg-black bg-opacity-50">
-        <div className="w-4/5 rounded-md bg-white p-12 md:w-3/5 lg:w-2/5">
+      <article className="flex min-h-screen flex-row items-start justify-center md:items-center md:bg-black md:bg-opacity-50">
+        <div className="w-full rounded-md bg-white py-12 px-8 md:w-3/5 md:px-12 lg:w-2/5">
           {/* back icon */}
           <LinkTo to="/" className="hover:text-primary-500 text-primary-700">
             <ArrowLeftIcon />

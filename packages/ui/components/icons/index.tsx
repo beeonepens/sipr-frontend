@@ -9,3 +9,5 @@ export * from './MenuIconFull';
 export * from './PlusIcon';
 export * from './UserCircleIIcon';
 export * from './UserGroupIcon';
+export * from './LogoutIcon';
+export * from './EditPenIcon';

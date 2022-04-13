@@ -32,7 +32,7 @@ export function Button({
       // eslint-disable-next-line react/button-has-type
       type={type}
       className={clsx(
-        'border-2 py-2.5 px-6 transition duration-100 ease-in',
+        'border-2 py-2.5 px-6 transition duration-75',
         color === 'primary' && [
           variant === 'solid' &&
             'bg-primary-950 border-primary-950 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-950 hover:bg-primary-850 hover:border-primary-850 dark:border-primary-300 dark:hover:border-primary-400 text-white',

@@ -47,7 +47,7 @@ export default function Sidebar() {
           : 'left-0 w-3/4 md:flex md:w-60'
       )}
     >
-      <div className="mt-12 mb-4 flex flex-col gap-4">
+      <div className="mt-12 mb-4 flex flex-col gap-3">
         {SideMenu.map((menu) => (
           <SidebarMenu menu={menu} pathname={pathname} key={menu.slug} />
         ))}
