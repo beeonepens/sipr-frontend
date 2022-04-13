@@ -4,7 +4,7 @@ import { Button } from 'ui';
 
 export default function HomePage() {
   return (
-    <article className="bg-primary-50 dark:bg-primary-950 py-16">
+    <article className="bg-primary-50 dark:bg-primary-950 py-32">
       <h3 className="text-center text-2xl font-bold text-gray-800 dark:text-gray-100">
         Welcome to
       </h3>
