@@ -32,15 +32,15 @@ export default function Login() {
         <title>Login | SIPR</title>
       </Head>
 
-      <article className="flex min-h-screen flex-row items-center justify-center bg-black bg-opacity-50">
-        <div className="w-4/5 rounded-md bg-white p-12 md:w-2/5 lg:w-1/4">
+      <article className="flex min-h-screen flex-row items-start justify-center md:items-center md:bg-black md:bg-opacity-50">
+        <div className="w-full rounded-md bg-white py-12 px-8 md:w-2/5 md:px-12 lg:w-1/4">
           {/* back icon */}
           <LinkTo to="/" className="hover:text-primary-500 text-primary-700">
             <ArrowLeftIcon />
           </LinkTo>
 
           {/* login title & subtitle */}
-          <h2 className="text-primary-900 text-center text-4xl font-bold">
+          <h2 className="text-primary-900 mt-24 text-center text-4xl font-bold md:mt-0">
             SIPR
           </h2>
           <h1 className="text-center text-lg font-medium">Welcome back!</h1>
