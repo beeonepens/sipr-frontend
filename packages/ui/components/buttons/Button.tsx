@@ -31,7 +31,7 @@ export function Button({
       onClick={onClick}
       // eslint-disable-next-line react/button-has-type
       type={type}
-      disabled={isLoading}
+      disabled={isLoading || isDisabled}
       className={clsx(
         'border-2 py-2.5 px-6 transition duration-75',
         color === 'primary' && [

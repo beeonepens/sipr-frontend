@@ -16,6 +16,7 @@ import type { LoginResponse } from '@utils/types/auth.dto';
 
 export default function Login() {
   const router = useRouter();
+
   /** hooks for forms control & submit action */
   const methods = useForm<LoginInput>({
     resolver: zodResolver(LoginSchema),

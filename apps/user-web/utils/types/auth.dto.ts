@@ -8,3 +8,9 @@ export interface LoginResponse {
     token_type: string;
   };
 }
+
+export interface RegisterResponse {
+  data: unknown[];
+  token: string;
+  message: string;
+}
