@@ -43,7 +43,7 @@ export default function CreateMeetingModal({
   };
 
   /** form error log */
-  if (methods.formState.errors) console.log(methods.formState.errors);
+  if (methods.formState.errors) console.log({ f: methods.formState.errors });
 
   return (
     <ModalProvider isModalOpen={isModalOpen} onClose={handleCloseModal}>

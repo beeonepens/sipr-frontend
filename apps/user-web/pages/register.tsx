@@ -24,7 +24,7 @@ export default function Register() {
   };
 
   /** form error log */
-  if (methods.formState.errors) console.log(methods.formState.errors);
+  if (methods.formState.errors) console.log({ f: methods.formState.errors });
 
   return (
     <>

@@ -5,9 +5,8 @@ import { isPublicUrl } from '@utils/constant';
 import Sidebar from '@components/organisms/Sidebar';
 import Header from '@components/organisms/Header';
 
-import '../styles/globals.css';
-
 import type { AppProps } from 'next/app';
+import '../styles/globals.css';
 
 const queryClient = new QueryClient();
 

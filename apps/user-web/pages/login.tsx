@@ -1,14 +1,17 @@
-import * as React from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from 'react-query';
 import { Button, ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
 import { LoginSchema, LoginInput } from '@utils/validations';
+import { loginMutation } from '@utils/mutations/authMutation';
 
 import type { SubmitHandler } from 'react-hook-form';
+import type { AxiosError } from 'axios';
+import type { LoginResponse } from '@utils/types/auth.dto';
 
 export default function Login() {
   const router = useRouter();
@@ -17,14 +20,28 @@ export default function Login() {
     resolver: zodResolver(LoginSchema),
   });
 
-  /** function hadle login action */
+  /** hooks for controlling the login mutation */
+  const mutation = useMutation<LoginResponse, AxiosError, LoginInput>(
+    loginMutation
+  );
+
+  /** function to hadle login action */
   const onSubmit: SubmitHandler<LoginInput> = (data) => {
     console.log(data);
-    router.push('/dashboard');
+    mutation.mutate(data, {
+      /** action on mutation error */
+      onError: ({ message, response }) => console.log({ message, response }),
+      /** action on mutation success */
+      onSuccess: (result) => {
+        console.log({ result });
+        localStorage.setItem('token', result.content.access_token);
+        router.push('/dashboard');
+      },
+    });
   };
 
   /** form error log */
-  if (methods.formState.errors) console.log(methods.formState.errors);
+  if (methods.formState.errors) console.log({ f: methods.formState.errors });
 
   return (
     <>
