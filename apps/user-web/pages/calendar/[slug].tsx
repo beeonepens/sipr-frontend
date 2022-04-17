@@ -1,7 +1,6 @@
-import * as React from 'react';
+import { useRouter } from 'next/router';
 import { ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
-import { useRouter } from 'next/router';
 
 export default function MeetingDetail() {
   const { query } = useRouter();

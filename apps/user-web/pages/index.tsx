@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Head from 'next/head';
 import AuthenticationLinks from '@components/molecules/HomePage/AuthenticationLinks';
 

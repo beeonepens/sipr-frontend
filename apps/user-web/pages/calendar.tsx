@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { Calendar as BigCalendar, dateFnsLocalizer } from 'react-big-calendar';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -8,7 +9,6 @@ import getDay from 'date-fns/getDay';
 import enGB from 'date-fns/locale/en-GB';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { useRouter } from 'next/router';
 
 /** date locales options */
 const locales = {
