@@ -26,7 +26,7 @@ export default function FormControl({
   } = useFormContext();
 
   return (
-    <div className="flex flex-col justify-start gap-1">
+    <div className="flex flex-col justify-start">
       <Label id={id}>{label}</Label>
       <Input
         id={id}
@@ -40,9 +40,7 @@ export default function FormControl({
           <p className="text-xs text-gray-500">{helperText}</p>
         )}
         {errors && errors[id] && (
-          <span className="-mt-4 text-xs text-red-500">
-            {errors[id].message}
-          </span>
+          <span className="text-xs text-red-500">{errors[id].message}</span>
         )}
       </div>
     </div>

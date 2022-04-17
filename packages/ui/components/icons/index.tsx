@@ -1,6 +1,7 @@
 import * as React from 'react';
 export * from './ArrowLeftIcon';
 export * from './BellIcon';
+export * from './ExclamationIcon';
 export * from './CalendarIcon';
 export * from './ClockIcon';
 export * from './HomeIcon';

@@ -3,7 +3,8 @@ import Head from 'next/head';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from 'react-query';
-import { Button, ArrowLeftIcon } from 'ui';
+import clsx from 'clsx';
+import { Button, ArrowLeftIcon, ExclamationIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
 import { LoginSchema, LoginInput } from '@utils/validations';
@@ -30,7 +31,11 @@ export default function Login() {
     console.log(data);
     mutation.mutate(data, {
       /** action on mutation error */
-      onError: ({ message, response }) => console.log({ message, response }),
+      onError: ({ message, response }) => {
+        console.log({ message, response });
+        methods.setError('email', { type: 'manual', message: '' });
+        methods.setError('password', { type: 'manual', message: '' });
+      },
       /** action on mutation success */
       onSuccess: (result) => {
         console.log({ result });
@@ -66,38 +71,53 @@ export default function Login() {
             <form className="mt-6" onSubmit={methods.handleSubmit(onSubmit)}>
               {/* forms input */}
               <div className="grid grid-cols-1 gap-4 md:gap-5">
-                <FormControl id="email" label="Email" type="text" />
+                <FormControl id="email" label="Email" type="email" />
                 <FormControl id="password" label="Password" type="password" />
               </div>
 
+              {/* link to reset password */}
+              <p className="mt-6 mb-4 text-right text-sm text-gray-800">
+                <LinkTo
+                  to="/reset-password"
+                  className="hover:text-primary-500 text-primary-800 font-medium"
+                >
+                  Forgot your password?
+                </LinkTo>
+              </p>
+
               {/* forms submit button */}
-              <div className="mx-auto mt-6 flex w-full flex-row justify-center">
-                <Button rounded="lg" type="submit" fullWidth>
+              <div className="mx-auto flex w-full flex-row justify-center">
+                <Button
+                  rounded="lg"
+                  type="submit"
+                  fullWidth
+                  isLoading={mutation.isLoading}
+                >
                   Login
                 </Button>
+              </div>
+
+              {/* login failed alert */}
+              <div
+                className={clsx(
+                  mutation.isError ? 'visible' : 'invisible',
+                  'mt-4 flex flex-row items-center gap-3 rounded-md bg-red-200 p-3 text-sm font-medium text-red-600'
+                )}
+              >
+                <ExclamationIcon className="h-5 w-5" />
+                <span>Invalid email or password!</span>
               </div>
             </form>
           </FormProvider>
 
           {/* link to register */}
-          <p className="mt-8 text-center text-gray-800">
+          <p className="mt-4 -mb-6 text-center text-sm text-gray-800">
             Need an account?{' '}
             <LinkTo
               to="/register"
-              className="hover:text-primary-500 text-primary-700 underline"
+              className="hover:text-primary-500 text-primary-800 font-medium"
             >
               Register
-            </LinkTo>
-          </p>
-
-          {/* link to reset password */}
-          <p className="mt-2 text-center text-gray-800">
-            Forgot your password?{' '}
-            <LinkTo
-              to="/reset-password"
-              className="hover:text-primary-500 text-primary-700 underline"
-            >
-              Reset Password
             </LinkTo>
           </p>
         </div>
