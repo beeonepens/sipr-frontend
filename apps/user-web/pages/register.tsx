@@ -68,7 +68,11 @@ export default function Register() {
           </h1>
 
           <FormProvider {...methods}>
-            <form className="mt-6" onSubmit={methods.handleSubmit(onSubmit)}>
+            <form
+              className="mt-6"
+              onSubmit={methods.handleSubmit(onSubmit)}
+              noValidate
+            >
               {/* forms input */}
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
                 <FormControl id="name" label="Name" type="text" />

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ArrowLeftIcon } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 

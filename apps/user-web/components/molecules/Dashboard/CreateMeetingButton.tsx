@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Button, PlusIcon } from 'ui';
 
 interface Props {

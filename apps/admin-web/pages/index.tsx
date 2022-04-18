@@ -1,4 +1,3 @@
-import * as React from 'react';
 import LinkTo from '@components/atoms/LinkTo';
 import { Button } from 'ui';
 

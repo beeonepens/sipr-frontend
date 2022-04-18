@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 export default function UserInfoView() {
   return (
     <section className="col-span-1 grid grid-cols-1 gap-4 lg:col-span-2 xl:grid-cols-2">

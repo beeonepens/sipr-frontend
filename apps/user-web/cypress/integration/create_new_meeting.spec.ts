@@ -14,8 +14,8 @@ describe('New Meeting', () => {
       .type('khoirul@email.com')
       .should('have.value', 'khoirul@email.com');
     cy.get('input[name="password"]')
-      .type('password')
-      .should('have.value', 'password');
+      .type('11223344')
+      .should('have.value', '11223344');
 
     // click login
     cy.get('button[type="submit"]').click();
