@@ -45,12 +45,13 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm run lint
+
   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -73,6 +74,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm run build
+
   unit-test:
     runs-on: ubuntu-latest
 
@@ -101,41 +103,42 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm run test:ci
-  integration-test:
-    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+  # integration-test:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Cache pnpm modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 6.32.3
-          run_install: true
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      - run: pnpm install
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          # we have already installed all dependencies above
-          install: false
-          command: pnpm cypress:headless
-          build: pnpm run build
-          start: pnpm run start
-          wait-on: 'http://localhost:3003'
-          browser: chrome
-          headless: true
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x, 16.x]
+  #       # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Cache pnpm modules
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: ~/.pnpm-store
+  #         key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-
+  #     - uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 6.32.3
+  #         run_install: true
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #         cache: 'pnpm'
+  #     - run: pnpm install
+  #     - name: Cypress run
+  #       uses: cypress-io/github-action@v2
+  #       with:
+  #         # we have already installed all dependencies above
+  #         install: false
+  #         command: pnpm cypress:headless
+  #         build: pnpm run build
+  #         start: pnpm run start
+  #         wait-on: 'http://localhost:3003'
+  #         browser: chrome
+  #         headless: true
