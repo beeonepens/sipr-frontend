@@ -12,6 +12,6 @@ test('Home', () => {
       name: /Sistem Informasi Penjadwalan Rapat/i,
     });
 
-    expect(heading).toBeInTheDocument();
+    expect(heading).toBeDefined();
   });
 });

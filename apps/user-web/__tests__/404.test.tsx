@@ -9,6 +9,6 @@ test('Custom404', () => {
     const code = screen.getByText('404');
     const description = screen.getByText('This page could not be found.');
 
-    expect(code && description).toBeInTheDocument();
+    expect(code && description).toBeDefined();
   });
 });
