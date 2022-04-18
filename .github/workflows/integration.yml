@@ -22,7 +22,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -51,7 +51,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -80,7 +80,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -109,7 +109,7 @@ jobs:
 
   #   strategy:
   #     matrix:
-  #       node-version: [14.x, 16.x]
+  #       node-version: [16.x]
   #       # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
   #   steps:
