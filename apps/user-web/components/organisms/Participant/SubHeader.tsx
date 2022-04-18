@@ -19,7 +19,7 @@ export default function SubHeader() {
 
   return (
     <div
-      className="flex flex-row items-center justify-between border-b border-gray-300 px-8"
+      className="flex flex-col items-center justify-between gap-4 border-b border-gray-300 px-8 lg:flex-row"
       data-testid="participant-subheader"
     >
       <div className="grid h-full grid-cols-2 items-center gap-10 text-center">
@@ -39,7 +39,7 @@ export default function SubHeader() {
         ))}
       </div>
 
-      <div>
+      <div className="mb-4 lg:mb-0">
         <Search />
       </div>
     </div>

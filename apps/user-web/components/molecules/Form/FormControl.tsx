@@ -7,6 +7,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   id: string;
   type: string;
+  leftIcon?: JSX.Element;
   readOnly?: boolean;
   placeholder?: string;
   helperText?: string;
@@ -18,6 +19,7 @@ export default function FormControl({
   type,
   placeholder,
   helperText,
+  leftIcon,
   readOnly = false,
   ...others
 }: Props) {
@@ -33,6 +35,7 @@ export default function FormControl({
         type={type}
         readOnly={readOnly}
         placeholder={placeholder}
+        leftIcon={leftIcon}
         {...others}
       />
       <div>

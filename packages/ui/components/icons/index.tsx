@@ -8,6 +8,8 @@ export * from './HomeIcon';
 export * from './MenuIcon';
 export * from './MenuIconFull';
 export * from './PlusIcon';
+export * from './PlusCicleIcon';
+export * from './SearchIcon';
 export * from './UserCircleIIcon';
 export * from './UserGroupIcon';
 export * from './LogoutIcon';
