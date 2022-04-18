@@ -1,4 +1,4 @@
-import SubHeader from '@components/organisms/SubHeader';
+import SubHeader from '@components/organisms/Participant/SubHeader';
 import Head from 'next/head';
 import { Button } from 'ui';
 

@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import SidebarMenu from '@components/molecules/Sidebar/SidebarMenu';
 import useMiniSidebar from '@utils/store/useMiniSidebar';
@@ -34,7 +33,6 @@ const SideMenu = [
 ];
 
 export default function Sidebar() {
-  const { pathname } = useRouter();
   const { isMini } = useMiniSidebar();
 
   return (
@@ -48,13 +46,12 @@ export default function Sidebar() {
     >
       <div className="mt-12 mb-4 flex flex-col gap-3">
         {SideMenu.map((menu) => (
-          <SidebarMenu menu={menu} pathname={pathname} key={menu.slug} />
+          <SidebarMenu menu={menu} key={menu.slug} />
         ))}
       </div>
 
       <SidebarMenu
         menu={{ slug: '/profile', label: 'Profile', icon: <UserCircleIcon /> }}
-        pathname={pathname}
         key="/profile"
       />
     </aside>
