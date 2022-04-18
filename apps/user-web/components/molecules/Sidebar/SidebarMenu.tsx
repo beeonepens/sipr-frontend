@@ -1,9 +1,9 @@
 import LinkTo from '@components/atoms/LinkTo';
 import clsx from 'clsx';
 import useMiniSidebar from '@utils/store/useMiniSidebar';
+import { useRouter } from 'next/router';
 
 interface Props {
-  pathname: string;
   menu: {
     slug: string;
     label: string;
@@ -11,7 +11,8 @@ interface Props {
   };
 }
 
-export default function SidebarMenu({ pathname, menu }: Props) {
+export default function SidebarMenu({ menu }: Props) {
+  const { pathname } = useRouter();
   const { isMini } = useMiniSidebar();
 
   return (
@@ -19,7 +20,7 @@ export default function SidebarMenu({ pathname, menu }: Props) {
       to={menu.slug}
       className={clsx(
         'flex w-full flex-row items-center gap-4 rounded-md py-3.5 px-3.5 font-medium',
-        pathname === menu.slug
+        pathname.includes(menu.slug)
           ? 'bg-accent-400 text-primary-950'
           : 'hover:bg-primary-850 bg-transparent'
       )}

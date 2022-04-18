@@ -1,4 +1,4 @@
-export const API_URL = process.env.NEXT_PUBLIC_API
+export const API_URL = process.env.NEXT_PUBLIC_API;
 
 export const PUBLIC_URL = [
   '/',
@@ -7,8 +7,6 @@ export const PUBLIC_URL = [
   '/reset-password',
   '/404',
 ];
-
-export const placeholderAvatar = '/uploads/avatar-man.png';
 
 export function isPublicUrl(pathname: string) {
   if (PUBLIC_URL.includes(pathname)) return true;

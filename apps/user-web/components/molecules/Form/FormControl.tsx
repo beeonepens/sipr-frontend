@@ -4,9 +4,10 @@ import Input from '@components/atoms/Form/Input';
 import Label from '@components/atoms/Form/Label';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   id: string;
   type: string;
+  leftIcon?: JSX.Element;
   readOnly?: boolean;
   placeholder?: string;
   helperText?: string;
@@ -18,6 +19,7 @@ export default function FormControl({
   type,
   placeholder,
   helperText,
+  leftIcon,
   readOnly = false,
   ...others
 }: Props) {
@@ -27,19 +29,20 @@ export default function FormControl({
 
   return (
     <div className="flex flex-col justify-start">
-      <Label id={id}>{label}</Label>
+      {label && <Label id={id}>{label}</Label>}
       <Input
         id={id}
         type={type}
         readOnly={readOnly}
         placeholder={placeholder}
+        leftIcon={leftIcon}
         {...others}
       />
       <div>
         {helperText !== '' && (
           <p className="text-xs text-gray-500">{helperText}</p>
         )}
-        {errors && errors[id] && (
+        {errors && id && errors[id] && (
           <span className="text-xs text-red-500">{errors[id].message}</span>
         )}
       </div>
