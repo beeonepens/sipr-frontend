@@ -69,7 +69,11 @@ export default function Login() {
           <h1 className="text-center text-lg font-medium">Welcome back!</h1>
 
           <FormProvider {...methods}>
-            <form className="mt-6" onSubmit={methods.handleSubmit(onSubmit)}>
+            <form
+              className="mt-6"
+              onSubmit={methods.handleSubmit(onSubmit)}
+              noValidate
+            >
               {/* forms input */}
               <div className="grid grid-cols-1 gap-4 md:gap-5">
                 <FormControl id="email" label="Email" type="email" />

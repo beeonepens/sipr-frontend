@@ -93,6 +93,7 @@ importers:
 
   apps/user-web:
     specifiers:
+      '@faker-js/faker': ^6.1.2
       '@headlessui/react': ^1.5.0
       '@hookform/resolvers': ^2.8.8
       '@sentry/nextjs': ^6.19.6
@@ -159,6 +160,7 @@ importers:
       zod: 3.14.4
       zustand: 3.7.1_react@17.0.2
     devDependencies:
+      '@faker-js/faker': 6.1.2
       '@tailwindcss/forms': 0.5.0_tailwindcss@3.0.23
       '@testing-library/cypress': 8.0.2_cypress@9.5.3
       '@testing-library/jest-dom': 5.16.3
@@ -611,6 +613,11 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@faker-js/faker/6.1.2:
+    resolution: {integrity: sha512-QSvmexHCxeRUk1/yKmoEDaWB5Hohjvtim5g2JJwy8S/l0L4b3y/GxSpE6vN4SBoVGGahEQW21uqyRr7EofI35A==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
   /@headlessui/react/1.5.0_react-dom@17.0.2+react@17.0.2:
