@@ -29,7 +29,6 @@ export default function Register() {
   /** function to hadle register action */
   const onSubmit: SubmitHandler<RegisterInput> = (data) => {
     console.log(data);
-    router.push('/dashboard');
     mutation.mutate(data, {
       /** action on mutation error */
       onError: ({ message, response }) => {
