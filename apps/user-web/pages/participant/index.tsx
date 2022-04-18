@@ -29,13 +29,13 @@ export default function Participant() {
                 layout="responsive"
                 // blurDataURL={rgbDataURL(220, 220, 220)}
               />
-              <div className="absolute top-0 bottom-0 right-0 left-0 h-full w-full rounded-xl bg-gray-800 opacity-0 transition duration-100 hover:opacity-50" />
+              <div className="absolute top-0 bottom-0 right-0 left-0 h-full w-full rounded-xl bg-gray-800 opacity-0 transition duration-75 hover:opacity-50" />
             </figure>
           ))}
 
-          <figure className="relative flex h-auto w-full flex-col items-center justify-center rounded-xl border border-gray-300 hover:cursor-pointer">
+          <figure className="relative flex h-auto w-full flex-col items-center justify-center rounded-xl outline-dashed  outline-1 outline-gray-300 hover:cursor-pointer">
             <h2>Add New</h2>
-            <div className="absolute top-0 bottom-0 right-0 left-0 h-full w-full rounded-xl bg-gray-800 opacity-0 transition duration-100 hover:opacity-50" />
+            <div className="absolute top-0 bottom-0 right-0 left-0 h-full w-full rounded-xl bg-gray-800 opacity-0 transition duration-75 hover:opacity-50" />
           </figure>
         </div>
       </article>

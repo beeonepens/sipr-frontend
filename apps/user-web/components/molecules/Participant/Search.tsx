@@ -16,7 +16,7 @@ export default function Search() {
     resolver: zodResolver(SearchSchema),
   });
 
-  console.log(methods.watch('search'));
+  console.log({ search: methods.watch('search') });
 
   /** form error log */
   if (methods.formState.errors) console.log({ f: methods.formState.errors });
