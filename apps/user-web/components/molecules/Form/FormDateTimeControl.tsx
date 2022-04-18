@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
 import Label from '@components/atoms/Form/Label';
 import DateTimePicker from '@components/atoms/Form/DateTimePicker';

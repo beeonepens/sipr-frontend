@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
 interface Props {
@@ -13,7 +13,7 @@ export default function ModalProvider({
   onClose,
 }: Props) {
   return (
-    <Transition show={isModalOpen} as={React.Fragment}>
+    <Transition show={isModalOpen} as={Fragment}>
       <Dialog
         as="div"
         onClose={onClose}
@@ -22,7 +22,7 @@ export default function ModalProvider({
         <div className="flex min-h-screen items-center justify-center">
           {/* modal overlay (background) */}
           <Transition.Child
-            as={React.Fragment}
+            as={Fragment}
             enter="ease-out duration-150"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -43,7 +43,7 @@ export default function ModalProvider({
 
           {/* modal card */}
           <Transition.Child
-            as={React.Fragment}
+            as={Fragment}
             enter="ease-out duration-150"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"

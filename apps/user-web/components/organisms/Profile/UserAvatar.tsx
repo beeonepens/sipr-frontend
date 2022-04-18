@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Image from 'next/image';
 import { rgbDataURL } from '@utils/formatImage';
 import { placeholderAvatar } from '@utils/constant';

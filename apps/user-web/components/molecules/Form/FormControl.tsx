@@ -1,9 +1,9 @@
-import * as React from 'react';
+import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 import Input from '@components/atoms/Form/Input';
 import Label from '@components/atoms/Form/Label';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
   type: string;
