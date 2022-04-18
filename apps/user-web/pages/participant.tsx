@@ -1,15 +1,17 @@
+import SubHeader from '@components/organisms/SubHeader';
 import Head from 'next/head';
 import { Button } from 'ui';
 
-export default function Teams() {
+export default function Participant() {
   return (
     <>
       <Head>
-        <title>Teams | SIPR</title>
+        <title>Participant | SIPR</title>
       </Head>
 
+      <SubHeader />
       <article className="py-4 px-4 md:px-8">
-        <h2 className="mb-6">Teams Page (in Progress)</h2>
+        <h2 className="mb-6">Participant Page (in Progress)</h2>
         <Button
           color="danger"
           onClick={() => {

@@ -22,8 +22,8 @@ const SideMenu = [
     icon: <CalendarIcon />,
   },
   {
-    slug: '/teams',
-    label: 'Teams',
+    slug: '/participant',
+    label: 'Participant',
     icon: <UserGroupIcon />,
   },
   {
