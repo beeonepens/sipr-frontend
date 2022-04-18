@@ -5,8 +5,8 @@ export const LoginSchema = z.object({
   email: z
     .string()
     .email({ message: 'Invalid email address' })
-    .min(1, { message: 'Required' }),
-  password: z.string().min(1, { message: 'Required' }),
+    .min(6, { message: 'Required' }),
+  password: z.string().min(6, { message: 'Minimum 6 character' }),
 });
 
 /** TS types for the input form */
