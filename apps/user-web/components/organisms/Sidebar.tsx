@@ -26,8 +26,8 @@ const SideMenu = [
     icon: <UserGroupIcon />,
   },
   {
-    slug: '/notification',
-    label: 'Notification',
+    slug: '/invitations',
+    label: 'Invitations',
     icon: <BellIcon />,
   },
 ];
