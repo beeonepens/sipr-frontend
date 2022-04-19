@@ -4,6 +4,7 @@ import { Dialog } from '@headlessui/react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from 'ui';
+import { XIcon } from '@heroicons/react/outline';
 import { MeetingStatusOptions } from '@utils/constant';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { NewMeetingInput, NewMeetingSchema } from '@utils/validations';
@@ -46,7 +47,11 @@ export default function CreateMeetingModal({
 
   return (
     <ModalProvider isModalOpen={isModalOpen} onClose={handleCloseModal}>
-      <section className="m-0 inline-block h-screen w-full max-w-md transform overflow-hidden rounded-none bg-white p-6 text-left align-middle shadow-xl transition-all md:my-8 md:mx-2 md:h-auto md:rounded-xl">
+      <section className="m-0 inline-block h-screen w-full max-w-md transform overflow-hidden rounded-none bg-white py-14 px-6 text-left align-middle shadow-xl transition-all md:my-8 md:mx-2 md:h-auto md:rounded-xl md:py-8 md:px-6">
+        <XIcon
+          className="absolute right-0 top-0 mr-5 mt-5 h-5 w-5 cursor-pointer text-gray-500"
+          onClick={toggleModal}
+        />
         <Dialog.Title
           as="h3"
           className="text-primary-950 mb-2 text-2xl font-semibold leading-6"
