@@ -102,6 +102,19 @@ export default function Calendar() {
     []
   );
 
+  /** big calendar configuration */
+  const { defaultDate, views } = React.useMemo(
+    () => ({
+      views: {
+        month: true,
+        week: true,
+        day: true,
+      },
+      defaultDate: new Date(),
+    }),
+    []
+  );
+
   return (
     <>
       <Head>
@@ -110,7 +123,10 @@ export default function Calendar() {
 
       <article className="h-[75vh] py-4 px-4 md:px-8 lg:max-h-[700px] xl:h-[83vh]">
         <BigCalendar
+          culture="en-GB"
           localizer={localizer}
+          defaultDate={defaultDate}
+          views={views}
           events={events}
           onSelectEvent={handleSelectEvent}
           selectable
