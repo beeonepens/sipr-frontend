@@ -1,25 +1,32 @@
-import { useRouter } from 'next/router';
-import { ArrowLeftIcon } from 'ui';
-import LinkTo from '@components/atoms/LinkTo';
+// import { useRouter } from 'next/router';
+// import { ArrowLeftIcon } from 'ui';
+// import LinkTo from '@components/atoms/LinkTo';
+import Head from 'next/head';
+import EditCalendarForms from '@components/organisms/Calendar/Edit/EditCalendarForms';
 
 export default function MeetingDetail() {
-  const { query } = useRouter();
+  // const { query } = useRouter();
 
   return (
-    <div className="mt-20 flex w-full flex-col items-center justify-center gap-6">
-      <div className="flex flex-row justify-center gap-4 text-lg text-gray-800">
-        <h2>This is Meeting Details Page ({query.slug}).</h2>
-      </div>
+    <>
+      <Head>
+        <title>Calendar | SIPR</title>
+      </Head>
 
-      <LinkTo
-        to="/calendar"
-        className="hover:border-primary-600 text-primary-700 hover:text-primary-600 flex flex-row items-center justify-center gap-3 border-b border-transparent pb-2 hover:border-dashed"
-      >
-        <>
-          <ArrowLeftIcon />
-          <span>Back To Calendar</span>
-        </>
-      </LinkTo>
-    </div>
+      <article className="py-4 px-4 md:px-8">
+        {/* back button */}
+        {/* <div className="flex flex-row items-center justify-start">
+          <LinkTo
+            to="/calendar"
+            className="text-primary-850 hover:text-primary-600"
+          >
+            <ArrowLeftIcon />
+          </LinkTo>
+        </div> */}
+
+        {/* edit event form */}
+        <EditCalendarForms />
+      </article>
+    </>
   );
 }

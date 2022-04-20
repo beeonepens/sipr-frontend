@@ -7,6 +7,7 @@ import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import enGB from 'date-fns/locale/en-GB';
 import MeetingDetailsModal from '@components/molecules/Calendar/MeetingDetailsModal';
+import { EVENTS } from '@utils/constant';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -51,57 +52,6 @@ export default function Calendar() {
     toggleModal();
   }, []);
 
-  /** events for the calendar */
-  const events = React.useMemo<EventType[]>(
-    () => [
-      {
-        id: 0,
-        title: 'Kuliah RPL/WPPL',
-        description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
-        allDay: false,
-        start: new Date(2022, 3, 11, 8, 0),
-        end: new Date(2022, 3, 11, 12, 0),
-        isOnline: false,
-        location: 'Ruang Database',
-      },
-      {
-        id: 1,
-        title: 'Daily Scrum 3',
-        description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
-        allDay: false,
-        start: new Date(2022, 3, 11, 10, 0),
-        end: new Date(2022, 3, 11, 11, 30),
-        isOnline: true,
-        link: 'https://meet.google.com/abcdef',
-      },
-      {
-        id: 2,
-        title: 'Daily Scrum 4',
-        description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
-        allDay: false,
-        start: new Date(2022, 3, 12, 15, 30),
-        end: new Date(2022, 3, 12, 16, 45),
-        isOnline: true,
-        link: 'https://meet.google.com/abcdef',
-      },
-      {
-        id: 3,
-        title: 'Daily Scrum 5',
-        description:
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
-        allDay: false,
-        start: new Date(2022, 3, 13, 5, 0),
-        end: new Date(2022, 3, 13, 5, 30),
-        isOnline: true,
-        link: 'https://meet.google.com/abcdef',
-      },
-    ],
-    []
-  );
-
   /** big calendar configuration */
   const { defaultDate, views } = React.useMemo(
     () => ({
@@ -127,7 +77,7 @@ export default function Calendar() {
           localizer={localizer}
           defaultDate={defaultDate}
           views={views}
-          events={events}
+          events={EVENTS}
           onSelectEvent={handleSelectEvent}
           selectable
           startAccessor="start"

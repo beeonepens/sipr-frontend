@@ -24,7 +24,7 @@ export default function FormDateTimeControl({
   } = useFormContext();
 
   return (
-    <div className="flex flex-col justify-start gap-1">
+    <div className="flex flex-col justify-start gap-0.5">
       <Label id={id}>{label}</Label>
       <DateTimePicker id={id} {...others} />
       <div>

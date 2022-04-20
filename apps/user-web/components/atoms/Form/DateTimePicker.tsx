@@ -36,7 +36,7 @@ export default function DateTimePicker({
       defaultValue={new Date()}
       name={id}
       render={({ field: { onChange, onBlur, value } }) => (
-        <div className="relative mt-1">
+        <div className="relative">
           <ReactDatePicker
             name={id}
             onBlur={onBlur}

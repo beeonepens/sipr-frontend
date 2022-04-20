@@ -28,7 +28,7 @@ export default function FormControl({
   } = useFormContext();
 
   return (
-    <div className="flex flex-col justify-start">
+    <div className="flex flex-col justify-start gap-0.5">
       {label && <Label id={id}>{label}</Label>}
       <Input
         id={id}
