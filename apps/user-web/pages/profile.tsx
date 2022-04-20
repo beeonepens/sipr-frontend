@@ -12,7 +12,7 @@ export default function Profile() {
       </Head>
 
       <article className="py-4 px-4 md:px-8">
-        <h2 className="text-primary-950 mb-2 text-2xl font-bold capitalize">
+        <h2 className="text-primary-700 mb-2 text-2xl font-bold capitalize">
           User Details
         </h2>
 

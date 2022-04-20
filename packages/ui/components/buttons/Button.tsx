@@ -36,9 +36,9 @@ export function Button({
         'border-2 py-2.5 px-6 transition duration-75',
         color === 'primary' && [
           variant === 'solid' &&
-            'bg-primary-950 border-primary-950 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-950 hover:bg-primary-850 disabled:bg-primary-850 disabled:border-primary-850 hover:border-primary-850 dark:border-primary-300 dark:hover:border-primary-400 text-white',
+            'bg-primary-700 border-primary-700 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-700 hover:bg-primary-600 disabled:bg-primary-600 disabled:border-primary-600 hover:border-primary-600 dark:border-primary-300 dark:hover:border-primary-400 text-white',
           variant === 'outline' &&
-            'border-primary-950 dark:border-primary-300 hover:text-primary-850 hover:border-primary-850 dark:text-primary-300 dark:hover:bg-primary-300 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 dark:hover:bg-opacity-20 ',
+            'border-primary-700 dark:border-primary-300 hover:text-primary-600 hover:border-primary-600 dark:text-primary-300 dark:hover:bg-primary-300 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 dark:hover:bg-opacity-20 ',
         ],
         color === 'danger' && [
           variant === 'solid' &&

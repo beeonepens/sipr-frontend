@@ -30,7 +30,7 @@ export default function SubHeader() {
             className={clsx(
               'h-full border-b-2 py-4 px-3 font-medium',
               pathname === slug
-                ? 'border-primary-850 text-primary-850'
+                ? 'border-primary-600 text-primary-600'
                 : 'border-transparent text-gray-500 hover:text-gray-800'
             )}
           >

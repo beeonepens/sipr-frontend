@@ -33,7 +33,7 @@ export default function EditCalendarForms() {
 
   return (
     <div className="mx-4 my-6 lg:mx-8">
-      <h3 className="text-primary-950 mb-4 text-2xl font-semibold leading-6">
+      <h3 className="text-primary-700 mb-4 text-2xl font-semibold leading-6">
         Edit Meeting Details
       </h3>
 

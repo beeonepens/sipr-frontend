@@ -54,7 +54,7 @@ export default function CreateMeetingModal({
         />
         <Dialog.Title
           as="h3"
-          className="text-primary-950 mb-2 text-2xl font-semibold leading-6"
+          className="text-primary-700 mb-2 text-2xl font-semibold leading-6"
         >
           Schedule New Meeting
         </Dialog.Title>

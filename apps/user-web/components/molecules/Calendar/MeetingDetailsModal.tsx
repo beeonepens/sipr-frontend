@@ -35,7 +35,7 @@ export default function MeetingDetailsModal({
           <>
             <Dialog.Title
               as="h3"
-              className="text-primary-950 mb-2 text-2xl font-semibold leading-6"
+              className="text-primary-700 mb-2 text-2xl font-semibold leading-6"
             >
               {openEvent.title}
             </Dialog.Title>
@@ -66,7 +66,7 @@ export default function MeetingDetailsModal({
                     <LinkTo
                       to={openEvent.link}
                       blank
-                      className="hover:text-primary-950 text-primary-850 hover:underline"
+                      className="hover:text-primary-700 text-primary-600 hover:underline"
                     >
                       <p className="">{openEvent.link}</p>
                     </LinkTo>

@@ -48,7 +48,7 @@ export default function DateTimePicker({
                 ? 'cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0'
                 : errors && errors[id]
                 ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                : 'focus:ring-primary-850 focus:border-primary-850 border-gray-300',
+                : 'focus:ring-primary-600 focus:border-primary-600 border-gray-300',
               'block w-full rounded-lg sm:text-sm'
             )}
             placeholderText={placeholder}

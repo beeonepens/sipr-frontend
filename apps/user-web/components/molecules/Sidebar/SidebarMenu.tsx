@@ -21,8 +21,8 @@ export default function SidebarMenu({ menu }: Props) {
       className={clsx(
         'flex w-full flex-row items-center gap-4 rounded-md py-3.5 px-3.5 font-medium',
         pathname.includes(menu.slug)
-          ? 'bg-accent-400 text-primary-950'
-          : 'hover:bg-primary-850 bg-transparent'
+          ? 'bg-accent-400 text-primary-700'
+          : 'hover:bg-primary-600 bg-transparent'
       )}
     >
       <>

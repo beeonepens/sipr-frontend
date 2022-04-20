@@ -18,7 +18,7 @@ export default function MeetingDetail() {
         {/* <div className="flex flex-row items-center justify-start">
           <LinkTo
             to="/calendar"
-            className="text-primary-850 hover:text-primary-600"
+            className="text-primary-600 hover:text-primary-600"
           >
             <ArrowLeftIcon />
           </LinkTo>
