@@ -5,6 +5,7 @@ interface Props {
   children: string | JSX.Element;
   className?: string;
   blank?: boolean;
+  onClick?: () => void;
 }
 
 export default function LinkTo({
@@ -12,10 +13,16 @@ export default function LinkTo({
   children = 'Link',
   className = 'hover:text-primary-500 text-primary-700 underline',
   blank,
+  onClick,
 }: Props) {
   return (
     <Link href={to} passHref>
-      <a href="/" className={className} target={blank ? '_blank' : ''}>
+      <a
+        href="/"
+        className={className}
+        onClick={onClick}
+        target={blank ? '_blank' : ''}
+      >
         {children}
       </a>
     </Link>

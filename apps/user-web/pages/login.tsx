@@ -64,7 +64,7 @@ export default function Login() {
           </LinkTo>
 
           {/* login title & subtitle */}
-          <h2 className="text-primary-900 mt-24 text-center text-4xl font-bold md:mt-0">
+          <h2 className="text-primary-700 mt-24 text-center text-4xl font-bold md:mt-0">
             SIPR
           </h2>
           <h1 className="text-center text-lg font-medium">Welcome back!</h1>

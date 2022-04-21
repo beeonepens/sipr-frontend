@@ -106,6 +106,7 @@ importers:
       '@types/node': ^17.0.12
       '@types/react': 17.0.44
       '@types/react-big-calendar': ^0.38.0
+      '@types/react-calendar': ^3.5.0
       '@types/react-datepicker': ^4.3.4
       '@typescript-eslint/eslint-plugin': ^5.17.0
       '@typescript-eslint/parser': ^5.17.0
@@ -133,6 +134,7 @@ importers:
       prettier-plugin-tailwindcss: ^0.1.8
       react: 17.0.2
       react-big-calendar: ^0.40.0
+      react-calendar: ^3.7.0
       react-datepicker: ^4.7.0
       react-dom: 17.0.2
       react-hook-form: ^7.29.0
@@ -157,6 +159,7 @@ importers:
       next: 12.1.5_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-big-calendar: 0.40.0_react-dom@17.0.2+react@17.0.2
+      react-calendar: 3.7.0_react-dom@17.0.2+react@17.0.2
       react-datepicker: 4.7.0_react-dom@17.0.2+react@17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-hook-form: 7.29.0_react@17.0.2
@@ -173,6 +176,7 @@ importers:
       '@types/node': 17.0.23
       '@types/react': 17.0.44
       '@types/react-big-calendar': 0.38.0
+      '@types/react-calendar': 3.5.0
       '@types/react-datepicker': 4.3.4_react@17.0.2
       '@typescript-eslint/eslint-plugin': 5.17.0_d514fabaf19192a23b61b5a53c09254e
       '@typescript-eslint/parser': 5.17.0_eslint@8.2.0+typescript@4.6.3
@@ -1050,6 +1054,12 @@ packages:
       '@types/react': 17.0.44
     dev: true
 
+  /@types/react-calendar/3.5.0:
+    resolution: {integrity: sha512-qVSA5M0+SwLRINpE81TMUTh0NwJVed8T+lplJ7v0XAe4EHlMyNeNlkN9suKBxlwIEZ/62QP/m0QjGNCwdOy8PQ==}
+    dependencies:
+      '@types/react': 17.0.44
+    dev: true
+
   /@types/react-datepicker/4.3.4_react@17.0.2:
     resolution: {integrity: sha512-5nTTz37KdTUgMZ1AAxztMWNtEnIMVRo8oCAEhIv0a6uUqDjvSKaMyPRpBV+8chi6f/A8wlTKJIpojpXca2dx3A==}
     dependencies:
@@ -1309,6 +1319,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@wojtekmaj/date-utils/1.0.3:
+    resolution: {integrity: sha512-1VPkkTBk07gMR1fjpBtse4G+oJqpmE+0gUFB0dg3VIL7qJmUVaBoD/vlzMm/jNeOPfvlmerl1lpnsZyBUFIRuw==}
+    dev: false
 
   /abab/2.0.5:
     resolution: {integrity: sha512-9IK9EadsbHo6jLWIpxpR6pL0sazTXV6+SQv25ZB+F7Bj9mJNaOc4nCRabwd5M/JwmUa8idz6Eci6eKfJryPs6Q==}
@@ -3140,6 +3154,12 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.1.1
 
+  /get-user-locale/1.4.0:
+    resolution: {integrity: sha512-gQo03lP1OArHLKlnoglqrGGl7b04u2EP9Xutmp72cMdtrrSD7ZgIsCsUKZynYWLDkVJW33Cj3pliP7uP0UonHQ==}
+    dependencies:
+      lodash.once: 4.1.1
+    dev: false
+
   /getos/3.2.1:
     resolution: {integrity: sha512-U56CfOK17OKgTVqozZjUKNdkfEv6jk5WISBJ8SHoagjE6L69zOwl3Z+O8myjY9MEW3i2HPWQBt/LTbCgcC973Q==}
     dependencies:
@@ -3751,7 +3771,6 @@ packages:
 
   /lodash.once/4.1.1:
     resolution: {integrity: sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=}
-    dev: true
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
@@ -3810,6 +3829,10 @@ packages:
 
   /memoize-one/6.0.0:
     resolution: {integrity: sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==}
+    dev: false
+
+  /merge-class-names/1.4.2:
+    resolution: {integrity: sha512-bOl98VzwCGi25Gcn3xKxnR5p/WrhWFQB59MS/aGENcmUc6iSm96yrFDF0XSNurX9qN4LbJm0R9kfvsQ17i8zCw==}
     dev: false
 
   /merge-stream/2.0.0:
@@ -4419,6 +4442,20 @@ packages:
       react-dom: 17.0.2_react@17.0.2
       react-overlays: 4.1.1_react-dom@17.0.2+react@17.0.2
       uncontrollable: 7.2.1_react@17.0.2
+    dev: false
+
+  /react-calendar/3.7.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-zkK95zWLWLC6w3O7p3SHx/FJXEyyD2UMd4jr3CrKD+G73N+G5vEwrXxYQCNivIPoFNBjqoyYYGlkHA+TBDPLCw==}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@wojtekmaj/date-utils': 1.0.3
+      get-user-locale: 1.4.0
+      merge-class-names: 1.4.2
+      prop-types: 15.8.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-datepicker/4.7.0_react-dom@17.0.2+react@17.0.2:

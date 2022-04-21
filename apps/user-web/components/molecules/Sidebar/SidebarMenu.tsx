@@ -14,11 +14,16 @@ interface Props {
 
 export default function SidebarMenu({ menu }: Props) {
   const { pathname } = useRouter();
-  const { isMini } = useMiniSidebar();
+  const { isMini, toggleMini } = useMiniSidebar();
+
+  const handleClick = () => {
+    toggleMini();
+  };
 
   return (
     <LinkTo
       to={menu.slug}
+      onClick={handleClick}
       className={clsx(
         'flex w-full flex-row items-center gap-4 rounded-md py-3.5 px-3.5 font-medium',
         pathname.includes(menu.slug) || pathname.includes(menu.alias)
