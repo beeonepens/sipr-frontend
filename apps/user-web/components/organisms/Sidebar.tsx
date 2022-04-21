@@ -7,7 +7,7 @@ import {
   HomeIcon,
   UserGroupIcon,
   UserCircleIcon,
-} from 'ui';
+} from '@heroicons/react/outline';
 import Image from 'next/image';
 import { rgbDataURL } from '@utils/formatImage';
 
@@ -15,22 +15,22 @@ const SideMenu = [
   {
     slug: '/dashboard',
     label: 'Dashboard',
-    icon: <HomeIcon />,
+    icon: <HomeIcon className="h-6 w-6" />,
   },
   {
     slug: '/calendar',
     label: 'Calendar',
-    icon: <CalendarIcon />,
+    icon: <CalendarIcon className="h-6 w-6" />,
   },
   {
     slug: '/participant',
     label: 'Participant',
-    icon: <UserGroupIcon />,
+    icon: <UserGroupIcon className="h-6 w-6" />,
   },
   {
     slug: '/invitations',
     label: 'Invitations',
-    icon: <BellIcon />,
+    icon: <BellIcon className="h-6 w-6" />,
   },
 ];
 
@@ -47,7 +47,7 @@ export default function Sidebar() {
       )}
     >
       <div>
-        <figure className="mx-2 flex flex-row items-center justify-center">
+        {/* <figure className="mx-2 flex flex-row items-center justify-center">
           {!isMini ? (
             <Image
               src="/uploads/logo_concept_w.svg"
@@ -63,7 +63,7 @@ export default function Sidebar() {
           ) : (
             <div className="min-h-[59px]" />
           )}
-        </figure>
+        </figure> */}
 
         {/* side menu */}
         <div className="mt-12 mb-4 flex flex-col gap-3">
@@ -74,7 +74,11 @@ export default function Sidebar() {
       </div>
 
       <SidebarMenu
-        menu={{ slug: '/profile', label: 'Profile', icon: <UserCircleIcon /> }}
+        menu={{
+          slug: '/profile',
+          label: 'Profile',
+          icon: <UserCircleIcon className="h-6 w-6" />,
+        }}
         key="/profile"
       />
     </aside>

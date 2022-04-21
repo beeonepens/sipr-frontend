@@ -1,7 +1,7 @@
 import ParticipantItem from '@components/organisms/Participant/ParticipantItem';
 import Head from 'next/head';
 import SubHeader from '@components/organisms/Participant/SubHeader';
-import { PlusCircleIcon } from 'ui';
+import { PlusCircleIcon } from '@heroicons/react/outline';
 
 export default function Participant() {
   return (

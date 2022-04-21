@@ -9,11 +9,11 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
     'airbnb/hooks',
-    'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/jsx-runtime',
     'plugin:import/typescript',
     'plugin:cypress/recommended',
+    'plugin:@next/next/recommended',
     'prettier',
   ],
   settings: {

@@ -7,10 +7,11 @@ import {
   LocationMarkerIcon,
   PencilAltIcon,
   XIcon,
+  CalendarIcon,
 } from '@heroicons/react/outline';
 import { EventType } from '@pages/calendar';
 import { format } from 'date-fns';
-import { Button, CalendarIcon } from 'ui';
+import { Button } from 'ui';
 
 interface Props {
   isModalOpen: boolean;

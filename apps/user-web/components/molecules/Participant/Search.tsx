@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { FormProvider, useForm } from 'react-hook-form';
-import { SearchIcon } from 'ui';
+import { SearchIcon } from '@heroicons/react/outline';
 import FormControl from '../Form/FormControl';
 
 /** Schema for search forms */
@@ -29,7 +29,7 @@ export default function Search() {
           id="search"
           placeholder="Search by name or email"
           type="text"
-          leftIcon={<SearchIcon />}
+          leftIcon={<SearchIcon className="h-6 w-6" />}
         />
       </form>
     </FormProvider>

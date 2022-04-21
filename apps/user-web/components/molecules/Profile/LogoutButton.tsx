@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import { Button, LogoutIcon } from 'ui';
+import { Button } from 'ui';
+import { LogoutIcon } from '@heroicons/react/outline';
 
 export default function LogoutButton() {
   const router = useRouter();

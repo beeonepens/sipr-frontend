@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from 'react-query';
-import { Button, ArrowLeftIcon } from 'ui';
+import { Button } from 'ui';
+import { ArrowNarrowLeftIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
 import { registerMutation } from '@utils/mutations/authMutation';
@@ -56,7 +57,7 @@ export default function Register() {
         <div className="w-full rounded-md bg-white py-12 px-8 md:w-3/5 md:px-12 lg:w-2/5">
           {/* back icon */}
           <LinkTo to="/" className="hover:text-primary-500 text-primary-700">
-            <ArrowLeftIcon />
+            <ArrowNarrowLeftIcon className="h-6 w-6" />
           </LinkTo>
 
           {/* register title & subtitle */}

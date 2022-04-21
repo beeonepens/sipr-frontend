@@ -1,9 +1,10 @@
-import 'react-datepicker/dist/react-datepicker.css';
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import clsx from 'clsx';
 import ReactDatePicker from 'react-datepicker';
 import { useFormContext, Controller } from 'react-hook-form';
-import { CalendarIcon } from 'ui';
+import { CalendarIcon } from '@heroicons/react/outline';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface Props {
   id: string;

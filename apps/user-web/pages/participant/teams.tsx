@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { PlusCircleIcon } from 'ui';
+import { PlusCircleIcon } from '@heroicons/react/outline';
 import SubHeader from '@components/organisms/Participant/SubHeader';
 import TeamsItem from '@components/organisms/Participant/Teams/TeamsItem';
 
