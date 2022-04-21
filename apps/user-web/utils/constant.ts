@@ -65,4 +65,16 @@ export const EVENTS = [
     link: 'https://meet.google.com/abcdef',
   },
 ];
+export interface EventType {
+  id: number;
+  title: string;
+  description: string;
+  allDay: boolean;
+  start: Date;
+  end: Date;
+  isOnline: boolean;
+  link?: string;
+  location?: string;
+}
+
 export const getEventDetails = (id: number) => EVENTS.find((e) => e.id === id);

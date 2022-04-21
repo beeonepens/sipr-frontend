@@ -1,6 +1,8 @@
 import LinkTo from '@components/atoms/LinkTo';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { Dialog } from '@headlessui/react';
+import { format } from 'date-fns';
+import { Button } from 'ui';
 import {
   ClockIcon,
   LinkIcon,
@@ -9,9 +11,7 @@ import {
   XIcon,
   CalendarIcon,
 } from '@heroicons/react/outline';
-import { EventType } from '@pages/agenda';
-import { format } from 'date-fns';
-import { Button } from 'ui';
+import { EventType } from '@utils/constant';
 
 interface Props {
   isModalOpen: boolean;

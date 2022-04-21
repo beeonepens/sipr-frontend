@@ -82,6 +82,7 @@ export default function Calendar() {
           events={EVENTS}
           onSelectEvent={handleSelectEvent}
           selectable
+          popup
           startAccessor="start"
           endAccessor="end"
         />
