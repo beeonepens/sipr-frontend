@@ -30,7 +30,9 @@ export default function SidebarMenu({ menu }: Props) {
         <span>{menu.icon}</span>
         <span
           className={clsx(
-            isMini ? 'hidden opacity-0' : 'flex opacity-100',
+            isMini
+              ? 'hidden opacity-0 md:flex md:opacity-100'
+              : 'flex opacity-100',
             'origin-left duration-75'
           )}
         >

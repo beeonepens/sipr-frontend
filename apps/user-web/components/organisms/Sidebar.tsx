@@ -46,7 +46,7 @@ export default function Sidebar() {
       className={clsx(
         'bg-primary-700 absolute top-0 z-10 max-h-screen min-h-screen flex-col justify-between overflow-hidden border-r border-gray-300 py-8 px-4 text-white duration-300 md:sticky',
         isMini
-          ? '-left-10 w-0 md:left-0 md:flex md:w-[5.5rem]'
+          ? '-left-10 w-0 md:left-0 md:flex md:w-60'
           : 'left-0 w-3/4 md:flex md:w-60'
       )}
     >
