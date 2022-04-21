@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from 'react-query';
 import clsx from 'clsx';
-import { ArrowNarrowLeftIcon, ExclamationIcon } from '@heroicons/react/outline';
+import { ArrowLeftIcon, ExclamationIcon } from '@heroicons/react/outline';
 import { Button } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
@@ -60,7 +60,7 @@ export default function Login() {
         <div className="w-full rounded-md bg-white py-12 px-8 md:w-2/5 md:px-12 lg:w-1/4">
           {/* back icon */}
           <LinkTo to="/" className="hover:text-primary-500 text-primary-700">
-            <ArrowNarrowLeftIcon className="h-6 w-6" />
+            <ArrowLeftIcon className="h-6 w-6" />
           </LinkTo>
 
           {/* login title & subtitle */}

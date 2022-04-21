@@ -8,8 +8,8 @@ import {
   UserGroupIcon,
   UserCircleIcon,
 } from '@heroicons/react/outline';
-import Image from 'next/image';
-import { rgbDataURL } from '@utils/formatImage';
+// import Image from 'next/image';
+// import { rgbDataURL } from '@utils/formatImage';
 
 const SideMenu = [
   {
