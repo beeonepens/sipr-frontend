@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
 import { EVENTS, EventType } from '@utils/constant';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
@@ -28,9 +29,13 @@ export default function Agenda() {
       </Head>
 
       <AgendaSubHeader />
-      <article className="py-4 px-4 md:px-8">
+      <motion.article
+        initial={{ opacity: 0.6, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="py-4 px-4 md:px-8"
+      >
         <AgendaTable events={EVENTS} handleSelectEvent={handleSelectEvent} />
-      </article>
+      </motion.article>
 
       <MeetingDetailsModal
         isModalOpen={isModalOpen}

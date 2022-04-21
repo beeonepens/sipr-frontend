@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import { Calendar as BigCalendar, dateFnsLocalizer } from 'react-big-calendar';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -53,7 +54,7 @@ export default function Calendar() {
     toggleModal();
   }, []);
 
-  /** big calendar configuration */
+  /** big calendar date view configuration */
   const { defaultDate, views } = React.useMemo(
     () => ({
       views: {
@@ -66,6 +67,18 @@ export default function Calendar() {
     []
   );
 
+  /** big calendar events configuration */
+  const eventProps = React.useCallback(
+    (event, start, end, isSelected) => ({
+      event,
+      start,
+      end,
+      isSelected,
+      style: { backgroundColor: '#104779' },
+    }),
+    []
+  );
+
   return (
     <>
       <Head>
@@ -73,7 +86,11 @@ export default function Calendar() {
       </Head>
 
       <AgendaSubHeader />
-      <article className="mt-2 h-[75vh] py-4 px-4 md:px-8 lg:max-h-[680px] xl:h-[79vh]">
+      <motion.article
+        initial={{ opacity: 0.6, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="mt-2 h-[75vh] py-4 px-4 md:px-8 lg:max-h-[680px] xl:h-[79vh]"
+      >
         <BigCalendar
           culture="en-GB"
           localizer={localizer}
@@ -85,8 +102,9 @@ export default function Calendar() {
           popup
           startAccessor="start"
           endAccessor="end"
+          eventPropGetter={eventProps}
         />
-      </article>
+      </motion.article>
 
       <MeetingDetailsModal
         isModalOpen={isModalOpen}
