@@ -1,14 +1,28 @@
 import * as React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { Calendar as BigCalendar, dateFnsLocalizer } from 'react-big-calendar';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
 import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import enGB from 'date-fns/locale/en-GB';
+import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
+import { EVENTS } from '@utils/constant';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
+
+export interface EventType {
+  id: number;
+  title: string;
+  description: string;
+  allDay: boolean;
+  start: Date;
+  end: Date;
+  isOnline: boolean;
+  link?: string;
+  location?: string;
+}
 
 /** date locales options */
 const locales = {
@@ -25,48 +39,30 @@ const localizer = dateFnsLocalizer({
 });
 
 export default function Calendar() {
-  const { push } = useRouter();
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
 
-  const handleSelectEvent = React.useCallback(
-    (e) => {
-      console.log(e);
-      push(`/calendar/${e.id}`);
-    },
-    [push]
-  );
+  function toggleModal() {
+    setIsModalOpen((prevState) => !prevState);
+  }
 
-  /** events for the calendar */
-  const events = React.useMemo(
-    () => [
-      {
-        id: 0,
-        title: 'Kuliah RPL/WPPL',
-        allDay: false,
-        start: new Date(2022, 3, 11, 8, 0),
-        end: new Date(2022, 3, 11, 12, 0),
+  const handleSelectEvent = React.useCallback((e) => {
+    console.log(e);
+    setOpenEvent(e);
+    // push(`/calendar/${e.id}`);
+    toggleModal();
+  }, []);
+
+  /** big calendar configuration */
+  const { defaultDate, views } = React.useMemo(
+    () => ({
+      views: {
+        month: true,
+        week: true,
+        day: true,
       },
-      {
-        id: 1,
-        title: 'Daily Scrum 3',
-        allDay: false,
-        start: new Date(2022, 3, 11, 10, 0),
-        end: new Date(2022, 3, 11, 11, 30),
-      },
-      {
-        id: 2,
-        title: 'Daily Scrum 4',
-        allDay: false,
-        start: new Date(2022, 3, 12, 5, 0),
-        end: new Date(2022, 3, 12, 5, 30),
-      },
-      {
-        id: 3,
-        title: 'Daily Scrum 5',
-        allDay: false,
-        start: new Date(2022, 3, 13, 5, 0),
-        end: new Date(2022, 3, 13, 5, 30),
-      },
-    ],
+      defaultDate: new Date(),
+    }),
     []
   );
 
@@ -76,16 +72,27 @@ export default function Calendar() {
         <title>Calendar | SIPR</title>
       </Head>
 
-      <article className="h-[75vh] py-4 px-4 md:px-8 lg:max-h-[700px] xl:h-[83vh]">
+      <AgendaSubHeader />
+      <article className="mt-2 h-[75vh] py-4 px-4 md:px-8 lg:max-h-[680px] xl:h-[79vh]">
         <BigCalendar
+          culture="en-GB"
           localizer={localizer}
-          events={events}
+          defaultDate={defaultDate}
+          views={views}
+          events={EVENTS}
           onSelectEvent={handleSelectEvent}
           selectable
+          popup
           startAccessor="start"
           endAccessor="end"
         />
       </article>
+
+      <MeetingDetailsModal
+        isModalOpen={isModalOpen}
+        toggleModal={toggleModal}
+        openEvent={openEvent}
+      />
     </>
   );
 }

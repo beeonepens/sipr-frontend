@@ -1,26 +1,25 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import LinkTo from '@components/atoms/LinkTo';
-import Search from '@components/molecules/Participant/Search';
 
 const Menu = [
   {
-    title: 'Participant',
-    slug: '/participant',
+    title: 'Agenda',
+    slug: '/agenda',
   },
   {
-    title: 'Teams',
-    slug: '/participant/teams',
+    title: 'Calendar',
+    slug: '/calendar',
   },
 ];
 
-export default function SubHeader() {
+export default function AgendaSubHeader() {
   const { pathname } = useRouter();
 
   return (
     <div
       className="flex flex-col items-center justify-between gap-4 border-b border-gray-300 px-8 lg:flex-row"
-      data-testid="participant-subheader"
+      data-testid="agenda-subheader"
     >
       <div className="grid h-full grid-cols-2 items-center gap-10 text-center">
         {Menu.map(({ slug, title }) => (
@@ -30,17 +29,13 @@ export default function SubHeader() {
             className={clsx(
               'h-full border-b-2 py-4 px-3 font-medium',
               pathname === slug
-                ? 'border-primary-850 text-primary-850'
+                ? 'border-primary-600 text-primary-600'
                 : 'border-transparent text-gray-500 hover:text-gray-800'
             )}
           >
             <span>{title}</span>
           </LinkTo>
         ))}
-      </div>
-
-      <div className="mb-4 lg:mb-0">
-        <Search />
       </div>
     </div>
   );

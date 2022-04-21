@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from 'ui';
+import { ArrowNarrowLeftIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
 
 export default function CustomError() {
@@ -15,7 +15,7 @@ export default function CustomError() {
         className="hover:border-primary-600 text-primary-700 hover:text-primary-600 flex flex-row items-center justify-center gap-3 border-b border-transparent pb-2 hover:border-dashed"
       >
         <>
-          <ArrowLeftIcon />
+          <ArrowNarrowLeftIcon className="h-6 w-6" />
           <span>Back To Homepage</span>
         </>
       </LinkTo>

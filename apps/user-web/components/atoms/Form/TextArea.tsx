@@ -24,7 +24,7 @@ export default function TextArea({ id, rows = 3, ...others }: Props) {
         'rounded-lg sm:text-sm',
         errors && errors[id]
           ? 'border-red-600 focus:border-red-800 focus:ring-red-800'
-          : 'focus:border-primary-850 focus:ring-primary-850 border-gray-300'
+          : 'focus:border-primary-600 focus:ring-primary-600 border-gray-300'
       )}
     />
   );

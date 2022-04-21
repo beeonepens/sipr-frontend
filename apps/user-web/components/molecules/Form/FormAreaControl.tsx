@@ -24,7 +24,7 @@ export default function FormAreaControl({
   } = useFormContext();
 
   return (
-    <div className="flex flex-col justify-start gap-1">
+    <div className="flex flex-col justify-start gap-0.5">
       <Label id={id}>{label}</Label>
       <TextArea
         id={id}
