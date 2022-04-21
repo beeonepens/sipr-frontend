@@ -2,7 +2,7 @@ import InvitationActions from '../../molecules/Invitations/InvitationActions';
 
 export default function InvitationItem() {
   return (
-    <div className="rounded-lg px-4 py-3 outline outline-1 outline-gray-300 lg:px-6">
+    <div className="rounded-lg px-4 py-3 outline outline-1 outline-gray-200 lg:px-6">
       <p className="text-lg font-bold">New Meeting Invitations</p>
       <p className="mt-3 text-sm text-gray-700">
         Arya just invite you to a meeting about{' '}

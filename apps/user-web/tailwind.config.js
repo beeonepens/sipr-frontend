@@ -16,14 +16,14 @@ module.exports = {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: colors.neutral,
+      gray: colors.slate,
       // primary: {
       //   ...colors.blue,
       //   850: '#165EA2',
       //   950: '#104779',
       // },
       primary: {
-        50: '#AACCF4',
+        50: '#CDE3F8',
         100: '#98C2F1',
         200: '#74AEEC',
         300: '#509AE7',
