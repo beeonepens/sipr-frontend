@@ -15,7 +15,7 @@ export default function Dashboard() {
         animate={{ opacity: 1, y: 0 }}
         className="py-4 px-4 md:px-8"
       >
-        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-12">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-10">
           <section className="col-span-1 flex flex-col gap-4 md:gap-6">
             <NewMeeting />
             <SmallCalendar />
@@ -25,7 +25,7 @@ export default function Dashboard() {
             <div className="flex h-12 flex-row items-center">
               <h2 className="text-primary-700 text-3xl font-bold">Today</h2>
             </div>
-            <div className="border-accent-400 min-h-[286px] rounded-lg border-2" />
+            <div className="border-accent-400 min-h-[322px] rounded-lg border-2" />
           </section>
         </div>
         {/* 
