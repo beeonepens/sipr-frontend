@@ -38,7 +38,7 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-export default function Agenda() {
+export default function Calendar() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
 
@@ -53,15 +53,38 @@ export default function Agenda() {
     toggleModal();
   }, []);
 
+  /** big calendar configuration */
+  const { defaultDate, views } = React.useMemo(
+    () => ({
+      views: {
+        month: true,
+        week: true,
+        day: true,
+      },
+      defaultDate: new Date(),
+    }),
+    []
+  );
+
   return (
     <>
       <Head>
-        <title>Agenda | SIPR</title>
+        <title>Calendar | SIPR</title>
       </Head>
 
       <AgendaSubHeader />
-      <article className="py-4 px-4 md:px-8">
-        <p>Agenda Table</p>
+      <article className="mt-2 h-[75vh] py-4 px-4 md:px-8 lg:max-h-[680px] xl:h-[79vh]">
+        <BigCalendar
+          culture="en-GB"
+          localizer={localizer}
+          defaultDate={defaultDate}
+          views={views}
+          events={EVENTS}
+          onSelectEvent={handleSelectEvent}
+          selectable
+          startAccessor="start"
+          endAccessor="end"
+        />
       </article>
 
       <MeetingDetailsModal

@@ -1,16 +1,15 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import LinkTo from '@components/atoms/LinkTo';
-import Search from '@components/molecules/Participant/Search';
 
 const Menu = [
   {
-    title: 'Participant',
-    slug: '/participant',
+    title: 'Agenda',
+    slug: '/agenda',
   },
   {
-    title: 'Teams',
-    slug: '/teams',
+    title: 'Calendar',
+    slug: '/calendar',
   },
 ];
 
@@ -37,10 +36,6 @@ export default function AgendaSubHeader() {
             <span>{title}</span>
           </LinkTo>
         ))}
-      </div>
-
-      <div className="mb-4 lg:mb-0">
-        <Search />
       </div>
     </div>
   );
