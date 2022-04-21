@@ -1,17 +1,10 @@
 import LinkTo from '@components/atoms/LinkTo';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { Dialog } from '@headlessui/react';
-import { format } from 'date-fns';
 import { Button } from 'ui';
-import {
-  ClockIcon,
-  LinkIcon,
-  LocationMarkerIcon,
-  PencilAltIcon,
-  XIcon,
-  CalendarIcon,
-} from '@heroicons/react/outline';
+import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
 import { EventType } from '@utils/constant';
+import MeetingInfo from '../Meeting/MeetingInfo';
 
 interface Props {
   isModalOpen: boolean;
@@ -40,49 +33,13 @@ export default function MeetingDetailsModal({
             >
               {openEvent.title}
             </Dialog.Title>
-            <Dialog.Description className="text-sm text-gray-600 ">
+            <Dialog.Description className="line-clamp-3 mb-6 text-sm text-gray-600 ">
               {openEvent.description}
             </Dialog.Description>
-            <div className="mb-6 mt-6 flex flex-col gap-3 text-gray-800">
-              {/* <p className="text-lg font-medium">{openEvent.title}</p> */}
-              <div className="flex flex-row items-center justify-start gap-2">
-                <CalendarIcon className="h-5 w-5 text-gray-700" />
-                <p className="">
-                  {`${format(openEvent.start, 'eeee, d MMM yyyy')}`}
-                </p>
-              </div>
 
-              <div className="flex flex-row items-center justify-start gap-2">
-                <ClockIcon className="h-5 w-5 text-gray-700" />
-                <p className="">
-                  {`${format(openEvent.start, 'HH:mm')} - 
-                ${format(openEvent.end, 'HH:mm')}`}
-                </p>
-              </div>
+            <MeetingInfo event={openEvent} />
 
-              {openEvent.isOnline ? (
-                <div className="flex flex-row items-center justify-start gap-2">
-                  <LinkIcon className="h-5 w-5 text-gray-700" />
-                  {openEvent.link && (
-                    <LinkTo
-                      to={openEvent.link}
-                      blank
-                      className="hover:text-primary-700 text-primary-600 hover:underline"
-                    >
-                      <p className="">{openEvent.link}</p>
-                    </LinkTo>
-                  )}
-                </div>
-              ) : (
-                <div className="flex flex-row items-center justify-start gap-2">
-                  <LocationMarkerIcon className="h-5 w-5" />
-                  {openEvent.location && (
-                    <p className="">{openEvent.location}</p>
-                  )}
-                </div>
-              )}
-            </div>
-            <div className="mt-2 flex flex-row items-center justify-end">
+            <div className="mt-6 flex flex-row items-center justify-end">
               <LinkTo to={`/calendar/${openEvent.id}`}>
                 <Button>
                   <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">

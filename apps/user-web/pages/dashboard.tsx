@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
 import SmallCalendar from '@components/organisms/Dashboard/SmallCalendar';
+import TodayMeeting from '@components/organisms/Dashboard/TodayMeeting';
+import { EVENTS } from '@utils/constant';
 
 export default function Dashboard() {
   return (
@@ -25,7 +27,8 @@ export default function Dashboard() {
             <div className="flex h-12 flex-row items-center">
               <h2 className="text-primary-700 text-3xl font-bold">Today</h2>
             </div>
-            <div className="border-accent-400 min-h-[322px] rounded-lg border-2" />
+
+            <TodayMeeting events={[EVENTS[0], EVENTS[1]]} />
           </section>
         </div>
         {/* 

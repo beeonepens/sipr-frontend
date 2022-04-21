@@ -49,6 +49,8 @@ module.exports = {
   plugins: [
     // eslint-disable-next-line global-require
     require('@tailwindcss/forms'),
+    // eslint-disable-next-line global-require
+    require('@tailwindcss/line-clamp'),
     // blur navbar alternative for firefox
     plugin(({ addVariant, e, postcss }) => {
       addVariant('firefox', ({ container, separator }) => {
