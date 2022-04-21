@@ -7,6 +7,7 @@ interface Props {
   menu: {
     slug: string;
     label: string;
+    alias: string;
     icon: JSX.Element;
   };
 }
@@ -20,7 +21,7 @@ export default function SidebarMenu({ menu }: Props) {
       to={menu.slug}
       className={clsx(
         'flex w-full flex-row items-center gap-4 rounded-md py-3.5 px-3.5 font-medium',
-        pathname.includes(menu.slug)
+        pathname.includes(menu.slug) || pathname.includes(menu.alias)
           ? 'bg-accent-400 text-primary-700'
           : 'hover:bg-primary-600 bg-transparent'
       )}

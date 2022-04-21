@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { PlusCircleIcon } from '@heroicons/react/outline';
-import SubHeader from '@components/organisms/Participant/SubHeader';
+import ParticipantSubHeader from '@components/organisms/Participant/ParticipantSubHeader';
 import TeamsItem from '@components/organisms/Participant/Teams/TeamsItem';
 
 export default function Teams() {
@@ -10,7 +10,7 @@ export default function Teams() {
         <title>Teams | SIPR</title>
       </Head>
 
-      <SubHeader />
+      <ParticipantSubHeader />
       <article className="py-4 px-4 md:px-8">
         <div className="mt-4 mb-4 grid grid-cols-1 gap-6 lg:mb-2 lg:grid-cols-3 xl:grid-cols-4">
           {/* add item button */}

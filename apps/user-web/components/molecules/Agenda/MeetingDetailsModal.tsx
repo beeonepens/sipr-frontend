@@ -9,7 +9,7 @@ import {
   XIcon,
   CalendarIcon,
 } from '@heroicons/react/outline';
-import { EventType } from '@pages/calendar';
+import { EventType } from '@pages/agenda';
 import { format } from 'date-fns';
 import { Button } from 'ui';
 

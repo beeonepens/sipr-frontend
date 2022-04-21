@@ -2,7 +2,7 @@
 // import { ArrowLeftIcon } from 'ui';
 // import LinkTo from '@components/atoms/LinkTo';
 import Head from 'next/head';
-import EditCalendarForms from '@components/organisms/Calendar/Edit/EditCalendarForms';
+import EditCalendarForms from '@components/organisms/Agenda/Edit/EditCalendarForms';
 
 export default function MeetingDetail() {
   // const { query } = useRouter();

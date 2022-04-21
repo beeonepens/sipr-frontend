@@ -13,21 +13,25 @@ import {
 
 const SideMenu = [
   {
+    alias: 'dashboard',
     slug: '/dashboard',
     label: 'Dashboard',
     icon: <HomeIcon className="h-6 w-6" />,
   },
   {
-    slug: '/calendar',
-    label: 'Calendar',
+    alias: 'calendar',
+    slug: '/agenda',
+    label: 'Agenda',
     icon: <CalendarIcon className="h-6 w-6" />,
   },
   {
+    alias: 'teams',
     slug: '/participant',
     label: 'Participant',
     icon: <UserGroupIcon className="h-6 w-6" />,
   },
   {
+    alias: 'invitations',
     slug: '/invitations',
     label: 'Invitations',
     icon: <BellIcon className="h-6 w-6" />,
@@ -75,6 +79,7 @@ export default function Sidebar() {
 
       <SidebarMenu
         menu={{
+          alias: 'profile',
           slug: '/profile',
           label: 'Profile',
           icon: <UserCircleIcon className="h-6 w-6" />,

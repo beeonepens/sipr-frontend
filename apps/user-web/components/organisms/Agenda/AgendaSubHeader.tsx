@@ -10,17 +10,17 @@ const Menu = [
   },
   {
     title: 'Teams',
-    slug: '/participant/teams',
+    slug: '/teams',
   },
 ];
 
-export default function SubHeader() {
+export default function AgendaSubHeader() {
   const { pathname } = useRouter();
 
   return (
     <div
       className="flex flex-col items-center justify-between gap-4 border-b border-gray-300 px-8 lg:flex-row"
-      data-testid="participant-subheader"
+      data-testid="agenda-subheader"
     >
       <div className="grid h-full grid-cols-2 items-center gap-10 text-center">
         {Menu.map(({ slug, title }) => (

@@ -6,7 +6,7 @@ import parse from 'date-fns/parse';
 import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import enGB from 'date-fns/locale/en-GB';
-import MeetingDetailsModal from '@components/molecules/Calendar/MeetingDetailsModal';
+import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
 import { EVENTS } from '@utils/constant';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -37,7 +37,7 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-export default function Calendar() {
+export default function Agenda() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
 
