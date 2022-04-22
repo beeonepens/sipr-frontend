@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { Button } from 'ui';
+import { motion } from 'framer-motion';
 import { PencilAltIcon } from '@heroicons/react/outline';
 import LogoutButton from '@components/molecules/Profile/LogoutButton';
 import UserInfoView from '@components/organisms/Profile/UserInfoView';
@@ -17,7 +18,11 @@ export default function Profile() {
         <title>Profile | SIPR</title>
       </Head>
 
-      <article className="py-4 px-4 md:px-8">
+      <motion.article
+        initial={{ opacity: 0.6, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="py-4 px-4 md:px-8"
+      >
         <h2 className="text-primary-700 mb-2 text-2xl font-bold capitalize">
           User Details
         </h2>
@@ -40,7 +45,7 @@ export default function Profile() {
             </span>
           </Button>
         </div>
-      </article>
+      </motion.article>
     </>
   );
 }

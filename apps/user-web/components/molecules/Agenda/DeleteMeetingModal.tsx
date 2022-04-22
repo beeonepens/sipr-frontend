@@ -1,10 +1,8 @@
-import LinkTo from '@components/atoms/LinkTo';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { Dialog } from '@headlessui/react';
 import { Button } from 'ui';
-import { PencilAltIcon, XIcon } from '@heroicons/react/outline';
+import { XIcon } from '@heroicons/react/outline';
 import { EventType } from '@utils/constant';
-import MeetingInfo from '../Meeting/MeetingInfo';
 
 interface Props {
   isModalOpen: boolean;
@@ -29,25 +27,29 @@ export default function MeetingDetailsModal({
           <>
             <Dialog.Title
               as="h3"
-              className="text-primary-700 mb-2 mr-5 text-2xl font-semibold leading-6"
+              className="text-primary-700 text-xl font-semibold leading-6"
             >
-              {openEvent.title}
+              Delete Meeting
             </Dialog.Title>
-            <Dialog.Description className="line-clamp-3 mb-6 text-sm text-gray-600 ">
-              {openEvent.description}
+            <Dialog.Description className="mt-3 text-sm text-gray-700">
+              <p>Are you sure you want to delete this meeting?</p>
+              <p>Meeting Name : {openEvent.title}</p>
             </Dialog.Description>
 
-            <MeetingInfo event={openEvent} />
-
-            <div className="mt-6 flex flex-row items-center justify-end">
-              <LinkTo to={`/agenda/${openEvent.id}`}>
-                <Button>
-                  <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
-                    Edit Details
-                    <PencilAltIcon className="h-5 w-5" />
-                  </span>
+            <div className="mt-6 flex flex-row justify-end">
+              <div className="grid w-full grid-cols-2 items-center justify-end gap-5 md:flex md:w-3/4 md:flex-row lg:w-3/5">
+                <Button
+                  text="sm"
+                  fullWidth
+                  variant="outline"
+                  onClick={toggleModal}
+                >
+                  Cancel
                 </Button>
-              </LinkTo>
+                <Button text="sm" fullWidth color="danger">
+                  Confirm
+                </Button>
+              </div>
             </div>
           </>
         )}

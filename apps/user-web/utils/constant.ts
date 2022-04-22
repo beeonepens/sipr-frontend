@@ -24,7 +24,7 @@ export const EVENTS = [
     id: 0,
     title: 'Kuliah RPL/WPPL',
     description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit repellendus. Aut odio itaque.',
     allDay: false,
     start: new Date(2022, 3, 11, 8, 0),
     end: new Date(2022, 3, 11, 12, 0),
@@ -35,7 +35,7 @@ export const EVENTS = [
     id: 1,
     title: 'Daily Scrum 3',
     description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit repellendus. Aut odio itaque nam ab beatae necessitatibus harum.',
     allDay: false,
     start: new Date(2022, 3, 11, 10, 0),
     end: new Date(2022, 3, 11, 11, 30),
@@ -46,7 +46,7 @@ export const EVENTS = [
     id: 2,
     title: 'Daily Scrum 4',
     description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit repellendus. Aut odio itaque nam ab harum.',
     allDay: false,
     start: new Date(2022, 3, 12, 15, 30),
     end: new Date(2022, 3, 12, 16, 45),
@@ -57,7 +57,7 @@ export const EVENTS = [
     id: 3,
     title: 'Daily Scrum 5',
     description:
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur.',
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit.',
     allDay: false,
     start: new Date(2022, 3, 13, 8, 30),
     end: new Date(2022, 3, 13, 10, 0),

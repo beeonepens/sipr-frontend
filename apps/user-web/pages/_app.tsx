@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { useProtectedRoute } from '@utils/hooks/useProtectedRoute';
+// import { useProtectedRoute } from '@utils/hooks/useProtectedRoute';
 import { isPublicUrl } from '@utils/constant';
 import Sidebar from '@components/organisms/Sidebar';
 import Header from '@components/organisms/Header';
@@ -12,7 +12,7 @@ import '../styles/globals.css';
 const queryClient = new QueryClient();
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  useProtectedRoute();
+  // useProtectedRoute();
   const { pathname } = useRouter();
 
   return (

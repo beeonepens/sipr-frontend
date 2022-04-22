@@ -61,7 +61,7 @@ export default function Register() {
           </LinkTo>
 
           {/* register title & subtitle */}
-          <h2 className="text-primary-900 text-center text-4xl font-bold">
+          <h2 className="text-primary-700 text-center text-4xl font-bold">
             SIPR
           </h2>
           <h1 className="text-center text-lg font-medium">

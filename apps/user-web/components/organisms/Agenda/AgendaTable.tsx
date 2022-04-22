@@ -1,13 +1,19 @@
 import format from 'date-fns/format';
 import { EventType } from '@utils/constant';
 import clsx from 'clsx';
+import AgendaTableAction from '../../molecules/Agenda/AgendaTableAction';
 
 interface Props {
   events: EventType[];
   handleSelectEvent: (e: EventType) => void;
+  handleDeleteEvent: (e: EventType) => void;
 }
 
-export default function AgendaTable({ events, handleSelectEvent }: Props) {
+export default function AgendaTable({
+  events,
+  handleSelectEvent,
+  handleDeleteEvent,
+}: Props) {
   return (
     <div className="relative mt-3 overflow-x-auto border sm:rounded-lg">
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
@@ -54,16 +60,12 @@ export default function AgendaTable({ events, handleSelectEvent }: Props) {
               <td className="px-6 py-4">
                 {event.isOnline ? 'On-line' : 'Off-line'}
               </td>
-              <td className="px-6 py-4 text-right">
-                {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-                <span
-                  onClick={() => handleSelectEvent(event)}
-                  onKeyUp={() => handleSelectEvent(event)}
-                  className="cursor-pointer font-medium text-blue-600 hover:underline dark:text-blue-500"
-                >
-                  Details
-                </span>
-              </td>
+
+              <AgendaTableAction
+                event={event}
+                handleDeleteEvent={handleDeleteEvent}
+                handleSelectEvent={handleSelectEvent}
+              />
             </tr>
           ))}
         </tbody>

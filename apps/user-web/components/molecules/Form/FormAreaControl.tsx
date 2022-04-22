@@ -6,6 +6,7 @@ import Label from '@components/atoms/Form/Label';
 interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   id: string;
+  rows?: number;
   readOnly?: boolean;
   placeholder?: string;
   helperText?: string;
@@ -14,6 +15,7 @@ interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
 export default function FormAreaControl({
   label,
   id,
+  rows,
   placeholder,
   readOnly,
   helperText,
@@ -28,6 +30,7 @@ export default function FormAreaControl({
       <Label id={id}>{label}</Label>
       <TextArea
         id={id}
+        rows={rows}
         readOnly={readOnly}
         placeholder={placeholder}
         {...others}

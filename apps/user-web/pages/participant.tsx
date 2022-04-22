@@ -1,5 +1,6 @@
-import ParticipantItem from '@components/organisms/Participant/ParticipantItem';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
+import ParticipantItem from '@components/organisms/Participant/ParticipantItem';
 import ParticipantSubHeader from '@components/organisms/Participant/ParticipantSubHeader';
 import { PlusCircleIcon } from '@heroicons/react/outline';
 
@@ -11,7 +12,11 @@ export default function Participant() {
       </Head>
 
       <ParticipantSubHeader />
-      <article className="py-4 px-4 md:px-8">
+      <motion.article
+        initial={{ opacity: 0.6, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="py-4 px-4 md:px-8"
+      >
         <div className="mt-4 mb-4 grid grid-cols-2 gap-6 lg:mb-2 lg:grid-cols-4 xl:grid-cols-6">
           {/* add item button */}
           <figure className="relative flex h-full w-full flex-col items-center justify-center rounded-lg outline-dashed  outline-1 outline-gray-300 hover:cursor-pointer">
@@ -24,7 +29,7 @@ export default function Participant() {
             <ParticipantItem key={item} />
           ))}
         </div>
-      </article>
+      </motion.article>
     </>
   );
 }
