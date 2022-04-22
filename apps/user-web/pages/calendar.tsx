@@ -10,7 +10,7 @@ import enGB from 'date-fns/locale/en-GB';
 import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
 import { EVENTS } from '@utils/constant';
 
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+// import 'react-big-calendar/lib/css/react-big-calendar.css';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 
 export interface EventType {
