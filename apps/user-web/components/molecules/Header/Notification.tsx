@@ -1,50 +1,36 @@
+import { memo } from 'react';
 import { BellIcon } from '@heroicons/react/outline';
 import PopoverProvider from '@components/atoms/Popover/PopoverProvider';
+import { useWindowSize } from '@utils/hooks/useWindowSize';
+import { EVENTS } from '@utils/constant';
+import LinkTo from '@components/atoms/LinkTo';
 
-const items = [
-  {
-    id: 'width',
-    label: 'Width',
-    defaultValue: '100%',
-  },
-  {
-    id: 'max-width',
-    label: 'Max. width',
-    defaultValue: '300px',
-  },
-  {
-    id: 'height',
-    label: 'Height',
-    defaultValue: '25px',
-  },
-  {
-    id: 'max-height',
-    label: 'Max. height',
-    defaultValue: 'none',
-  },
-  {
-    id: 'max-height',
-    label: 'Max. height',
-    defaultValue: 'none',
-  },
-];
+function Notification() {
+  const windowSize = useWindowSize();
 
-export default function Notification() {
+  if (windowSize < 1024) {
+    return (
+      <LinkTo to="/notifications">
+        <BellIcon className="flex h-6 w-6 cursor-pointer hover:text-blue-600" />
+      </LinkTo>
+    );
+  }
+
   return (
     <PopoverProvider
+      title="Notification"
       indicator={
         <BellIcon className="flex h-6 w-6 cursor-pointer hover:text-blue-600" />
       }
-      title="Notification"
     >
       <section className="mt-4 space-y-2">
-        {items.map(({ id, label }) => (
+        {EVENTS.map(({ id, title }) => (
           <div
             className="flex flex-col gap-2 border-b border-gray-200 py-2"
             key={id}
           >
             <h4 className="cursor-pointer text-base font-semibold text-gray-800 hover:text-gray-700">
-              {label}
+              {title}
             </h4>
             <p className="text-sm">
               The meeting has started, please hurry up to join
@@ -58,3 +44,5 @@ export default function Notification() {
     </PopoverProvider>
   );
 }
+
+export default memo(Notification);
