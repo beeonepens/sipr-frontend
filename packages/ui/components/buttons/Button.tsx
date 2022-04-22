@@ -33,7 +33,7 @@ export function Button({
       type={type}
       disabled={isLoading || isDisabled}
       className={clsx(
-        'border-2 py-2.5 px-6 transition duration-75',
+        'border-2 py-2.5 px-6 capitalize transition duration-75',
         color === 'primary' && [
           variant === 'solid' &&
             'bg-primary-700 border-primary-700 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-700 hover:bg-primary-600 disabled:bg-primary-600 disabled:border-primary-600 hover:border-primary-600 dark:border-primary-300 dark:hover:border-primary-400 text-white',
