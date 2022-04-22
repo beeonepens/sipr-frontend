@@ -32,7 +32,9 @@ export default function TodayMeeting({ events }: Props) {
       <MeetingInfo event={events[itemIndex]} />
 
       <div className="absolute bottom-0 right-0 m-4 flex flex-row justify-end capitalize md:m-6">
-        <Button variant="outline">Start in less than an hour</Button>
+        <Button isDisabled variant="outline">
+          Start in less than an hour
+        </Button>
       </div>
     </div>
   );

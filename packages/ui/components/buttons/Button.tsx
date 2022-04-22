@@ -1,4 +1,3 @@
-import * as React from 'react';
 import clsx from 'clsx';
 
 interface Props {
@@ -38,7 +37,7 @@ export function Button({
           variant === 'solid' &&
             'bg-primary-700 border-primary-700 dark:bg-primary-300 dark:hover:bg-primary-400 dark:text-primary-700 hover:bg-primary-600 disabled:bg-primary-600 disabled:border-primary-600 hover:border-primary-600 dark:border-primary-300 dark:hover:border-primary-400 text-white',
           variant === 'outline' &&
-            'border-primary-700 dark:border-primary-300 hover:text-primary-600 hover:border-primary-600 dark:text-primary-300 dark:hover:bg-primary-300 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 dark:hover:bg-opacity-20 ',
+            'border-primary-700 dark:border-primary-300 hover:text-primary-600 hover:border-primary-600 dark:text-primary-300 dark:hover:bg-primary-300 disabled:hover:border-primary-700 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 disabled:hover:bg-transparent disabled:hover:text-gray-900 dark:hover:bg-opacity-20',
         ],
         color === 'danger' && [
           variant === 'solid' &&
@@ -55,7 +54,8 @@ export function Button({
         text === 'sm' && 'text-sm font-normal',
         text === 'md' && 'text-base font-medium',
         text === 'lg' && 'text-lg font-medium',
-        isLoading && 'cursor-not-allowed'
+        isLoading && 'cursor-not-allowed',
+        isDisabled && 'cursor-not-allowed'
       )}
     >
       {isLoading && <LoadingIcon />}
