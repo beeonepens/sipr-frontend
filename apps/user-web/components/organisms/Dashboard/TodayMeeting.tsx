@@ -24,14 +24,14 @@ export default function TodayMeeting({ events }: Props) {
       </h2>
 
       <div className="mr-0 mb-6 md:mr-16">
-        <p className="line-clamp-2 text-gray-500">
+        <p className="line-clamp-2 text-sm text-gray-500 md:text-base ">
           {events[itemIndex].description}
         </p>
       </div>
 
       <MeetingInfo event={events[itemIndex]} />
 
-      <div className="mt-4 flex flex-row justify-end">
+      <div className="absolute bottom-0 right-0 m-4 flex flex-row justify-end md:m-6">
         <Button variant="outline">Start in 50 minutes</Button>
       </div>
     </div>

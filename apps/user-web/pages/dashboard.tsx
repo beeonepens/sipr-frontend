@@ -31,10 +31,6 @@ export default function Dashboard() {
             <TodayMeeting events={[EVENTS[0], EVENTS[1]]} />
           </section>
         </div>
-        {/* 
-        <div className="mt-6 grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-12">
-          
-        </div> */}
       </motion.article>
     </>
   );
