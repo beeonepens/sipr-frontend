@@ -19,7 +19,7 @@ export default function MeetingDetailsModal({
 }: Props) {
   return (
     <ModalProvider isModalOpen={isModalOpen} onClose={toggleModal}>
-      <section className="m-0 inline-block h-screen w-full max-w-md transform overflow-hidden rounded-none bg-white py-14 px-6 text-left align-middle shadow-md transition-all md:my-8 md:mx-2 md:h-auto md:rounded-xl md:py-8 md:px-6">
+      <section className="m-0 inline-block h-screen w-full max-w-md transform overflow-hidden rounded-none bg-white py-14 px-6 text-left align-middle shadow-md transition-all md:my-8 md:mx-2 md:h-auto md:rounded-xl md:py-6 md:px-6">
         <XIcon
           className="absolute right-0 top-0 mr-5 mt-5 h-5 w-5 cursor-pointer text-gray-500"
           onClick={toggleModal}
@@ -29,7 +29,7 @@ export default function MeetingDetailsModal({
           <>
             <Dialog.Title
               as="h3"
-              className="text-primary-700 mb-2 text-2xl font-semibold leading-6"
+              className="text-primary-700 mb-2 mr-5 text-2xl font-semibold leading-6"
             >
               {openEvent.title}
             </Dialog.Title>

@@ -2,11 +2,11 @@ import clsx from 'clsx';
 import SidebarMenu from '@components/molecules/Sidebar/SidebarMenu';
 import useMiniSidebar from '@utils/store/useMiniSidebar';
 import {
-  BellIcon,
   CalendarIcon,
   HomeIcon,
   UserGroupIcon,
   UserCircleIcon,
+  MailIcon,
 } from '@heroicons/react/outline';
 import Logo from '@components/atoms/Logo';
 
@@ -33,7 +33,7 @@ const SideMenu = [
     alias: 'invitations',
     slug: '/invitations',
     label: 'Invitations',
-    icon: <BellIcon className="h-6 w-6" />,
+    icon: <MailIcon className="h-6 w-6" />,
   },
 ];
 
