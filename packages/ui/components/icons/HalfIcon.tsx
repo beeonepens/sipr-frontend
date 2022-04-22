@@ -2,7 +2,7 @@ interface Props {
   className: string;
 }
 
-export default function HalfIcon({ className = 'h-5 w-5' }: Props) {
+export function HalfIcon({ className = 'h-5 w-5' }: Props) {
   return (
     <svg
       className={className}

@@ -19,7 +19,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <div
         className={clsx(
-          'min-h-screen font-sans text-gray-900',
+          'min-h-screen font-sans text-gray-900 dark:text-gray-100',
           !isPublicUrl(pathname)
             ? 'flex min-h-screen flex-row justify-between'
             : ''

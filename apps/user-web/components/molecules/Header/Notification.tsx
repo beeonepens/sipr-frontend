@@ -26,16 +26,16 @@ function Notification() {
       <section className="mt-4 space-y-2">
         {EVENTS.map(({ id, title }) => (
           <div
-            className="flex flex-col gap-2 border-b border-gray-200 py-2"
+            className="flex flex-col gap-2 border-b border-gray-200 py-2 dark:border-gray-700"
             key={id}
           >
-            <h4 className="cursor-pointer text-base font-semibold text-gray-800 hover:text-gray-700">
+            <h4 className="cursor-pointer text-base font-semibold text-gray-800 hover:text-gray-700 dark:text-gray-300">
               {title}
             </h4>
-            <p className="text-sm">
+            <p className="text-sm dark:text-gray-400">
               The meeting has started, please hurry up to join
             </p>
-            <p className="mt-3 text-right text-sm text-gray-600">
+            <p className="mt-3 text-right text-sm text-gray-600 dark:text-gray-400">
               5 minute ago
             </p>
           </div>
