@@ -2,7 +2,6 @@ import { useState } from 'react';
 import MeetingInfo from '@components/molecules/Meeting/MeetingInfo';
 import MeetingNavigation from '@components/molecules/Meeting/MeetingNavigation';
 import { EventType } from '@utils/constant';
-import { Button } from 'ui';
 
 interface Props {
   events: EventType[];
@@ -31,10 +30,13 @@ export default function TodayMeeting({ events }: Props) {
 
       <MeetingInfo event={events[itemIndex]} />
 
-      <div className="absolute bottom-0 right-0 m-4 flex flex-row justify-end capitalize lg:m-6">
-        <Button isDisabled variant="solid" text="sm">
-          Less than an hour
-        </Button>
+      <div className="absolute bottom-0 right-0 m-4 flex flex-row justify-end lg:m-6">
+        <button
+          type="button"
+          className="cursor-default rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800"
+        >
+          In less than an hour
+        </button>
       </div>
     </div>
   );
