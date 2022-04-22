@@ -19,9 +19,9 @@ export default function AgendaTableAction({
         <button
           type="button"
           onClick={() => handleDeleteEvent(event)}
-          className="rounded-lg bg-red-50 p-2 hover:bg-red-100"
+          className="rounded-lg bg-red-50 p-2 hover:bg-red-100 dark:bg-red-900 dark:hover:bg-red-800"
         >
-          <TrashIcon className="h-4 w-4 text-red-600" />
+          <TrashIcon className="h-4 w-4 text-red-600 dark:text-red-100" />
         </button>
       </TooltipProvider>
 
@@ -29,9 +29,9 @@ export default function AgendaTableAction({
         <button
           type="button"
           onClick={() => handleSelectEvent(event)}
-          className="rounded-lg bg-blue-50 p-2 hover:bg-blue-100"
+          className="rounded-lg bg-blue-50 p-2 hover:bg-blue-100 dark:bg-blue-900 dark:hover:bg-blue-800"
         >
-          <PencilIcon className="text-primary-600 h-4 w-4" />
+          <PencilIcon className="text-primary-600 h-4 w-4 dark:text-blue-100" />
         </button>
       </TooltipProvider>
     </td>

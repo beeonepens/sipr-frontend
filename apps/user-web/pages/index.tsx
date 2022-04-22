@@ -10,15 +10,15 @@ export default function Home() {
 
       <article className="flex w-full flex-col gap-8 px-8 py-16">
         <div>
-          <h3 className="text-center text-2xl font-bold text-gray-800">
+          <h3 className="text-center text-2xl font-bold text-gray-800 dark:text-gray-300">
             Welcome to
           </h3>
-          <h1 className="text-primary-700 mt-1 text-center text-4xl font-bold">
+          <h1 className="text-primary-700 dark:text-primary-300 mt-1 text-center text-4xl font-bold">
             Sistem Informasi Penjadwalan Rapat
           </h1>
         </div>
 
-        <hr />
+        <hr className="opacity-100 dark:opacity-30" />
         <AuthenticationLinks />
       </article>
     </>

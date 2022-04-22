@@ -18,12 +18,12 @@ export default function TodayMeeting({ events }: Props) {
         totalEvents={events.length}
       />
 
-      <h2 className="text-primary-800 mb-3 mr-0 text-2xl font-semibold lg:mr-20">
+      <h2 className="text-primary-800 mb-3 mr-0 text-2xl font-semibold dark:text-gray-100 lg:mr-20">
         {events[itemIndex].title}
       </h2>
 
       <div className="mr-0 mb-6 lg:mr-16">
-        <p className="line-clamp-2 text-sm text-gray-500 lg:text-base ">
+        <p className="line-clamp-2 text-sm text-gray-500 dark:text-gray-300 lg:text-base ">
           {events[itemIndex].description}
         </p>
       </div>
@@ -33,7 +33,7 @@ export default function TodayMeeting({ events }: Props) {
       <div className="absolute bottom-0 right-0 m-4 flex flex-row justify-end lg:m-6">
         <button
           type="button"
-          className="cursor-default rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800"
+          className="cursor-default rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800 dark:bg-zinc-700 dark:text-gray-300"
         >
           In less than an hour
         </button>

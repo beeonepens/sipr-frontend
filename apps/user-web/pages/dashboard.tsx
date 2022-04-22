@@ -25,7 +25,9 @@ export default function Dashboard() {
 
           <section className="col-span-1 flex flex-col gap-4 md:gap-6 lg:col-span-2">
             <div className="flex h-12 flex-row items-center">
-              <h2 className="text-primary-700 text-3xl font-bold">Today</h2>
+              <h2 className="text-primary-700 dark:text-primary-300 text-3xl font-bold">
+                Today
+              </h2>
             </div>
 
             <TodayMeeting events={[EVENTS[0], EVENTS[1]]} />

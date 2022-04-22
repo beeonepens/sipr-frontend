@@ -3,7 +3,7 @@ import placeholderAvatar from '../../../public/uploads/avatar-man.png';
 
 export default function ParticipantItem() {
   return (
-    <figure className="relative h-auto w-full rounded-lg outline outline-1 outline-gray-300 hover:cursor-pointer">
+    <figure className="relative h-auto w-full rounded-lg outline outline-1 outline-gray-300 hover:cursor-pointer dark:outline-zinc-700">
       <Image
         className="block rounded-lg "
         src={placeholderAvatar}
@@ -21,7 +21,7 @@ export default function ParticipantItem() {
           aryarya@email.com
         </p>
       </div>
-      <div className="absolute top-0 bottom-0 right-0 left-0 h-full w-full rounded-lg bg-gray-800 opacity-0 transition duration-75 hover:opacity-30" />
+      <div className="absolute top-0 bottom-0 right-0 left-0 h-full w-full rounded-lg bg-zinc-800 opacity-0 transition duration-75 hover:opacity-30 dark:bg-zinc-700" />
     </figure>
   );
 }

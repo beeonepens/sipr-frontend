@@ -3,6 +3,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { HalfIcon } from 'ui';
+import useSidebar from '@utils/store/useSidebar';
 
 const themes = [
   {
@@ -25,6 +26,11 @@ const themes = [
 
 function ThemeSwitcher() {
   const [preferredTheme, setPreferredTheme] = useState<null | string>(null);
+  const { setColor } = useSidebar();
+
+  useEffect(() => {
+    if (preferredTheme) setColor(preferredTheme);
+  }, [preferredTheme, setColor]);
 
   useEffect(() => {
     try {
@@ -54,11 +60,11 @@ function ThemeSwitcher() {
         <DropdownMenuPrimitive.Trigger
           className={clsx(
             // 'inline-flex select-none justify-center rounded-md px-2.5 py-2 text-sm font-medium',
-            // 'bg-white text-gray-900 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-100 hover:dark:bg-gray-600',
+            // 'bg-white text-gray-900 hover:bg-gray-50 dark:bg-zinc-800 dark:text-gray-100 hover:dark:bg-gray-600',
             // 'border border-gray-300 dark:border-transparent',
             // 'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
             'inline-flex select-none justify-center rounded-md text-sm font-medium',
-            'text-primary-700 bg-transparent hover:text-blue-600 dark:text-gray-100',
+            'text-primary-700 bg-transparent hover:text-blue-600 dark:text-gray-100 dark:hover:text-gray-200',
             'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
           )}
         >
@@ -80,9 +86,9 @@ function ThemeSwitcher() {
           sideOffset={5}
           className={clsx(
             'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
-            'w-48 rounded-lg px-1.5 py-1 md:w-56',
-            'bg-gray-50 dark:bg-gray-700',
-            'border border-gray-300 shadow-md shadow-gray-300/30 dark:border-gray-700 dark:shadow-gray-700/30 md:w-96'
+            'w-48 rounded-lg px-1.5 py-1',
+            'bg-gray-50 dark:bg-zinc-800',
+            'border border-gray-300 shadow-md shadow-gray-300/30 dark:border-zinc-700 dark:shadow-zinc-800/30'
           )}
         >
           {themes.map(({ key, label, icon }) => (
@@ -90,7 +96,7 @@ function ThemeSwitcher() {
               key={`theme-${key}`}
               className={clsx(
                 'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
-                'text-gray-500 focus:bg-gray-200 dark:text-gray-400 dark:focus:bg-gray-800'
+                'text-gray-500 focus:bg-gray-200 dark:text-gray-400 dark:focus:bg-zinc-700'
               )}
               onClick={() => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
