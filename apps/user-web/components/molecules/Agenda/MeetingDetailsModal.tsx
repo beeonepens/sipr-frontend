@@ -40,7 +40,7 @@ export default function MeetingDetailsModal({
             <MeetingInfo event={openEvent} />
 
             <div className="mt-6 flex flex-row items-center justify-end">
-              <LinkTo to={`/calendar/${openEvent.id}`}>
+              <LinkTo to={`/agenda/${openEvent.id}`}>
                 <Button>
                   <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
                     Edit Details

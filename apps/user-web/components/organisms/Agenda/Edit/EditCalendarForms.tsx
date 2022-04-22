@@ -66,7 +66,7 @@ export default function EditCalendarForms() {
           </div>
 
           <div className="mt-6 flex flex-row justify-end gap-6 md:mt-4">
-            <LinkTo to="/calendar">
+            <LinkTo to="/agenda">
               <Button text="sm" type="button" variant="outline">
                 Cancel
               </Button>
