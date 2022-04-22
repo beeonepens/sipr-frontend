@@ -43,11 +43,11 @@ export default function Sidebar() {
   return (
     <aside
       className={clsx(
-        // 'bg-primary-700 absolute top-0 z-10 max-h-screen min-h-screen flex-col justify-between overflow-hidden border-r border-gray-300 py-8 px-4 text-white duration-300 md:sticky',
-        'text-primary-700 fixed top-0 z-10 max-h-screen min-h-screen flex-col justify-between overflow-hidden border-r border-gray-300 bg-gray-100 py-8 px-4 duration-300 md:sticky',
+        // 'bg-primary-700 absolute top-0 z-10 max-h-screen min-h-screen flex-col justify-between overflow-hidden border-r border-gray-300 py-8 px-4 text-white duration-300 lg:sticky',
+        'text-primary-700 fixed top-0 z-10 max-h-screen min-h-screen flex-col justify-between overflow-hidden border-r border-gray-300 bg-gray-100 py-8 px-4 duration-300 lg:sticky',
         isMini
-          ? '-left-10 w-0 md:left-0 md:flex md:w-60'
-          : 'left-0 w-3/4 md:flex md:w-60'
+          ? '-left-10 w-0 lg:left-0 lg:flex lg:w-60'
+          : 'left-0 w-3/4 md:w-1/2 lg:flex lg:w-60'
       )}
     >
       <div>

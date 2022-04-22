@@ -23,7 +23,7 @@ export default function MeetingNavigation({
   };
 
   return (
-    <div className="absolute left-0 bottom-0 m-4 flex flex-row justify-end gap-3 md:right-0 md:top-0 md:left-auto md:bottom-auto md:m-6 md:flex">
+    <div className="absolute left-0 bottom-0 m-4 flex flex-row justify-end gap-3 lg:right-0 lg:top-0 lg:left-auto lg:bottom-auto lg:m-6 lg:flex">
       <button
         type="button"
         onClick={handlePrev}

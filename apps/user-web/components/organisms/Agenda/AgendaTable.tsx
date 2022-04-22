@@ -1,7 +1,7 @@
 import format from 'date-fns/format';
 import { EventType } from '@utils/constant';
 import clsx from 'clsx';
-import { PencilIcon, TrashIcon } from '@heroicons/react/outline';
+import AgendaTableAction from '../../molecules/Agenda/AgendaTableAction';
 
 interface Props {
   events: EventType[];
@@ -60,23 +60,12 @@ export default function AgendaTable({
               <td className="px-6 py-4">
                 {event.isOnline ? 'On-line' : 'Off-line'}
               </td>
-              <td className="flex flex-row justify-end gap-3 px-6 py-4 text-right">
-                <button
-                  type="button"
-                  onClick={() => handleDeleteEvent(event)}
-                  className="rounded-lg bg-red-50 p-2 hover:bg-red-100"
-                >
-                  <TrashIcon className="h-4 w-4 text-red-600" />
-                </button>
 
-                <button
-                  type="button"
-                  onClick={() => handleSelectEvent(event)}
-                  className="rounded-lg bg-blue-50 p-2 hover:bg-blue-100"
-                >
-                  <PencilIcon className="text-primary-600 h-4 w-4" />
-                </button>
-              </td>
+              <AgendaTableAction
+                event={event}
+                handleDeleteEvent={handleDeleteEvent}
+                handleSelectEvent={handleSelectEvent}
+              />
             </tr>
           ))}
         </tbody>
