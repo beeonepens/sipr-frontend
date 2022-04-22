@@ -11,7 +11,7 @@ export default function TodayMeeting({ events }: Props) {
   const [itemIndex, setItemIndex] = useState(0);
 
   return (
-    <div className="border-accent-400 relative max-h-fit min-h-[322px] rounded-lg border-2 p-4 lg:max-h-[322px] lg:p-6">
+    <div className="border-accent-400 dark:border-accent-600 relative max-h-fit min-h-[322px] rounded-lg border-2 p-4 lg:max-h-[322px] lg:p-6">
       <MeetingNavigation
         itemIndex={itemIndex}
         setItemIndex={setItemIndex}

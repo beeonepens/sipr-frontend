@@ -7,7 +7,7 @@ import Sidebar from '@components/organisms/Sidebar';
 import Header from '@components/organisms/Header';
 
 import type { AppProps } from 'next/app';
-import '../styles/globals.css';
+import '../styles/globals.scss';
 
 const queryClient = new QueryClient();
 
