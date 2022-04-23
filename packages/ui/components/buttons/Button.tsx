@@ -7,6 +7,7 @@ interface Props {
   rounded?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
   text?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'danger';
+  padding?: 'md' | 'sm';
   isLoading?: boolean;
   isDisabled?: boolean;
   fullWidth?: boolean;
@@ -19,6 +20,7 @@ export function Button({
   variant = 'solid',
   rounded = 'md',
   text = 'md',
+  padding = 'md',
   color = 'primary',
   isLoading = false,
   isDisabled = false,
@@ -32,7 +34,9 @@ export function Button({
       type={type}
       disabled={isLoading || isDisabled}
       className={clsx(
-        'border-2 py-2.5 px-6 capitalize transition duration-75',
+        'border-2 capitalize transition duration-75',
+        padding === 'md' && 'py-2.5 px-6',
+        padding === 'sm' && 'py-2 px-4',
         color === 'primary' && [
           variant === 'solid' &&
             'bg-primary-700 border-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 hover:bg-primary-600 disabled:bg-primary-600 disabled:border-primary-600 hover:border-primary-600 dark:border-primary-600 dark:hover:border-primary-700 text-white dark:text-white',

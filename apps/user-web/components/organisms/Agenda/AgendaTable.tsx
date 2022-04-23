@@ -15,7 +15,7 @@ export default function AgendaTable({
   handleDeleteEvent,
 }: Props) {
   return (
-    <div className="relative mt-3 overflow-x-auto rounded-md border border-gray-200 dark:border-zinc-700 sm:rounded-lg">
+    <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-200 dark:border-zinc-700 sm:rounded-lg">
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
         <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-zinc-800 dark:text-gray-300">
           <tr>
