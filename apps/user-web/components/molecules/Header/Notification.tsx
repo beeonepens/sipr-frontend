@@ -27,7 +27,7 @@ function Notification() {
         {EVENTS.map(({ id, title }) => (
           <>
             <div
-              className="flex flex-col gap-1 rounded-lg p-2 py-2 dark:border-gray-700 dark:hover:bg-zinc-700"
+              className="flex flex-col gap-1 rounded-lg border-gray-200 p-2 py-2 hover:bg-gray-200 dark:border-gray-700 dark:hover:bg-zinc-700"
               key={id}
             >
               <h4 className="text-sm font-semibold text-gray-800 hover:text-gray-700 dark:text-gray-300">
