@@ -7,16 +7,16 @@ import { Button } from 'ui';
 import { ArrowLeftIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
+import FormDateTimeControl from '@components/molecules/Form/FormDateTimeControl';
+import { GenderOptions } from '@utils/constant';
+import FormRadioControl from '@components/molecules/Form/FormRadioControl';
+import FormAreaControl from '@components/molecules/Form/FormAreaControl';
 import { registerMutation } from '@utils/mutations/authMutation';
 import { RegisterInput, RegisterSchema } from '@utils/validations';
 
 import type { SubmitHandler } from 'react-hook-form';
 import type { AxiosError } from 'axios';
 import type { RegisterResponse } from '@utils/types/auth.dto';
-import FormDateTimeControl from '@components/molecules/Form/FormDateTimeControl';
-import { GenderOptions } from '@utils/constant';
-import FormRadioControl from '@components/molecules/Form/FormRadioControl';
-import FormAreaControl from '@components/molecules/Form/FormAreaControl';
 
 export default function Register() {
   const router = useRouter();
