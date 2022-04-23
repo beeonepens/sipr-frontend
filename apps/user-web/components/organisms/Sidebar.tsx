@@ -5,7 +5,6 @@ import {
   CalendarIcon,
   HomeIcon,
   UserGroupIcon,
-  UserCircleIcon,
   MailIcon,
 } from '@heroicons/react/outline';
 import Logo from '@components/atoms/Logo';
@@ -64,7 +63,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <SidebarMenu
+      {/* <SidebarMenu
         menu={{
           alias: 'profile',
           slug: '/profile',
@@ -72,7 +71,7 @@ export default function Sidebar() {
           icon: <UserCircleIcon className="h-6 w-6" />,
         }}
         key="/profile"
-      />
+      /> */}
     </aside>
   );
 }
