@@ -57,7 +57,7 @@ export default function Login() {
       </Head>
 
       <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
-        <div className="w-full rounded-md bg-white py-12 px-8 dark:bg-zinc-800 md:w-2/5 md:px-12 lg:w-1/4">
+        <div className="w-full rounded-md bg-white py-12 px-8 dark:bg-zinc-800 md:w-[400px] md:px-12">
           {/* back icon */}
           <LinkTo
             to="/"

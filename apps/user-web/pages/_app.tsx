@@ -9,6 +9,7 @@ import Header from '@components/organisms/Header';
 import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import '../styles/rbc.css';
+import '../styles/rdp.css';
 
 const queryClient = new QueryClient();
 

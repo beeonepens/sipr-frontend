@@ -79,8 +79,12 @@ export default function CreateMeetingModal({
                   id="description"
                   aria-label="meeting description"
                 />
-                <FormDateTimeControl label="Start Time" id="startDate" />
-                <FormDateTimeControl label="End Time" id="endDate" />
+                <FormDateTimeControl
+                  withTime
+                  label="Start Time"
+                  id="startDate"
+                />
+                <FormDateTimeControl withTime label="End Time" id="endDate" />
               </div>
 
               <div className="grid h-fit grid-cols-1 gap-3">

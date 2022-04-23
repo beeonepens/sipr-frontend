@@ -11,6 +11,8 @@ interface Props {
   helperText?: string;
   dateFormat?: 'MMMM d, yyyy h:mm aa';
   timeFormat?: 'HH:mm';
+  withTime?: boolean;
+  defaultValue?: Date;
 }
 
 export default function FormDateTimeControl({

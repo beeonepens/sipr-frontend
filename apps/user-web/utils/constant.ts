@@ -19,6 +19,12 @@ export const MeetingStatusOptions = [
   { label: 'Offline (in progress)', value: 'offline' },
 ];
 
+/** gender options */
+export const GenderOptions = [
+  { label: 'Male', value: 'pria' },
+  { label: 'Female', value: 'wanita' },
+];
+
 export const EVENTS = [
   {
     id: 0,

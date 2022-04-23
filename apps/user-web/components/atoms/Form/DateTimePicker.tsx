@@ -4,7 +4,7 @@ import ReactDatePicker from 'react-datepicker';
 import { useFormContext, Controller } from 'react-hook-form';
 import { CalendarIcon } from '@heroicons/react/outline';
 
-import 'react-datepicker/dist/react-datepicker.css';
+// import 'react-datepicker/dist/react-datepicker.css';
 
 interface Props {
   id: string;
@@ -16,6 +16,8 @@ interface Props {
     | 'd MMMM yyyy, HH:mm'
     | 'dd/MM/yyyy HH:mm';
   timeFormat?: 'HH:mm';
+  withTime?: boolean;
+  defaultValue?: Date;
 }
 
 export default function DateTimePicker({
@@ -25,6 +27,8 @@ export default function DateTimePicker({
   intervals = 15,
   dateFormat = 'dd/MM/yyyy HH:mm',
   timeFormat = 'HH:mm',
+  withTime = false,
+  defaultValue,
 }: Props) {
   const {
     control,
@@ -34,7 +38,7 @@ export default function DateTimePicker({
   return (
     <Controller
       control={control}
-      defaultValue={new Date()}
+      defaultValue={defaultValue || new Date()}
       name={id}
       render={({ field: { onChange, onBlur, value } }) => (
         <div className="relative">
@@ -54,16 +58,17 @@ export default function DateTimePicker({
             )}
             placeholderText={placeholder}
             aria-describedby={id}
-            showTimeSelect
+            showTimeSelect={!!withTime}
             openToDate={value ?? new Date()}
-            timeCaption="Time"
-            timeIntervals={intervals}
-            timeFormat={timeFormat}
-            dateFormat={dateFormat}
+            timeCaption={withTime ? 'Time' : ''}
+            timeIntervals={withTime ? intervals : 0}
+            timeFormat={withTime ? timeFormat : ''}
+            dateFormat={withTime ? dateFormat : 'dd/MM/yyyy'}
             readOnly={readOnly}
-            // showMonthDropdown
-            // showYearDropdown
-            // dropdownMode="select"
+            // showMonthYearPicker
+            showMonthDropdown={!withTime}
+            showYearDropdown={!withTime}
+            dropdownMode="select"
           />
           <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-lg text-gray-500 dark:text-gray-300" />
         </div>

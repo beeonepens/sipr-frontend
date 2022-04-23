@@ -13,6 +13,10 @@ import { RegisterInput, RegisterSchema } from '@utils/validations';
 import type { SubmitHandler } from 'react-hook-form';
 import type { AxiosError } from 'axios';
 import type { RegisterResponse } from '@utils/types/auth.dto';
+import FormDateTimeControl from '@components/molecules/Form/FormDateTimeControl';
+import { GenderOptions } from '@utils/constant';
+import FormRadioControl from '@components/molecules/Form/FormRadioControl';
+import FormAreaControl from '@components/molecules/Form/FormAreaControl';
 
 export default function Register() {
   const router = useRouter();
@@ -20,6 +24,7 @@ export default function Register() {
   /** hooks for forms control & submit action */
   const methods = useForm<RegisterInput>({
     resolver: zodResolver(RegisterSchema),
+    defaultValues: { gender: 'pria' },
   });
 
   /** hooks for controlling the register mutation */
@@ -54,7 +59,7 @@ export default function Register() {
       </Head>
 
       <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
-        <div className="w-full rounded-md bg-white py-12 px-8 dark:bg-zinc-800 md:w-3/5 md:px-12 lg:w-2/5">
+        <div className="md:[640px] w-full rounded-md bg-white py-12 px-8 dark:bg-zinc-800 md:px-12 lg:w-[800px] lg:pt-6 lg:pb-12">
           {/* back icon */}
           <LinkTo
             to="/"
@@ -78,21 +83,33 @@ export default function Register() {
               noValidate
             >
               {/* forms input */}
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <FormControl id="name" label="Name" type="text" />
                 <FormControl id="email" label="Email" type="email" />
+                <FormControl id="nip" label="NIP" type="text" />
+                <FormDateTimeControl
+                  defaultValue={new Date(2000, 1, 1)}
+                  label="Date of Birth"
+                  id="dateofbirth"
+                />
                 <FormControl id="password" label="Password" type="password" />
                 <FormControl
                   id="confirmPassword"
                   label="Confirm Password"
                   type="password"
                 />
-                <FormControl id="username" label="Username" type="text" />
-                <FormControl id="address" label="Address" type="text" />
+                <div className="col-span-1 grid h-fit grid-cols-1 items-center gap-4 md:col-span-2 md:grid-cols-2">
+                  <FormAreaControl rows={2} label="Adress" id="address" />
+                  <FormRadioControl
+                    title="Gender"
+                    options={GenderOptions}
+                    selected="pria"
+                  />
+                </div>
               </div>
 
               {/* forms submit button */}
-              <div className="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2">
+              <div className="mx-auto mt-8 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2">
                 <Button
                   rounded="lg"
                   type="submit"
