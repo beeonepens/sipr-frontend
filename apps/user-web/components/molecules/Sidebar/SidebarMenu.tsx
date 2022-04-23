@@ -1,6 +1,6 @@
 import LinkTo from '@components/atoms/LinkTo';
 import clsx from 'clsx';
-import useMiniSidebar from '@utils/store/useMiniSidebar';
+import useSidebar from '@utils/store/useSidebar';
 import { useRouter } from 'next/router';
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 
 export default function SidebarMenu({ menu }: Props) {
   const { pathname } = useRouter();
-  const { isMini, toggleMini } = useMiniSidebar();
+  const { isMini, toggleMini } = useSidebar();
 
   const handleClick = () => {
     toggleMini();
@@ -29,8 +29,8 @@ export default function SidebarMenu({ menu }: Props) {
         pathname.includes(menu.slug) || pathname.includes(menu.alias)
           ? // ? 'bg-accent-400 text-primary-700'
             // : 'hover:bg-primary-600 bg-transparent'
-            'bg-primary-50 text-primary-700'
-          : 'hover:bg-primary-50 bg-transparent'
+            'bg-primary-50 dark:bg-primary-700 text-primary-700 dark:text-gray-50'
+          : 'hover:bg-primary-50 dark:hover:bg-primary-700 bg-transparent'
       )}
     >
       <>

@@ -16,7 +16,8 @@ module.exports = {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
-      gray: colors.slate,
+      gray: colors.gray,
+      zinc: colors.zinc,
       primary: {
         50: '#CDE3F8',
         100: '#98C2F1',

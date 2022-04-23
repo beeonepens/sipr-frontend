@@ -31,7 +31,7 @@ export default function FormRadioControl({
               className={clsx(
                 'form-radio',
                 value === disabled
-                  ? 'cursor-not-allowed border-gray-400 text-gray-400'
+                  ? 'cursor-not-allowed border-gray-400 text-gray-400 dark:border-gray-500 dark:text-gray-500'
                   : 'cursor-pointer'
               )}
               type="radio"
@@ -43,8 +43,9 @@ export default function FormRadioControl({
             />
             <span
               className={clsx(
-                'ml-2 text-sm',
-                value === disabled && 'cursor-not-allowed text-gray-400'
+                'ml-2 text-sm text-gray-700 dark:text-gray-300',
+                value === disabled &&
+                  'cursor-not-allowed text-gray-400 dark:text-gray-500'
               )}
             >
               {label}

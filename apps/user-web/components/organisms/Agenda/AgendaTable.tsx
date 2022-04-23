@@ -15,9 +15,9 @@ export default function AgendaTable({
   handleDeleteEvent,
 }: Props) {
   return (
-    <div className="relative mt-3 overflow-x-auto border sm:rounded-lg">
+    <div className="relative mt-3 overflow-x-auto rounded-md border border-gray-200 dark:border-zinc-700 sm:rounded-lg">
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-        <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-zinc-800 dark:text-gray-300">
           <tr>
             <th scope="col" className="px-6 py-3">
               Meeting name
@@ -41,9 +41,9 @@ export default function AgendaTable({
             <tr
               key={event.id}
               className={clsx(
-                'bg-white dark:bg-gray-800',
+                'bg-white dark:bg-zinc-900',
                 events[events.length - 1].id !== event.id &&
-                  'border-b dark:border-gray-700'
+                  'border-b dark:border-zinc-700'
               )}
             >
               <th

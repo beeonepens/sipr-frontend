@@ -40,10 +40,14 @@ export default function FormControl({
       />
       <div>
         {helperText !== '' && (
-          <p className="text-xs text-gray-500">{helperText}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-300">
+            {helperText}
+          </p>
         )}
         {errors && id && errors[id] && (
-          <span className="text-xs text-red-500">{errors[id].message}</span>
+          <span className="text-xs text-red-500 dark:text-red-500">
+            {errors[id].message}
+          </span>
         )}
       </div>
     </div>

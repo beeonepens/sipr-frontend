@@ -56,15 +56,18 @@ export default function Login() {
         <title>Login | SIPR</title>
       </Head>
 
-      <article className="flex min-h-screen flex-row items-start justify-center md:items-center md:bg-black md:bg-opacity-50">
-        <div className="w-full rounded-md bg-white py-12 px-8 md:w-2/5 md:px-12 lg:w-1/4">
+      <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
+        <div className="w-full rounded-md bg-white py-12 px-8 dark:bg-zinc-800 md:w-2/5 md:px-12 lg:w-1/4">
           {/* back icon */}
-          <LinkTo to="/" className="hover:text-primary-500 text-primary-700">
+          <LinkTo
+            to="/"
+            className="hover:text-primary-500 text-primary-700 dark:text-primary-300 dark:hover:text-primary-400"
+          >
             <ArrowLeftIcon className="h-6 w-6" />
           </LinkTo>
 
           {/* login title & subtitle */}
-          <h2 className="text-primary-700 mt-24 text-center text-4xl font-bold md:mt-0">
+          <h2 className="text-primary-700 dark:text-primary-300 text-center text-4xl font-bold ">
             SIPR
           </h2>
           <h1 className="text-center text-lg font-medium">Welcome back!</h1>
@@ -85,7 +88,7 @@ export default function Login() {
               <p className="mt-6 mb-4 text-right text-sm text-gray-800">
                 <LinkTo
                   to="/reset-password"
-                  className="hover:text-primary-500 text-primary-800 font-medium"
+                  className="hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-500 text-primary-800 font-medium"
                 >
                   Forgot your password?
                 </LinkTo>
@@ -117,11 +120,11 @@ export default function Login() {
           </FormProvider>
 
           {/* link to register */}
-          <p className="mt-4 -mb-6 text-center text-sm text-gray-800">
+          <p className="mt-4 -mb-6 text-center text-sm text-gray-800 dark:text-gray-400">
             Need an account?{' '}
             <LinkTo
               to="/register"
-              className="hover:text-primary-500 text-primary-800 font-medium"
+              className="hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-500 text-primary-800 font-medium"
             >
               Register
             </LinkTo>
