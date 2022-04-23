@@ -35,8 +35,11 @@ export function Button({
       disabled={isLoading || isDisabled}
       className={clsx(
         'border-2 capitalize transition duration-75',
+        'focus:outline-none focus-visible:ring focus-visible:ring-opacity-75',
         padding === 'md' && 'py-2.5 px-6',
         padding === 'sm' && 'py-2 px-4',
+        color === 'primary' && 'focus-visible:ring-primary-300',
+        color === 'danger' && 'focus-visible:ring-red-400',
         color === 'primary' && [
           variant === 'solid' &&
             'bg-primary-700 border-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 hover:bg-primary-600 disabled:bg-primary-600 disabled:border-primary-600 hover:border-primary-600 dark:border-primary-600 dark:hover:border-primary-700 text-white dark:text-white',
