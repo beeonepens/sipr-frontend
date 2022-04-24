@@ -2,6 +2,7 @@ import { useState } from 'react';
 import MeetingInfo from '@components/molecules/Meeting/MeetingInfo';
 import MeetingNavigation from '@components/molecules/Meeting/MeetingNavigation';
 import { EventType } from '@utils/constant';
+import clsx from 'clsx';
 
 interface Props {
   events: EventType[];
@@ -11,7 +12,12 @@ export default function TodayMeeting({ events }: Props) {
   const [itemIndex, setItemIndex] = useState(0);
 
   return (
-    <div className="border-accent-400 dark:border-accent-600 relative max-h-fit min-h-[322px] rounded-lg border-2 p-4 lg:max-h-[322px] lg:p-6">
+    <div
+      className={clsx(
+        'relative max-h-fit min-h-[322px] rounded-lg p-4 lg:max-h-[322px] lg:p-6',
+        'border border-gray-300 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:shadow-black/25'
+      )}
+    >
       <MeetingNavigation
         itemIndex={itemIndex}
         setItemIndex={setItemIndex}

@@ -1,10 +1,10 @@
 import { ReactNode, Fragment } from 'react';
+import { useRouter } from 'next/router';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import clsx from 'clsx';
 import { LogoutIcon, UserCircleIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
-import { useRouter } from 'next/router';
 
 interface RadixMenuItem {
   label: string;
@@ -50,7 +50,10 @@ export default function ProfileMenu() {
               <AvatarPrimitive.Image
                 src="/uploads/avatar-man.png"
                 alt="Avatar"
-                className={clsx('h-full w-full object-cover', 'rounded-full')}
+                className={clsx(
+                  'h-full w-full object-cover',
+                  'rounded-full outline outline-2 outline-offset-2 outline-gray-300 dark:outline-gray-600'
+                )}
               />
               <AvatarPrimitive.Fallback
                 className={clsx(

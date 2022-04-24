@@ -2,7 +2,7 @@ import Calendar from 'react-calendar';
 
 export default function SmallCalendar() {
   return (
-    <div>
+    <div className="rounded-lg shadow-md shadow-gray-300/25 dark:shadow-black/25">
       <Calendar value={new Date()} />
     </div>
   );

@@ -15,7 +15,7 @@ export default function ParticipantItem() {
         layout="responsive"
         // blurDataURL={rgbDataURL(220, 220, 220)}
       />
-      <div className="absolute top-0 bottom-0 right-0 left-0 flex h-full w-full flex-col items-center justify-end rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-900 pb-3">
+      <div className="absolute top-0 bottom-0 right-0 left-0 flex h-full w-full flex-col items-center justify-end rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-900 pb-3 dark:to-zinc-900">
         <p className="text-sm font-medium text-white shadow">M Arya Pratama</p>
         <p className="text-sm text-white text-opacity-75 shadow">
           aryarya@email.com
