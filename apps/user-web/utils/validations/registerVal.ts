@@ -14,9 +14,9 @@ export const RegisterSchema = z
       .min(6, { message: 'Required' }),
     password: z.string().min(6, { message: 'Minimum 6 character' }),
     confirmPassword: z.string().min(6, { message: 'Minimum 6 character' }),
-    address: z.string().optional().default(''),
     gender: z.enum(['pria', 'wanita']),
-    dateofbirth: z.date(),
+    address: z.string().optional().default(''),
+    dateofbirth: z.date().optional(),
   })
   .refine((data) => data.confirmPassword === data.password, {
     message: "Passwords don't match",

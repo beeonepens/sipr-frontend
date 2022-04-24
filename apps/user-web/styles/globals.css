@@ -36,6 +36,9 @@ html[class*='dark'] {
 button {
   /* Disables tap highlight color on Chrome */
   -webkit-tap-highlight-color: transparent;
+
+  /* button default focus for keybord navigation */
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75;
 }
 
 /* Input darkmode fix for checkbox / radio */

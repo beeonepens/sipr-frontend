@@ -4,6 +4,7 @@ import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import clsx from 'clsx';
 import { LogoutIcon, UserCircleIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
+import { useRouter } from 'next/router';
 
 interface RadixMenuItem {
   label: string;
@@ -23,6 +24,13 @@ const menuItems: RadixMenuItem[] = [
 ];
 
 export default function ProfileMenu() {
+  const router = useRouter();
+
+  const onLogout = () => {
+    localStorage.removeItem('token');
+    router.replace('/');
+  };
+
   return (
     <div className="relative inline-block text-left">
       <DropdownMenuPrimitive.Root>
@@ -87,6 +95,7 @@ export default function ProfileMenu() {
                 </LinkTo>
               ) : (
                 <DropdownMenuPrimitive.Item
+                  onClick={label === 'Logout' ? onLogout : null}
                   className={clsx(
                     'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
                     'focus:bg-gray-200 dark:focus:bg-zinc-700',

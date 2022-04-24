@@ -57,15 +57,18 @@ export default function Login() {
       </Head>
 
       <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
-        <div className="w-full rounded-md bg-white py-12 px-8 dark:bg-zinc-800 md:w-[400px] md:px-12">
-          {/* back icon */}
-          <LinkTo
-            to="/"
-            className="hover:text-primary-500 text-primary-700 dark:text-primary-300 dark:hover:text-primary-400"
-          >
+        {/* back icon */}
+        <LinkTo
+          to="/"
+          className="hover:text-primary-500 text-primary-700 absolute top-8 left-8 dark:text-gray-50 dark:hover:text-gray-200"
+        >
+          <span className="flex flex-row items-center gap-3">
             <ArrowLeftIcon className="h-6 w-6" />
-          </LinkTo>
+            Back
+          </span>
+        </LinkTo>
 
+        <div className="w-full rounded-md bg-white py-16 px-8 dark:bg-zinc-800 md:w-[400px] md:px-12">
           {/* login title & subtitle */}
           <h2 className="text-primary-700 dark:text-primary-300 text-center text-4xl font-bold ">
             SIPR
