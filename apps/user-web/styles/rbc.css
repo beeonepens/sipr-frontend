@@ -235,8 +235,8 @@ button.rbc-input::-moz-focus-inner {
 .rbc-toolbar button:active,
 .rbc-toolbar button.rbc-active {
   background-image: none;
-  // -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  // box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  /* -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); */
+  /* box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); */
   background-color: #e6e6e6;
   border-color: #adadad;
 }
@@ -889,8 +889,8 @@ html[class*='dark'] {
   }
   .rbc-toolbar button:active,
   .rbc-toolbar button.rbc-active {
-    // -webkit-box-shadow: inset 0 3px 5px rgba(105, 105, 105, 0.125);
-    // box-shadow: inset 0 3px 5px rgba(105, 105, 105, 0.125);
+    /* -webkit-box-shadow: inset 0 3px 5px rgba(105, 105, 105, 0.125); */
+    /* box-shadow: inset 0 3px 5px rgba(105, 105, 105, 0.125); */
     background-color: #52525b;
     border-color: #3f3f46;
   }

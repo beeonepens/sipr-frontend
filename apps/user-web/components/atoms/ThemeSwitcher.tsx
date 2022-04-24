@@ -4,6 +4,7 @@ import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { HalfIcon } from 'ui';
 import useSidebar from '@utils/store/useSidebar';
+import { useWindowSize } from '@utils/hooks/useWindowSize';
 
 const themes = [
   {
@@ -25,6 +26,7 @@ const themes = [
 ];
 
 function ThemeSwitcher() {
+  const windowSize = useWindowSize();
   const [preferredTheme, setPreferredTheme] = useState<null | string>(null);
   const { setColor } = useSidebar();
 
@@ -59,12 +61,9 @@ function ThemeSwitcher() {
       <DropdownMenuPrimitive.Root>
         <DropdownMenuPrimitive.Trigger
           className={clsx(
-            // 'inline-flex select-none justify-center rounded-md px-2.5 py-2 text-sm font-medium',
-            // 'bg-white text-gray-900 hover:bg-gray-50 dark:bg-zinc-800 dark:text-gray-100 hover:dark:bg-gray-600',
-            // 'border border-gray-300 dark:border-transparent',
-            // 'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
             'inline-flex select-none justify-center rounded-md text-sm font-medium',
             'text-primary-700 bg-transparent hover:text-blue-600 dark:text-gray-100 dark:hover:text-gray-200',
+            'p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-zinc-700',
             'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
           )}
         >
@@ -82,7 +81,7 @@ function ThemeSwitcher() {
         </DropdownMenuPrimitive.Trigger>
 
         <DropdownMenuPrimitive.Content
-          align="end"
+          align={windowSize < 1024 ? 'start' : 'end'}
           sideOffset={5}
           className={clsx(
             'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
@@ -109,7 +108,7 @@ function ThemeSwitcher() {
               {React.cloneElement(icon, {
                 className: 'w-5 h-5 mr-2 text-gray-700 dark:text-gray-300',
               })}
-              <span className="flex-grow text-gray-700 dark:text-gray-300">
+              <span className="flex-grow text-gray-700 dark:text-gray-200">
                 {label}
               </span>
             </DropdownMenuPrimitive.Item>

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import LinkTo from '@components/atoms/LinkTo';
-import Search from '@components/molecules/Participant/Search';
+import Search from '@components/molecules/Search';
 
 const Menu = [
   {

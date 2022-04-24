@@ -7,8 +7,9 @@ import Sidebar from '@components/organisms/Sidebar';
 import Header from '@components/organisms/Header';
 
 import type { AppProps } from 'next/app';
-import '../styles/globals.scss';
-import '../styles/rbc.scss';
+import '../styles/globals.css';
+import '../styles/rbc.css';
+import '../styles/rdp.css';
 
 const queryClient = new QueryClient();
 

@@ -10,7 +10,7 @@ export interface LoginResponse {
 }
 
 export interface RegisterResponse {
-  data: unknown[];
-  token: string;
-  message: string;
+  data?: unknown[];
+  token?: string;
+  message?: string;
 }

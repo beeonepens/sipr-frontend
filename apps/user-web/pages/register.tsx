@@ -7,6 +7,8 @@ import { Button } from 'ui';
 import { ArrowLeftIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
+import { GenderOptions } from '@utils/constant';
+import FormRadioControl from '@components/molecules/Form/FormRadioControl';
 import { registerMutation } from '@utils/mutations/authMutation';
 import { RegisterInput, RegisterSchema } from '@utils/validations';
 
@@ -20,6 +22,7 @@ export default function Register() {
   /** hooks for forms control & submit action */
   const methods = useForm<RegisterInput>({
     resolver: zodResolver(RegisterSchema),
+    defaultValues: { gender: 'pria' },
   });
 
   /** hooks for controlling the register mutation */
@@ -38,8 +41,10 @@ export default function Register() {
       /** action on mutation success */
       onSuccess: (result) => {
         console.log({ result });
-        localStorage.setItem('token', result.token);
-        router.push('/dashboard');
+        if ('message' in result) {
+          localStorage.setItem('token', result.message);
+          router.push('/dashboard');
+        }
       },
     });
   };
@@ -54,15 +59,18 @@ export default function Register() {
       </Head>
 
       <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
-        <div className="w-full rounded-md bg-white py-12 px-8 dark:bg-zinc-800 md:w-3/5 md:px-12 lg:w-2/5">
-          {/* back icon */}
-          <LinkTo
-            to="/"
-            className="hover:text-primary-500 text-primary-700 dark:text-primary-300 dark:hover:text-primary-400"
-          >
+        {/* back icon */}
+        <LinkTo
+          to="/"
+          className="hover:text-primary-500 text-primary-700 absolute top-8 left-8 dark:text-gray-50 dark:hover:text-gray-200"
+        >
+          <span className="flex flex-row items-center gap-3">
             <ArrowLeftIcon className="h-6 w-6" />
-          </LinkTo>
+            Back
+          </span>
+        </LinkTo>
 
+        <div className="md:[640px] w-full rounded-md bg-white py-16 px-8 dark:bg-zinc-800 md:px-12 lg:w-[800px] lg:pt-12 lg:pb-16">
           {/* register title & subtitle */}
           <h2 className="text-primary-700 dark:text-primary-300 text-center text-4xl font-bold ">
             SIPR
@@ -78,21 +86,33 @@ export default function Register() {
               noValidate
             >
               {/* forms input */}
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-                <FormControl id="name" label="Name" type="text" />
-                <FormControl id="email" label="Email" type="email" />
-                <FormControl id="password" label="Password" type="password" />
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <FormControl id="name" label="Name *" type="text" />
+                <FormControl id="email" label="Email *" type="email" />
+                <FormControl id="password" label="Password *" type="password" />
                 <FormControl
                   id="confirmPassword"
-                  label="Confirm Password"
+                  label="Confirm Password *"
                   type="password"
                 />
-                <FormControl id="username" label="Username" type="text" />
-                <FormControl id="address" label="Address" type="text" />
+                <div className="col-span-1 grid h-fit grid-cols-1 items-center gap-4 md:col-span-2 md:grid-cols-2">
+                  <FormControl id="nip" label="NIP *" type="text" />
+                  <FormRadioControl
+                    title="Gender *"
+                    options={GenderOptions}
+                    selected="pria"
+                  />
+                </div>
+                {/* <FormAreaControl rows={2} label="Adress" id="address" /> */}
+                {/* <FormDateTimeControl
+                  defaultValue={new Date(2000, 1, 1)}
+                  label="Date of Birth"
+                  id="dateofbirth"
+                /> */}
               </div>
 
               {/* forms submit button */}
-              <div className="mx-auto mt-6 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2">
+              <div className="mx-auto mt-8 flex w-full flex-row justify-center md:w-2/3 lg:w-1/2">
                 <Button
                   rounded="lg"
                   type="submit"

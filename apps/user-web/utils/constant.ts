@@ -19,6 +19,12 @@ export const MeetingStatusOptions = [
   { label: 'Offline (in progress)', value: 'offline' },
 ];
 
+/** gender options */
+export const GenderOptions = [
+  { label: 'Male', value: 'pria' },
+  { label: 'Female', value: 'wanita' },
+];
+
 export const EVENTS = [
   {
     id: 0,
@@ -26,43 +32,43 @@ export const EVENTS = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit repellendus. Aut odio itaque.',
     allDay: false,
-    start: new Date(2022, 3, 11, 8, 0),
-    end: new Date(2022, 3, 11, 12, 0),
+    start: new Date(2022, 3, 25, 8, 0),
+    end: new Date(2022, 3, 25, 12, 0),
     isOnline: false,
-    location: 'Ruang Database',
+    location: 'Ruang Komputer, Gedung D4',
   },
   {
     id: 1,
-    title: 'Daily Scrum 3',
+    title: 'Kuliiah Pemrograman Framework',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit repellendus. Aut odio itaque nam ab beatae necessitatibus harum.',
     allDay: false,
-    start: new Date(2022, 3, 11, 10, 0),
-    end: new Date(2022, 3, 11, 11, 30),
+    start: new Date(2022, 3, 25, 14, 0),
+    end: new Date(2022, 3, 25, 15, 30),
     isOnline: true,
     link: 'https://meet.google.com/abcdef',
   },
   {
     id: 2,
-    title: 'Daily Scrum 4',
+    title: 'Daily Scrum 18',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit repellendus. Aut odio itaque nam ab harum.',
     allDay: false,
-    start: new Date(2022, 3, 12, 15, 30),
-    end: new Date(2022, 3, 12, 16, 45),
+    start: new Date(2022, 3, 26, 20, 30),
+    end: new Date(2022, 3, 26, 21, 0),
     isOnline: true,
-    link: 'https://meet.google.com/abcdef',
+    link: 'https://meet.google.com/ghijk',
   },
   {
     id: 3,
-    title: 'Daily Scrum 5',
+    title: 'Daily Scrum 19',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit.',
     allDay: false,
-    start: new Date(2022, 3, 13, 8, 30),
-    end: new Date(2022, 3, 13, 10, 0),
+    start: new Date(2022, 3, 27, 20, 30),
+    end: new Date(2022, 3, 27, 21, 0),
     isOnline: true,
-    link: 'https://meet.google.com/abcdef',
+    link: 'https://meet.google.com/lmnopq',
   },
 ];
 export interface EventType {

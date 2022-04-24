@@ -8,14 +8,23 @@ import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 import AgendaTable from '@components/organisms/Agenda/AgendaTable';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
+import { Button } from 'ui';
+import { FilterIcon, PlusIcon } from '@heroicons/react/outline';
+import Search from '@components/molecules/Search';
 
 export default function Agenda() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isNewModalOpen, setIsNewModalOpen] = React.useState(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
   const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
 
-  function toggleModal() {
-    setIsModalOpen((prevState) => !prevState);
+  function toggleNewModal() {
+    setIsNewModalOpen((prevState) => !prevState);
+  }
+
+  function toggleDetailModal() {
+    setIsDetailModalOpen((prevState) => !prevState);
   }
 
   function toggleDeleteModal() {
@@ -25,7 +34,7 @@ export default function Agenda() {
   const handleSelectEvent = React.useCallback((e) => {
     console.log(e);
     setOpenEvent(e);
-    toggleModal();
+    toggleDetailModal();
   }, []);
 
   const handleDeleteEvent = React.useCallback((e) => {
@@ -46,6 +55,26 @@ export default function Agenda() {
         animate={{ opacity: 1, y: 0 }}
         className="py-4 px-4 md:px-8"
       >
+        {/* table toolbar */}
+        <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
+          <div className="flex flex-row justify-start gap-6">
+            <Button onClick={toggleNewModal} padding="sm" text="sm">
+              <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+                <PlusIcon className="h-4 w-4" />
+                New Meeting
+              </span>
+            </Button>
+            <Button padding="sm" text="sm" variant="outline">
+              <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+                <FilterIcon className="h-4 w-4" />
+                Filter
+              </span>
+            </Button>
+          </div>
+
+          <Search placeholder="Search meeting name" />
+        </div>
+
         <AgendaTable
           events={EVENTS}
           handleDeleteEvent={handleDeleteEvent}
@@ -53,9 +82,14 @@ export default function Agenda() {
         />
       </motion.article>
 
+      <CreateMeetingModal
+        isModalOpen={isNewModalOpen}
+        toggleModal={toggleNewModal}
+      />
+
       <MeetingDetailsModal
-        isModalOpen={isModalOpen}
-        toggleModal={toggleModal}
+        isModalOpen={isDetailModalOpen}
+        toggleModal={toggleDetailModal}
         openEvent={openEvent}
       />
 
