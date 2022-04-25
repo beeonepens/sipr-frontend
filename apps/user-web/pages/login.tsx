@@ -60,7 +60,7 @@ export default function Login() {
         {/* back icon */}
         <LinkTo
           to="/"
-          className="hover:text-primary-500 text-primary-700 absolute top-8 left-8 dark:text-gray-50 dark:hover:text-gray-200"
+          className="absolute top-8 left-8 text-gray-50 hover:text-gray-200"
         >
           <span className="flex flex-row items-center gap-3">
             <ArrowLeftIcon className="h-6 w-6" />
