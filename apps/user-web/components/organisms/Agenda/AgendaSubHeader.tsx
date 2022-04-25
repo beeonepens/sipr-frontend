@@ -18,7 +18,7 @@ export default function AgendaSubHeader() {
 
   return (
     <div
-      className="flex flex-col items-center justify-between gap-4 border-b border-gray-300 px-8 dark:border-zinc-700 lg:flex-row"
+      className="flex flex-col items-center justify-between gap-4 border-b border-gray-300 bg-white px-8 dark:border-zinc-700 dark:bg-zinc-800 lg:flex-row"
       data-testid="agenda-subheader"
     >
       <div className="grid h-full grid-cols-2 items-center gap-10 text-center">

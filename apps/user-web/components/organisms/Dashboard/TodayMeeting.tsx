@@ -14,8 +14,8 @@ export default function TodayMeeting({ events }: Props) {
   return (
     <div
       className={clsx(
-        'relative max-h-fit min-h-[322px] rounded-lg p-4 lg:max-h-[322px] lg:p-6',
-        'border border-gray-300 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:shadow-black/25'
+        'relative max-h-fit min-h-[322px] rounded-lg bg-white p-4 dark:bg-zinc-800 lg:max-h-[322px] lg:p-6',
+        'border border-gray-300 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:shadow-black/20'
       )}
     >
       <MeetingNavigation
