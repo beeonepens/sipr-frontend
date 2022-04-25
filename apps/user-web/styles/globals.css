@@ -53,6 +53,14 @@ button {
   background-color: currentColor;
 }
 
+/* input type file */
+input[type='file']::-webkit-file-upload-button,
+input[type='file']::file-selector-button {
+  @apply bg-primary-700 hover:bg-primary-600 cursor-pointer border-0 py-2.5 pl-8 pr-4 text-sm font-medium text-white;
+  margin-inline-start: -1rem;
+  margin-inline-end: 1rem;
+}
+
 @tailwind components;
 @tailwind utilities;
 
