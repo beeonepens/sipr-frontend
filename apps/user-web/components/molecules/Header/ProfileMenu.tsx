@@ -1,10 +1,15 @@
 import { ReactNode, Fragment } from 'react';
-import { useRouter } from 'next/router';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import clsx from 'clsx';
+import { useMutation } from 'react-query';
+import { AxiosError } from 'axios';
+import { useRouter } from 'next/router';
+import { LogoutResponse } from '@utils/types/auth.dto';
+import { logoutMutation } from '@utils/mutations/authMutation';
 import { LogoutIcon, UserCircleIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
+// import LogoutAction from '../Profile/LogoutAction';
 
 interface RadixMenuItem {
   label: string;
@@ -26,9 +31,24 @@ const menuItems: RadixMenuItem[] = [
 export default function ProfileMenu() {
   const router = useRouter();
 
+  const mutation = useMutation<LogoutResponse, AxiosError, null>(
+    logoutMutation
+  );
+
   const onLogout = () => {
-    localStorage.removeItem('token');
-    router.replace('/');
+    console.log('logging out');
+    mutation.mutate(null, {
+      /** action on mutation error */
+      onError: ({ message, response }) => {
+        console.log({ message, response });
+      },
+      /** action on mutation success */
+      onSuccess: (result) => {
+        console.log({ result });
+        localStorage.removeItem('token');
+        router.push('/');
+      },
+    });
   };
 
   return (
@@ -70,6 +90,7 @@ export default function ProfileMenu() {
           </button>
         </DropdownMenuPrimitive.Trigger>
 
+        {/* Dropdown Content */}
         <DropdownMenuPrimitive.Content
           align="end"
           sideOffset={5}
@@ -82,7 +103,8 @@ export default function ProfileMenu() {
         >
           {menuItems.map(({ label, icon }, i) => (
             <Fragment key={label}>
-              {label === 'Profile' ? (
+              {/* Profile */}
+              {label === 'Profile' && (
                 <LinkTo to="/profile" className="">
                   <DropdownMenuPrimitive.Item
                     className={clsx(
@@ -96,9 +118,31 @@ export default function ProfileMenu() {
                     </span>
                   </DropdownMenuPrimitive.Item>
                 </LinkTo>
-              ) : (
+              )}
+              {/* Logout */}
+              {label === 'Logout' && (
                 <DropdownMenuPrimitive.Item
-                  onClick={label === 'Logout' ? onLogout : null}
+                  onClick={onLogout}
+                  className={clsx(
+                    'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
+                    'focus:bg-gray-200 dark:focus:bg-zinc-700',
+                    'text-red-600 dark:text-red-400'
+                  )}
+                >
+                  {icon}
+                  <span
+                    className={clsx(
+                      'flex-grow',
+                      'text-red-600 dark:text-red-400'
+                    )}
+                  >
+                    {label}
+                  </span>
+                </DropdownMenuPrimitive.Item>
+              )}
+              {/* Others */}
+              {label !== 'Profile' && label !== 'Logout' && (
+                <DropdownMenuPrimitive.Item
                   className={clsx(
                     'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
                     'focus:bg-gray-200 dark:focus:bg-zinc-700',
@@ -120,6 +164,8 @@ export default function ProfileMenu() {
                   </span>
                 </DropdownMenuPrimitive.Item>
               )}
+
+              {/* Separator */}
               {i !== menuItems.length - 1 && (
                 <DropdownMenuPrimitive.Separator className="my-1 h-px bg-gray-200 dark:bg-gray-700" />
               )}

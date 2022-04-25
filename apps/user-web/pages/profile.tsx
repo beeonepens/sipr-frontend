@@ -31,9 +31,7 @@ export default function Profile() {
             <UserInfoEdit toggleEditing={toggleEditing} />
           )}
 
-          <figure className="col-span-1 mx-auto rounded-xl">
-            <UserAvatar />
-          </figure>
+          <UserAvatar />
         </div>
       </motion.article>
     </>

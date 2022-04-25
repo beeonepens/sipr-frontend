@@ -14,3 +14,10 @@ export interface RegisterResponse {
   token?: string;
   message?: string;
 }
+
+export interface LogoutResponse {
+  status: string;
+  msg: string;
+  errors?: unknown;
+  content?: unknown;
+}
