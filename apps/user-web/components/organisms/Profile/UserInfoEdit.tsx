@@ -44,7 +44,7 @@ export default function UserInfoEdit({ toggleEditing }: Props) {
   return (
     <FormProvider {...methods}>
       <form
-        className="col-span-1 rounded-lg border border-gray-300 bg-white p-6 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-zinc-800 dark:shadow-black/20 lg:col-span-2"
+        className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-zinc-800 dark:shadow-black/20 lg:w-3/5"
         onSubmit={methods.handleSubmit(onSubmit)}
         noValidate
       >

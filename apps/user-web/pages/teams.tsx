@@ -19,7 +19,7 @@ export default function Teams() {
       >
         <div className="mt-4 mb-4 grid grid-cols-1 gap-6 lg:mb-2 lg:grid-cols-3 xl:grid-cols-4">
           {/* add item button */}
-          <div className="flex flex-col items-center justify-center rounded-lg bg-white py-4 px-3 outline-dashed outline-1 outline-gray-300 transition duration-75 hover:cursor-pointer hover:bg-gray-200 dark:bg-zinc-900 dark:outline-gray-700 dark:hover:bg-zinc-800">
+          <div className="flex flex-col items-center justify-center rounded-lg bg-white py-4 px-3 shadow-md shadow-gray-300/25 outline-dashed outline-1 outline-gray-300 transition duration-75 hover:cursor-pointer hover:bg-gray-200 dark:bg-zinc-900 dark:shadow-black/20 dark:outline-gray-700 dark:hover:bg-zinc-800 ">
             <PlusCircleIcon className="text-primary-600 dark:text-primary-300 mb-2 h-6 w-6" />
             <p className="text-base text-gray-600 dark:text-gray-300">
               Create new team
