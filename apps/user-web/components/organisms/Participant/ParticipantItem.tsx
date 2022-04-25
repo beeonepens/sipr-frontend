@@ -3,7 +3,7 @@ import placeholderAvatar from '../../../public/uploads/avatar-man.png';
 
 export default function ParticipantItem() {
   return (
-    <figure className="relative h-auto w-full rounded-lg outline outline-1 outline-gray-300 hover:cursor-pointer dark:outline-zinc-700">
+    <figure className="relative h-auto w-full rounded-lg shadow-md shadow-gray-300/25 outline outline-1 outline-gray-300 hover:cursor-pointer dark:shadow-black/20 dark:outline-zinc-700">
       <Image
         className="block rounded-lg "
         src={placeholderAvatar}

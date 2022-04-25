@@ -39,7 +39,7 @@ export const EVENTS = [
   },
   {
     id: 1,
-    title: 'Kuliiah Pemrograman Framework',
+    title: 'Kuliah Pemrograman Framework',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aliquam dignissimos aliquid similique alias quibusdam molestias consequuntur quae impedit repellendus. Aut odio itaque nam ab beatae necessitatibus harum.',
     allDay: false,

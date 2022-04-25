@@ -11,7 +11,7 @@ export default function Header() {
 
   // console.log({ pathname: pathname.split('/') });
   return (
-    <header className="sticky top-0 z-10 flex flex-row items-center justify-between gap-4 border-b border-gray-300 bg-white bg-opacity-75 py-5 px-4 text-xl font-semibold text-blue-800 backdrop-blur-lg backdrop-filter dark:border-gray-700 dark:bg-zinc-800 dark:text-gray-100 md:px-8 lg:py-3 ">
+    <header className="sticky top-0 z-10 flex flex-row items-center justify-between gap-4 border-b border-gray-300 bg-white bg-opacity-75 py-5 px-4 text-xl font-semibold text-blue-800 backdrop-blur-lg backdrop-filter dark:border-zinc-700 dark:bg-zinc-800 dark:text-gray-100 md:px-8 lg:py-3 ">
       <h4 className="capitalize">{pathname.split('/')[1]}</h4>
 
       <div className="flex flex-row items-center justify-end gap-4">
