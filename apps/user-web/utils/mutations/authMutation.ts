@@ -23,3 +23,11 @@ export const registerMutation = async (user: RegisterInput) => {
 
   return data;
 };
+
+export const logoutMutation = async () => {
+  const { data } = await axios.post(`${API_URL}/api/auth/logout`, null, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  });
+
+  return data;
+};
