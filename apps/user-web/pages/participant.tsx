@@ -1,9 +1,9 @@
 import Head from 'next/head';
+import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import ParticipantItem from '@components/organisms/Participant/ParticipantItem';
 import ParticipantSubHeader from '@components/organisms/Participant/ParticipantSubHeader';
 import { PlusCircleIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
 
 const partcipants = [1, 2, 3, 4, 5];
 
