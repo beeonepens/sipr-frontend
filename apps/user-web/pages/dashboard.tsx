@@ -31,7 +31,7 @@ export default function Dashboard() {
               </h2>
             </div>
 
-            <TodayMeeting events={[EVENTS[0], EVENTS[1]]} />
+            <TodayMeeting events={[]} />
           </section>
         </div>
 
