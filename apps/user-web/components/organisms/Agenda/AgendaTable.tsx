@@ -1,7 +1,8 @@
 import format from 'date-fns/format';
 import { EventType } from '@utils/constant';
 import clsx from 'clsx';
-import AgendaTableAction from '../../molecules/Agenda/AgendaTableAction';
+import AgendaTableAction from '@components/molecules/Agenda/AgendaTableAction';
+import ZeroAgenda from '@components/molecules/Agenda/ZeroAgenda';
 
 interface Props {
   events: EventType[];
@@ -14,6 +15,9 @@ export default function AgendaTable({
   handleSelectEvent,
   handleDeleteEvent,
 }: Props) {
+  if (events.length < 1) {
+    return <ZeroAgenda />;
+  }
   return (
     <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 shadow-md shadow-gray-300/25 dark:border-zinc-700 dark:shadow-black/20 sm:rounded-lg">
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
