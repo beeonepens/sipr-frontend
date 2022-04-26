@@ -10,7 +10,7 @@ interface Props {
   openEvent: EventType;
 }
 
-export default function MeetingDetailsModal({
+export default function DeleteMeetingModal({
   openEvent,
   isModalOpen,
   toggleModal,
@@ -31,9 +31,9 @@ export default function MeetingDetailsModal({
             >
               Delete Meeting
             </Dialog.Title>
-            <Dialog.Description className="mt-3 text-sm text-gray-700 dark:text-gray-300">
-              <p>Are you sure you want to delete this meeting?</p>
-              <p>Meeting Name : {openEvent.title}</p>
+            <Dialog.Description className="mt-3 flex flex-col text-sm text-gray-700 dark:text-gray-300">
+              <span>Are you sure you want to delete this meeting?</span>
+              <span>Meeting Name : {openEvent.title}</span>
             </Dialog.Description>
 
             <div className="mt-6 flex flex-row justify-end">
