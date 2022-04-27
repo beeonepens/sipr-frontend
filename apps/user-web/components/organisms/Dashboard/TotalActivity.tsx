@@ -9,8 +9,8 @@ export interface DataTypes {
 }
 
 const dataMock: DataTypes[] = [
-  { title: 'Unattended', value: 2, color: '#CDE3F8' },
-  { title: 'Attended', value: 12, color: '#104779' },
+  { title: 'Unattended', value: 2, color: 'secondary' },
+  { title: 'Attended', value: 12, color: 'primary' },
 ];
 
 export default function TotalActivity() {
