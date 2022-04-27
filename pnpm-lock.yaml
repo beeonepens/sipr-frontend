@@ -145,6 +145,7 @@ importers:
       react-dom: 17.0.2
       react-dropzone: ^12.0.5
       react-hook-form: ^7.29.0
+      react-minimal-pie-chart: ^8.3.0
       react-query: ^4.0.0-beta.3
       sharp: ^0.30.3
       tailwindcss: ^3.0.23
@@ -176,6 +177,7 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       react-dropzone: 12.0.5_react@17.0.2
       react-hook-form: 7.29.0_react@17.0.2
+      react-minimal-pie-chart: 8.3.0_react-dom@17.0.2+react@17.0.2
       react-query: 4.0.0-beta.3_react-dom@17.0.2+react@17.0.2
       sharp: 0.30.3
       ui: link:../../packages/ui
@@ -5424,6 +5426,16 @@ packages:
 
   /react-lifecycles-compat/3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
+    dev: false
+
+  /react-minimal-pie-chart/8.3.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-ICot74PGPrmGkaie8O+5tRZ5ivukYQ3fRN5ppvw1J01sIa5tHO9cekakyv9nXUkxKifiKn/FQu5uWHfSD39mRQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18
+      react-dom: ^16.8.0 || ^17.0.0 || ^18
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /react-onclickoutside/6.12.1_react-dom@17.0.2+react@17.0.2:
