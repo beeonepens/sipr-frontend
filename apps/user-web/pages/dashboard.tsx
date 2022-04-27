@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
@@ -7,6 +8,26 @@ import UpcomingSchedule from '@components/organisms/Dashboard/UpcomingSchedule';
 import { EVENTS } from '@utils/constant';
 
 export default function Dashboard() {
+  /** filter events with start date more than today in milisecond */
+  const upcommingEvents = useMemo(
+    () =>
+      EVENTS.filter(
+        (item) => new Date(item.start).getTime() > new Date().getTime()
+      ),
+    []
+  );
+
+  /** filter events with start date same as today */
+  const todayEvents = useMemo(
+    () =>
+      EVENTS.filter(
+        (item) =>
+          new Date(item.start).toLocaleDateString() ===
+          new Date().toLocaleDateString()
+      ),
+    []
+  );
+
   return (
     <>
       <Head>
@@ -31,7 +52,7 @@ export default function Dashboard() {
               </h2>
             </div>
 
-            <TodayMeeting events={[EVENTS[0], EVENTS[1]]} />
+            <TodayMeeting events={todayEvents} />
           </section>
         </div>
 
@@ -41,7 +62,7 @@ export default function Dashboard() {
               Upcoming Schedule
             </h3>
 
-            <UpcomingSchedule events={EVENTS} />
+            <UpcomingSchedule events={upcommingEvents.slice(0, 3)} />
           </section>
         </div>
       </motion.article>
