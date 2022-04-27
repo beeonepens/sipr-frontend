@@ -70,7 +70,13 @@ export default function Dashboard() {
           </section>
 
           {/* total activity section */}
-          <TotalActivity />
+          <section className="col-span-1 flex h-full w-full flex-col gap-4 lg:col-span-2">
+            <h3 className="text-primary-700 dark:text-primary-300 text-2xl font-bold">
+              Total Activity
+            </h3>
+
+            <TotalActivity />
+          </section>
         </div>
       </motion.article>
     </>
