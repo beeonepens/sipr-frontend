@@ -5,6 +5,7 @@ import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
 import SmallCalendar from '@components/organisms/Dashboard/SmallCalendar';
 import TodayMeeting from '@components/organisms/Dashboard/TodayMeeting';
 import UpcomingSchedule from '@components/organisms/Dashboard/UpcomingSchedule';
+import TotalActivity from '@components/organisms/Dashboard/TotalActivity';
 import { EVENTS } from '@utils/constant';
 
 export default function Dashboard() {
@@ -40,11 +41,13 @@ export default function Dashboard() {
         className="py-4 px-4 md:px-8"
       >
         <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-10">
+          {/* small calendar section */}
           <section className="col-span-1 flex flex-col gap-4 md:gap-6">
             <NewMeeting />
             <SmallCalendar />
           </section>
 
+          {/* today's meetiing section */}
           <section className="col-span-1 flex flex-col gap-4 md:gap-6 lg:col-span-2">
             <div className="flex h-11 flex-row items-center">
               <h2 className="text-primary-700 dark:text-primary-300 text-3xl font-bold">
@@ -57,6 +60,7 @@ export default function Dashboard() {
         </div>
 
         <div className="mt-6 mb-6 grid grid-cols-1 items-start gap-6 md:mt-6 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-10">
+          {/* upcoming schedule section */}
           <section className="col-span-1 flex flex-col gap-4">
             <h3 className="text-primary-700 dark:text-primary-300 text-2xl font-bold">
               Upcoming Schedule
@@ -64,6 +68,9 @@ export default function Dashboard() {
 
             <UpcomingSchedule events={upcommingEvents.slice(0, 3)} />
           </section>
+
+          {/* total activity section */}
+          <TotalActivity />
         </div>
       </motion.article>
     </>
