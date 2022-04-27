@@ -43,6 +43,17 @@ function Notification() {
       }
     >
       <section className="mt-4">
+        {EVENTS.length < 1 && (
+          <div className="flex flex-col items-center justify-center gap-2 pb-3 text-center">
+            <BellIcon className="h-24 w-24 text-gray-300 dark:text-zinc-600" />
+            <h3 className="mt-2 text-base font-medium text-gray-500 dark:text-gray-300">
+              You don&apos;t have any notification!
+            </h3>
+            <p className="text-xs text-gray-500 dark:text-gray-300">
+              Your notifications will appear here.
+            </p>
+          </div>
+        )}
         {EVENTS.map(({ id, title }) => (
           <Fragment key={id}>
             <div className="flex flex-col gap-1 rounded-lg border-gray-200 p-2 py-2 hover:bg-gray-200 dark:border-gray-700 dark:hover:bg-zinc-700">

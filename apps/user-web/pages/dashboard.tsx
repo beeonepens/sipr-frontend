@@ -22,7 +22,7 @@ export default function Dashboard() {
     () =>
       EVENTS.filter(
         (item) =>
-          new Date(item.start).toLocaleDateString() >
+          new Date(item.start).toLocaleDateString() ===
           new Date().toLocaleDateString()
       ),
     []

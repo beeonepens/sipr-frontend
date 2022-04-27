@@ -24,7 +24,7 @@ export default function PopoverProvider({
           sideOffset={4}
           className={clsx(
             'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
-            'max-h-[60vh] w-80 overflow-y-auto rounded-l-lg rounded-tr-md rounded-br-lg border border-gray-300 px-4 pb-4 shadow-md shadow-gray-300/30 dark:border-zinc-700 dark:shadow-zinc-800/30 md:w-96',
+            'max-h-[60vh] min-h-[20vh] w-80 overflow-y-auto rounded-l-lg rounded-tr-md rounded-br-lg border border-gray-300 px-4 pb-4 shadow-md shadow-gray-300/30 dark:border-zinc-700 dark:shadow-zinc-800/30 md:w-96',
             'bg-gray-50 dark:bg-zinc-800'
           )}
         >
