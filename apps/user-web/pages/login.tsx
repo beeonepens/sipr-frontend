@@ -41,8 +41,11 @@ export default function Login() {
       /** action on mutation success */
       onSuccess: (result) => {
         console.log({ result });
-        localStorage.setItem('token', result.content.access_token);
-        router.push('/dashboard');
+        if (result.status === 'success') {
+          localStorage.setItem('token', result.content.access_token);
+          localStorage.setItem('uid', result.content.user_id);
+          router.push('/dashboard');
+        }
       },
     });
   };

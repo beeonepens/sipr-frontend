@@ -32,6 +32,5 @@ export function useFormatChartColor(data: DataTypes[]) {
     return x;
   }, [data, setChartColor]);
 
-  console.log({ data, chartData });
   return chartData;
 }

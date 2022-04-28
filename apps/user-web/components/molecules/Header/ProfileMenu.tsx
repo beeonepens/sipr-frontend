@@ -46,6 +46,7 @@ export default function ProfileMenu() {
       onSuccess: (result) => {
         console.log({ result });
         localStorage.removeItem('token');
+        localStorage.removeItem('uid');
         router.push('/');
       },
     });
