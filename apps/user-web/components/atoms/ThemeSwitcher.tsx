@@ -63,7 +63,7 @@ function ThemeSwitcher() {
           className={clsx(
             'inline-flex select-none justify-center rounded-md text-sm font-medium',
             'text-primary-700 bg-transparent hover:text-blue-600 dark:text-gray-100 dark:hover:text-gray-200',
-            'p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-zinc-700',
+            'p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-gray-700',
             'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
           )}
         >
@@ -86,8 +86,8 @@ function ThemeSwitcher() {
           className={clsx(
             'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
             'w-48 rounded-lg px-1.5 py-1',
-            'bg-gray-50 dark:bg-zinc-800',
-            'border border-gray-300 shadow-md shadow-gray-300/30 dark:border-zinc-700 dark:shadow-zinc-800/30'
+            'bg-gray-50 dark:bg-gray-800',
+            'border border-gray-300 shadow-md shadow-gray-300/30 dark:border-gray-700 dark:shadow-gray-800/30'
           )}
         >
           {themes.map(({ key, label, icon }) => (
@@ -95,7 +95,7 @@ function ThemeSwitcher() {
               key={`theme-${key}`}
               className={clsx(
                 'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
-                'text-gray-500 focus:bg-gray-200 dark:text-gray-400 dark:focus:bg-zinc-700'
+                'text-gray-500 focus:bg-gray-200 dark:text-gray-400 dark:focus:bg-gray-700'
               )}
               onClick={() => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

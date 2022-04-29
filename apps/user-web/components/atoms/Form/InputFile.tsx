@@ -23,10 +23,10 @@ export default function InputFile({ id, format, ...others }: Props) {
       name={id}
       {...others}
       className={clsx(
-        'block rounded-lg border bg-white dark:bg-zinc-800 dark:text-gray-300 dark:caret-zinc-500 sm:text-sm',
+        'block rounded-lg border bg-white dark:bg-gray-800 dark:text-gray-300 dark:caret-gray-500 sm:text-sm',
         errors && errors[id]
           ? 'border-red-600 focus:border-red-800 focus:ring-red-800 dark:border-red-600 dark:focus:border-red-500 dark:focus:ring-red-500'
-          : 'focus:border-primary-600 focus:ring-primary-600 dark:focus:border-primary-300 dark:focus:ring-primary-300 border-gray-300 dark:border-zinc-600'
+          : 'focus:border-primary-600 focus:ring-primary-600 dark:focus:border-primary-300 dark:focus:ring-primary-300 border-gray-300 dark:border-gray-600'
       )}
     />
   );

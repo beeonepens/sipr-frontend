@@ -15,7 +15,7 @@ export default function TodayMeeting({ events }: Props) {
   return (
     <div
       className={clsx(
-        'relative max-h-fit min-h-[322px] rounded-lg bg-white p-4 dark:bg-zinc-800 lg:max-h-[322px] lg:p-6',
+        'relative max-h-fit min-h-[322px] rounded-lg bg-white p-4 dark:bg-gray-800 lg:max-h-[322px] lg:p-6',
         'border border-gray-300 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:shadow-black/20'
       )}
     >
@@ -46,7 +46,7 @@ export default function TodayMeeting({ events }: Props) {
           <div className="absolute bottom-0 right-0 m-4 flex flex-row justify-end lg:m-6">
             <button
               type="button"
-              className="cursor-default rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800 dark:bg-zinc-700 dark:text-gray-300"
+              className="cursor-default rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300"
             >
               In less than an hour
             </button>

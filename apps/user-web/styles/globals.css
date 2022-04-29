@@ -12,7 +12,7 @@ html {
 }
 
 html[class*='dark'] {
-  @apply bg-zinc-900;
+  @apply bg-gray-900;
   scrollbar-color: #ffffffb3 transparent;
   scrollbar-width: 10px;
 }
@@ -75,7 +75,7 @@ input[type='file']::file-selector-button {
   /* border: 1px solid #d1d5db; */
   /* font-family: Arial, Helvetica, sans-serif; */
   line-height: 1.125em;
-  @apply border border-gray-300 bg-white dark:border-gray-600 dark:bg-zinc-800;
+  @apply border border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-800;
 }
 
 .react-calendar--doubleView {

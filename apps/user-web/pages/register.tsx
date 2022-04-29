@@ -61,7 +61,7 @@ export default function Register() {
         <title>Register | SIPR</title>
       </Head>
 
-      <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
+      <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-gray-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-gray-600">
         {/* back icon */}
         <LinkTo
           to="/"
@@ -73,7 +73,7 @@ export default function Register() {
           </span>
         </LinkTo>
 
-        <div className="md:[640px] w-full rounded-md bg-white py-16 px-8 dark:bg-zinc-800 md:px-12 lg:w-[800px] lg:pt-12 lg:pb-16">
+        <div className="md:[640px] w-full rounded-md bg-white py-16 px-8 dark:bg-gray-800 md:px-12 lg:w-[800px] lg:pt-12 lg:pb-16">
           {/* register title & subtitle */}
           <h2 className="text-primary-700 dark:text-primary-300 text-center text-4xl font-bold ">
             SIPR

@@ -21,13 +21,13 @@ export default function UpcomingScheduleItem({ event, empty = false }: Props) {
         className={clsx(
           'col-span-1 rounded-lg border p-3',
           empty
-            ? 'border-gray-300 dark:border-zinc-600'
+            ? 'border-gray-300 dark:border-gray-600'
             : 'border-primary-700 dark:border-gray-600'
         )}
       >
         {/* eslint-disable-next-line no-nested-ternary */}
         {empty ? (
-          <BanIcon className="h-full w-full text-gray-300 dark:text-zinc-600" />
+          <BanIcon className="h-full w-full text-gray-300 dark:text-gray-600" />
         ) : 'isOnline' in event && event?.isOnline ? (
           <DesktopComputerIcon className="text-primary-700 dark:text-primary-300 h-full w-full" />
         ) : (

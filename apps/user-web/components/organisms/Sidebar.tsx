@@ -44,7 +44,7 @@ export default function Sidebar() {
   return (
     <aside
       className={clsx(
-        'text-primary-700 fixed top-0 z-10 max-h-screen min-h-screen flex-col justify-between overflow-hidden border-r border-gray-300 bg-gray-100 py-8 px-4 duration-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-gray-100 lg:sticky',
+        'text-primary-700 fixed top-0 z-10 max-h-screen min-h-screen flex-col justify-between overflow-hidden border-r border-gray-300 bg-gray-100 py-8 px-4 duration-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 lg:sticky',
         isMini
           ? '-left-10 w-0 lg:left-0 lg:flex lg:w-60'
           : 'left-0 w-3/4 md:w-1/2 lg:flex lg:w-60'

@@ -19,9 +19,9 @@ export default function AgendaTable({
     return <ZeroAgenda />;
   }
   return (
-    <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 shadow-md shadow-gray-300/25 dark:border-zinc-700 dark:shadow-black/20 sm:rounded-lg">
+    <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 shadow-md shadow-gray-300/25 dark:border-gray-700 dark:shadow-black/20 sm:rounded-lg">
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-        <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-zinc-900 dark:text-gray-300">
+        <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-900 dark:text-gray-300">
           <tr>
             <th scope="col" className="px-6 py-3">
               Meeting name
@@ -45,9 +45,9 @@ export default function AgendaTable({
             <tr
               key={event.id}
               className={clsx(
-                'bg-white dark:bg-zinc-800',
+                'bg-white dark:bg-gray-800',
                 events[events.length - 1].id !== event.id &&
-                  'border-b dark:border-zinc-700'
+                  'border-b dark:border-gray-700'
               )}
             >
               <th

@@ -12,7 +12,7 @@ export default function MeetingAttended({ data }: Props) {
   const chartData = useFormatChartColor(data);
 
   return (
-    <div className="col-span-1 flex h-full flex-col items-center justify-between gap-4 rounded-lg border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-zinc-800 dark:shadow-black/20">
+    <div className="col-span-1 flex h-full flex-col items-center justify-between gap-4 rounded-lg border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-gray-800 dark:shadow-black/20">
       <h5 className="text-center font-semibold">Meeting Attended</h5>
       <div className="px-10 py-6 xl:py-0">
         <PieChart

@@ -10,7 +10,7 @@ interface Props {
 
 export default function UpcomingSchedule({ events }: Props) {
   return (
-    <div className="flex h-[332px] flex-col items-center justify-between gap-6 rounded-lg border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-zinc-800 dark:shadow-black/20">
+    <div className="flex h-[332px] flex-col items-center justify-between gap-6 rounded-lg border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-gray-800 dark:shadow-black/20">
       <div className="grid grid-cols-1 justify-center gap-4">
         {/** check if there's any meeting or not */}
         {/* eslint-disable-next-line no-nested-ternary */}

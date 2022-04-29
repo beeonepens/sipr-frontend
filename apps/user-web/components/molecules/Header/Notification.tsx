@@ -15,7 +15,7 @@ function Notification() {
         <button
           type="button"
           className={clsx(
-            'rounded-md p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-zinc-700',
+            'rounded-md p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-gray-700',
             'text-primary-700 hover:text-blue-600 dark:text-gray-100 dark:hover:text-gray-200',
             'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
           )}
@@ -33,7 +33,7 @@ function Notification() {
         <button
           type="button"
           className={clsx(
-            'rounded-md p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-zinc-700',
+            'rounded-md p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-gray-700',
             'text-primary-700 hover:text-blue-600 dark:text-gray-100 dark:hover:text-gray-200',
             'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
           )}
@@ -45,7 +45,7 @@ function Notification() {
       <section className="mt-4">
         {EVENTS.length < 1 && (
           <div className="flex flex-col items-center justify-center gap-2 pb-3 text-center">
-            <BellIcon className="h-24 w-24 text-gray-300 dark:text-zinc-600" />
+            <BellIcon className="h-24 w-24 text-gray-300 dark:text-gray-600" />
             <h3 className="mt-2 text-base font-medium text-gray-500 dark:text-gray-300">
               You don&apos;t have any notification!
             </h3>
@@ -56,7 +56,7 @@ function Notification() {
         )}
         {EVENTS.map(({ id, title }) => (
           <Fragment key={id}>
-            <div className="flex flex-col gap-1 rounded-lg border-gray-200 p-2 py-2 hover:bg-gray-200 dark:border-gray-700 dark:hover:bg-zinc-700">
+            <div className="flex flex-col gap-1 rounded-lg border-gray-200 p-2 py-2 hover:bg-gray-200 dark:border-gray-700 dark:hover:bg-gray-700">
               <h4 className="text-sm font-semibold text-gray-800 hover:text-gray-700 dark:text-gray-300">
                 {title}
               </h4>

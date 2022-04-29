@@ -7,7 +7,7 @@ interface Props {
 
 export default function UserInfoView({ toggleEditing }: Props) {
   return (
-    <section className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-zinc-800 dark:shadow-black/20 lg:w-3/5">
+    <section className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-gray-800 dark:shadow-black/20 lg:w-3/5">
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <div className="flex flex-col justify-start">
           <p className="text-sm font-semibold uppercase">Full Name</p>

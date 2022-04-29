@@ -106,7 +106,7 @@ export default function CreateMeetingModal({
 
   return (
     <ModalProvider isModalOpen={isModalOpen} onClose={handleCloseModal}>
-      <section className="m-0 inline-block h-screen w-full max-w-4xl transform overflow-hidden rounded-none bg-white py-14 px-6 text-left align-middle shadow-md transition-all dark:bg-zinc-800 md:my-8 md:mx-2 md:h-auto md:rounded-xl md:py-8 md:px-6">
+      <section className="m-0 inline-block h-screen w-full max-w-4xl transform overflow-hidden rounded-none bg-white py-14 px-6 text-left align-middle shadow-md transition-all dark:bg-gray-800 md:my-8 md:mx-2 md:h-auto md:rounded-xl md:py-8 md:px-6">
         <XIcon
           className="absolute right-0 top-0 mr-5 mt-5 h-5 w-5 cursor-pointer text-gray-500 dark:text-gray-300"
           onClick={toggleModal}

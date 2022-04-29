@@ -24,15 +24,15 @@ export default function PopoverProvider({
           sideOffset={4}
           className={clsx(
             'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
-            'max-h-[60vh] min-h-[20vh] w-80 overflow-y-auto rounded-l-lg rounded-tr-md rounded-br-lg border border-gray-300 px-4 pb-4 shadow-md shadow-gray-300/30 dark:border-zinc-700 dark:shadow-zinc-800/30 md:w-96',
-            'bg-gray-50 dark:bg-zinc-800'
+            'max-h-[60vh] min-h-[20vh] w-80 overflow-y-auto rounded-l-lg rounded-tr-md rounded-br-lg border border-gray-300 px-4 pb-4 shadow-md shadow-gray-300/30 dark:border-gray-700 dark:shadow-gray-800/30 md:w-96',
+            'bg-gray-50 dark:bg-gray-800'
           )}
         >
           {arrow && (
             <PopoverPrimitive.Arrow className="fill-current text-gray-300 dark:text-gray-800" />
           )}
 
-          <div className="tems-center sticky top-0 flex flex-row justify-between border-b border-gray-200 bg-gray-50 pb-2 pt-4 text-gray-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-gray-400">
+          <div className="tems-center sticky top-0 flex flex-row justify-between border-b border-gray-200 bg-gray-50 pb-2 pt-4 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
             <h3 className="text-primary-700 text-sm font-medium dark:text-gray-100">
               {title}
             </h3>
