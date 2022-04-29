@@ -3,11 +3,11 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
 import DeleteMeetingModal from '@components/molecules/Agenda/DeleteMeetingModal';
-import { EVENTS, EventType } from '@utils/constant';
+import { EventType } from '@utils/constant';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 import AgendaTable from '@components/organisms/Agenda/AgendaTable';
-
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useQuery } from 'react-query';
+import { getAllMeeting } from '@utils/queries/meetQuery';
 import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
 import { Button } from 'ui';
 import { FilterIcon, PlusIcon } from '@heroicons/react/outline';
@@ -18,6 +18,8 @@ export default function Agenda() {
   const [isDetailModalOpen, setIsDetailModalOpen] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
   const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
+
+  const meetings = useQuery(['meetings'], getAllMeeting);
 
   function toggleNewModal() {
     setIsNewModalOpen((prevState) => !prevState);
@@ -75,11 +77,14 @@ export default function Agenda() {
           <Search placeholder="Search meeting name" />
         </div>
 
-        <AgendaTable
-          events={EVENTS}
-          handleDeleteEvent={handleDeleteEvent}
-          handleSelectEvent={handleSelectEvent}
-        />
+        {meetings.isLoading && <p>Loading...</p>}
+        {meetings.isSuccess && (
+          <AgendaTable
+            events={meetings.data.data}
+            handleDeleteEvent={handleDeleteEvent}
+            handleSelectEvent={handleSelectEvent}
+          />
+        )}
       </motion.article>
 
       <CreateMeetingModal

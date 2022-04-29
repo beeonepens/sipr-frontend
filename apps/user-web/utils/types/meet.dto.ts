@@ -21,3 +21,8 @@ export interface NewMeetingResponse {
   };
   message: string;
 }
+
+export interface GetAllMeetingRes {
+  data: Meet[];
+  message: string;
+}

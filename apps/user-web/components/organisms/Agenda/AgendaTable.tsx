@@ -1,13 +1,13 @@
 import format from 'date-fns/format';
-import { EventType } from '@utils/constant';
 import clsx from 'clsx';
 import AgendaTableAction from '@components/molecules/Agenda/AgendaTableAction';
 import ZeroAgenda from '@components/molecules/Agenda/ZeroAgenda';
+import { Meet } from '@utils/types/meet.dto';
 
 interface Props {
-  events: EventType[];
-  handleSelectEvent: (e: EventType) => void;
-  handleDeleteEvent: (e: EventType) => void;
+  events: Meet[];
+  handleSelectEvent: (e: Meet) => void;
+  handleDeleteEvent: (e: Meet) => void;
 }
 
 export default function AgendaTable({
@@ -43,10 +43,10 @@ export default function AgendaTable({
         <tbody>
           {events.map((event) => (
             <tr
-              key={event.id}
+              key={event.id_meet}
               className={clsx(
                 'bg-white dark:bg-gray-800',
-                events[events.length - 1].id !== event.id &&
+                events[events.length - 1].id_meet !== event.id_meet &&
                   'border-b dark:border-gray-700'
               )}
             >
@@ -54,15 +54,22 @@ export default function AgendaTable({
                 scope="row"
                 className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
               >
-                {event.title}
+                {event.name_meeting}
               </th>
               <td className="px-6 py-4">
-                {`${format(event.start, 'eeee, d MMM yyyy')}`}
+                {/* {`${format(event.start, 'eeee, d MMM yyyy')}`} */}
+                {`${format(new Date(), 'eeee, d MMM yyyy')}`}
               </td>
-              <td className="px-6 py-4">{`${format(event.start, 'HH:mm')} - 
-                ${format(event.end, 'HH:mm')}`}</td>
               <td className="px-6 py-4">
-                {event.isOnline ? 'On-line' : 'Off-line'}
+                {/* {`${format(event.start, 'HH:mm')} - 
+                ${format(event.end, 'HH:mm')}`} */}
+                {`${format(new Date(), 'HH:mm')} - ${format(
+                  new Date(),
+                  'HH:mm'
+                )}`}
+              </td>
+              <td className="px-6 py-4">
+                {event.isOnline ? 'Online' : 'Offline'}
               </td>
 
               <AgendaTableAction
