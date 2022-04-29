@@ -7,7 +7,14 @@ import { Button } from 'ui';
 import { XIcon } from '@heroicons/react/outline';
 import { MeetingStatusOptions } from '@utils/constant';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
+import { useMutation } from 'react-query';
 import { NewMeetingInput, NewMeetingSchema } from '@utils/validations';
+import { AxiosError } from 'axios';
+import { NewMeetingResponse } from '@utils/types/meet.dto';
+import { createMeeting } from '@utils/mutations/meetMutation';
+import { createRoom } from '@utils/mutations/roomMutatin';
+import { NewRoomResponse } from '@utils/types/room.dto';
+import { NewRoomInput } from '@utils/validations/newRoomVal';
 import FormControl from '../Form/FormControl';
 import FormAreaControl from '../Form/FormAreaControl';
 import FormDateTimeControl from '../Form/FormDateTimeControl';
@@ -27,13 +34,65 @@ export default function CreateMeetingModal({
     resolver: zodResolver(NewMeetingSchema),
     defaultValues: {
       isOnline: true,
+      limit: 1,
+      date_start: new Date(),
+      date_end: new Date(),
     },
   });
+
+  /** hooks for create meeting mutation */
+  const meetingMutation = useMutation<
+    NewMeetingResponse,
+    AxiosError,
+    NewMeetingInput
+  >(createMeeting);
+
+  /** hooks for create room mutation */
+  const roomMutatioin = useMutation<NewRoomResponse, AxiosError, NewRoomInput>(
+    createRoom
+  );
 
   /** function that run on form-submit */
   const onSubmit: SubmitHandler<NewMeetingInput> = (data) => {
     console.log(data);
-    toggleModal();
+
+    const newRoomData = {
+      name_room: data.location,
+      description: data.location,
+      isBooked: true,
+      isOnline: data.isOnline,
+    };
+
+    /** create room mutation */
+    console.log('create room');
+    roomMutatioin.mutate(newRoomData, {
+      onError: ({ message, response }) => {
+        console.log({ message, response });
+      },
+      onSuccess: ({ data: room, message }) => {
+        console.log({ room, message });
+        /** if room mutation success, run meeting mutation */
+        if (message === 'Succes') {
+          console.log('create meeting');
+          meetingMutation.mutate(
+            { ...data, location: String(room[0].id_room) },
+            {
+              // eslint-disable-next-line no-shadow
+              onError: ({ message, response }) => {
+                console.log({ message, response });
+              },
+              // eslint-disable-next-line no-shadow
+              onSuccess: ({ data: meet, message }) => {
+                if (message === 'Succesfull') {
+                  console.log({ meet, message });
+                  toggleModal();
+                }
+              },
+            }
+          );
+        }
+      },
+    });
   };
 
   /** function that run to close modal */
@@ -82,9 +141,14 @@ export default function CreateMeetingModal({
                 <FormDateTimeControl
                   withTime
                   label="Start Time"
-                  id="startDate"
+                  id="date_start"
                 />
-                <FormDateTimeControl withTime label="End Time" id="endDate" />
+                <FormDateTimeControl
+                  withTime
+                  minDate={methods.watch('date_start')}
+                  label="End Time"
+                  id="date_end"
+                />
               </div>
 
               <div className="grid h-fit grid-cols-1 gap-3">

@@ -18,6 +18,7 @@ interface Props {
   timeFormat?: 'HH:mm';
   withTime?: boolean;
   defaultValue?: Date;
+  minDate?: Date;
 }
 
 export default function DateTimePicker({
@@ -29,6 +30,7 @@ export default function DateTimePicker({
   timeFormat = 'HH:mm',
   withTime = false,
   defaultValue,
+  minDate,
 }: Props) {
   const {
     control,
@@ -46,6 +48,7 @@ export default function DateTimePicker({
             name={id}
             onBlur={onBlur}
             onChange={onChange}
+            minDate={minDate}
             selected={value}
             className={clsx(
               // eslint-disable-next-line no-nested-ternary

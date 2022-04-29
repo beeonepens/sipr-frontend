@@ -4,9 +4,10 @@ import * as z from 'zod';
 export const NewMeetingSchema = z.object({
   name: z.string().min(1, { message: 'Required' }),
   description: z.string().optional(),
-  startDate: z.date(),
-  endDate: z.date(),
+  date_start: z.date(),
+  date_end: z.date(),
   isOnline: z.boolean().optional(),
+  limit: z.number().positive().optional(),
   location: z.string().min(1, { message: 'Required' }),
 });
 
