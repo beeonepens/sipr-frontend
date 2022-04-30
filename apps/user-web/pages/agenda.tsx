@@ -8,11 +8,12 @@ import { EventType } from '@utils/constant';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 import AgendaTable from '@components/organisms/Agenda/AgendaTable';
 import { useQuery } from 'react-query';
-import { getAllMeeting } from '@utils/queries/meetQuery';
 import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
 import { Button } from 'ui';
 import { FilterIcon, PlusIcon } from '@heroicons/react/outline';
 import Search from '@components/molecules/Search';
+import { getDateTimeByUid, getMeetingByUid } from '@utils/queries/meetQuery';
+import { formatToMs } from '@utils/formatDateTime';
 
 export default function Agenda() {
   const [isNewModalOpen, setIsNewModalOpen] = React.useState(false);
@@ -20,7 +21,32 @@ export default function Agenda() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
   const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
 
-  const meetings = useQuery(['meetings'], getAllMeeting);
+  const meetings = useQuery(
+    ['meetings', typeof window !== 'undefined' && localStorage.getItem('uid')],
+    getMeetingByUid
+  );
+  const datetimes = useQuery(
+    ['datetimes', typeof window !== 'undefined' && localStorage.getItem('uid')],
+    getDateTimeByUid
+  );
+
+  const meetingList = React.useMemo(() => {
+    /** if meetings & datetime data not found, return empty array */
+    if (!meetings.data || !datetimes.data) return [];
+
+    return (
+      datetimes.data
+        /** combine datetime & meeting detail data */
+        .map((dt) => ({
+          ...dt,
+          ...meetings.data.find((meet) => meet.id_meet === dt.id_meet),
+        }))
+        /** sort by the nearest time */
+        .sort(
+          (a, b) => formatToMs(a.start_datetime) - formatToMs(b.start_datetime)
+        )
+    );
+  }, [meetings.data, datetimes.data]);
 
   function toggleNewModal() {
     setIsNewModalOpen((prevState) => !prevState);
@@ -85,7 +111,7 @@ export default function Agenda() {
         )}
         {meetings.isSuccess && (
           <AgendaTable
-            events={meetings.data.data || []}
+            events={meetingList}
             handleDeleteEvent={handleDeleteEvent}
             handleSelectEvent={handleSelectEvent}
           />

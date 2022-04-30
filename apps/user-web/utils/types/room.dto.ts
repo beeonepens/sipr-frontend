@@ -13,3 +13,8 @@ export interface NewRoomResponse {
   data: Room[];
   message: string;
 }
+
+export interface GetAllRoomRes {
+  data: Room[];
+  message: string;
+}

@@ -1,4 +1,5 @@
 export interface Datetime {
+  id_meet: number;
   start_datetime: string;
   end_datetime: string;
 }
@@ -14,6 +15,8 @@ export interface Meet {
   user_id: string;
 }
 
+export interface MeetWithDate extends Meet, Datetime {}
+
 export interface NewMeetingResponse {
   data: {
     meet: Meet[];
@@ -23,6 +26,9 @@ export interface NewMeetingResponse {
 }
 
 export interface GetAllMeetingRes {
-  data: Meet[];
+  data: {
+    meet: Meet[];
+    datetime: Datetime[];
+  };
   message: string;
 }

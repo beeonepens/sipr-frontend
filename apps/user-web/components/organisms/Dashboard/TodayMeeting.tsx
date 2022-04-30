@@ -1,17 +1,21 @@
 import { useState } from 'react';
+import clsx from 'clsx';
 import MeetingInfo from '@components/molecules/Meeting/MeetingInfo';
 import MeetingNavigation from '@components/molecules/Meeting/MeetingNavigation';
-import { EventType } from '@utils/constant';
 import ZeroTodayMeeting from '@components/molecules/Dashboard/ZeroTodayMeeting';
-import clsx from 'clsx';
+import { MeetWithDate } from '@utils/types/meet.dto';
+import { useQuery } from 'react-query';
+import { getAllRoom } from '@utils/queries/roomQuery';
 
 interface Props {
-  events: EventType[];
+  events: MeetWithDate[];
 }
 
 export default function TodayMeeting({ events }: Props) {
   const [itemIndex, setItemIndex] = useState(0);
+  const rooms = useQuery(['rooms'], getAllRoom);
 
+  console.log({ rooms: rooms.data, events });
   return (
     <div
       className={clsx(
@@ -32,7 +36,7 @@ export default function TodayMeeting({ events }: Props) {
           )}
 
           <h2 className="text-primary-800 line-clamp-2 mb-3 mr-0 text-2xl font-semibold dark:text-gray-100 lg:mr-20">
-            {events[itemIndex].title}
+            {events[itemIndex].name_meeting}
           </h2>
 
           <div className="mr-0 mb-6 lg:mr-16">

@@ -1,11 +1,11 @@
 import { PencilIcon, TrashIcon } from '@heroicons/react/outline';
 import TooltipProvider from '@components/atoms/Tooltip/TooltipProvider';
-import { Meet } from '@utils/types/meet.dto';
+import { MeetWithDate } from '@utils/types/meet.dto';
 
 interface Props {
-  event: Meet;
-  handleSelectEvent: (e: Meet) => void;
-  handleDeleteEvent: (e: Meet) => void;
+  event: MeetWithDate;
+  handleSelectEvent: (e: MeetWithDate) => void;
+  handleDeleteEvent: (e: MeetWithDate) => void;
 }
 
 export default function AgendaTableAction({

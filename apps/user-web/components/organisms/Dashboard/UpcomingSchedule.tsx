@@ -1,11 +1,11 @@
 import LinkTo from '@components/atoms/LinkTo';
 import UpcomingScheduleItem from '@components/molecules/Dashboard/UpcomingScheduleItem';
 import ZeroUpcomingMeeting from '@components/molecules/Dashboard/ZeroUpcomingMeeting';
-import { EventType } from '@utils/constant';
+import { MeetWithDate } from '@utils/types/meet.dto';
 import { Button } from 'ui';
 
 interface Props {
-  events: EventType[];
+  events: MeetWithDate[];
 }
 
 export default function UpcomingSchedule({ events }: Props) {
@@ -19,7 +19,7 @@ export default function UpcomingSchedule({ events }: Props) {
           events.length < 3 ? (
             <>
               {events.map((item) => (
-                <UpcomingScheduleItem event={item} key={item.id} />
+                <UpcomingScheduleItem event={item} key={item.id_meet} />
               ))}
               {[...Array(3 - events.length)].map((_val, i) => (
                 // eslint-disable-next-line react/no-array-index-key
@@ -28,7 +28,7 @@ export default function UpcomingSchedule({ events }: Props) {
             </>
           ) : (
             events.map((item) => (
-              <UpcomingScheduleItem event={item} key={item.id} />
+              <UpcomingScheduleItem event={item} key={item.id_meet} />
             ))
           )
         ) : (

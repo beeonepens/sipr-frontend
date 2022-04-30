@@ -3,19 +3,19 @@ import {
   DesktopComputerIcon,
   UserGroupIcon,
 } from '@heroicons/react/outline';
-import { EventType } from '@utils/constant';
 import clsx from 'clsx';
-import { format } from 'date-fns';
+import { formatMeetDateTime } from '@utils/formatDateTime';
+import { MeetWithDate } from '@utils/types/meet.dto';
 
 interface Props {
-  event?: EventType;
+  event?: MeetWithDate;
   empty?: boolean;
 }
 
 export default function UpcomingScheduleItem({ event, empty = false }: Props) {
   console.log({ empty });
   return (
-    <div key={event?.id} className="grid grid-cols-5 items-center gap-3">
+    <div key={event?.id_meet} className="grid grid-cols-5 items-center gap-3">
       {/* meeting status icon */}
       <div
         className={clsx(
@@ -38,14 +38,13 @@ export default function UpcomingScheduleItem({ event, empty = false }: Props) {
       {/* meeting info icon */}
       <div className="col-span-4 flex flex-col">
         <p className="line-clamp-1 font-medium text-gray-700 dark:text-gray-200">
-          {event?.title || ''}
+          {event?.name_meeting || ''}
         </p>
         <span className="line-clamp-1 text-sm text-gray-500 dark:text-gray-400">
           {/* {event?.isOnline ? event?.link : event?.location || ''} */}
           {!event
             ? ''
-            : `${format(event?.start, 'd MMM yyyy')}, 
-          ${format(event?.start, 'HH:mm')} - ${format(event?.end, 'HH:mm')}`}
+            : formatMeetDateTime(event?.start_datetime, event?.end_datetime)}
         </span>
       </div>
     </div>

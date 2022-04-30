@@ -1,20 +1,17 @@
-import format from 'date-fns/format';
 import clsx from 'clsx';
+import { memo } from 'react';
 import AgendaTableAction from '@components/molecules/Agenda/AgendaTableAction';
 import ZeroAgenda from '@components/molecules/Agenda/ZeroAgenda';
-import { Meet } from '@utils/types/meet.dto';
+import { formatDateWithDay, formatMeetTime } from '@utils/formatDateTime';
+import { MeetWithDate } from '@utils/types/meet.dto';
 
 interface Props {
-  events: Meet[];
-  handleSelectEvent: (e: Meet) => void;
-  handleDeleteEvent: (e: Meet) => void;
+  events: MeetWithDate[];
+  handleSelectEvent: (e: MeetWithDate) => void;
+  handleDeleteEvent: (e: MeetWithDate) => void;
 }
 
-export default function AgendaTable({
-  events,
-  handleSelectEvent,
-  handleDeleteEvent,
-}: Props) {
+function AgendaTable({ events, handleSelectEvent, handleDeleteEvent }: Props) {
   if (events.length < 1) {
     return <ZeroAgenda />;
   }
@@ -57,16 +54,10 @@ export default function AgendaTable({
                 {event.name_meeting}
               </th>
               <td className="px-6 py-4">
-                {/* {`${format(event.start, 'eeee, d MMM yyyy')}`} */}
-                {`${format(new Date(), 'eeee, d MMM yyyy')}`}
+                {formatDateWithDay(event.start_datetime)}
               </td>
               <td className="px-6 py-4">
-                {/* {`${format(event.start, 'HH:mm')} - 
-                ${format(event.end, 'HH:mm')}`} */}
-                {`${format(new Date(), 'HH:mm')} - ${format(
-                  new Date(),
-                  'HH:mm'
-                )}`}
+                {formatMeetTime(event.start_datetime, event.end_datetime)}
               </td>
               <td className="px-6 py-4">
                 {event.isOnline ? 'Online' : 'Offline'}
@@ -84,3 +75,5 @@ export default function AgendaTable({
     </div>
   );
 }
+
+export default memo(AgendaTable);
