@@ -40,7 +40,7 @@ export default function DateTimePicker({
   return (
     <Controller
       control={control}
-      defaultValue={defaultValue || new Date()}
+      defaultValue={minDate || defaultValue || new Date()}
       name={id}
       render={({ field: { onChange, onBlur, value } }) => (
         <div className="relative">

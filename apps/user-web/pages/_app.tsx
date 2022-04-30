@@ -7,6 +7,7 @@ import Sidebar from '@components/organisms/Sidebar';
 import Header from '@components/organisms/Header';
 
 import type { AppProps } from 'next/app';
+import 'react-loading-skeleton/dist/skeleton.css';
 import '../styles/globals.css';
 import '../styles/rbc.css';
 import '../styles/rdp.css';

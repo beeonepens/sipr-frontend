@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import Skeleton from 'react-loading-skeleton';
 import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
 import DeleteMeetingModal from '@components/molecules/Agenda/DeleteMeetingModal';
 import { EventType } from '@utils/constant';
@@ -77,10 +78,14 @@ export default function Agenda() {
           <Search placeholder="Search meeting name" />
         </div>
 
-        {meetings.isLoading && <p>Loading...</p>}
+        {meetings.isLoading && (
+          <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20 sm:rounded-lg">
+            <Skeleton count={8} />
+          </div>
+        )}
         {meetings.isSuccess && (
           <AgendaTable
-            events={meetings.data.data}
+            events={meetings.data.data || []}
             handleDeleteEvent={handleDeleteEvent}
             handleSelectEvent={handleSelectEvent}
           />
