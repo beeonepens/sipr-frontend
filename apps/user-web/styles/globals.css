@@ -65,6 +65,31 @@ input[type='file']::file-selector-button {
 @tailwind utilities;
 
 /* ------------------------------------------------------------------------------------------------ */
+/* react select */
+/* .react-select__control {
+  border-radius: 8px !important;
+  background: #fff;
+  @apply border-red-300;
+}
+
+.react-select__control:focus {
+  @apply border-primary-600;
+}
+
+.react-select__control {
+  border-radius: 8px !important;
+  background: #fff;
+} */
+
+html[class*='dark'] {
+  .react-select__control {
+    border-radius: 8px !important;
+    background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+    border-color: rgb(82 82 82 / var(--tw-border-opacity));
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
 /* react calendar */
 .react-calendar {
   border-radius: 8px;

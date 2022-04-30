@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { differenceInHours, differenceInMinutes, format } from 'date-fns';
 
 /** result: 1 April 2022 */
 export const formatDate = (date: string) =>
@@ -27,3 +27,29 @@ export const formatMeetDateTime = (startDate: string, endDate: string) =>
 
 /** result: 891723912548 */
 export const formatToMs = (date: string) => new Date(date).getTime();
+
+/** result: 45 minutes or 3 Hours */
+export const getTimeDifference = (
+  startDate: string,
+  endDate: null | string = null
+) => {
+  if (differenceInMinutes(new Date(startDate), new Date()) < 60) {
+    if (endDate)
+      return (
+        // eslint-disable-next-line prefer-template
+        differenceInMinutes(new Date(startDate), new Date(endDate)) + ' Minutes'
+      );
+
+    // eslint-disable-next-line prefer-template
+    return differenceInMinutes(new Date(startDate), new Date()) + ' Minutes';
+  }
+
+  if (endDate)
+    return (
+      // eslint-disable-next-line prefer-template
+      differenceInHours(new Date(startDate), new Date(endDate)) + ' Hours'
+    );
+
+  // eslint-disable-next-line prefer-template
+  return differenceInHours(new Date(startDate), new Date()) + ' Hours';
+};

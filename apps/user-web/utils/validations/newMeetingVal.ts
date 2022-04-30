@@ -6,9 +6,16 @@ export const NewMeetingSchema = z.object({
   description: z.string().optional(),
   date_start: z.date(),
   date_end: z.date(),
-  isOnline: z.boolean().optional(),
+  isOnline: z.string(),
   limit: z.number().positive().optional(),
-  location: z.string().min(1, { message: 'Required' }),
+  room_id: z.number().optional(),
+  onlineLink: z.string().optional(),
+  offlineLoc: z
+    .object({
+      value: z.number(),
+      label: z.string(),
+    })
+    .optional(),
 });
 
 /** TS types for the input form */

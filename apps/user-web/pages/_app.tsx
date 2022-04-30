@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 // import { useProtectedRoute } from '@utils/hooks/useProtectedRoute';
 import { isPublicUrl } from '@utils/constant';
 import Sidebar from '@components/organisms/Sidebar';
@@ -36,6 +37,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </main>
       </div>
+
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

@@ -6,6 +6,7 @@ import ZeroTodayMeeting from '@components/molecules/Dashboard/ZeroTodayMeeting';
 import { MeetWithDate } from '@utils/types/meet.dto';
 import { useQuery } from 'react-query';
 import { getAllRoom } from '@utils/queries/roomQuery';
+import { getTimeDifference } from '@utils/formatDateTime';
 
 interface Props {
   events: MeetWithDate[];
@@ -15,7 +16,6 @@ export default function TodayMeeting({ events }: Props) {
   const [itemIndex, setItemIndex] = useState(0);
   const rooms = useQuery(['rooms'], getAllRoom);
 
-  console.log({ rooms: rooms.data, events });
   return (
     <div
       className={clsx(
@@ -45,14 +45,18 @@ export default function TodayMeeting({ events }: Props) {
             </p>
           </div>
 
-          <MeetingInfo event={events[itemIndex]} />
+          <MeetingInfo
+            rooms={rooms.data ? rooms.data.data : []}
+            event={events[itemIndex]}
+          />
 
           <div className="absolute bottom-0 right-0 m-4 flex flex-row justify-end lg:m-6">
             <button
               type="button"
               className="cursor-default rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300"
             >
-              In less than an hour
+              {'Start in '}
+              {getTimeDifference(events[itemIndex].start_datetime)}
             </button>
           </div>
         </>

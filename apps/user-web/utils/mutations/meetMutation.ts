@@ -10,8 +10,8 @@ export const createMeeting = async (meet: NewMeetingInput) => {
     `${API_URL}/api/meet/store`,
     {
       ...meet,
-      room_id: Number(meet.location),
-      isOnline: meet.isOnline ? 1 : 0,
+      room_id: meet.room_id,
+      isOnline: meet.isOnline === 'online' ? 1 : 0,
       date_start: [format(meet.date_start, 'yyyy-MM-dd:HH:mm')],
       date_end: [format(meet.date_end, 'yyyy-MM-dd:HH:mm')],
       user_id: String(localStorage.getItem('uid')),

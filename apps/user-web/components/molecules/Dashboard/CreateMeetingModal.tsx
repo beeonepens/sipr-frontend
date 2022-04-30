@@ -1,5 +1,6 @@
 import type { SubmitHandler } from 'react-hook-form';
 
+import { useMemo, memo } from 'react';
 import { Dialog } from '@headlessui/react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -7,33 +8,33 @@ import { Button } from 'ui';
 import { XIcon } from '@heroicons/react/outline';
 import { MeetingStatusOptions } from '@utils/constant';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import { NewMeetingInput, NewMeetingSchema } from '@utils/validations';
 import { AxiosError } from 'axios';
 import { NewMeetingResponse } from '@utils/types/meet.dto';
 import { createMeeting } from '@utils/mutations/meetMutation';
 import { createRoom } from '@utils/mutations/roomMutatin';
-import { NewRoomResponse } from '@utils/types/room.dto';
+import { NewRoomResponse, Room } from '@utils/types/room.dto';
 import { NewRoomInput } from '@utils/validations/newRoomVal';
 import FormControl from '../Form/FormControl';
 import FormAreaControl from '../Form/FormAreaControl';
 import FormDateTimeControl from '../Form/FormDateTimeControl';
 import FormRadioControl from '../Form/FormRadioControl';
+import FormSelectControl from '../Form/FormSelectControl';
 
 interface Props {
   isModalOpen: boolean;
   toggleModal: () => void;
+  rooms: Room[];
 }
 
-export default function CreateMeetingModal({
-  isModalOpen,
-  toggleModal,
-}: Props) {
+function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
+  const queryClient = useQueryClient();
   /** hooks for forms control & submit action */
   const methods = useForm<NewMeetingInput>({
     resolver: zodResolver(NewMeetingSchema),
     defaultValues: {
-      isOnline: true,
+      isOnline: 'online',
       limit: 1,
       date_start: new Date(),
       date_end: new Date(),
@@ -52,47 +53,97 @@ export default function CreateMeetingModal({
     createRoom
   );
 
+  /** filter only offline room & format room options list */
+  const roomsOptions = useMemo(() => {
+    if (!rooms) return [];
+    return rooms
+      .filter((room) => room.isOnline === 0)
+      .map((room) => ({
+        label: `${room.description} (${room.name_room})`,
+        value: room.id_room,
+      }));
+  }, [rooms]);
+
   /** function that run on form-submit */
   const onSubmit: SubmitHandler<NewMeetingInput> = (data) => {
     console.log(data);
 
-    const newRoomData = {
-      name_room: data.location,
-      description: data.location,
-      isBooked: true,
-      isOnline: data.isOnline,
-    };
-
-    /** create room mutation */
-    console.log('create room');
-    roomMutatioin.mutate(newRoomData, {
-      onError: ({ message, response }) => {
-        console.log({ message, response });
-      },
-      onSuccess: ({ data: room, message }) => {
-        console.log({ room, message });
-        /** if room mutation success, run meeting mutation */
-        if (message === 'Succes') {
-          console.log('create meeting');
-          meetingMutation.mutate(
-            { ...data, location: String(room[0].id_room) },
-            {
-              // eslint-disable-next-line no-shadow
-              onError: ({ message, response }) => {
-                console.log({ message, response });
-              },
-              // eslint-disable-next-line no-shadow
-              onSuccess: ({ data: meet, message }) => {
-                if (message === 'Succesfull') {
-                  console.log({ meet, message });
-                  toggleModal();
-                }
-              },
+    /** Offline meeting action */
+    if (data.isOnline === 'offline') {
+      meetingMutation.mutate(
+        { ...data, room_id: data.offlineLoc?.value },
+        {
+          // eslint-disable-next-line no-shadow
+          onError: ({ message, response }) => {
+            console.log({ message, response });
+          },
+          // eslint-disable-next-line no-shadow
+          onSuccess: ({ data: meet, message }) => {
+            if (message === 'Succesfull') {
+              console.log({ meet, message });
+              queryClient.invalidateQueries([
+                'meetings',
+                typeof window !== 'undefined' && localStorage.getItem('uid'),
+              ]);
+              queryClient.invalidateQueries([
+                'datetimes',
+                typeof window !== 'undefined' && localStorage.getItem('uid'),
+              ]);
+              toggleModal();
             }
-          );
+          },
         }
-      },
-    });
+      );
+    } else {
+      /** Online meeting action */
+      const newRoomData = {
+        name_room: data.onlineLink,
+        description: data.onlineLink,
+        isBooked: true,
+        isOnline: data.isOnline === 'online',
+      };
+
+      /** create room mutation */
+      console.log('create room');
+      roomMutatioin.mutate(newRoomData, {
+        onError: ({ message, response }) => {
+          console.log({ message, response });
+        },
+        onSuccess: ({ data: room, message }) => {
+          console.log({ room, message });
+          /** if room mutation success, run meeting mutation */
+          if (message === 'Succes') {
+            console.log('create meeting');
+            meetingMutation.mutate(
+              { ...data, room_id: room[0].id_room },
+              {
+                // eslint-disable-next-line no-shadow
+                onError: ({ message, response }) => {
+                  console.log({ message, response });
+                },
+                // eslint-disable-next-line no-shadow
+                onSuccess: ({ data: meet, message }) => {
+                  if (message === 'Succesfull') {
+                    console.log({ meet, message });
+                    queryClient.invalidateQueries([
+                      'meetings',
+                      typeof window !== 'undefined' &&
+                        localStorage.getItem('uid'),
+                    ]);
+                    queryClient.invalidateQueries([
+                      'datetimes',
+                      typeof window !== 'undefined' &&
+                        localStorage.getItem('uid'),
+                    ]);
+                    toggleModal();
+                  }
+                },
+              }
+            );
+          }
+        },
+      });
+    }
   };
 
   /** function that run to close modal */
@@ -153,17 +204,26 @@ export default function CreateMeetingModal({
 
               <div className="grid h-fit grid-cols-1 gap-3">
                 <FormRadioControl
+                  id="isOnline"
                   title="Status"
                   options={MeetingStatusOptions}
-                  disabled="offline"
                   selected="online"
                 />
-                <FormControl
-                  label="Link to Meeting"
-                  id="location"
-                  aria-label="meeting location"
-                  type="text"
-                />
+                {methods.watch('isOnline') === 'online' ? (
+                  <FormControl
+                    label="Link to Meeting"
+                    id="onlineLink"
+                    aria-label="meeting location"
+                    type="text"
+                  />
+                ) : (
+                  <FormSelectControl
+                    label="Room"
+                    placeholder="Select Offline Room"
+                    id="offlineLoc"
+                    options={roomsOptions}
+                  />
+                )}
               </div>
             </div>
 
@@ -186,3 +246,5 @@ export default function CreateMeetingModal({
     </ModalProvider>
   );
 }
+
+export default memo(CreateMeetingModal);

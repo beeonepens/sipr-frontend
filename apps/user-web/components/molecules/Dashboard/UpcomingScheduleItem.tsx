@@ -13,7 +13,6 @@ interface Props {
 }
 
 export default function UpcomingScheduleItem({ event, empty = false }: Props) {
-  console.log({ empty });
   return (
     <div key={event?.id_meet} className="grid grid-cols-5 items-center gap-3">
       {/* meeting status icon */}
