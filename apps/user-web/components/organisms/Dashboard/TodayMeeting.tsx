@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import clsx from 'clsx';
+import Skeleton from 'react-loading-skeleton';
 import MeetingInfo from '@components/molecules/Meeting/MeetingInfo';
 import MeetingNavigation from '@components/molecules/Meeting/MeetingNavigation';
 import ZeroTodayMeeting from '@components/molecules/Dashboard/ZeroTodayMeeting';
@@ -54,12 +55,12 @@ export default function TodayMeeting({ events }: Props) {
           )}
 
           <h2 className="text-primary-800 line-clamp-2 mb-3 mr-0 text-2xl font-semibold dark:text-gray-100 lg:mr-20">
-            {events[itemIndex].name_meeting}
+            {events[itemIndex].name_meeting || <Skeleton />}
           </h2>
 
           <div className="mr-0 mb-6 lg:mr-16">
             <p className="line-clamp-2 text-sm text-gray-500 dark:text-gray-300 lg:text-base ">
-              {events[itemIndex].description}
+              {events[itemIndex].description || <Skeleton count={2} />}
             </p>
           </div>
 
@@ -76,7 +77,7 @@ export default function TodayMeeting({ events }: Props) {
               {getMeetTimeStatus(
                 events[itemIndex].start_datetime,
                 events[itemIndex].end_datetime
-              )}
+              ) || <Skeleton />}
             </button>
           </div>
         </>

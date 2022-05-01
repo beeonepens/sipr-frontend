@@ -4,11 +4,12 @@ import {
   LinkIcon,
   LocationMarkerIcon,
 } from '@heroicons/react/outline';
+import { useMemo } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import LinkTo from '@components/atoms/LinkTo';
 import { formatDateWithDay, formatMeetTime } from '@utils/formatDateTime';
 import { MeetWithDate } from '@utils/types/meet.dto';
 import { Room } from '@utils/types/room.dto';
-import { useMemo } from 'react';
 
 interface Props {
   event: MeetWithDate;
@@ -26,13 +27,17 @@ export default function MeetingInfo({ event, rooms }: Props) {
       {/* <p className="text-lg font-medium">{openEvent.title}</p> */}
       <div className="flex flex-row items-center justify-start gap-2">
         <CalendarIcon className="text-primary-700 dark:text-primary-300 h-5 w-5" />
-        <p className="">{formatDateWithDay(event.start_datetime)}</p>
+        <p className="">
+          {formatDateWithDay(event.start_datetime) || <Skeleton />}
+        </p>
       </div>
 
       <div className="flex flex-row items-center justify-start gap-2">
         <ClockIcon className="text-primary-700 dark:text-primary-300 h-5 w-5" />
         <p className="">
-          {formatMeetTime(event.start_datetime, event.end_datetime)}
+          {formatMeetTime(event.start_datetime, event.end_datetime) || (
+            <Skeleton />
+          )}
         </p>
       </div>
 
@@ -45,7 +50,7 @@ export default function MeetingInfo({ event, rooms }: Props) {
               blank
               className="hover:text-primary-700 text-primary-600 dark:text-primary-300 dark:hover:text-primary-200 hover:underline"
             >
-              <p className="">{room?.name_room || ''}</p>
+              <p className="">{room?.name_room || <Skeleton />}</p>
             </LinkTo>
           )}
         </div>
@@ -56,7 +61,7 @@ export default function MeetingInfo({ event, rooms }: Props) {
             <p className="capitalize">
               {room.name_room === room.description
                 ? room.name_room
-                : `${room.description} (${room.name_room})` || ''}
+                : `${room.description} (${room.name_room})` || <Skeleton />}
             </p>
           )}
         </div>

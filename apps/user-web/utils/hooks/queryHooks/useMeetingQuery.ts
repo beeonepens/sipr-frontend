@@ -21,7 +21,7 @@ export const useMeetDetailQuery = (
   id: string,
   onSuccess?: (data: { meet: Meet[]; datetime: Datetime[] }) => void
 ) => {
-  const meetings = useQuery(['meetings', id], getMeetingById, {
+  const meetings = useQuery(['meeting', id], getMeetingById, {
     onSuccess,
   });
 

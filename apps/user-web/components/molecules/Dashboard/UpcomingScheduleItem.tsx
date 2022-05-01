@@ -37,10 +37,10 @@ export default function UpcomingScheduleItem({ event, empty = false }: Props) {
       {/* meeting info icon */}
       <div className="col-span-4 flex flex-col">
         <p className="line-clamp-1 font-medium text-gray-700 dark:text-gray-200">
-          {event?.name_meeting || ''}
+          {event?.name_meeting}
         </p>
         <span className="line-clamp-1 text-sm text-gray-500 dark:text-gray-400">
-          {/* {event?.isOnline ? event?.link : event?.location || ''} */}
+          {/* {event?.isOnline ? event?.link : event?.location || <Skeleton />} */}
           {!event
             ? ''
             : formatMeetDateTime(event?.start_datetime, event?.end_datetime)}

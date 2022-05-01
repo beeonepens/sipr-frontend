@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import Skeleton from 'react-loading-skeleton';
 import { Calendar as BigCalendar, dateFnsLocalizer } from 'react-big-calendar';
 import format from 'date-fns/format';
 import parse from 'date-fns/parse';
@@ -123,19 +124,26 @@ export default function Calendar() {
         animate={{ opacity: 1, y: 0 }}
         className="mt-2 h-[75vh] py-4 px-4 md:px-8 lg:max-h-[680px] xl:h-[79vh]"
       >
-        <BigCalendar
-          culture="en-GB"
-          localizer={localizer}
-          defaultDate={defaultDate}
-          views={views}
-          events={calendarMeetingList}
-          onSelectEvent={handleSelectEvent}
-          selectable
-          popup
-          startAccessor="start"
-          endAccessor="end"
-          eventPropGetter={eventProps}
-        />
+        {(meetings.isLoading || datetimes.isLoading) && (
+          <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20 sm:rounded-lg">
+            <Skeleton count={7} height={56} />
+          </div>
+        )}
+        {meetings.isSuccess && datetimes.isSuccess && (
+          <BigCalendar
+            culture="en-GB"
+            localizer={localizer}
+            defaultDate={defaultDate}
+            views={views}
+            events={calendarMeetingList}
+            onSelectEvent={handleSelectEvent}
+            selectable
+            popup
+            startAccessor="start"
+            endAccessor="end"
+            eventPropGetter={eventProps}
+          />
+        )}
       </motion.article>
 
       <MeetingDetailsModal

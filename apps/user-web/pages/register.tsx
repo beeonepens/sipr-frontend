@@ -101,6 +101,7 @@ export default function Register() {
                 <div className="col-span-1 grid h-fit grid-cols-1 items-center gap-4 md:col-span-2 md:grid-cols-2">
                   <FormControl id="nip" label="NIP *" type="text" />
                   <FormRadioControl
+                    id="gender"
                     title="Gender *"
                     options={GenderOptions}
                     selected="pria"

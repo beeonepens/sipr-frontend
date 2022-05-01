@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
 import SmallCalendar from '@components/organisms/Dashboard/SmallCalendar';
 import TodayMeeting from '@components/organisms/Dashboard/TodayMeeting';
+import TodayLoading from '@components/organisms/Dashboard/TodayLoading';
 import UpcomingSchedule from '@components/organisms/Dashboard/UpcomingSchedule';
 import TotalActivity from '@components/organisms/Dashboard/TotalActivity';
 import { formatToMs } from '@utils/formatDateTime';
@@ -11,6 +12,7 @@ import {
   useMeetingQuery,
   useMeetTimeQuery,
 } from '@utils/hooks/queryHooks/useMeetingQuery';
+import UpcomingLoading from '@components/organisms/Dashboard/UpcomingLoading';
 
 export default function Dashboard() {
   const meetings = useMeetingQuery();
@@ -80,7 +82,10 @@ export default function Dashboard() {
               </h2>
             </div>
 
-            <TodayMeeting events={todayEvents} />
+            {(meetings.isLoading || datetimes.isLoading) && <TodayLoading />}
+            {meetings.isSuccess && datetimes.isSuccess && (
+              <TodayMeeting events={todayEvents} />
+            )}
           </section>
         </div>
 
@@ -91,7 +96,10 @@ export default function Dashboard() {
               Upcoming Schedule
             </h3>
 
-            <UpcomingSchedule events={upcommingEvents.slice(0, 3)} />
+            {(meetings.isLoading || datetimes.isLoading) && <UpcomingLoading />}
+            {meetings.isSuccess && datetimes.isSuccess && (
+              <UpcomingSchedule events={upcommingEvents.slice(0, 3)} />
+            )}
           </section>
 
           {/* total activity section */}

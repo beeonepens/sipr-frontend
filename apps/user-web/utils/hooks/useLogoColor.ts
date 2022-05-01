@@ -16,7 +16,7 @@ export function useLogoColor() {
   useEffect(() => {
     const htmlClass = document.getElementsByTagName('html').item(0).className;
 
-    console.log({ dark: htmlClass.includes('dark') });
+    // console.log({ dark: htmlClass.includes('dark') });
     if (htmlClass.includes('dark')) setLogoColor('light');
     else setLogoColor('dark');
   }, [savedTheme]);
