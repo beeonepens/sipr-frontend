@@ -39,7 +39,7 @@ export default function UserInfoEdit({ toggleEditing }: Props) {
   };
 
   /** form error log */
-  if (methods.formState.errors) console.log({ f: methods.formState.errors });
+  if (methods.formState.errors !== {}) console.log(methods.formState.errors);
 
   return (
     <FormProvider {...methods}>
@@ -58,6 +58,7 @@ export default function UserInfoEdit({ toggleEditing }: Props) {
           <div className="col-span-1 grid h-fit grid-cols-1 items-center gap-4 md:col-span-2 md:grid-cols-2">
             <FormAreaControl rows={2} label="Adress" id="address" />
             <FormRadioControl
+              id="gender"
               title="Gender"
               options={GenderOptions}
               selected="pria"

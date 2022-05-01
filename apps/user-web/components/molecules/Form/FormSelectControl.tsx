@@ -11,6 +11,7 @@ interface Props {
   }[];
   label?: string;
   placeholder?: string;
+  menuPlacement?: 'bottom' | 'auto' | 'top';
 }
 
 const customStyles = {
@@ -91,6 +92,7 @@ export default function FormSelectControl({
   label,
   options,
   placeholder,
+  menuPlacement = 'auto',
 }: Props) {
   const contentColor = useLogoColor();
   const { control } = useFormContext();
@@ -106,7 +108,9 @@ export default function FormSelectControl({
             {...field}
             placeholder={placeholder}
             options={options}
+            instanceId={id}
             isSearchable
+            menuPlacement={menuPlacement}
             styles={contentColor === 'dark' ? customStyles : customStylesDark}
           />
         )}

@@ -17,6 +17,20 @@ export const getMeetingByUid = async ({ queryKey }) => {
   return data.data.meet;
 };
 
+/** get meeting by meeting id */
+export const getMeetingById = async ({ queryKey }) => {
+  const { data } = await axios.get<GetAllMeetingRes>(
+    `${API_URL}/api/meet/show?id=${queryKey[1]}`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }
+  );
+
+  return data.data;
+};
+
 /** get array of meeting datetime by user id */
 export const getDateTimeByUid = async ({ queryKey }) => {
   const { data } = await axios.get<GetAllMeetingRes>(

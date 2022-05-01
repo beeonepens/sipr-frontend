@@ -1,3 +1,10 @@
+import { NewMeetingInput } from '@utils/validations';
+
+export interface UpdateMeetParam {
+  meet: NewMeetingInput;
+  id: string;
+}
+
 export interface Datetime {
   id_meet: number;
   start_datetime: string;

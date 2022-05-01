@@ -100,12 +100,12 @@ export default function Agenda() {
           <Search placeholder="Search meeting name" />
         </div>
 
-        {meetings.isLoading && (
+        {(meetings.isLoading || datetimes.isLoading) && (
           <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-700 dark:bg-gray-800 dark:shadow-black/20 sm:rounded-lg">
             <Skeleton count={8} />
           </div>
         )}
-        {meetings.isSuccess && (
+        {meetings.isSuccess && datetimes.isSuccess && (
           <AgendaTable
             events={meetingList}
             handleDeleteEvent={handleDeleteEvent}

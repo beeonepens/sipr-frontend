@@ -28,7 +28,7 @@ export default function UpdateAvatar({ isModalOpen, toggleModal }: Props) {
   console.log({ file: methods.watch('file') });
 
   /** form error log */
-  if (methods.formState.errors) console.log({ f: methods.formState.errors });
+  if (methods.formState.errors !== {}) console.log(methods.formState.errors);
 
   return (
     <ModalProvider isModalOpen={isModalOpen} onClose={toggleModal}>
