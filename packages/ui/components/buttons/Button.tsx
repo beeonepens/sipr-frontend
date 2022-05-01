@@ -66,7 +66,7 @@ export function Button({
       )}
     >
       {isLoading && <LoadingIcon />}
-      {isLoading ? 'Loading...' : children}
+      {isLoading ? '' : children}
     </button>
   );
 }

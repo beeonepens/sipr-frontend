@@ -34,7 +34,6 @@ export interface GetAllMeetingRes {
 }
 
 export interface MeetForCalendar {
-  details: MeetWithDate;
   id: number;
   title: string;
   description: string;

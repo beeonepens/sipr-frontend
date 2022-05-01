@@ -26,3 +26,17 @@ export const createMeeting = async (meet: NewMeetingInput) => {
 
   return data;
 };
+
+export const deleteMeeting = async (meetId: number) => {
+  const { data } = await axios.delete<{ data?: unknown; message: string }>(
+    `${API_URL}/api/meet/delete/${meetId}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }
+  );
+
+  return data;
+};

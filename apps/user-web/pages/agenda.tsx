@@ -59,13 +59,11 @@ export default function Agenda() {
   }
 
   const handleSelectEvent = React.useCallback((e) => {
-    console.log(e);
     setOpenEvent(e);
     toggleDetailModal();
   }, []);
 
   const handleDeleteEvent = React.useCallback((e) => {
-    console.log(e);
     setOpenEvent(e);
     toggleDeleteModal();
   }, []);

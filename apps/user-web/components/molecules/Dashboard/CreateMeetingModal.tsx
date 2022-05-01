@@ -1,6 +1,6 @@
 import type { SubmitHandler } from 'react-hook-form';
 
-import { useMemo, memo } from 'react';
+import { useMemo, memo, useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,6 +30,7 @@ interface Props {
 
 function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
   const queryClient = useQueryClient();
+  const [isLoading, setIsLoading] = useState(false);
   /** hooks for forms control & submit action */
   const methods = useForm<NewMeetingInput>({
     resolver: zodResolver(NewMeetingSchema),
@@ -49,7 +50,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
   >(createMeeting);
 
   /** hooks for create room mutation */
-  const roomMutatioin = useMutation<NewRoomResponse, AxiosError, NewRoomInput>(
+  const roomMutation = useMutation<NewRoomResponse, AxiosError, NewRoomInput>(
     createRoom
   );
 
@@ -67,6 +68,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
   /** function that run on form-submit */
   const onSubmit: SubmitHandler<NewMeetingInput> = (data) => {
     console.log(data);
+    setIsLoading(true);
 
     /** Offline meeting action */
     if (data.isOnline === 'offline') {
@@ -75,6 +77,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
         {
           // eslint-disable-next-line no-shadow
           onError: ({ message, response }) => {
+            setIsLoading(false);
             console.log({ message, response });
           },
           // eslint-disable-next-line no-shadow
@@ -89,6 +92,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
                 'datetimes',
                 typeof window !== 'undefined' && localStorage.getItem('uid'),
               ]);
+              setIsLoading(false);
               toggleModal();
             }
           },
@@ -105,8 +109,9 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
 
       /** create room mutation */
       console.log('create room');
-      roomMutatioin.mutate(newRoomData, {
+      roomMutation.mutate(newRoomData, {
         onError: ({ message, response }) => {
+          setIsLoading(false);
           console.log({ message, response });
         },
         onSuccess: ({ data: room, message }) => {
@@ -119,6 +124,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
               {
                 // eslint-disable-next-line no-shadow
                 onError: ({ message, response }) => {
+                  setIsLoading(false);
                   console.log({ message, response });
                 },
                 // eslint-disable-next-line no-shadow
@@ -135,6 +141,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
                       typeof window !== 'undefined' &&
                         localStorage.getItem('uid'),
                     ]);
+                    setIsLoading(false);
                     toggleModal();
                   }
                 },
@@ -235,7 +242,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
               >
                 Cancel
               </Button>
-              <Button text="sm" type="submit">
+              <Button isLoading={isLoading} text="sm" type="submit">
                 Save
               </Button>
             </div>

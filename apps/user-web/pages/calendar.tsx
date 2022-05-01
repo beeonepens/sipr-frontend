@@ -13,19 +13,12 @@ import {
   useMeetingQuery,
   useMeetTimeQuery,
 } from '@utils/hooks/queryHooks/useMeetingQuery';
-import { MeetForCalendar, MeetWithDate } from '@utils/types/meet.dto';
-
-export interface EventType {
-  id: number;
-  title: string;
-  description: string;
-  allDay: boolean;
-  start: Date;
-  end: Date;
-  isOnline: boolean;
-  link?: string;
-  location?: string;
-}
+import {
+  MeetForCalendar,
+  MeetWithDate,
+  Meet,
+  Datetime,
+} from '@utils/types/meet.dto';
 
 /** date locales options */
 const locales = {
@@ -41,27 +34,16 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-export default function Calendar() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [openEvent, setOpenEvent] = React.useState<MeetWithDate | null>(null);
-  const meetings = useMeetingQuery();
-  const datetimes = useMeetTimeQuery();
-  // const rooms = useAllRoomQuery();
-
-  function toggleModal() {
-    setIsModalOpen((prevState) => !prevState);
-  }
-
+function useMeetingData(meetData: Meet[], dateData: Datetime[]) {
   const meetingList = React.useMemo(() => {
     /** if meetings & datetime data not found, return empty array */
-    if (!meetings.data || !datetimes.data) return [];
-
+    if (!meetData || !dateData) return [];
     /** combine datetime & meeting detail data */
-    return datetimes.data.map((dt) => ({
+    return dateData.map((dt) => ({
       ...dt,
-      ...meetings.data.find((meet) => meet.id_meet === dt.id_meet),
+      ...meetData.find((meet) => meet.id_meet === dt.id_meet),
     }));
-  }, [meetings.data, datetimes.data]);
+  }, [meetData, dateData]);
 
   /** return with formatted object shape + meeting room */
   const calendarMeetingList = React.useMemo(
@@ -78,9 +60,26 @@ export default function Calendar() {
     [meetingList]
   );
 
+  return { meetingList, calendarMeetingList };
+}
+
+export default function Calendar() {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [openEvent, setOpenEvent] = React.useState<MeetWithDate | null>(null);
+  const meetings = useMeetingQuery();
+  const datetimes = useMeetTimeQuery();
+
+  function toggleModal() {
+    setIsModalOpen((prevState) => !prevState);
+  }
+
+  const { meetingList, calendarMeetingList } = useMeetingData(
+    meetings.data,
+    datetimes.data
+  );
+
   const handleSelectEvent = React.useCallback(
     (e: MeetForCalendar) => {
-      console.log(e);
       setOpenEvent(meetingList.find((m) => m.id_meet === e.id));
       toggleModal();
     },
