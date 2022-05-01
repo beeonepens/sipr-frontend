@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { SkeletonTheme } from 'react-loading-skeleton';
-// import { useProtectedRoute } from '@utils/hooks/useProtectedRoute';
+import { useProtectedRoute } from '@utils/hooks/useProtectedRoute';
 import { useLogoColor } from '@utils/hooks/useLogoColor';
 import { isPublicUrl } from '@utils/constant';
 import Sidebar from '@components/organisms/Sidebar';
@@ -18,7 +18,7 @@ import '../styles/rdp.css';
 const queryClient = new QueryClient();
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  // useProtectedRoute();
+  useProtectedRoute();
   const content = useLogoColor();
   const { pathname } = useRouter();
 

@@ -8,23 +8,29 @@ export interface DataTypes {
   color: string;
 }
 
-const dataMock: DataTypes[] = [
-  { title: 'Unattended', value: 2, color: 'secondary' },
-  { title: 'Attended', value: 12, color: 'primary' },
-];
+interface Props {
+  meetingAttended: DataTypes[];
+  meetingStatus: {
+    online: DataTypes[];
+    offline: DataTypes[];
+  };
+}
 
-export default function TotalActivity() {
+export default function TotalActivity({
+  meetingAttended,
+  meetingStatus,
+}: Props) {
   return (
     <article className="grid h-[332px] w-full grid-cols-1 gap-x-0 gap-y-4 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-4">
       {/* meeting attended */}
-      <MeetingAttended data={dataMock} />
+      <MeetingAttended data={meetingAttended} />
 
       <div className="col-span-2 grid w-full grid-cols-1 justify-between gap-y-4">
         {/* Online */}
-        <MeetingOnline />
+        <MeetingOnline data={meetingStatus.online} />
 
         {/* Offline */}
-        <MeetingOffline />
+        <MeetingOffline data={meetingStatus.offline} />
       </div>
     </article>
   );

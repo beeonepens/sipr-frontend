@@ -17,11 +17,13 @@ import {
   useMeetingQuery,
   useMeetTimeQuery,
 } from '@utils/hooks/queryHooks/useMeetingQuery';
+import ToastProvider from '@components/atoms/Toast/ToastProvider';
 
 export default function Agenda() {
   const [isNewModalOpen, setIsNewModalOpen] = React.useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
+  const [isFilterModalOpen, setIsFilterModalOpen] = React.useState(false);
   const [openEvent, setOpenEvent] = React.useState<MeetWithDate | null>(null);
 
   const meetings = useMeetingQuery();
@@ -58,6 +60,17 @@ export default function Agenda() {
     setIsDeleteModalOpen((prevState) => !prevState);
   }
 
+  const handleOpenFilter = () => {
+    if (isFilterModalOpen) {
+      setIsFilterModalOpen(false);
+      setTimeout(() => {
+        setIsFilterModalOpen(true);
+      }, 400);
+    } else {
+      setIsFilterModalOpen(true);
+    }
+  };
+
   const handleSelectEvent = React.useCallback((e) => {
     setOpenEvent(e);
     toggleDetailModal();
@@ -89,12 +102,24 @@ export default function Agenda() {
                 New Meeting
               </span>
             </Button>
-            <Button padding="sm" text="sm" variant="outline">
-              <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
-                <FilterIcon className="h-4 w-4" />
-                Filter
-              </span>
-            </Button>
+            <ToastProvider
+              isOpen={isFilterModalOpen}
+              setIsOpen={setIsFilterModalOpen}
+              title="Filter"
+              description="(Test) This is filter toast"
+            >
+              <Button
+                onClick={handleOpenFilter}
+                padding="sm"
+                text="sm"
+                variant="outline"
+              >
+                <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+                  <FilterIcon className="h-4 w-4" />
+                  Filter
+                </span>
+              </Button>
+            </ToastProvider>
           </div>
 
           <Search placeholder="Search meeting name" />

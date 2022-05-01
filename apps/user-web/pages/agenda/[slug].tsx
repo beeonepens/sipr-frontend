@@ -38,7 +38,7 @@ export default function MeetingDetail() {
           </LinkTo>
         </div> */}
 
-        <div className="m-4 lg:mx-6">
+        <div className="my-4 mx-0 md:m-4 lg:mx-6">
           <div className="mb-4 flex flex-row items-center justify-between gap-4 md:justify-start">
             <LinkTo
               to="/agenda"
