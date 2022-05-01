@@ -56,6 +56,44 @@ export default function Dashboard() {
     }));
   }, [meetings.data, datetimes.data]);
 
+  const meetingAttended = useMemo(() => {
+    /** if meetings & datetime data not found, return empty array */
+    if (!datetimes.data) return [];
+
+    /** filter meet with end datetime less than now in milisecond */
+    const pastMeet = datetimes.data.filter(
+      (dt) => new Date(dt.end_datetime).getTime() < new Date().getTime()
+    );
+
+    const attendedCount = pastMeet.length;
+    const unattendedCount = datetimes.data.length - pastMeet.length;
+    return [
+      { title: 'Unattended', value: unattendedCount, color: 'secondary' },
+      { title: 'Attended', value: attendedCount, color: 'primary' },
+    ];
+  }, [datetimes.data]);
+
+  const meetingStatus = useMemo(() => {
+    /** if meetings & datetime data not found, return empty array */
+    if (!meetings.data) return { online: [], offline: [] };
+
+    /** filter meet with end datetime less than now in milisecond */
+    const onlineMeet = meetings.data.filter((meet) => meet.isOnline === 1);
+
+    const onlineCount = onlineMeet.length;
+    const offlineCount = meetings.data.length - onlineMeet.length;
+    return {
+      online: [
+        { title: 'Offline', value: offlineCount, color: 'secondary' },
+        { title: 'Online', value: onlineCount, color: 'primary' },
+      ],
+      offline: [
+        { title: 'Online', value: onlineCount, color: 'secondary' },
+        { title: 'Offline', value: offlineCount, color: 'primary' },
+      ],
+    };
+  }, [meetings.data]);
+
   return (
     <>
       <Head>
@@ -108,7 +146,10 @@ export default function Dashboard() {
               Total Activity
             </h3>
 
-            <TotalActivity />
+            <TotalActivity
+              meetingAttended={meetingAttended}
+              meetingStatus={meetingStatus}
+            />
           </section>
         </div>
       </motion.article>
