@@ -4,30 +4,57 @@ import { motion } from 'framer-motion';
 import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
 import SmallCalendar from '@components/organisms/Dashboard/SmallCalendar';
 import TodayMeeting from '@components/organisms/Dashboard/TodayMeeting';
+import TodayLoading from '@components/organisms/Dashboard/TodayLoading';
 import UpcomingSchedule from '@components/organisms/Dashboard/UpcomingSchedule';
 import TotalActivity from '@components/organisms/Dashboard/TotalActivity';
-import { EVENTS } from '@utils/constant';
+import { formatToMs } from '@utils/formatDateTime';
+import {
+  useMeetingQuery,
+  useMeetTimeQuery,
+} from '@utils/hooks/queryHooks/useMeetingQuery';
+import UpcomingLoading from '@components/organisms/Dashboard/UpcomingLoading';
 
 export default function Dashboard() {
-  /** filter events with start date more than today in milisecond */
-  const upcommingEvents = useMemo(
-    () =>
-      EVENTS.filter(
-        (item) => new Date(item.start).getTime() > new Date().getTime()
-      ),
-    []
-  );
+  const meetings = useMeetingQuery();
+  const datetimes = useMeetTimeQuery();
 
-  /** filter events with start date same as today */
-  const todayEvents = useMemo(
-    () =>
-      EVENTS.filter(
-        (item) =>
-          new Date(item.start).toLocaleDateString() ===
-          new Date().toLocaleDateString()
-      ),
-    []
-  );
+  const upcommingEvents = useMemo(() => {
+    /** if meetings & datetime data not found, return empty array */
+    if (!meetings.data || !datetimes.data) return [];
+
+    /** filter meet with start datetime more than now in milisecond */
+    const upMeet = datetimes.data.filter(
+      (dt) => new Date(dt.start_datetime).getTime() > new Date().getTime()
+    );
+
+    /** return upcoming meet data with it's datetime */
+    return upMeet
+      .map((dt) => ({
+        ...dt,
+        ...meetings.data.find((meet) => meet.id_meet === dt.id_meet),
+      }))
+      .sort(
+        (a, b) => formatToMs(a.start_datetime) - formatToMs(b.start_datetime)
+      );
+  }, [meetings.data, datetimes.data]);
+
+  const todayEvents = useMemo(() => {
+    /** if meetings & datetime data not found, return empty array */
+    if (!meetings.data || !datetimes.data) return [];
+
+    /** filter events with start date same as today */
+    const todayMeet = datetimes.data.filter(
+      (dt) =>
+        new Date(dt.start_datetime).toLocaleDateString() ===
+        new Date().toLocaleDateString()
+    );
+
+    /** return upcoming meet data with it's datetime */
+    return todayMeet.map((dt) => ({
+      ...dt,
+      ...meetings.data.find((meet) => meet.id_meet === dt.id_meet),
+    }));
+  }, [meetings.data, datetimes.data]);
 
   return (
     <>
@@ -55,7 +82,10 @@ export default function Dashboard() {
               </h2>
             </div>
 
-            <TodayMeeting events={todayEvents} />
+            {(meetings.isLoading || datetimes.isLoading) && <TodayLoading />}
+            {meetings.isSuccess && datetimes.isSuccess && (
+              <TodayMeeting events={todayEvents} />
+            )}
           </section>
         </div>
 
@@ -66,7 +96,10 @@ export default function Dashboard() {
               Upcoming Schedule
             </h3>
 
-            <UpcomingSchedule events={upcommingEvents.slice(0, 3)} />
+            {(meetings.isLoading || datetimes.isLoading) && <UpcomingLoading />}
+            {meetings.isSuccess && datetimes.isSuccess && (
+              <UpcomingSchedule events={upcommingEvents.slice(0, 3)} />
+            )}
           </section>
 
           {/* total activity section */}

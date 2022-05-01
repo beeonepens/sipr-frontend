@@ -12,7 +12,7 @@ html {
 }
 
 html[class*='dark'] {
-  @apply bg-zinc-900;
+  @apply bg-gray-900;
   scrollbar-color: #ffffffb3 transparent;
   scrollbar-width: 10px;
 }
@@ -65,6 +65,31 @@ input[type='file']::file-selector-button {
 @tailwind utilities;
 
 /* ------------------------------------------------------------------------------------------------ */
+/* react select */
+/* .react-select__control {
+  border-radius: 8px !important;
+  background: #fff;
+  @apply border-red-300;
+}
+
+.react-select__control:focus {
+  @apply border-primary-600;
+}
+
+.react-select__control {
+  border-radius: 8px !important;
+  background: #fff;
+} */
+
+html[class*='dark'] {
+  .react-select__control {
+    border-radius: 8px !important;
+    background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+    border-color: rgb(82 82 82 / var(--tw-border-opacity));
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
 /* react calendar */
 .react-calendar {
   border-radius: 8px;
@@ -75,7 +100,7 @@ input[type='file']::file-selector-button {
   /* border: 1px solid #d1d5db; */
   /* font-family: Arial, Helvetica, sans-serif; */
   line-height: 1.125em;
-  @apply border border-gray-300 bg-white dark:border-gray-600 dark:bg-zinc-800;
+  @apply border border-gray-300 bg-white dark:border-gray-600 dark:bg-gray-800;
 }
 
 .react-calendar--doubleView {

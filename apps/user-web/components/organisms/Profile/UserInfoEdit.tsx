@@ -39,12 +39,12 @@ export default function UserInfoEdit({ toggleEditing }: Props) {
   };
 
   /** form error log */
-  if (methods.formState.errors) console.log({ f: methods.formState.errors });
+  if (methods.formState.errors !== {}) console.log(methods.formState.errors);
 
   return (
     <FormProvider {...methods}>
       <form
-        className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-zinc-800 dark:shadow-black/20 lg:w-3/5"
+        className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-gray-800 dark:shadow-black/20 lg:w-3/5"
         onSubmit={methods.handleSubmit(onSubmit)}
         noValidate
       >
@@ -58,6 +58,7 @@ export default function UserInfoEdit({ toggleEditing }: Props) {
           <div className="col-span-1 grid h-fit grid-cols-1 items-center gap-4 md:col-span-2 md:grid-cols-2">
             <FormAreaControl rows={2} label="Adress" id="address" />
             <FormRadioControl
+              id="gender"
               title="Gender"
               options={GenderOptions}
               selected="pria"

@@ -16,7 +16,7 @@ export function isPublicUrl(pathname: string) {
 /** meeting status options */
 export const MeetingStatusOptions = [
   { label: 'Online', value: 'online' },
-  { label: 'Offline (in progress)', value: 'offline' },
+  { label: 'Offline', value: 'offline' },
 ];
 
 /** gender options */

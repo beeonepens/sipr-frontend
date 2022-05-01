@@ -46,6 +46,7 @@ export default function ProfileMenu() {
       onSuccess: (result) => {
         console.log({ result });
         localStorage.removeItem('token');
+        localStorage.removeItem('uid');
         router.push('/');
       },
     });
@@ -59,7 +60,7 @@ export default function ProfileMenu() {
           <button
             type="button"
             className={clsx(
-              'm-0 flex h-auto w-auto flex-row items-center justify-center rounded-md p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-zinc-700',
+              'm-0 flex h-auto w-auto flex-row items-center justify-center rounded-md p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-gray-700',
               'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
             )}
           >
@@ -97,8 +98,8 @@ export default function ProfileMenu() {
           className={clsx(
             'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
             'w-48 rounded-lg px-1.5 py-1',
-            'bg-gray-50 dark:bg-zinc-800',
-            'border border-gray-300 shadow-md shadow-gray-300/30 dark:border-zinc-700 dark:shadow-zinc-800/30'
+            'bg-gray-50 dark:bg-gray-800',
+            'border border-gray-300 shadow-md shadow-gray-300/30 dark:border-gray-700 dark:shadow-gray-800/30'
           )}
         >
           {menuItems.map(({ label, icon }, i) => (
@@ -109,7 +110,7 @@ export default function ProfileMenu() {
                   <DropdownMenuPrimitive.Item
                     className={clsx(
                       'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
-                      'text-gray-700 focus:bg-gray-200 dark:text-gray-200 dark:focus:bg-zinc-700'
+                      'text-gray-700 focus:bg-gray-200 dark:text-gray-200 dark:focus:bg-gray-700'
                     )}
                   >
                     {icon}
@@ -125,7 +126,7 @@ export default function ProfileMenu() {
                   onClick={onLogout}
                   className={clsx(
                     'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
-                    'focus:bg-gray-200 dark:focus:bg-zinc-700',
+                    'focus:bg-gray-200 dark:focus:bg-gray-700',
                     'text-red-600 dark:text-red-400'
                   )}
                 >
@@ -145,7 +146,7 @@ export default function ProfileMenu() {
                 <DropdownMenuPrimitive.Item
                   className={clsx(
                     'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
-                    'focus:bg-gray-200 dark:focus:bg-zinc-700',
+                    'focus:bg-gray-200 dark:focus:bg-gray-700',
                     label === 'Logout'
                       ? 'text-red-600 dark:text-red-400'
                       : 'text-gray-700 dark:text-gray-200'

@@ -19,10 +19,10 @@ export default function TooltipProvider({ children, message }: Props) {
             'radix-side-bottom:animate-slide-up-fade',
             'radix-side-left:animate-slide-right-fade',
             'inline-flex items-center rounded-md px-4 py-2.5',
-            'bg-gray-200 shadow-sm dark:bg-zinc-700'
+            'bg-gray-200 shadow-sm dark:bg-gray-700'
           )}
         >
-          <TooltipPrimitive.Arrow className="fill-current text-gray-200 shadow-sm dark:text-zinc-700" />
+          <TooltipPrimitive.Arrow className="fill-current text-gray-200 shadow-sm dark:text-gray-700" />
           <span className="block text-xs leading-none text-gray-700 dark:text-gray-100">
             {message}
           </span>

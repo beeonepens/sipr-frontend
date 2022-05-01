@@ -4,10 +4,18 @@ import * as z from 'zod';
 export const NewMeetingSchema = z.object({
   name: z.string().min(1, { message: 'Required' }),
   description: z.string().optional(),
-  startDate: z.date(),
-  endDate: z.date(),
-  isOnline: z.boolean().optional(),
-  location: z.string().min(1, { message: 'Required' }),
+  date_start: z.date(),
+  date_end: z.date(),
+  isOnline: z.string(),
+  limit: z.number().positive().optional(),
+  room_id: z.number().optional(),
+  onlineLink: z.string().optional(),
+  offlineLoc: z
+    .object({
+      value: z.number(),
+      label: z.string(),
+    })
+    .optional(),
 });
 
 /** TS types for the input form */

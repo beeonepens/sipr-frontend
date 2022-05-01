@@ -13,6 +13,7 @@ interface Props {
   timeFormat?: 'HH:mm';
   withTime?: boolean;
   defaultValue?: Date;
+  minDate?: Date;
 }
 
 export default function FormDateTimeControl({

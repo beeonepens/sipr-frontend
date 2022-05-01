@@ -31,7 +31,7 @@ export default function Teams() {
           {/* add item button */}
           <div
             className={clsx(
-              'flex flex-col items-center justify-center rounded-lg bg-white py-4 px-3 shadow-md shadow-gray-300/25 outline-dashed outline-1 outline-gray-300 transition duration-75 hover:cursor-pointer hover:bg-gray-200 dark:bg-zinc-900 dark:shadow-black/20 dark:outline-gray-700 dark:hover:bg-zinc-800',
+              'flex flex-col items-center justify-center rounded-lg bg-white py-4 px-3 shadow-md shadow-gray-300/25 outline-dashed outline-1 outline-gray-300 transition duration-75 hover:cursor-pointer hover:bg-gray-200 dark:bg-gray-900 dark:shadow-black/20 dark:outline-gray-700 dark:hover:bg-gray-800',
               teams.length > 0 ? 'h-full w-full' : 'h-36 w-full'
             )}
           >

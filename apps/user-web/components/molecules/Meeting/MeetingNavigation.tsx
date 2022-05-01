@@ -27,14 +27,14 @@ export default function MeetingNavigation({
       <button
         type="button"
         onClick={handlePrev}
-        className="rounded-lg bg-gray-100 p-2 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+        className="rounded-lg bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
       >
         <ChevronLeftIcon className="h-4 w-4" />
       </button>
       <button
         type="button"
         onClick={handleNext}
-        className="rounded-lg bg-gray-100 p-2 hover:bg-gray-200 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+        className="rounded-lg bg-gray-100 p-2 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
       >
         <ChevronRightIcon className="h-4 w-4" />
       </button>

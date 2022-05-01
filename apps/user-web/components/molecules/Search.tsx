@@ -26,7 +26,7 @@ export default function Search({
   console.log({ search: methods.watch('search') });
 
   /** form error log */
-  if (methods.formState.errors) console.log({ f: methods.formState.errors });
+  if (methods.formState.errors !== {}) console.log(methods.formState.errors);
 
   return (
     <FormProvider {...methods}>

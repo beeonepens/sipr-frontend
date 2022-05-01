@@ -7,6 +7,7 @@ export const RegisterSchema = z
       .string()
       .regex(/^[1-9]+[0-9]*$/g, { message: 'Format invalid' })
       .min(6, { message: 'Required' }),
+    role_id: z.number().default(2),
     name: z.string().min(2, { message: 'Required' }),
     email: z
       .string()

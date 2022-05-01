@@ -1,27 +1,24 @@
-import format from 'date-fns/format';
-import { EventType } from '@utils/constant';
 import clsx from 'clsx';
+import { memo } from 'react';
 import AgendaTableAction from '@components/molecules/Agenda/AgendaTableAction';
 import ZeroAgenda from '@components/molecules/Agenda/ZeroAgenda';
+import { formatDateWithDay, formatMeetTime } from '@utils/formatDateTime';
+import { MeetWithDate } from '@utils/types/meet.dto';
 
 interface Props {
-  events: EventType[];
-  handleSelectEvent: (e: EventType) => void;
-  handleDeleteEvent: (e: EventType) => void;
+  events: MeetWithDate[];
+  handleSelectEvent: (e: MeetWithDate) => void;
+  handleDeleteEvent: (e: MeetWithDate) => void;
 }
 
-export default function AgendaTable({
-  events,
-  handleSelectEvent,
-  handleDeleteEvent,
-}: Props) {
+function AgendaTable({ events, handleSelectEvent, handleDeleteEvent }: Props) {
   if (events.length < 1) {
     return <ZeroAgenda />;
   }
   return (
-    <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 shadow-md shadow-gray-300/25 dark:border-zinc-700 dark:shadow-black/20 sm:rounded-lg">
+    <div className="relative mt-4 overflow-x-auto rounded-md border border-gray-300 shadow-md shadow-gray-300/25 dark:border-gray-700 dark:shadow-black/20 sm:rounded-lg">
       <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-        <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-zinc-900 dark:text-gray-300">
+        <thead className="bg-gray-100 text-xs uppercase text-gray-700 dark:bg-gray-900 dark:text-gray-300">
           <tr>
             <th scope="col" className="px-6 py-3">
               Meeting name
@@ -43,26 +40,27 @@ export default function AgendaTable({
         <tbody>
           {events.map((event) => (
             <tr
-              key={event.id}
+              key={event.id_meet}
               className={clsx(
-                'bg-white dark:bg-zinc-800',
-                events[events.length - 1].id !== event.id &&
-                  'border-b dark:border-zinc-700'
+                'bg-white dark:bg-gray-800',
+                events[events.length - 1].id_meet !== event.id_meet &&
+                  'border-b dark:border-gray-700'
               )}
             >
               <th
                 scope="row"
                 className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white"
               >
-                {event.title}
+                {event.name_meeting}
               </th>
               <td className="px-6 py-4">
-                {`${format(event.start, 'eeee, d MMM yyyy')}`}
+                {formatDateWithDay(event.start_datetime)}
               </td>
-              <td className="px-6 py-4">{`${format(event.start, 'HH:mm')} - 
-                ${format(event.end, 'HH:mm')}`}</td>
               <td className="px-6 py-4">
-                {event.isOnline ? 'On-line' : 'Off-line'}
+                {formatMeetTime(event.start_datetime, event.end_datetime)}
+              </td>
+              <td className="px-6 py-4">
+                {event.isOnline ? 'Online' : 'Offline'}
               </td>
 
               <AgendaTableAction
@@ -77,3 +75,5 @@ export default function AgendaTable({
     </div>
   );
 }
+
+export default memo(AgendaTable);

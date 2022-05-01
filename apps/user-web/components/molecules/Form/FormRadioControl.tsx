@@ -1,7 +1,9 @@
 import Label from '@components/atoms/Form/Label';
 import clsx from 'clsx';
+import { useFormContext } from 'react-hook-form';
 
 interface Props {
+  id: string;
   title: string;
   selected?: string;
   disabled?: string;
@@ -16,18 +18,23 @@ export default function FormRadioControl({
   selected,
   disabled,
   options,
+  id,
 }: Props) {
+  const { register } = useFormContext();
+
   return (
     <div className="mt-1 mb-0 flex h-fit flex-row items-center justify-between gap-3 lg:mb-2">
       {/* <legend className="w-1/3 text-gray-700">{title}</legend> */}
       <span className="mb-0.5 w-1/3">
-        <Label id="meeting-status">{title}</Label>
+        <Label id={id}>{title}</Label>
       </span>
       {/* <div> */}
       {options.map(({ label, value }) => (
         <div key={value}>
-          <label className="inline-flex items-center" htmlFor={value}>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+          <label className="inline-flex items-center">
             <input
+              {...register(id)}
               className={clsx(
                 'form-radio',
                 value === disabled
@@ -35,10 +42,8 @@ export default function FormRadioControl({
                   : 'cursor-pointer'
               )}
               type="radio"
-              id={value}
               disabled={value === disabled}
               defaultChecked={value === selected}
-              name="radio-direct"
               value={value}
             />
             <span

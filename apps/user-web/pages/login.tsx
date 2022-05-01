@@ -41,14 +41,17 @@ export default function Login() {
       /** action on mutation success */
       onSuccess: (result) => {
         console.log({ result });
-        localStorage.setItem('token', result.content.access_token);
-        router.push('/dashboard');
+        if (result.status === 'success') {
+          localStorage.setItem('token', result.content.access_token);
+          localStorage.setItem('uid', result.content.user_id);
+          router.push('/dashboard');
+        }
       },
     });
   };
 
   /** form error log */
-  if (methods.formState.errors) console.log({ f: methods.formState.errors });
+  if (methods.formState.errors !== {}) console.log(methods.formState.errors);
 
   return (
     <>
@@ -56,7 +59,7 @@ export default function Login() {
         <title>Login | SIPR</title>
       </Head>
 
-      <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
+      <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-gray-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-gray-600">
         {/* back icon */}
         <LinkTo
           to="/"
@@ -68,7 +71,7 @@ export default function Login() {
           </span>
         </LinkTo>
 
-        <div className="w-full rounded-md bg-white py-16 px-8 dark:bg-zinc-800 md:w-[400px] md:px-12">
+        <div className="w-full rounded-md bg-white py-16 px-8 dark:bg-gray-800 md:w-[400px] md:px-12">
           {/* login title & subtitle */}
           <h2 className="text-primary-700 dark:text-primary-300 text-center text-4xl font-bold ">
             SIPR

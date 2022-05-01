@@ -3,7 +3,7 @@ import { BanIcon } from '@heroicons/react/outline';
 export default function ZeroUpcomingMeeting() {
   return (
     <div className="flex h-[200px] flex-col items-center justify-center gap-2 text-center">
-      <BanIcon className="h-16 w-16 text-gray-300 dark:text-zinc-600" />
+      <BanIcon className="h-16 w-16 text-gray-300 dark:text-gray-600" />
       <h3 className="text-base font-medium text-gray-500 dark:text-gray-300">
         No upcoming schedule!
       </h3>

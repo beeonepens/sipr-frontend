@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from 'react-query';
 import { Button } from 'ui';
-import { ArrowLeftIcon } from '@heroicons/react/outline';
+import { ArrowLeftIcon, ExclamationIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
 import { GenderOptions } from '@utils/constant';
@@ -15,6 +15,7 @@ import { RegisterInput, RegisterSchema } from '@utils/validations';
 import type { SubmitHandler } from 'react-hook-form';
 import type { AxiosError } from 'axios';
 import type { RegisterResponse } from '@utils/types/auth.dto';
+import clsx from 'clsx';
 
 export default function Register() {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function Register() {
   /** hooks for forms control & submit action */
   const methods = useForm<RegisterInput>({
     resolver: zodResolver(RegisterSchema),
-    defaultValues: { gender: 'pria' },
+    defaultValues: { gender: 'pria', role_id: 2 },
   });
 
   /** hooks for controlling the register mutation */
@@ -41,8 +42,10 @@ export default function Register() {
       /** action on mutation success */
       onSuccess: (result) => {
         console.log({ result });
-        if ('message' in result) {
-          localStorage.setItem('token', result.message);
+        if ('token' in result && result.data.length > 0) {
+          const user = result.data[0];
+          localStorage.setItem('token', result.token);
+          localStorage.setItem('uid', user.nip);
           router.push('/dashboard');
         }
       },
@@ -50,7 +53,7 @@ export default function Register() {
   };
 
   /** form error log */
-  if (methods.formState.errors) console.log({ f: methods.formState.errors });
+  if (methods.formState.errors !== {}) console.log(methods.formState.errors);
 
   return (
     <>
@@ -58,7 +61,7 @@ export default function Register() {
         <title>Register | SIPR</title>
       </Head>
 
-      <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-zinc-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-zinc-600">
+      <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-gray-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-gray-600">
         {/* back icon */}
         <LinkTo
           to="/"
@@ -70,7 +73,7 @@ export default function Register() {
           </span>
         </LinkTo>
 
-        <div className="md:[640px] w-full rounded-md bg-white py-16 px-8 dark:bg-zinc-800 md:px-12 lg:w-[800px] lg:pt-12 lg:pb-16">
+        <div className="md:[640px] w-full rounded-md bg-white py-16 px-8 dark:bg-gray-800 md:px-12 lg:w-[800px] lg:pt-12 lg:pb-16">
           {/* register title & subtitle */}
           <h2 className="text-primary-700 dark:text-primary-300 text-center text-4xl font-bold ">
             SIPR
@@ -98,6 +101,7 @@ export default function Register() {
                 <div className="col-span-1 grid h-fit grid-cols-1 items-center gap-4 md:col-span-2 md:grid-cols-2">
                   <FormControl id="nip" label="NIP *" type="text" />
                   <FormRadioControl
+                    id="gender"
                     title="Gender *"
                     options={GenderOptions}
                     selected="pria"
@@ -121,6 +125,17 @@ export default function Register() {
                 >
                   Register
                 </Button>
+              </div>
+
+              {/* login failed alert */}
+              <div
+                className={clsx(
+                  mutation.isError ? 'visible' : 'invisible',
+                  'mt-4 flex flex-row items-center gap-3 rounded-md bg-red-200 p-3 text-sm font-medium text-red-600'
+                )}
+              >
+                <ExclamationIcon className="h-5 w-5" />
+                <span>{mutation.isError ? mutation.error.message : ''}</span>
               </div>
             </form>
           </FormProvider>

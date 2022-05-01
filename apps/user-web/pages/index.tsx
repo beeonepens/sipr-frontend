@@ -8,7 +8,7 @@ export default function Home() {
         <title>Welcome to SIPR</title>
       </Head>
 
-      <article className="flex min-h-screen w-full flex-col gap-8 bg-white dark:bg-zinc-900 px-8 py-16">
+      <article className="flex min-h-screen w-full flex-col gap-8 bg-white px-8 py-16 dark:bg-gray-900">
         <div>
           <h3 className="text-center text-2xl font-bold text-gray-800 dark:text-gray-300">
             Welcome to
