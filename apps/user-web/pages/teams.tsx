@@ -1,13 +1,22 @@
 import Head from 'next/head';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useUnreleased } from '@utils/store/useUnreleased';
 import { PlusCircleIcon } from '@heroicons/react/outline';
 import ParticipantSubHeader from '@components/organisms/Participant/ParticipantSubHeader';
 import TeamsItem from '@components/organisms/Participant/Teams/TeamsItem';
+import UnreleasedAlert from '@components/molecules/UnreleasedAlert';
 
 const teams = [1, 2, 3, 4];
 
 export default function Teams() {
+  const { setOpenModal } = useUnreleased();
+
+  useEffect(() => {
+    setOpenModal(true);
+  }, [setOpenModal]);
+
   return (
     <>
       <Head>
@@ -45,6 +54,8 @@ export default function Teams() {
             <TeamsItem key={item} item={item} />
           ))}
         </div>
+
+        <UnreleasedAlert />
       </motion.article>
     </>
   );

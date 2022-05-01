@@ -1,13 +1,22 @@
 import Head from 'next/head';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useUnreleased } from '@utils/store/useUnreleased';
 import ParticipantItem from '@components/organisms/Participant/ParticipantItem';
 import ParticipantSubHeader from '@components/organisms/Participant/ParticipantSubHeader';
 import { PlusCircleIcon } from '@heroicons/react/outline';
+import UnreleasedAlert from '@components/molecules/UnreleasedAlert';
 
 const partcipants = [1, 2, 3, 4, 5];
 
 export default function Participant() {
+  const { setOpenModal } = useUnreleased();
+
+  useEffect(() => {
+    setOpenModal(true);
+  }, [setOpenModal]);
+
   return (
     <>
       <Head>
@@ -45,6 +54,8 @@ export default function Participant() {
             <ParticipantItem key={item} />
           ))}
         </div>
+
+        <UnreleasedAlert />
       </motion.article>
     </>
   );

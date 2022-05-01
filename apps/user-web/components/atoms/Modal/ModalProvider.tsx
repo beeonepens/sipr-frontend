@@ -1,22 +1,25 @@
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import clsx from 'clsx';
 
 interface Props {
   isModalOpen: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: JSX.Element;
+  type?: 'dialog' | 'alert';
 }
 
 export default function ModalProvider({
   isModalOpen,
   children,
   onClose,
+  type = 'dialog',
 }: Props) {
   return (
     <Transition show={isModalOpen} as={Fragment}>
       <Dialog
         as="div"
-        onClose={onClose}
+        onClose={type === 'dialog' ? onClose : () => console.log('')}
         className="fixed inset-0 z-10 overflow-y-auto"
       >
         <div className="flex min-h-screen items-center justify-center">
@@ -30,7 +33,14 @@ export default function ModalProvider({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 md:bg-black md:bg-opacity-50 md:backdrop-blur-md md:backdrop-filter" />
+            <Dialog.Overlay
+              className={clsx(
+                'fixed inset-0',
+                type === 'dialog'
+                  ? 'md:bg-black md:bg-opacity-50 md:backdrop-blur-md md:backdrop-filter'
+                  : 'bg-black bg-opacity-50 backdrop-blur-sm backdrop-filter md:backdrop-blur-sm'
+              )}
+            />
           </Transition.Child>
 
           {/* modal helper */}

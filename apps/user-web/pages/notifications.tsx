@@ -2,13 +2,22 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useWindowSize } from '@utils/hooks/useWindowSize';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useUnreleased } from '@utils/store/useUnreleased';
 import { EVENTS } from '@utils/constant';
 import NotificatonItem from '@components/organisms/Notifications/NotificationItem';
 import ZeroNotification from '@components/molecules/Notification/ZeroNotification';
+import UnreleasedAlert from '@components/molecules/UnreleasedAlert';
 
 export default function Notifications() {
   const router = useRouter();
   const windowSize = useWindowSize();
+
+  const { setOpenModal } = useUnreleased();
+
+  useEffect(() => {
+    setOpenModal(true);
+  }, [setOpenModal]);
 
   if (windowSize >= 1024) router.replace('/dashboard');
 
@@ -29,6 +38,8 @@ export default function Notifications() {
             <NotificatonItem key={item.id} event={item} />
           ))}
         </div>
+
+        <UnreleasedAlert />
       </motion.article>
     </>
   );

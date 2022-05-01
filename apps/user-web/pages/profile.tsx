@@ -1,13 +1,21 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import UserInfoView from '@components/organisms/Profile/UserInfoView';
 import UserAvatar from '@components/organisms/Profile/UserAvatar';
 import UserInfoEdit from '@components/organisms/Profile/UserInfoEdit';
+import { useUnreleased } from '@utils/store/useUnreleased';
+import UnreleasedAlert from '@components/molecules/UnreleasedAlert';
 
 export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const toggleEditing = () => setIsEditing((cs) => !cs);
+
+  const { setOpenModal } = useUnreleased();
+
+  useEffect(() => {
+    setOpenModal(true);
+  }, [setOpenModal]);
 
   return (
     <>
@@ -33,6 +41,8 @@ export default function Profile() {
 
           <UserAvatar />
         </div>
+
+        <UnreleasedAlert />
       </motion.article>
     </>
   );
