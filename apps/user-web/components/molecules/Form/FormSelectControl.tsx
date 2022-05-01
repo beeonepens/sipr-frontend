@@ -36,6 +36,8 @@ const customStyles = {
   }),
   option: (styles, state) => ({
     ...styles,
+    textSize: '0.875rem',
+    textTransform: 'capitalize',
     color: '#3f3f46',
     background: state.isSelected ? '#D1D5DB' : 'white',
     ':hover': {
@@ -75,6 +77,7 @@ const customStylesDark = {
   option: (styles, state) => ({
     ...styles,
     textSize: '0.875rem',
+    textTransform: 'capitalize',
     color: '#d4d4d4',
     background: state.isSelected ? '#1f2937' : '#262626',
     ':hover': {

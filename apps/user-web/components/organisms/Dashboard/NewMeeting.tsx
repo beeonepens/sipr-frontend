@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { useQuery } from 'react-query';
 import CreateMeetingButton from '@components/molecules/Dashboard/CreateMeetingButton';
 import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
-import { getAllRoom } from '@utils/queries/roomQuery';
 import { Button } from 'ui';
+import { useAllRoomQuery } from '@utils/hooks/queryHooks/useRoomQuery';
 
 export default function NewMeeting() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const rooms = useQuery(['rooms'], getAllRoom);
+  const rooms = useAllRoomQuery();
 
   function toggleModal() {
     setIsModalOpen((prevState) => !prevState);

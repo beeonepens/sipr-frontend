@@ -1,24 +1,20 @@
 import { useMemo } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { useQuery } from 'react-query';
-import { getDateTimeByUid, getMeetingByUid } from '@utils/queries/meetQuery';
 import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
 import SmallCalendar from '@components/organisms/Dashboard/SmallCalendar';
 import TodayMeeting from '@components/organisms/Dashboard/TodayMeeting';
 import UpcomingSchedule from '@components/organisms/Dashboard/UpcomingSchedule';
 import TotalActivity from '@components/organisms/Dashboard/TotalActivity';
 import { formatToMs } from '@utils/formatDateTime';
+import {
+  useMeetingQuery,
+  useMeetTimeQuery,
+} from '@utils/hooks/queryHooks/useMeetingQuery';
 
 export default function Dashboard() {
-  const meetings = useQuery(
-    ['meetings', typeof window !== 'undefined' && localStorage.getItem('uid')],
-    getMeetingByUid
-  );
-  const datetimes = useQuery(
-    ['datetimes', typeof window !== 'undefined' && localStorage.getItem('uid')],
-    getDateTimeByUid
-  );
+  const meetings = useMeetingQuery();
+  const datetimes = useMeetTimeQuery();
 
   const upcommingEvents = useMemo(() => {
     /** if meetings & datetime data not found, return empty array */

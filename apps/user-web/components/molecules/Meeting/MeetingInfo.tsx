@@ -41,7 +41,7 @@ export default function MeetingInfo({ event, rooms }: Props) {
           <LinkIcon className="text-primary-700 dark:text-primary-300 h-5 w-5" />
           {event.isOnline && (
             <LinkTo
-              to="http://link"
+              to={room?.name_room}
               blank
               className="hover:text-primary-700 text-primary-600 dark:text-primary-300 dark:hover:text-primary-200 hover:underline"
             >
@@ -52,7 +52,13 @@ export default function MeetingInfo({ event, rooms }: Props) {
       ) : (
         <div className="flex flex-row items-center justify-start gap-2">
           <LocationMarkerIcon className="text-primary-700 dark:text-primary-300 h-5 w-5" />
-          {!event.isOnline && <p className="">{room?.name_room || ''}</p>}
+          {!event.isOnline && (
+            <p className="capitalize">
+              {room.name_room === room.description
+                ? room.name_room
+                : `${room.description} (${room.name_room})` || ''}
+            </p>
+          )}
         </div>
       )}
     </div>

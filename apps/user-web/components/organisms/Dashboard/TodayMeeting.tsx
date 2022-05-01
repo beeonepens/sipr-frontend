@@ -4,9 +4,9 @@ import MeetingInfo from '@components/molecules/Meeting/MeetingInfo';
 import MeetingNavigation from '@components/molecules/Meeting/MeetingNavigation';
 import ZeroTodayMeeting from '@components/molecules/Dashboard/ZeroTodayMeeting';
 import { MeetWithDate } from '@utils/types/meet.dto';
-import { useQuery } from 'react-query';
-import { getAllRoom } from '@utils/queries/roomQuery';
-import { getTimeDifference } from '@utils/formatDateTime';
+import { formatToMs, getTimeDifference } from '@utils/formatDateTime';
+import { differenceInMinutes } from 'date-fns';
+import { useAllRoomQuery } from '@utils/hooks/queryHooks/useRoomQuery';
 
 interface Props {
   events: MeetWithDate[];
@@ -14,7 +14,25 @@ interface Props {
 
 export default function TodayMeeting({ events }: Props) {
   const [itemIndex, setItemIndex] = useState(0);
-  const rooms = useQuery(['rooms'], getAllRoom);
+  const rooms = useAllRoomQuery();
+
+  function getMeetTimeStatus(startTime: string, endTime: string) {
+    /** check if the meeting is underway */
+    if (
+      formatToMs() > formatToMs(startTime) &&
+      formatToMs() < formatToMs(endTime)
+    ) {
+      return `Meeting in Progress`;
+    }
+
+    /** check if meeting is about to start */
+    if (differenceInMinutes(new Date(startTime), new Date()) > 0) {
+      return `Start in ${getTimeDifference(startTime)}`;
+    }
+
+    /** if meeting is finished */
+    return `End ${getTimeDifference(endTime)} Ago`;
+  }
 
   return (
     <div
@@ -55,8 +73,10 @@ export default function TodayMeeting({ events }: Props) {
               type="button"
               className="cursor-default rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300"
             >
-              {'Start in '}
-              {getTimeDifference(events[itemIndex].start_datetime)}
+              {getMeetTimeStatus(
+                events[itemIndex].start_datetime,
+                events[itemIndex].end_datetime
+              )}
             </button>
           </div>
         </>

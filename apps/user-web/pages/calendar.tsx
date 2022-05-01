@@ -9,7 +9,11 @@ import getDay from 'date-fns/getDay';
 import enGB from 'date-fns/locale/en-GB';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
-import { EVENTS } from '@utils/constant';
+import {
+  useMeetingQuery,
+  useMeetTimeQuery,
+} from '@utils/hooks/queryHooks/useMeetingQuery';
+import { MeetForCalendar, MeetWithDate } from '@utils/types/meet.dto';
 
 export interface EventType {
   id: number;
@@ -39,18 +43,49 @@ const localizer = dateFnsLocalizer({
 
 export default function Calendar() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
+  const [openEvent, setOpenEvent] = React.useState<MeetWithDate | null>(null);
+  const meetings = useMeetingQuery();
+  const datetimes = useMeetTimeQuery();
+  // const rooms = useAllRoomQuery();
 
   function toggleModal() {
     setIsModalOpen((prevState) => !prevState);
   }
 
-  const handleSelectEvent = React.useCallback((e) => {
-    console.log(e);
-    setOpenEvent(e);
-    // push(`/calendar/${e.id}`);
-    toggleModal();
-  }, []);
+  const meetingList = React.useMemo(() => {
+    /** if meetings & datetime data not found, return empty array */
+    if (!meetings.data || !datetimes.data) return [];
+
+    /** combine datetime & meeting detail data */
+    return datetimes.data.map((dt) => ({
+      ...dt,
+      ...meetings.data.find((meet) => meet.id_meet === dt.id_meet),
+    }));
+  }, [meetings.data, datetimes.data]);
+
+  /** return with formatted object shape + meeting room */
+  const calendarMeetingList = React.useMemo(
+    () =>
+      meetingList.map((mdt) => ({
+        id: mdt.id_meet,
+        title: mdt.name_meeting,
+        description: mdt.description,
+        allDay: false,
+        start: new Date(mdt.start_datetime),
+        end: new Date(mdt.end_datetime),
+        isOnline: mdt.isOnline,
+      })),
+    [meetingList]
+  );
+
+  const handleSelectEvent = React.useCallback(
+    (e: MeetForCalendar) => {
+      console.log(e);
+      setOpenEvent(meetingList.find((m) => m.id_meet === e.id));
+      toggleModal();
+    },
+    [meetingList]
+  );
 
   /** big calendar date view configuration */
   const { defaultDate, views } = React.useMemo(
@@ -94,7 +129,7 @@ export default function Calendar() {
           localizer={localizer}
           defaultDate={defaultDate}
           views={views}
-          events={EVENTS}
+          events={calendarMeetingList}
           onSelectEvent={handleSelectEvent}
           selectable
           popup

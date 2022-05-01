@@ -32,3 +32,15 @@ export interface GetAllMeetingRes {
   };
   message: string;
 }
+
+export interface MeetForCalendar {
+  details: MeetWithDate;
+  id: number;
+  title: string;
+  description: string;
+  allDay: boolean;
+  start: Date;
+  end: Date;
+  isOnline: number;
+  location?: string;
+}

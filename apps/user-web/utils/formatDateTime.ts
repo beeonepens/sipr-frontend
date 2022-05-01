@@ -26,30 +26,42 @@ export const formatMeetDateTime = (startDate: string, endDate: string) =>
   formatTime(endDate);
 
 /** result: 891723912548 */
-export const formatToMs = (date: string) => new Date(date).getTime();
+export const formatToMs = (date?: string) => {
+  if (date) return new Date(date).getTime();
+  return new Date().getTime();
+};
 
 /** result: 45 minutes or 3 Hours */
 export const getTimeDifference = (
   startDate: string,
   endDate: null | string = null
 ) => {
-  if (differenceInMinutes(new Date(startDate), new Date()) < 60) {
+  if (
+    differenceInMinutes(new Date(startDate), new Date()) > 60 ||
+    differenceInMinutes(new Date(startDate), new Date()) < -60
+  ) {
     if (endDate)
       return (
         // eslint-disable-next-line prefer-template
-        differenceInMinutes(new Date(startDate), new Date(endDate)) + ' Minutes'
+        Math.abs(differenceInHours(new Date(startDate), new Date(endDate))) +
+        ' Hours'
       );
 
-    // eslint-disable-next-line prefer-template
-    return differenceInMinutes(new Date(startDate), new Date()) + ' Minutes';
+    return (
+      // eslint-disable-next-line prefer-template
+      Math.abs(differenceInHours(new Date(startDate), new Date())) + ' Hours'
+    );
   }
 
   if (endDate)
     return (
       // eslint-disable-next-line prefer-template
-      differenceInHours(new Date(startDate), new Date(endDate)) + ' Hours'
+      Math.abs(differenceInMinutes(new Date(startDate), new Date(endDate))) +
+      ' Minutes'
     );
 
-  // eslint-disable-next-line prefer-template
-  return differenceInHours(new Date(startDate), new Date()) + ' Hours';
+  return (
+    // eslint-disable-next-line prefer-template
+    Math.abs(differenceInMinutes(new Date(startDate), new Date())) + ' Minutes'
+  );
 };

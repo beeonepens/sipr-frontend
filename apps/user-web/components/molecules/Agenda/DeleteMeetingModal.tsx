@@ -2,12 +2,12 @@ import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { Dialog } from '@headlessui/react';
 import { Button } from 'ui';
 import { XIcon } from '@heroicons/react/outline';
-import { EventType } from '@utils/constant';
+import { MeetWithDate } from '@utils/types/meet.dto';
 
 interface Props {
   isModalOpen: boolean;
   toggleModal: () => void;
-  openEvent: EventType;
+  openEvent: MeetWithDate;
 }
 
 export default function DeleteMeetingModal({
@@ -33,7 +33,7 @@ export default function DeleteMeetingModal({
             </Dialog.Title>
             <Dialog.Description className="mt-3 flex flex-col text-sm text-gray-700 dark:text-gray-300">
               <span>Are you sure you want to delete this meeting?</span>
-              <span>Meeting Name : {openEvent.title}</span>
+              <span>Meeting Name : {openEvent.name_meeting}</span>
             </Dialog.Description>
 
             <div className="mt-6 flex flex-row justify-end">

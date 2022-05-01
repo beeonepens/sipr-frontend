@@ -4,31 +4,29 @@ import { motion } from 'framer-motion';
 import Skeleton from 'react-loading-skeleton';
 import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
 import DeleteMeetingModal from '@components/molecules/Agenda/DeleteMeetingModal';
-import { EventType } from '@utils/constant';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 import AgendaTable from '@components/organisms/Agenda/AgendaTable';
-import { useQuery } from 'react-query';
 import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
 import { Button } from 'ui';
 import { FilterIcon, PlusIcon } from '@heroicons/react/outline';
 import Search from '@components/molecules/Search';
-import { getDateTimeByUid, getMeetingByUid } from '@utils/queries/meetQuery';
 import { formatToMs } from '@utils/formatDateTime';
+import {
+  useMeetingQuery,
+  useMeetTimeQuery,
+} from '@utils/hooks/queryHooks/useMeetingQuery';
+import { useAllRoomQuery } from '@utils/hooks/queryHooks/useRoomQuery';
+import { MeetWithDate } from '@utils/types/meet.dto';
 
 export default function Agenda() {
   const [isNewModalOpen, setIsNewModalOpen] = React.useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
-  const [openEvent, setOpenEvent] = React.useState<EventType | null>(null);
+  const [openEvent, setOpenEvent] = React.useState<MeetWithDate | null>(null);
 
-  const meetings = useQuery(
-    ['meetings', typeof window !== 'undefined' && localStorage.getItem('uid')],
-    getMeetingByUid
-  );
-  const datetimes = useQuery(
-    ['datetimes', typeof window !== 'undefined' && localStorage.getItem('uid')],
-    getDateTimeByUid
-  );
+  const meetings = useMeetingQuery();
+  const datetimes = useMeetTimeQuery();
+  const rooms = useAllRoomQuery();
 
   const meetingList = React.useMemo(() => {
     /** if meetings & datetime data not found, return empty array */
@@ -121,6 +119,7 @@ export default function Agenda() {
       <CreateMeetingModal
         isModalOpen={isNewModalOpen}
         toggleModal={toggleNewModal}
+        rooms={rooms.data ? rooms.data.data : []}
       />
 
       <MeetingDetailsModal

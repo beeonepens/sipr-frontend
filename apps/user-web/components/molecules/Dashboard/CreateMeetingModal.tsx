@@ -207,7 +207,6 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
                   id="isOnline"
                   title="Status"
                   options={MeetingStatusOptions}
-                  selected="online"
                 />
                 {methods.watch('isOnline') === 'online' ? (
                   <FormControl
