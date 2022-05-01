@@ -65,8 +65,7 @@ export function Button({
         isDisabled && 'cursor-not-allowed'
       )}
     >
-      {isLoading && <LoadingIcon />}
-      {isLoading ? '' : children}
+      {isLoading ? <LoadingIcon /> : children}
     </button>
   );
 }

@@ -102,6 +102,7 @@ importers:
       '@radix-ui/react-avatar': ^0.1.4
       '@radix-ui/react-dropdown-menu': ^0.1.6
       '@radix-ui/react-popover': ^0.1.6
+      '@radix-ui/react-toast': ^0.1.1
       '@radix-ui/react-tooltip': ^0.1.7
       '@sentry/nextjs': ^6.19.6
       '@tailwindcss/forms': ^0.5.0
@@ -165,6 +166,7 @@ importers:
       '@radix-ui/react-avatar': 0.1.4_react@17.0.2
       '@radix-ui/react-dropdown-menu': 0.1.6_b49bddbe4b905ced4713cb857cca91fa
       '@radix-ui/react-popover': 0.1.6_b49bddbe4b905ced4713cb857cca91fa
+      '@radix-ui/react-toast': 0.1.1_react-dom@17.0.2+react@17.0.2
       '@radix-ui/react-tooltip': 0.1.7_react-dom@17.0.2+react@17.0.2
       '@sentry/nextjs': 6.19.6_next@12.1.5+react@17.0.2
       axios: 0.26.1
@@ -1154,6 +1156,28 @@ packages:
       '@babel/runtime': 7.17.8
       '@radix-ui/react-compose-refs': 0.1.0_react@17.0.2
       react: 17.0.2
+    dev: false
+
+  /@radix-ui/react-toast/0.1.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-9JWC4mPP78OE6muDrpaPf/71dIeozppdcnik1IvsjTxZpDnt9PbTtQj94DdWjlCphbv3S5faD3KL0GOpqKBpTQ==}
+    peerDependencies:
+      react: ^16.8 || ^17.0
+      react-dom: ^16.8 || ^17.0
+    dependencies:
+      '@babel/runtime': 7.17.8
+      '@radix-ui/primitive': 0.1.0
+      '@radix-ui/react-compose-refs': 0.1.0_react@17.0.2
+      '@radix-ui/react-context': 0.1.1_react@17.0.2
+      '@radix-ui/react-dismissable-layer': 0.1.5_react@17.0.2
+      '@radix-ui/react-portal': 0.1.4_react-dom@17.0.2+react@17.0.2
+      '@radix-ui/react-presence': 0.1.2_react@17.0.2
+      '@radix-ui/react-primitive': 0.1.4_react@17.0.2
+      '@radix-ui/react-use-callback-ref': 0.1.0_react@17.0.2
+      '@radix-ui/react-use-controllable-state': 0.1.0_react@17.0.2
+      '@radix-ui/react-use-layout-effect': 0.1.0_react@17.0.2
+      '@radix-ui/react-visually-hidden': 0.1.4_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /@radix-ui/react-tooltip/0.1.7_react-dom@17.0.2+react@17.0.2:

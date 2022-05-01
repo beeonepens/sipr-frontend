@@ -25,6 +25,21 @@ export const GenderOptions = [
   { label: 'Female', value: 'wanita' },
 ];
 
+/** function to handle open toast */
+export const handleOpenToast = (
+  open: boolean,
+  setOpen: (op: boolean) => void
+) => {
+  if (open) {
+    setOpen(false);
+    setTimeout(() => {
+      setOpen(true);
+    }, 400);
+  } else {
+    setOpen(true);
+  }
+};
+
 export const EVENTS = [
   {
     id: 0,
