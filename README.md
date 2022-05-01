@@ -1,8 +1,8 @@
-# Turborepo starter with pnpm
+# SIPR Frontend Monorepo
 
 ## What's inside?
 
-This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following packages/apps:
+This monorepo is powered by [turborepo](https://turborepo.org/) and [pnpm](https://pnpm.io). It includes the following packages/apps:
 
 ### Apps and Packages
 
