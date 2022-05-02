@@ -9,6 +9,8 @@ import {
 } from '@heroicons/react/outline';
 import Logo from '@components/atoms/Logo';
 import { useLogoColor } from '@utils/hooks/useLogoColor';
+import WhatsNewMenu from '@components/molecules/Sidebar/WhatsNewMenu';
+import HelpAboutMenu from '@components/molecules/Sidebar/HelpAboutMenu';
 
 const SideMenu = [
   {
@@ -63,15 +65,10 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* <SidebarMenu
-        menu={{
-          alias: 'profile',
-          slug: '/profile',
-          label: 'Profile',
-          icon: <UserCircleIcon className="h-6 w-6" />,
-        }}
-        key="/profile"
-      /> */}
+      <div className="mt-12 flex flex-col lg:mt-0">
+        <WhatsNewMenu />
+        <HelpAboutMenu />
+      </div>
     </aside>
   );
 }

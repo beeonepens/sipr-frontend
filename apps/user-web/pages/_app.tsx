@@ -47,7 +47,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         </div>
       </SkeletonTheme>
 
-      <ReactQueryDevtools />
+      <ReactQueryDevtools position="top-left" />
     </QueryClientProvider>
   );
 }

@@ -1,4 +1,5 @@
 export const API_URL = process.env.NEXT_PUBLIC_API;
+export const RELEASE_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION || '-';
 
 export const PUBLIC_URL = [
   '/',
@@ -39,6 +40,16 @@ export const handleOpenToast = (
     setOpen(true);
   }
 };
+
+/** team member */
+export const TeamMember = [
+  'Abier',
+  'Arya',
+  'Fahri',
+  'Fian',
+  'Nurul',
+  'Reyhana',
+];
 
 export const EVENTS = [
   {

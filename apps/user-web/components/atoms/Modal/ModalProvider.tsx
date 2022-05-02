@@ -37,7 +37,7 @@ export default function ModalProvider({
               className={clsx(
                 'fixed inset-0',
                 type === 'dialog'
-                  ? 'md:bg-black md:bg-opacity-50 md:backdrop-blur-md md:backdrop-filter'
+                  ? 'md:bg-black md:bg-opacity-50 md:backdrop-blur-sm md:backdrop-filter'
                   : 'bg-black bg-opacity-50 backdrop-blur-sm backdrop-filter md:backdrop-blur-sm'
               )}
             />
