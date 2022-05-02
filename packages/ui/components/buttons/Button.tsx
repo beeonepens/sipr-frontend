@@ -44,7 +44,7 @@ export function Button({
           variant === 'solid' &&
             'bg-primary-700 border-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 hover:bg-primary-600 disabled:bg-primary-600 disabled:border-primary-600 hover:border-primary-600 dark:border-primary-600 dark:hover:border-primary-700 text-white dark:text-white',
           variant === 'outline' &&
-            'border-primary-700 dark:border-primary-600 hover:text-primary-600 hover:border-primary-600 dark:hover:bg-primary-600 disabled:hover:border-primary-700 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 disabled:hover:bg-transparent disabled:hover:text-gray-900 dark:text-gray-300 dark:hover:bg-opacity-20',
+            'border-primary-700 dark:border-primary-600 hover:text-primary-600 hover:border-primary-600 dark:hover:bg-primary-600 disabled:border-primary-700 bg-transparent text-gray-900 hover:bg-black hover:bg-opacity-10 disabled:bg-black disabled:bg-opacity-0 disabled:text-gray-900 dark:text-gray-300 dark:hover:bg-opacity-20',
         ],
         color === 'danger' && [
           variant === 'solid' &&

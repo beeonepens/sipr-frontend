@@ -35,7 +35,9 @@ export default function Search({
           id="search"
           placeholder={placeholder}
           type="text"
-          leftIcon={<SearchIcon className="h-6 w-6" />}
+          leftIcon={
+            <SearchIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+          }
         />
       </form>
     </FormProvider>
