@@ -17,6 +17,12 @@ export default function Document() {
         />
         <meta name="theme-color" content="#111827" />
         <script src="/scripts/theme.js" />
+
+        <script
+          defer
+          data-domain="sipr.vercel.app"
+          src="http://sipr-stats.rulasfia.tech/js/plausible.js"
+        />
       </Head>
       <body>
         <Main />

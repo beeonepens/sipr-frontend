@@ -132,7 +132,7 @@ export default function Agenda() {
         )}
         {meetings.isSuccess && datetimes.isSuccess && (
           <AgendaTable
-            events={meetingList}
+            meets={meetingList}
             handleDeleteEvent={handleDeleteEvent}
             handleSelectEvent={handleSelectEvent}
           />

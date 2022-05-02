@@ -14,7 +14,8 @@ export default function AgendaTableAction({
   handleSelectEvent,
 }: Props) {
   return (
-    <td className="flex flex-row justify-end gap-3 px-6 py-4 text-right">
+    <div className="flex flex-row justify-end gap-3 text-right">
+      {/* <td className="flex flex-row justify-end gap-3 px-6 py-4 text-right"> */}
       <TooltipProvider message="Delete meeting">
         <button
           type="button"
@@ -34,6 +35,7 @@ export default function AgendaTableAction({
           <PencilIcon className="text-primary-600 h-4 w-4 dark:text-blue-100" />
         </button>
       </TooltipProvider>
-    </td>
+      {/* </td> */}
+    </div>
   );
 }
