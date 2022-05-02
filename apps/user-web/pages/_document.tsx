@@ -21,7 +21,7 @@ export default function Document() {
         <script
           defer
           data-domain="sipr.vercel.app"
-          src="http://sipr-stats.rulasfia.tech/js/plausible.js"
+          src="http://188.166.210.173:8000/js/plausible.js"
         />
       </Head>
       <body>
