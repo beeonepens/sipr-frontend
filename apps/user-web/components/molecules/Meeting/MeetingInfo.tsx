@@ -59,9 +59,9 @@ export default function MeetingInfo({ event, rooms }: Props) {
           <LocationMarkerIcon className="text-primary-700 dark:text-primary-300 h-5 w-5" />
           {!event.isOnline && (
             <p className="capitalize">
-              {room.name_room === room.description
-                ? room.name_room
-                : `${room.description} (${room.name_room})` || <Skeleton />}
+              {room?.name_room === room?.description
+                ? room?.name_room
+                : `${room?.description} (${room?.name_room})` || <Skeleton />}
             </p>
           )}
         </div>
