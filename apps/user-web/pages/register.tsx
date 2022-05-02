@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,6 +20,12 @@ import clsx from 'clsx';
 
 export default function Register() {
   const router = useRouter();
+
+  useEffect(() => {
+    // Prefetch the dashboard page
+    router.prefetch('/dashboard');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /** hooks for forms control & submit action */
   const methods = useForm<RegisterInput>({

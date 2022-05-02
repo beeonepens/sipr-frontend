@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -17,6 +18,12 @@ import type { LoginResponse } from '@utils/types/auth.dto';
 
 export default function Login() {
   const router = useRouter();
+
+  useEffect(() => {
+    // Prefetch the dashboard page
+    router.prefetch('/dashboard');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /** hooks for forms control & submit action */
   const methods = useForm<LoginInput>({
