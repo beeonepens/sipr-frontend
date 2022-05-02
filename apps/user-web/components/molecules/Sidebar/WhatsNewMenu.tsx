@@ -2,15 +2,31 @@ import LinkTo from '@components/atoms/LinkTo';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { Dialog } from '@headlessui/react';
 import { GiftIcon, XIcon } from '@heroicons/react/outline';
+import { RELEASE_VERSION } from '@utils/constant';
 import { formatDate } from '@utils/formatDateTime';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { releaseNotes } from 'release/sipr-release-0.4';
 import { Button } from 'ui';
 import MiniSidebarMenu from './MiniSidebarMenu';
 
 export default function WhatsNewMenu() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleModal = () => setIsModalOpen((cv) => !cv);
+  const [dots, setDots] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen((cv) => !cv);
+    if (dots === true) setDots(false);
+    localStorage.setItem('ver', RELEASE_VERSION);
+  };
+
+  // useReleaseHooks();
+  useEffect(() => {
+    if (
+      !localStorage.getItem('ver') ||
+      localStorage.getItem('ver') !== RELEASE_VERSION
+    ) {
+      setDots(true);
+    }
+  }, []);
 
   return (
     <>
@@ -19,6 +35,7 @@ export default function WhatsNewMenu() {
           label: "What' New?",
           icon: <GiftIcon className="h-4 w-4" />,
         }}
+        dots={dots}
         onClick={toggleModal}
       />
 
