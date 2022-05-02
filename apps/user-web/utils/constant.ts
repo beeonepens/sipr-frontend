@@ -1,4 +1,5 @@
 export const API_URL = process.env.NEXT_PUBLIC_API;
+export const RELEASE_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION || '-';
 
 export const PUBLIC_URL = [
   '/',

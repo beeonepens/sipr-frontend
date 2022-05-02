@@ -6,12 +6,12 @@ import {
   HomeIcon,
   UserGroupIcon,
   MailIcon,
-  GiftIcon,
   QuestionMarkCircleIcon,
 } from '@heroicons/react/outline';
 import Logo from '@components/atoms/Logo';
 import { useLogoColor } from '@utils/hooks/useLogoColor';
 import MiniSidebarMenu from '@components/molecules/Sidebar/MiniSidebarMenu';
+import WhatsNewMenu from '@components/molecules/Sidebar/WhatsNewMenu';
 
 const SideMenu = [
   {
@@ -77,12 +77,7 @@ export default function Sidebar() {
       /> */}
 
       <div className="flex flex-col">
-        <MiniSidebarMenu
-          menu={{
-            label: "What' New?",
-            icon: <GiftIcon className="h-4 w-4" />,
-          }}
-        />
+        <WhatsNewMenu />
         <MiniSidebarMenu
           menu={{
             label: 'Help & About',
