@@ -88,7 +88,7 @@ function AgendaTable({ meets, handleSelectEvent, handleDeleteEvent }: Props) {
                 <th
                   {...column.getHeaderProps()}
                   className={clsx(
-                    'px-6 py-3',
+                    'px-4 py-3',
                     column.render('Header') === 'Actions' && 'text-right'
                   )}
                 >
