@@ -41,6 +41,16 @@ export const handleOpenToast = (
   }
 };
 
+/** team member */
+export const TeamMember = [
+  'Abier',
+  'Arya',
+  'Fahri',
+  'Fian',
+  'Nurul',
+  'Reyhana',
+];
+
 export const EVENTS = [
   {
     id: 0,

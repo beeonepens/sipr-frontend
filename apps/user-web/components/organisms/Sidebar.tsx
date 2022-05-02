@@ -6,12 +6,11 @@ import {
   HomeIcon,
   UserGroupIcon,
   MailIcon,
-  QuestionMarkCircleIcon,
 } from '@heroicons/react/outline';
 import Logo from '@components/atoms/Logo';
 import { useLogoColor } from '@utils/hooks/useLogoColor';
-import MiniSidebarMenu from '@components/molecules/Sidebar/MiniSidebarMenu';
 import WhatsNewMenu from '@components/molecules/Sidebar/WhatsNewMenu';
+import HelpAboutMenu from '@components/molecules/Sidebar/HelpAboutMenu';
 
 const SideMenu = [
   {
@@ -66,24 +65,9 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* <SidebarMenu
-        menu={{
-          alias: 'profile',
-          slug: '/profile',
-          label: 'Profile',
-          icon: <UserCircleIcon className="h-6 w-6" />,
-        }}
-        key="/profile"
-      /> */}
-
-      <div className="flex flex-col">
+      <div className="mt-12 flex flex-col lg:mt-0">
         <WhatsNewMenu />
-        <MiniSidebarMenu
-          menu={{
-            label: 'Help & About',
-            icon: <QuestionMarkCircleIcon className="h-4 w-4" />,
-          }}
-        />
+        <HelpAboutMenu />
       </div>
     </aside>
   );
