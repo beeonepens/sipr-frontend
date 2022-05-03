@@ -1,3 +1,5 @@
+import { UserProfileInput } from '@utils/validations';
+
 export interface User {
   nip: string;
   name: string;
@@ -11,6 +13,12 @@ export interface User {
   dateofbirth?: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface UpdateUserParam {
+  user: UserProfileInput;
+  id: string;
+  oldUser: User;
 }
 
 export interface GetUserRes {

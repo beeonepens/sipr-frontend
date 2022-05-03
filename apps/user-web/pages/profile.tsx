@@ -34,7 +34,7 @@ export default function Profile() {
             (!isEditing ? (
               <UserInfoView toggleEditing={toggleEditing} data={user.data[0]} />
             ) : (
-              <UserInfoEdit toggleEditing={toggleEditing} />
+              <UserInfoEdit data={user.data[0]} toggleEditing={toggleEditing} />
             ))}
 
           <UserAvatar />

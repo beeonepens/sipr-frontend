@@ -106,7 +106,11 @@ export default function Register() {
                   type="password"
                 />
                 <div className="col-span-1 grid h-fit grid-cols-1 items-center gap-4 md:col-span-2 md:grid-cols-2">
-                  <FormControl id="nip" label="NIP *" type="text" />
+                  <FormControl
+                    id="nip"
+                    label="Identification (NIP/NRP) *"
+                    type="text"
+                  />
                   <FormRadioControl
                     id="gender"
                     title="Gender *"
@@ -114,12 +118,6 @@ export default function Register() {
                     selected="pria"
                   />
                 </div>
-                {/* <FormAreaControl rows={2} label="Adress" id="address" /> */}
-                {/* <FormDateTimeControl
-                  defaultValue={new Date(2000, 1, 1)}
-                  label="Date of Birth"
-                  id="dateofbirth"
-                /> */}
               </div>
 
               {/* forms submit button */}
