@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Head from 'next/head';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,6 +20,7 @@ import type { RegisterResponse } from '@utils/types/auth.dto';
 import clsx from 'clsx';
 
 export default function Register() {
+  const [error422, setError422] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -41,6 +43,8 @@ export default function Register() {
   /** function to hadle register action */
   const onSubmit: SubmitHandler<RegisterInput> = (data) => {
     console.log(data);
+    setError422(false);
+
     mutation.mutate(data, {
       /** action on mutation error */
       onError: ({ message, response }) => {
@@ -49,6 +53,11 @@ export default function Register() {
       /** action on mutation success */
       onSuccess: (result) => {
         console.log({ result });
+        // @ts-ignore
+        if ('message' in result && result.message.status === 422) {
+          setError422(true);
+        }
+
         if ('token' in result && result.data.length > 0) {
           const user = result.data[0];
           localStorage.setItem('token', result.token);
@@ -132,15 +141,23 @@ export default function Register() {
                 </Button>
               </div>
 
-              {/* login failed alert */}
+              {/* register failed alert */}
               <div
                 className={clsx(
-                  mutation.isError ? 'visible' : 'invisible',
+                  mutation.isError || error422 ? 'visible' : 'invisible',
                   'mt-4 flex flex-row items-center gap-3 rounded-md bg-red-200 p-3 text-sm font-medium text-red-600'
                 )}
               >
                 <ExclamationIcon className="h-5 w-5" />
-                <span>{mutation.isError ? mutation.error.message : ''}</span>
+                {mutation.isError && !error422 && (
+                  <span>{mutation.error.message}</span>
+                )}
+                {error422 && !mutation.isError && (
+                  <span>
+                    Can&apos;t create new account. Email or Identification
+                    already exist
+                  </span>
+                )}
               </div>
             </form>
           </FormProvider>

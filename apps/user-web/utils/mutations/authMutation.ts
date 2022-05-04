@@ -20,9 +20,9 @@ export const registerMutation = async (user: RegisterInput) => {
     {
       ...user,
       avatarUrl:
-        user.gender === 'pria'
-          ? '/uploads/male_avatar.png'
-          : '/uploads/female_avatar.png',
+        user.gender === 'wanita'
+          ? '/uploads/female_avatar.png'
+          : '/uploads/male_avatar.png',
     },
     { headers: { 'Content-Type': 'application/json' } }
   );

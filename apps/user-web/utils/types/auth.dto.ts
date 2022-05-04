@@ -26,7 +26,7 @@ export interface NewUser {
 export interface RegisterResponse {
   data?: NewUser[];
   token?: string;
-  message?: string;
+  message?: unknown;
 }
 
 export interface LogoutResponse {
