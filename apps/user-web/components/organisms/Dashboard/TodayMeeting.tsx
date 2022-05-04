@@ -55,12 +55,12 @@ export default function TodayMeeting({ events }: Props) {
           )}
 
           <h2 className="text-primary-800 line-clamp-2 mb-3 mr-0 text-2xl font-semibold dark:text-gray-100 lg:mr-20">
-            {events[itemIndex].name_meeting || <Skeleton />}
+            {events[itemIndex].name_meeting}
           </h2>
 
           <div className="mr-0 mb-6 lg:mr-16">
             <p className="line-clamp-2 text-sm text-gray-500 dark:text-gray-300 lg:text-base ">
-              {events[itemIndex].description || <Skeleton count={2} />}
+              {events[itemIndex].description}
             </p>
           </div>
 
