@@ -1,4 +1,4 @@
-import { ReactNode, Fragment } from 'react';
+import { ReactNode, Fragment, useMemo } from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import clsx from 'clsx';
@@ -38,6 +38,13 @@ export default function ProfileMenu() {
     logoutMutation
   );
 
+  const getUserAvatar = useMemo(() => {
+    if (!user.data) return '';
+    if (user.data[0].avatarUrl) return user.data[0].avatarUrl;
+    if (user.data[0].gender === 'wanita') return '/uploads/female_avatar.png';
+    return '/uploads/male_avatar.png';
+  }, [user.data]);
+
   const onLogout = () => {
     console.log('logging out');
     mutation.mutate(null, {
@@ -72,7 +79,7 @@ export default function ProfileMenu() {
               className="relative inline-flex h-6 w-6 "
             >
               <AvatarPrimitive.Image
-                src={user.data && user.data[0].avatarUrl}
+                src={getUserAvatar}
                 alt="Avatar"
                 className={clsx(
                   'h-full w-full object-cover',
