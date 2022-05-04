@@ -1,5 +1,7 @@
+/* eslint-disable no-bitwise */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 const keyStr =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
 // @ts-ignore
 const triplet = (e1, e2, e3) =>

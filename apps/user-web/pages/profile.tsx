@@ -1,21 +1,17 @@
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useUserDetailQuery } from '@utils/hooks/queryHooks/useUserQuery';
 import UserInfoView from '@components/organisms/Profile/UserInfoView';
 import UserAvatar from '@components/organisms/Profile/UserAvatar';
 import UserInfoEdit from '@components/organisms/Profile/UserInfoEdit';
-import { useUnreleased } from '@utils/store/useUnreleased';
-import UnreleasedAlert from '@components/molecules/UnreleasedAlert';
+import UserInfoLoading from '@components/organisms/Profile/UserInfoLoading';
 
 export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const toggleEditing = () => setIsEditing((cs) => !cs);
 
-  const { setOpenModal } = useUnreleased();
-
-  useEffect(() => {
-    setOpenModal(true);
-  }, [setOpenModal]);
+  const user = useUserDetailQuery();
 
   return (
     <>
@@ -33,16 +29,18 @@ export default function Profile() {
         </h2>
 
         <div className="my-8 flex flex-col-reverse gap-8 xl:flex-row xl:items-start xl:justify-between">
-          {!isEditing ? (
-            <UserInfoView toggleEditing={toggleEditing} />
-          ) : (
-            <UserInfoEdit toggleEditing={toggleEditing} />
-          )}
+          {user.isLoading && <UserInfoLoading />}
+          {user.isSuccess &&
+            (!isEditing ? (
+              <UserInfoView toggleEditing={toggleEditing} data={user.data[0]} />
+            ) : (
+              <UserInfoEdit data={user.data[0]} toggleEditing={toggleEditing} />
+            ))}
 
-          <UserAvatar />
+          {user.isSuccess && <UserAvatar data={user.data[0]} />}
         </div>
 
-        <UnreleasedAlert />
+        {/* <UnreleasedAlert /> */}
       </motion.article>
     </>
   );

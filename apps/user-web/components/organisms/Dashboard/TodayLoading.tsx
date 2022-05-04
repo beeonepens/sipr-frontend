@@ -9,17 +9,21 @@ export default function TodayLoading() {
         'border border-gray-300 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:shadow-black/20'
       )}
     >
-      <div className="grid grid-cols-5 items-center gap-3">
-        <Skeleton className="col-span-1 mb-3" />
+      <h2 className="text-primary-800 line-clamp-2 mb-3 mr-0 text-2xl font-semibold dark:text-gray-100 lg:mr-20">
+        <Skeleton count={2} />
+      </h2>
 
-        <div className="col-span-4">
+      <div className="mr-0 mb-6 lg:mr-16">
+        <p className="line-clamp-2 text-sm text-gray-500 dark:text-gray-300 lg:text-base ">
           <Skeleton count={2} />
-        </div>
+        </p>
       </div>
 
-      <Skeleton className="mt-6" />
-      <Skeleton className="mt-2" />
-      <Skeleton className="mt-2" />
+      <div className="mr-0 mb-6 md:w-1/3 lg:mr-16 lg:w-1/4">
+        <p className="line-clamp-3 text-sm text-gray-500 dark:text-gray-300 lg:text-base ">
+          <Skeleton count={3} />
+        </p>
+      </div>
     </div>
   );
 }

@@ -9,6 +9,8 @@ import { LogoutResponse } from '@utils/types/auth.dto';
 import { logoutMutation } from '@utils/mutations/authMutation';
 import { LogoutIcon, UserCircleIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
+import { useUserDetailQuery } from '@utils/hooks/queryHooks/useUserQuery';
+import { getInitialName } from '@utils/formatText';
 // import LogoutAction from '../Profile/LogoutAction';
 
 interface RadixMenuItem {
@@ -30,6 +32,7 @@ const menuItems: RadixMenuItem[] = [
 
 export default function ProfileMenu() {
   const router = useRouter();
+  const user = useUserDetailQuery();
 
   const mutation = useMutation<LogoutResponse, AxiosError, null>(
     logoutMutation
@@ -69,7 +72,7 @@ export default function ProfileMenu() {
               className="relative inline-flex h-6 w-6 "
             >
               <AvatarPrimitive.Image
-                src="/uploads/avatar-man.png"
+                src={user.data && user.data[0].avatarUrl}
                 alt="Avatar"
                 className={clsx(
                   'h-full w-full object-cover',
@@ -84,7 +87,7 @@ export default function ProfileMenu() {
                 delayMs={600}
               >
                 <span className="text-sm font-medium uppercase text-gray-700 dark:text-gray-400">
-                  KA
+                  {getInitialName(user.data ? user.data[0].name : 'User')}
                 </span>
               </AvatarPrimitive.Fallback>
             </AvatarPrimitive.Root>

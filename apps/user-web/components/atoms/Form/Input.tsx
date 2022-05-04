@@ -31,7 +31,7 @@ export default function Input({
         name={id}
         {...others}
         className={clsx(
-          'block rounded-lg bg-white pl-10 dark:bg-gray-800 dark:text-gray-300 dark:caret-gray-500 sm:text-sm',
+          'block rounded-lg bg-white pl-10 disabled:cursor-not-allowed disabled:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:caret-gray-500 dark:disabled:bg-gray-900 sm:text-sm',
           errors && errors[id]
             ? 'border-red-600 focus:border-red-800 focus:ring-red-800 dark:border-red-600 dark:focus:border-red-500 dark:focus:ring-red-500'
             : 'focus:border-primary-600 focus:ring-primary-600 dark:focus:border-primary-300 dark:focus:ring-primary-300 border-gray-300 dark:border-gray-600'
@@ -46,7 +46,7 @@ export default function Input({
       name={id}
       {...others}
       className={clsx(
-        'rounded-lg bg-white dark:bg-gray-800 dark:text-gray-300 dark:caret-gray-500 sm:text-sm',
+        'rounded-lg bg-white disabled:cursor-not-allowed disabled:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:caret-gray-500 dark:disabled:bg-gray-900 sm:text-sm',
         errors && errors[id]
           ? 'border-red-600 focus:border-red-800 focus:ring-red-800 dark:border-red-600 dark:focus:border-red-500 dark:focus:ring-red-500'
           : 'focus:border-primary-600 focus:ring-primary-600 dark:focus:border-primary-300 dark:focus:ring-primary-300 border-gray-300 dark:border-gray-600'
