@@ -79,9 +79,9 @@ function AgendaTable({ meets, handleSelectEvent, handleDeleteEvent }: Props) {
     setGlobalFilter,
   } = useTable({ columns, data }, useGlobalFilter);
 
-  if (meets.length < 1) {
-    return <ZeroAgenda />;
-  }
+  // if (meets.length < 1) {
+  //   return <ZeroAgenda />;
+  // }
   return (
     <>
       {/* table toolbar */}

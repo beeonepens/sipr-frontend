@@ -37,7 +37,7 @@ export default function Profile() {
               <UserInfoEdit data={user.data[0]} toggleEditing={toggleEditing} />
             ))}
 
-          <UserAvatar />
+          {user.isSuccess && <UserAvatar data={user.data[0]} />}
         </div>
 
         {/* <UnreleasedAlert /> */}

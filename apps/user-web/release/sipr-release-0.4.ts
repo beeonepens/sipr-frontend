@@ -11,6 +11,7 @@ export const releaseNotes: ReleaseNotes = {
     'You can see your agenda either by using table or calendar',
     'You can toggle between month, week, or day in the calendar view',
     "Dashboard that shows mini calendar, today's & upcoming meetings, and meeting statistic",
+    'Toggle between light & dark theme, or just use your system setting',
     'etc.',
   ],
 };

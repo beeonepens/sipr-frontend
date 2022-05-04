@@ -16,7 +16,10 @@ export const updateUser = async ({ user, id, oldUser }: UpdateUserParam) => {
       ...user,
       isActive: oldUser.isActive,
       email_verified_at: oldUser.email_verified_at,
-      avatarUrl: oldUser.avatarUrl,
+      avatarUrl:
+        user.gender === 'pria'
+          ? '/uploads/male_avatar.png'
+          : '/uploads/female_avatar.png',
       dateofbirth:
         user.dateofbirth.toDateString() === new Date().toDateString()
           ? null

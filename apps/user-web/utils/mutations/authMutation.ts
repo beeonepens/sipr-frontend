@@ -17,7 +17,13 @@ export const loginMutation = async (user: LoginInput) => {
 export const registerMutation = async (user: RegisterInput) => {
   const { data } = await axios.post<RegisterResponse>(
     `${API_URL}/api/user/store`,
-    user,
+    {
+      ...user,
+      avatarUrl:
+        user.gender === 'pria'
+          ? '/uploads/male_avatar.png'
+          : '/uploads/female_avatar.png',
+    },
     { headers: { 'Content-Type': 'application/json' } }
   );
 
