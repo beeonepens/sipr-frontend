@@ -1,5 +1,6 @@
 export const API_URL = process.env.NEXT_PUBLIC_API;
 export const RELEASE_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION || '-';
+export const REDIS_URL = process.env.REDIS_URL || '-';
 
 export const PUBLIC_URL = [
   '/',

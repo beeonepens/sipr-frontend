@@ -14,6 +14,14 @@ export const loginMutation = async (user: LoginInput) => {
   return data;
 };
 
+export const preRegisterMutation = async (data: { email: string }) => {
+  const res = await axios.post('/api/pre-register', data, {
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  return res.data;
+};
+
 export const registerMutation = async (user: RegisterInput) => {
   const { data } = await axios.post<RegisterResponse>(
     `${API_URL}/api/user/store`,
