@@ -69,6 +69,7 @@ export default function ProfileMenu() {
         <DropdownMenuPrimitive.Trigger asChild>
           <button
             type="button"
+            name="profile"
             className={clsx(
               'm-0 flex h-auto w-auto flex-row items-center justify-center rounded-md p-2 transition duration-75 hover:bg-gray-200 dark:hover:bg-gray-700',
               'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
