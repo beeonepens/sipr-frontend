@@ -51,7 +51,7 @@ test('return time in milisecond', () => {
   const dateTime = '2022-05-10:13:00';
   const formattedTime = formatToMs(dateTime);
 
-  expect(formattedTime).toEqual(1652162400000);
+  expect(formattedTime).toEqual(new Date('2022-05-10:13:00').getTime());
 });
 
 test('return time diference in hour', () => {
