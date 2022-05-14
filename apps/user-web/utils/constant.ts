@@ -6,6 +6,8 @@ export const PUBLIC_URL = [
   '/',
   '/login',
   '/register',
+  '/verify',
+  '/new-account',
   '/reset-password',
   '/404',
 ];

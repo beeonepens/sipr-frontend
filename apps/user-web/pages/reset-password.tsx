@@ -10,7 +10,7 @@ export default function ResetPassword() {
     console.log('click');
 
     mutation.mutate(
-      { email: 'demouser@email.com' },
+      { email: 'demouser04@email.com' },
       {
         onError: ({ message, response }) => {
           console.log({ message, response });
