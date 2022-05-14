@@ -23,22 +23,23 @@ export default function NewAccount() {
   const [error422, setError422] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    if (localStorage.getItem('userStatus') !== 'verified') router.replace('/');
-    // Prefetch the dashboard page
-    router.prefetch('/dashboard');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   /** hooks for forms control & submit action */
   const methods = useForm<NewAccountInput>({
     resolver: zodResolver(NewAccountSchema),
     defaultValues: {
       gender: 'pria',
       role_id: 2,
-      email: localStorage.getItem('email'),
+      email: typeof window !== 'undefined' ? localStorage.getItem('email') : '',
     },
   });
+
+  useEffect(() => {
+    methods.setValue('email', localStorage.getItem('email'));
+    if (localStorage.getItem('userStatus') !== 'verified') router.replace('/');
+    // Prefetch the dashboard page
+    router.prefetch('/dashboard');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /** hooks for controlling the register mutation */
   const mutation = useMutation<NewAccountResponse, AxiosError, NewAccountInput>(
