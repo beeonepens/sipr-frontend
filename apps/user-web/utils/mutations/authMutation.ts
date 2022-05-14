@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { API_URL } from '@utils/constant';
 
-import type { LoginInput, RegisterInput } from '@utils/validations';
-import type { LoginResponse, RegisterResponse } from '@utils/types/auth.dto';
+import type { LoginInput, NewAccountInput } from '@utils/validations';
+import type {
+  LoginResponse,
+  NewAccountResponse,
+  RegisterResponse,
+} from '@utils/types/auth.dto';
 
 export const loginMutation = async (user: LoginInput) => {
   const { data } = await axios.post<LoginResponse>(
@@ -14,8 +18,28 @@ export const loginMutation = async (user: LoginInput) => {
   return data;
 };
 
-export const registerMutation = async (user: RegisterInput) => {
-  const { data } = await axios.post<RegisterResponse>(
+export const preRegisterMutation = async (data: { email: string }) => {
+  const res = await axios.post<RegisterResponse>('/api/pre-register', data, {
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  return res.data;
+};
+
+export const verifyMutation = async (data: { otp: string }) => {
+  const res = await axios.post(
+    '/api/verify-code',
+    { ...data, email: localStorage.getItem('email') },
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
+
+  return res.data;
+};
+
+export const registerMutation = async (user: NewAccountInput) => {
+  const { data } = await axios.post<NewAccountResponse>(
     `${API_URL}/api/user/store`,
     {
       ...user,

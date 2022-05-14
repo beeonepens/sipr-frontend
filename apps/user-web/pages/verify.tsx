@@ -6,49 +6,45 @@ import { useRouter } from 'next/router';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from 'react-query';
-import { Button } from 'ui';
-import clsx from 'clsx';
 import { ArrowLeftIcon, ExclamationIcon } from '@heroicons/react/outline';
 import LinkTo from '@components/atoms/LinkTo';
 import FormControl from '@components/molecules/Form/FormControl';
-import { preRegisterMutation } from '@utils/mutations/authMutation';
-import { RegisterResponse } from '@utils/types/auth.dto';
+import { verifyMutation } from '@utils/mutations/authMutation';
 
 import type { SubmitHandler } from 'react-hook-form';
 import type { AxiosError } from 'axios';
+import { Button } from 'ui';
+import clsx from 'clsx';
 
-const RegisterSchema = z.object({
-  email: z
-    .string()
-    .email({ message: 'Invalid email address' })
-    .min(6, { message: 'Required' }),
+const VerifySchema = z.object({
+  otp: z.string().min(12, { message: 'Required' }),
 });
 
 /** TS types for the input form */
-type RegisterInput = z.infer<typeof RegisterSchema>;
+type VerifyInput = z.infer<typeof VerifySchema>;
 
-export default function Register() {
+function Verify() {
   const router = useRouter();
 
   useEffect(() => {
-    if (localStorage.getItem('token')) router.replace('/');
+    if (!localStorage.getItem('email')) router.replace('/');
     // Prefetch the dashboard page
-    router.prefetch('/verify');
+    router.prefetch('/new-account');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /** hooks for forms control & submit action */
-  const methods = useForm<RegisterInput>({
-    resolver: zodResolver(RegisterSchema),
+  const methods = useForm<VerifyInput>({
+    resolver: zodResolver(VerifySchema),
   });
 
-  /** hooks for controlling the register mutation */
-  const mutation = useMutation<RegisterResponse, AxiosError, RegisterInput>(
-    preRegisterMutation
+  /** hooks for controlling the Verify mutation */
+  const mutation = useMutation<unknown, AxiosError, VerifyInput>(
+    verifyMutation
   );
 
-  /** function to hadle register action */
-  const onSubmit: SubmitHandler<RegisterInput> = (data) => {
+  /** function to hadle Verify action */
+  const onSubmit: SubmitHandler<VerifyInput> = (data) => {
     console.log(data);
 
     mutation.mutate(data, {
@@ -59,9 +55,8 @@ export default function Register() {
       /** action on mutation success */
       onSuccess: () => {
         // console.log({ result });
-        // localStorage.setItem('userStatus', 'verified');
-        localStorage.setItem('email', data.email);
-        router.push('/verify');
+        localStorage.setItem('userStatus', 'verified');
+        router.push('/new-account');
       },
     });
   };
@@ -72,7 +67,7 @@ export default function Register() {
   return (
     <>
       <Head>
-        <title>Register | SIPR</title>
+        <title>Verify | SIPR</title>
       </Head>
 
       <article className="flex min-h-screen flex-row items-start justify-center bg-white dark:bg-gray-800 md:items-center md:bg-black md:bg-opacity-50 md:dark:bg-gray-600">
@@ -88,12 +83,13 @@ export default function Register() {
         </LinkTo>
 
         <div className="w-full rounded-md bg-white py-16 px-8 dark:bg-gray-800 md:w-[640px] md:px-12  lg:pt-12 lg:pb-16">
-          <h2 className="text-primary-700 dark:text-primary-300 text-center text-4xl font-bold ">
-            SIPR
+          <h2 className="text-primary-700 dark:text-primary-300 text-center text-2xl font-bold ">
+            Verify Email
           </h2>
-          <h1 className="text-center text-lg font-medium">
-            Create your new account
-          </h1>
+          <p className="text-center text-base font-medium text-gray-500 dark:text-gray-500">
+            We have send an verification code to your email address. You can
+            copy that and enter it here to verify your email.
+          </p>
 
           <FormProvider {...methods}>
             <form
@@ -103,7 +99,7 @@ export default function Register() {
             >
               {/* forms input */}
               <div className="grid grid-cols-1 gap-4 ">
-                <FormControl id="email" label="Email *" type="email" />
+                <FormControl id="otp" label="Verification Code *" type="text" />
               </div>
             </form>
 
@@ -128,9 +124,11 @@ export default function Register() {
               )}
             >
               <ExclamationIcon className="h-5 w-5" />
-              {mutation.isError && mutation.error.message && (
-                <span>{mutation.error.message}</span>
-              )}
+              {mutation.isError &&
+                mutation.error.message ===
+                  'Request failed with status code 400' && (
+                  <span>Invalid Verification Code</span>
+                )}
               {mutation.isError && !mutation.error.message && (
                 <span>
                   Can&apos;t create new account. Email or Identification already
@@ -144,3 +142,5 @@ export default function Register() {
     </>
   );
 }
+
+export default Verify;

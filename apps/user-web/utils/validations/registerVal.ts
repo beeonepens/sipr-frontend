@@ -1,7 +1,7 @@
 import * as z from 'zod';
 
 /** Schema for register forms */
-export const RegisterSchema = z
+export const NewAccountSchema = z
   .object({
     nip: z
       .string()
@@ -25,4 +25,4 @@ export const RegisterSchema = z
   });
 
 /** TS types for the input form */
-export type RegisterInput = z.infer<typeof RegisterSchema>;
+export type NewAccountInput = z.infer<typeof NewAccountSchema>;

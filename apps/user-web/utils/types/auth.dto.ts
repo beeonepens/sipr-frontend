@@ -23,10 +23,17 @@ export interface NewUser {
   password: string;
   updated_at: string;
 }
-export interface RegisterResponse {
+export interface NewAccountResponse {
   data?: NewUser[];
   token?: string;
   message?: unknown;
+}
+
+export interface RegisterResponse {
+  email: string;
+  otp: string;
+  ttl: string;
+  status: 'old' | 'new';
 }
 
 export interface LogoutResponse {

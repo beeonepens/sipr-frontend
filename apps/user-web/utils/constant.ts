@@ -1,10 +1,14 @@
 export const API_URL = process.env.NEXT_PUBLIC_API;
 export const RELEASE_VERSION = process.env.NEXT_PUBLIC_RELEASE_VERSION || '-';
+export const REDIS_URL = process.env.REDIS_URL || '-';
+export const SPARKPOST_KEY = process.env.SPARKPOST_KEY || '-';
 
 export const PUBLIC_URL = [
   '/',
   '/login',
   '/register',
+  '/verify',
+  '/new-account',
   '/reset-password',
   '/404',
 ];
