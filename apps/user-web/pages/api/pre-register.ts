@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { v5 as uuidv5 } from 'uuid';
 import redis from '@utils/redis';
-// import smtpTransport from '@utils/mailgun';
+import { sendVerificationEmail } from '@utils/sparkpost';
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,6 +17,9 @@ export default async function handler(
   const otp = await redis.get(body.email);
   if (otp) {
     const ttl = await redis.ttl(body.email);
+
+    sendVerificationEmail({ otp, address: body.email });
+
     return res.status(200).json({ email: body.email, otp, ttl, status: 'old' });
   }
 
@@ -27,23 +30,7 @@ export default async function handler(
   await redis.expire(body.email, 21600);
 
   /** kirim otp ke email user */
-  /** -------------------- */
-
-  // const mailOptions = {
-  //   from: 'myemail@example.com',
-  //   to: 'mk.asfian@gmail.com',
-  //   subject: 'Mailgun Test',
-  //   html: 'Hello with mailgun',
-  // };
-
-  // smtpTransport.sendMail(mailOptions, (error, response) => {
-  //   if (error) {
-  //     console.log(error);
-  //   } else {
-  //     console.log('Successfully sent email.');
-  //     console.log({ response });
-  //   }
-  // });
+  sendVerificationEmail({ otp: newOtp, address: body.email });
 
   return res
     .status(200)
