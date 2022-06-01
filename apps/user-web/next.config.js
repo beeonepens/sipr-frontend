@@ -9,6 +9,9 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const moduleExports = withTM({
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 });
 
 const sentryWebpackPluginOptions = {
