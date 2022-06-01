@@ -46,6 +46,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <main className="relative z-0 min-h-screen w-full duration-300">
               {/* only show header in non-public url */}
               {!isPublicUrl(pathname) && <Header />}
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore */}
               <Component {...pageProps} />
             </main>
           </div>
