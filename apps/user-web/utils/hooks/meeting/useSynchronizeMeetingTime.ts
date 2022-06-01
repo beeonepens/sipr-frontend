@@ -1,6 +1,6 @@
-import { NewMeetingInput } from '@utils/validations';
 import { useEffect } from 'react';
 import { UseFormReturn } from 'react-hook-form';
+import { NewMeetingInput } from '@utils/validations';
 
 export const useSynchronizeMeetingTime = (
   startTime: Date,

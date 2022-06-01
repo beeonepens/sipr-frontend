@@ -5,7 +5,7 @@ import { Button } from 'ui';
 import CreateMeetingButton from '@components/molecules/Dashboard/CreateMeetingButton';
 import { useAllRoomQuery } from '@utils/hooks/queryHooks/useRoomQuery';
 
-import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
+import CreateMeetingModal from '@components/molecules/Meeting/CreateMeetingModal';
 // const CreateMeetingModal = dynamic(
 //   () => import('../../molecules/Dashboard/CreateMeetingModal')
 // );

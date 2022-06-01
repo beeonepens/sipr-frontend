@@ -4,7 +4,7 @@ import { Button } from 'ui';
 import { FilterIcon, PlusIcon } from '@heroicons/react/outline';
 import { useAllRoomQuery } from '@utils/hooks/queryHooks/useRoomQuery';
 
-import CreateMeetingModal from '../Dashboard/CreateMeetingModal';
+import CreateMeetingModal from '../Meeting/CreateMeetingModal';
 // const CreateMeetingModal = dynamic(
 //   () => import('../Dashboard/CreateMeetingModal')
 // )

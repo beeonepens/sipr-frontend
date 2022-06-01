@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { Room } from '@utils/types/room.dto';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Dialog } from '@headlessui/react';
@@ -6,17 +6,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from 'ui';
 import { XIcon } from '@heroicons/react/outline';
 
-import { MeetingStatusOptions } from '@utils/constant';
 import { NewMeetingInput, NewMeetingSchema } from '@utils/validations';
 import { useSynchronizeMeetingTime } from '@utils/hooks/meeting/useSynchronizeMeetingTime';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { useCreateMeeting } from '@utils/hooks/meeting/useCreateMeeting';
-import FormControl from '../Form/FormControl';
-import FormAreaControl from '../Form/FormAreaControl';
-import FormDateTimeControl from '../Form/FormDateTimeControl';
-import FormRadioControl from '../Form/FormRadioControl';
-import FormSelectControl from '../Form/FormSelectControl';
-import CreateMeetingToast from './CreateMeetingToast';
+import CreateMeetingToast from '../Dashboard/CreateMeetingToast';
+import CreateMeetingDetailForms from './CreateMeeting/CreateMeetingDetailForms';
+import CreateMeetingParticipantForms from './CreateMeeting/CreateMeetingParticipantForms';
 
 export interface Props {
   isModalOpen: boolean;
@@ -25,7 +21,8 @@ export interface Props {
 }
 
 function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
-  // const queryClient = useQueryClient();
+  const [page, setPage] = useState<1 | 2 | 3>(1);
+  // const goToNextPage = () => setPage(cp => {return cp < 3 && cp > 0 ? cp + 1 : 3})
 
   /** hooks for forms control & submit action */
   const methods = useForm<NewMeetingInput>({
@@ -84,54 +81,21 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
           <FormProvider {...methods}>
             <form className="mt-8" onSubmit={methods.handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-8">
-                <div className="grid h-fit grid-cols-1 gap-3">
-                  <FormControl
-                    label="Name"
-                    id="name"
-                    aria-label="meeting name"
-                    type="text"
-                  />
-                  <FormAreaControl
-                    rows={4}
-                    label="Description"
-                    id="description"
-                    aria-label="meeting description"
-                  />
-                  <FormDateTimeControl
-                    withTime
-                    label="Start Time"
-                    id="date_start"
-                  />
-                  <FormDateTimeControl
-                    withTime
-                    minDate={methods.watch('date_start')}
-                    label="End Time"
-                    id="date_end"
-                  />
-                </div>
-
-                <div className="grid h-fit grid-cols-1 gap-3">
-                  <FormRadioControl
-                    id="isOnline"
-                    title="Status"
-                    options={MeetingStatusOptions}
-                  />
-                  {methods.watch('isOnline') === 'online' ? (
-                    <FormControl
-                      label="Link to Meeting"
-                      id="onlineLink"
-                      aria-label="meeting location"
-                      type="text"
-                    />
-                  ) : (
-                    <FormSelectControl
-                      label="Room"
-                      placeholder="Select Offline Room"
-                      id="offlineLoc"
-                      options={roomsOptions}
-                    />
-                  )}
-                </div>
+                {(() => {
+                  switch (page) {
+                    case 1:
+                      return (
+                        <CreateMeetingDetailForms
+                          methods={methods}
+                          roomsOptions={roomsOptions}
+                        />
+                      );
+                    case 2:
+                      return <CreateMeetingParticipantForms />;
+                    default:
+                      return null;
+                  }
+                })()}
               </div>
 
               <div className="mt-8 grid grid-cols-2 items-center justify-end gap-4 md:flex md:flex-row">
@@ -143,8 +107,14 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
                 >
                   Cancel
                 </Button>
-                <Button isLoading={isLoading} text="sm" type="submit">
+                <Button
+                  isLoading={isLoading}
+                  text="sm"
+                  type="submit"
+                  // type={page !== 3 ? 'button' : 'submit'}
+                >
                   Save
+                  {/* {page !== 3 ? 'Next' : 'Save'} */}
                 </Button>
               </div>
             </form>
