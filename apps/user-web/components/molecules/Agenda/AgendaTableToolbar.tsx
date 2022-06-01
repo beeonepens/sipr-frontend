@@ -1,13 +1,13 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import { Button } from 'ui';
 import { FilterIcon, PlusIcon } from '@heroicons/react/outline';
 import { useAllRoomQuery } from '@utils/hooks/queryHooks/useRoomQuery';
 
-// import CreateMeetingModal from '../Dashboard/CreateMeetingModal';
-const CreateMeetingModal = dynamic(
-  () => import('../Dashboard/CreateMeetingModal')
-);
+import CreateMeetingModal from '../Dashboard/CreateMeetingModal';
+// const CreateMeetingModal = dynamic(
+//   () => import('../Dashboard/CreateMeetingModal')
+// )
 
 export default function AgendaTableToolbar() {
   const [isNewModalOpen, setIsNewModalOpen] = React.useState(false);

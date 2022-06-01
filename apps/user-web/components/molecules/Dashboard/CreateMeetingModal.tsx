@@ -1,21 +1,16 @@
-import type { SubmitHandler } from 'react-hook-form';
-
-import { useMemo, memo, useState } from 'react';
-import { Dialog } from '@headlessui/react';
+import { memo } from 'react';
+import { Room } from '@utils/types/room.dto';
 import { useForm, FormProvider } from 'react-hook-form';
+import { Dialog } from '@headlessui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from 'ui';
 import { XIcon } from '@heroicons/react/outline';
-import { handleOpenToast, MeetingStatusOptions } from '@utils/constant';
-import ModalProvider from '@components/atoms/Modal/ModalProvider';
-import { useMutation, useQueryClient } from 'react-query';
+
+import { MeetingStatusOptions } from '@utils/constant';
 import { NewMeetingInput, NewMeetingSchema } from '@utils/validations';
-import { AxiosError } from 'axios';
-import { NewMeetingResponse } from '@utils/types/meet.dto';
-import { createMeeting } from '@utils/mutations/meetMutation';
-import { createRoom } from '@utils/mutations/roomMutatin';
-import { NewRoomResponse, Room } from '@utils/types/room.dto';
-import { NewRoomInput } from '@utils/validations/newRoomVal';
+import { useSynchronizeMeetingTime } from '@utils/hooks/meeting/useSynchronizeMeetingTime';
+import ModalProvider from '@components/atoms/Modal/ModalProvider';
+import { useCreateMeeting } from '@utils/hooks/meeting/useCreateMeeting';
 import FormControl from '../Form/FormControl';
 import FormAreaControl from '../Form/FormAreaControl';
 import FormDateTimeControl from '../Form/FormDateTimeControl';
@@ -23,16 +18,14 @@ import FormRadioControl from '../Form/FormRadioControl';
 import FormSelectControl from '../Form/FormSelectControl';
 import CreateMeetingToast from './CreateMeetingToast';
 
-interface Props {
+export interface Props {
   isModalOpen: boolean;
   toggleModal: () => void;
   rooms: Room[];
 }
 
 function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
-  const queryClient = useQueryClient();
-  const [isLoading, setIsLoading] = useState(false);
-  const [openToast, setOpenToast] = useState(false);
+  // const queryClient = useQueryClient();
 
   /** hooks for forms control & submit action */
   const methods = useForm<NewMeetingInput>({
@@ -45,118 +38,15 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
     },
   });
 
-  /** hooks for create meeting mutation */
-  const meetingMutation = useMutation<
-    NewMeetingResponse,
-    AxiosError,
-    NewMeetingInput
-  >(createMeeting);
+  const startDate = methods.watch('date_start');
+  const endDate = methods.watch('date_end');
+  useSynchronizeMeetingTime(startDate, endDate, methods);
 
-  /** hooks for create room mutation */
-  const roomMutation = useMutation<NewRoomResponse, AxiosError, NewRoomInput>(
-    createRoom
-  );
-
-  /** filter only offline room & format room options list */
-  const roomsOptions = useMemo(() => {
-    if (!rooms) return [];
-    return rooms
-      .filter((room) => room.isOnline === 0)
-      .map((room) => ({
-        label: `${room.description} (${room.name_room})`,
-        value: room.id_room,
-      }));
-  }, [rooms]);
-
-  /** function that run on form-submit */
-  const onSubmit: SubmitHandler<NewMeetingInput> = (data) => {
-    console.log(data);
-    setIsLoading(true);
-
-    /** Offline meeting action */
-    if (data.isOnline === 'offline') {
-      meetingMutation.mutate(
-        { ...data, room_id: data.offlineLoc?.value },
-        {
-          // eslint-disable-next-line no-shadow
-          onError: ({ message, response }) => {
-            setIsLoading(false);
-            console.log({ message, response });
-          },
-          // eslint-disable-next-line no-shadow
-          onSuccess: ({ data: meet, message }) => {
-            if (message === 'Succesfull') {
-              console.log({ meet, message });
-              queryClient.invalidateQueries([
-                'meetings',
-                typeof window !== 'undefined' && localStorage.getItem('uid'),
-              ]);
-              queryClient.invalidateQueries([
-                'datetimes',
-                typeof window !== 'undefined' && localStorage.getItem('uid'),
-              ]);
-              setIsLoading(false);
-              handleOpenToast(openToast, setOpenToast);
-              toggleModal();
-            }
-          },
-        }
-      );
-    } else {
-      /** Online meeting action */
-      const newRoomData = {
-        name_room: data.onlineLink,
-        description: data.onlineLink,
-        isBooked: true,
-        isOnline: data.isOnline === 'online',
-      };
-
-      /** create room mutation */
-      console.log('create room');
-      roomMutation.mutate(newRoomData, {
-        onError: ({ message, response }) => {
-          setIsLoading(false);
-          console.log({ message, response });
-        },
-        onSuccess: ({ data: room, message }) => {
-          console.log({ room, message });
-          /** if room mutation success, run meeting mutation */
-          if (message === 'Succes') {
-            console.log('create meeting');
-            meetingMutation.mutate(
-              { ...data, room_id: room[0].id_room },
-              {
-                // eslint-disable-next-line no-shadow
-                onError: ({ message, response }) => {
-                  setIsLoading(false);
-                  console.log({ message, response });
-                },
-                // eslint-disable-next-line no-shadow
-                onSuccess: ({ data: meet, message }) => {
-                  if (message === 'Succesfull') {
-                    console.log({ meet, message });
-                    queryClient.invalidateQueries([
-                      'meetings',
-                      typeof window !== 'undefined' &&
-                        localStorage.getItem('uid'),
-                    ]);
-                    queryClient.invalidateQueries([
-                      'datetimes',
-                      typeof window !== 'undefined' &&
-                        localStorage.getItem('uid'),
-                    ]);
-                    setIsLoading(false);
-                    handleOpenToast(openToast, setOpenToast);
-                    toggleModal();
-                  }
-                },
-              }
-            );
-          }
-        },
-      });
-    }
-  };
+  const { isLoading, onSubmit, openToast, setOpenToast, roomsOptions } =
+    useCreateMeeting({
+      rooms,
+      toggleModal,
+    });
 
   /** function that run to close modal */
   const handleCloseModal = () => {
@@ -169,8 +59,13 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
 
   return (
     <>
-      <ModalProvider isModalOpen={isModalOpen} onClose={handleCloseModal}>
-        <section className="m-0 inline-block h-screen w-full max-w-4xl transform overflow-hidden rounded-none bg-white py-14 px-6 text-left align-middle shadow-md transition-all dark:bg-gray-800 md:my-8 md:mx-2 md:h-auto md:rounded-xl md:py-8 md:px-6">
+      <ModalProvider
+        ver="panel"
+        type="alert"
+        isModalOpen={isModalOpen}
+        onClose={handleCloseModal}
+      >
+        <Dialog.Panel className="m-0 inline-block h-screen w-full max-w-4xl transform overflow-hidden rounded-none bg-white py-14 px-6 text-left align-middle shadow-md transition-all dark:bg-gray-800 md:my-8 md:mx-2 md:h-auto md:rounded-xl md:py-8 md:px-6">
           <XIcon
             className="absolute right-0 top-0 mr-5 mt-5 h-5 w-5 cursor-pointer text-gray-500 dark:text-gray-300"
             onClick={toggleModal}
@@ -254,7 +149,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
               </div>
             </form>
           </FormProvider>
-        </section>
+        </Dialog.Panel>
       </ModalProvider>
 
       <CreateMeetingToast
