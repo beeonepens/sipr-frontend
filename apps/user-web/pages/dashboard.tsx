@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
+
 import SmallCalendar from '@components/organisms/Dashboard/SmallCalendar';
 import TodayMeeting from '@components/organisms/Dashboard/TodayMeeting';
 import TodayLoading from '@components/organisms/Dashboard/TodayLoading';
@@ -13,6 +13,7 @@ import {
   useMeetTimeQuery,
 } from '@utils/hooks/queryHooks/useMeetingQuery';
 import UpcomingLoading from '@components/organisms/Dashboard/UpcomingLoading';
+import NewMeeting from '@components/organisms/Dashboard/NewMeeting';
 
 export default function Dashboard() {
   const meetings = useMeetingQuery();

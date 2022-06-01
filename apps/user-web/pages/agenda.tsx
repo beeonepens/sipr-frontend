@@ -2,6 +2,7 @@ import * as React from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import Skeleton from 'react-loading-skeleton';
+
 import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModal';
 import DeleteMeetingModal from '@components/molecules/Agenda/DeleteMeetingModal';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
