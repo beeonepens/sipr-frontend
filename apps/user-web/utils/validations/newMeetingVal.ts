@@ -6,6 +6,8 @@ export const NewMeetingSchema = z.object({
   description: z.string().optional(),
   date_start: z.date(),
   date_end: z.date(),
+  regular_date_start: z.date().array().optional(),
+  regular_date_end: z.date().array().optional(),
   isOnline: z.string(),
   limit: z.number().positive().optional(),
   room_id: z.number().optional(),

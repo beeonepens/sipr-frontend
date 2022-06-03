@@ -1,10 +1,10 @@
 import Label from '@components/atoms/Form/Label';
 import clsx from 'clsx';
-import { useFormContext } from 'react-hook-form';
 
 interface Props {
   id: string;
   title: string;
+  handleChange: (v: string) => void;
   selected?: string;
   disabled?: string;
   topLabel?: boolean;
@@ -14,16 +14,15 @@ interface Props {
   }[];
 }
 
-export default function FormRadioControl({
+export default function StatelessFormRadioControl({
   title,
   selected,
+  handleChange,
   disabled,
   options,
   topLabel = false,
   id,
 }: Props) {
-  const { register } = useFormContext();
-
   return (
     <div
       className={clsx(
@@ -44,7 +43,6 @@ export default function FormRadioControl({
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="inline-flex items-center">
                 <input
-                  {...register(id)}
                   className={clsx(
                     'form-radio',
                     value === disabled
@@ -52,8 +50,10 @@ export default function FormRadioControl({
                       : 'cursor-pointer'
                   )}
                   type="radio"
+                  onChange={() => handleChange(value)}
                   disabled={value === disabled}
-                  defaultChecked={value === selected}
+                  checked={value === selected}
+                  // defaultChecked={value === selected}
                   value={value}
                 />
                 <span
@@ -75,7 +75,6 @@ export default function FormRadioControl({
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="inline-flex items-center">
               <input
-                {...register(id)}
                 className={clsx(
                   'form-radio',
                   value === disabled
@@ -83,8 +82,10 @@ export default function FormRadioControl({
                     : 'cursor-pointer'
                 )}
                 type="radio"
+                onChange={() => handleChange(value)}
                 disabled={value === disabled}
-                defaultChecked={value === selected}
+                checked={value === selected}
+                // defaultChecked={value === selected}
                 value={value}
               />
               <span

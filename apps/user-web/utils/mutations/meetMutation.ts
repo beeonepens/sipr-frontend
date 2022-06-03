@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '@utils/constant';
+import { API_URL, SERVER_DATE_FOR } from '@utils/constant';
 
 import type { NewMeetingInput } from '@utils/validations';
 import type {
@@ -15,8 +15,16 @@ export const createMeeting = async (meet: NewMeetingInput) => {
       ...meet,
       room_id: meet.room_id,
       isOnline: meet.isOnline === 'online' ? 1 : 0,
-      date_start: [format(meet.date_start, 'yyyy-MM-dd:HH:mm')],
-      date_end: [format(meet.date_end, 'yyyy-MM-dd:HH:mm')],
+      // date_start: [format(meet.date_start, SERVER_DATE_FOR)],
+      // date_end: [format(meet.date_end, SERVER_DATE_FOR)],
+      date_start: [
+        meet.date_start,
+        ...meet.regular_date_start.map((msd) => format(msd, SERVER_DATE_FOR)),
+      ],
+      date_end: [
+        meet.date_end,
+        ...meet.regular_date_end.map((med) => format(med, SERVER_DATE_FOR)),
+      ],
       user_id: String(localStorage.getItem('uid')),
     },
     {
@@ -38,8 +46,14 @@ export const updateMeeting = async ({ meet, id }: UpdateMeetParam) => {
       user_id: localStorage.getItem('uid'),
       room_id: meet.room_id,
       isOnline: meet.isOnline === 'online' ? 1 : 0,
-      date_start: [format(meet.date_start, 'yyyy-MM-dd:HH:mm')],
-      date_end: [format(meet.date_end, 'yyyy-MM-dd:HH:mm')],
+      date_start: [
+        meet.date_start,
+        ...meet.regular_date_start.map((msd) => format(msd, SERVER_DATE_FOR)),
+      ],
+      date_end: [
+        meet.date_end,
+        ...meet.regular_date_end.map((med) => format(med, SERVER_DATE_FOR)),
+      ],
     },
     {
       headers: {

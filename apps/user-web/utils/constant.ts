@@ -13,6 +13,8 @@ export const PUBLIC_URL = [
   '/404',
 ];
 
+export const SERVER_DATE_FOR = 'yyyy-MM-dd:HH:mm';
+
 export function isPublicUrl(pathname: string) {
   if (PUBLIC_URL.includes(pathname)) return true;
   return false;

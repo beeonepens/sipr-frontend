@@ -21,8 +21,13 @@ export interface Props {
 }
 
 function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
-  const [page, setPage] = useState<1 | 2 | 3>(1);
-  // const goToNextPage = () => setPage(cp => {return cp < 3 && cp > 0 ? cp + 1 : 3})
+  const [page, setPage] = useState<1 | 2>(1);
+  const changePage = (action: 'next' | 'prev') => {
+    if (page === 1 && action === 'next') setPage(2);
+    if (page === 1 && action === 'prev') setPage(1);
+    if (page === 2 && action === 'next') setPage(2);
+    if (page === 2 && action === 'prev') setPage(1);
+  };
 
   /** hooks for forms control & submit action */
   const methods = useForm<NewMeetingInput>({
@@ -32,6 +37,8 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
       limit: 1,
       date_start: new Date(),
       date_end: new Date(),
+      regular_date_start: [],
+      regular_date_end: [],
     },
   });
 
@@ -47,6 +54,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
 
   /** function that run to close modal */
   const handleCloseModal = () => {
+    setPage(1);
     toggleModal();
     methods.reset();
   };
@@ -74,12 +82,15 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
             Schedule New Meeting
           </Dialog.Title>
           <Dialog.Description className="text-base text-gray-800 dark:text-gray-300">
-            You can schedule new online meeting.
+            You can schedule new online or offline meeting.
           </Dialog.Description>
 
           {/* modal content */}
           <FormProvider {...methods}>
-            <form className="mt-8" onSubmit={methods.handleSubmit(onSubmit)}>
+            <form
+              className="mt-8 h-[540px] overflow-y-auto pr-3 md:h-[400px] md:pr-0"
+              // onSubmit={}
+            >
               <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-8">
                 {(() => {
                   switch (page) {
@@ -97,27 +108,32 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
                   }
                 })()}
               </div>
-
-              <div className="mt-8 grid grid-cols-2 items-center justify-end gap-4 md:flex md:flex-row">
-                <Button
-                  text="sm"
-                  type="button"
-                  variant="outline"
-                  onClick={handleCloseModal}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  isLoading={isLoading}
-                  text="sm"
-                  type="submit"
-                  // type={page !== 3 ? 'button' : 'submit'}
-                >
-                  Save
-                  {/* {page !== 3 ? 'Next' : 'Save'} */}
-                </Button>
-              </div>
             </form>
+            <div className="mt-6 grid grid-cols-2 items-center justify-end gap-4 md:mt-0 md:flex md:flex-row">
+              <Button
+                text="sm"
+                type="button"
+                variant="outline"
+                onClick={
+                  page !== 1 ? () => changePage('prev') : handleCloseModal
+                }
+              >
+                {page !== 1 ? 'Back' : 'Cancel'}
+              </Button>
+              <Button
+                isLoading={isLoading}
+                text="sm"
+                onClick={
+                  page !== 2
+                    ? () => changePage('next')
+                    : () => methods.handleSubmit(onSubmit)
+                }
+                type={page !== 2 ? 'button' : 'submit'}
+              >
+                {/* Save */}
+                {page !== 2 ? 'Next' : 'Save'}
+              </Button>
+            </div>
           </FormProvider>
         </Dialog.Panel>
       </ModalProvider>

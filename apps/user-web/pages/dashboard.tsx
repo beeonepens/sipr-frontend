@@ -130,7 +130,7 @@ export default function Dashboard() {
 
         <div className="mt-6 mb-6 grid grid-cols-1 items-start gap-6 md:mt-6 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-10">
           {/* upcoming schedule section */}
-          <section className="col-span-1 flex flex-col gap-4">
+          {/* <section className="col-span-1 flex flex-col gap-4">
             <h3 className="text-primary-700 dark:text-primary-300 text-2xl font-bold">
               Upcoming Schedule
             </h3>
@@ -139,10 +139,10 @@ export default function Dashboard() {
             {meetings.isSuccess && datetimes.isSuccess && (
               <UpcomingSchedule events={upcommingEvents.slice(0, 3)} />
             )}
-          </section>
+          </section> */}
 
           {/* total activity section */}
-          <section className="col-span-1 flex h-full w-full flex-col gap-4 lg:col-span-2">
+          {/* <section className="col-span-1 flex h-full w-full flex-col gap-4 lg:col-span-2">
             <h3 className="text-primary-700 dark:text-primary-300 text-2xl font-bold">
               Total Activity
             </h3>
@@ -151,7 +151,7 @@ export default function Dashboard() {
               meetingAttended={meetingAttended}
               meetingStatus={meetingStatus}
             />
-          </section>
+          </section> */}
         </div>
       </motion.article>
     </>
