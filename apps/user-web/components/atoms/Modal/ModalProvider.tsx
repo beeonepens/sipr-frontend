@@ -7,12 +7,14 @@ interface Props {
   onClose?: () => void;
   children: JSX.Element;
   type?: 'dialog' | 'alert';
+  ver?: 'panel' | 'overlay';
 }
 
 export default function ModalProvider({
   isModalOpen,
   children,
   onClose,
+  ver = 'overlay',
   type = 'dialog',
 }: Props) {
   return (
@@ -33,14 +35,25 @@ export default function ModalProvider({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay
-              className={clsx(
-                'fixed inset-0',
-                type === 'dialog'
-                  ? 'md:bg-black md:bg-opacity-50 md:backdrop-blur-sm md:backdrop-filter'
-                  : 'bg-black bg-opacity-50 backdrop-blur-sm backdrop-filter md:backdrop-blur-sm'
-              )}
-            />
+            {ver === 'overlay' ? (
+              <Dialog.Overlay
+                className={clsx(
+                  'fixed inset-0',
+                  type === 'dialog'
+                    ? 'md:bg-black md:bg-opacity-50 md:backdrop-blur-sm md:backdrop-filter'
+                    : 'bg-black bg-opacity-50 backdrop-blur-sm backdrop-filter md:backdrop-blur-sm'
+                )}
+              />
+            ) : (
+              <div
+                className={clsx(
+                  'fixed inset-0',
+                  type === 'dialog'
+                    ? 'md:bg-black md:bg-opacity-50 md:backdrop-blur-sm md:backdrop-filter'
+                    : 'bg-black bg-opacity-50 backdrop-blur-sm backdrop-filter md:backdrop-blur-sm'
+                )}
+              />
+            )}
           </Transition.Child>
 
           {/* modal helper */}

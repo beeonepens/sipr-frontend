@@ -13,6 +13,8 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <div className="min-h-screen font-sans text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-ignore */}
         <Component {...pageProps} />
       </div>
     </>

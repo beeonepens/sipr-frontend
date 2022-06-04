@@ -1,8 +1,14 @@
 import * as React from 'react';
-import CreateMeetingButton from '@components/molecules/Dashboard/CreateMeetingButton';
-import CreateMeetingModal from '@components/molecules/Dashboard/CreateMeetingModal';
+// import dynamic from 'next/dynamic';
 import { Button } from 'ui';
+
+import CreateMeetingButton from '@components/molecules/Dashboard/CreateMeetingButton';
 import { useAllRoomQuery } from '@utils/hooks/queryHooks/useRoomQuery';
+
+import CreateMeetingModal from '@components/molecules/Meeting/CreateMeetingModal';
+// const CreateMeetingModal = dynamic(
+//   () => import('../../molecules/Dashboard/CreateMeetingModal')
+// );
 
 export default function NewMeeting() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
