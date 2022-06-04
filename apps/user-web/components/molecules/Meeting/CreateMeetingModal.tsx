@@ -91,22 +91,14 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
               className="mt-8 h-[540px] overflow-y-auto pr-3 md:h-[400px] md:pr-0"
               // onSubmit={}
             >
-              <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-8">
-                {(() => {
-                  switch (page) {
-                    case 1:
-                      return (
-                        <CreateMeetingDetailForms
-                          methods={methods}
-                          roomsOptions={roomsOptions}
-                        />
-                      );
-                    case 2:
-                      return <CreateMeetingParticipantForms />;
-                    default:
-                      return null;
-                  }
-                })()}
+              <div className="grid grid-cols-1 gap-3 px-1 lg:grid-cols-2 lg:gap-8">
+                {page === 1 && (
+                  <CreateMeetingDetailForms
+                    methods={methods}
+                    roomsOptions={roomsOptions}
+                  />
+                )}
+                {page === 2 && <CreateMeetingParticipantForms />}
               </div>
             </form>
             <div className="mt-6 grid grid-cols-2 items-center justify-end gap-4 md:mt-0 md:flex md:flex-row">

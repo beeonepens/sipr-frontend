@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import FormAreaControl from '@components/molecules/Form/FormAreaControl';
 import FormControl from '@components/molecules/Form/FormControl';
@@ -9,6 +9,9 @@ import { NewMeetingInput } from '@utils/validations';
 import FormSelectControl from '@components/molecules/Form/FormSelectControl';
 import Checkbox from '@components/atoms/Form/Checkbox';
 import StatelessFormRadioControl from '@components/molecules/Form/StatelessFormRadioControl';
+import StatelessInput from '@components/atoms/Form/StatelessInput';
+import Label from '@components/atoms/Form/Label';
+import { useWindowSize } from '@utils/hooks/useWindowSize';
 
 interface Props {
   methods: UseFormReturn<NewMeetingInput>;
@@ -28,9 +31,16 @@ export default function CreateMeetingDetailForms({
   methods,
   roomsOptions,
 }: Props) {
+  const windowSize = useWindowSize();
   const [isRegular, setIsRegular] = useState<0 | 1>(0);
   const [repeat, setRepeat] =
     useState<typeof repeatOptions[number]['value']>('everyday');
+  const [repeatFor, setRepeatFor] = useState<number>(1);
+
+  useEffect(() => {
+    if (repeatFor < 1) setRepeatFor(1);
+    if (repeatFor > 20) setRepeatFor(20);
+  }, [repeatFor]);
 
   function handleRegularMeetCheckbox() {
     setIsRegular((cv) => (cv === 1 ? 0 : 1));
@@ -39,7 +49,7 @@ export default function CreateMeetingDetailForms({
     setRepeat(val);
   }
 
-  console.log({ isRegular, repeat });
+  console.log({ isRegular, repeat, repeatFor });
   return (
     <>
       <div className="grid h-fit grid-cols-1 gap-3">
@@ -55,16 +65,6 @@ export default function CreateMeetingDetailForms({
           id="description"
           aria-label="meeting description"
         />
-        <FormDateTimeControl withTime label="Start Time" id="date_start" />
-        <FormDateTimeControl
-          withTime
-          minDate={methods.watch('date_start')}
-          label="End Time"
-          id="date_end"
-        />
-      </div>
-
-      <div className="grid h-fit grid-cols-1 gap-3">
         <FormRadioControl
           id="isOnline"
           title="Status"
@@ -82,20 +82,31 @@ export default function CreateMeetingDetailForms({
             label="Room"
             placeholder="Select Offline Room"
             id="offlineLoc"
+            menuPlacement={windowSize < 768 ? 'auto' : 'top'}
             options={roomsOptions}
           />
         )}
+      </div>
+
+      <div className="grid h-fit grid-cols-1 gap-3">
+        <FormDateTimeControl withTime label="Start Time" id="date_start" />
+        <FormDateTimeControl
+          withTime
+          minDate={methods.watch('date_start')}
+          label="End Time"
+          id="date_end"
+        />
 
         <Checkbox
           id="regular-meeting"
           label="Repeat Meeting"
-          className="mt-4 md:mt-6"
+          className="mt-4 md:mt-2"
           value={isRegular}
           onClick={handleRegularMeetCheckbox}
         />
 
         {isRegular === 1 && (
-          <div>
+          <div className="mb-4 md:mb-0">
             <StatelessFormRadioControl
               id="repeat-option"
               title="Repeat"
@@ -104,6 +115,18 @@ export default function CreateMeetingDetailForms({
               selected={repeat}
               topLabel
             />
+
+            <div className="mt-3 flex flex-col justify-start gap-0.5 md:mt-1">
+              <Label id="repeat-for">Repeat For</Label>
+              <StatelessInput
+                id="repeat-for"
+                type="number"
+                min={1}
+                max={20}
+                value={repeatFor}
+                onChange={(e) => setRepeatFor(Number(e.target.value))}
+              />
+            </div>
           </div>
         )}
       </div>

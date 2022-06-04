@@ -110,6 +110,7 @@ export default function FormSelectControl({
             options={options}
             instanceId={id}
             isSearchable
+            maxMenuHeight={200}
             menuPlacement={menuPlacement}
             styles={contentColor === 'dark' ? customStyles : customStylesDark}
           />
