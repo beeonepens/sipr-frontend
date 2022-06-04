@@ -6,10 +6,9 @@ export const NewMeetingSchema = z.object({
   description: z.string().optional(),
   date_start: z.date(),
   date_end: z.date(),
-  regular_date_start: z.date().array().optional(),
-  regular_date_end: z.date().array().optional(),
   isOnline: z.string(),
-  limit: z.number().positive().optional(),
+  limit: z.string().regex(/^([1-9]|[12]\d|3[0-6])$/),
+  repeat_duration: z.enum(['day', 'week', 'month']),
   room_id: z.number().optional(),
   onlineLink: z.string().optional(),
   offlineLoc: z

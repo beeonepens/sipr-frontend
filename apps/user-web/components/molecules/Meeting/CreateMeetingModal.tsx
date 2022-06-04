@@ -34,11 +34,10 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
     resolver: zodResolver(NewMeetingSchema),
     defaultValues: {
       isOnline: 'online',
-      limit: 1,
+      limit: '1',
       date_start: new Date(),
       date_end: new Date(),
-      regular_date_start: [],
-      regular_date_end: [],
+      repeat_duration: 'week',
     },
   });
 
@@ -87,45 +86,45 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
 
           {/* modal content */}
           <FormProvider {...methods}>
-            <form
-              className="mt-8 h-[540px] overflow-y-auto pr-3 md:h-[400px] md:pr-0"
-              // onSubmit={}
-            >
-              <div className="grid grid-cols-1 gap-3 px-1 lg:grid-cols-2 lg:gap-8">
-                {page === 1 && (
-                  <CreateMeetingDetailForms
-                    methods={methods}
-                    roomsOptions={roomsOptions}
-                  />
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <div className="mt-8 h-[540px] overflow-y-auto pr-3 md:h-[400px] md:pr-0">
+                <div className="grid grid-cols-1 gap-3 px-1 lg:grid-cols-2 lg:gap-8">
+                  {page === 1 && (
+                    <CreateMeetingDetailForms
+                      methods={methods}
+                      roomsOptions={roomsOptions}
+                    />
+                  )}
+                  {page === 2 && <CreateMeetingParticipantForms />}
+                </div>
+              </div>
+              <div className="mt-6 grid grid-cols-2 items-center justify-end gap-4 md:mt-0 md:flex md:flex-row">
+                <Button
+                  text="sm"
+                  type="button"
+                  variant="outline"
+                  onClick={
+                    page !== 1 ? () => changePage('prev') : handleCloseModal
+                  }
+                >
+                  {page !== 1 ? 'Back' : 'Cancel'}
+                </Button>
+                {page === 2 ? (
+                  <Button isLoading={isLoading} text="sm" type="submit">
+                    Save
+                  </Button>
+                ) : (
+                  <Button
+                    isLoading={isLoading}
+                    text="sm"
+                    onClick={() => changePage('next')}
+                    type="button"
+                  >
+                    Next
+                  </Button>
                 )}
-                {page === 2 && <CreateMeetingParticipantForms />}
               </div>
             </form>
-            <div className="mt-6 grid grid-cols-2 items-center justify-end gap-4 md:mt-0 md:flex md:flex-row">
-              <Button
-                text="sm"
-                type="button"
-                variant="outline"
-                onClick={
-                  page !== 1 ? () => changePage('prev') : handleCloseModal
-                }
-              >
-                {page !== 1 ? 'Back' : 'Cancel'}
-              </Button>
-              <Button
-                isLoading={isLoading}
-                text="sm"
-                onClick={
-                  page !== 2
-                    ? () => changePage('next')
-                    : () => methods.handleSubmit(onSubmit)
-                }
-                type={page !== 2 ? 'button' : 'submit'}
-              >
-                {/* Save */}
-                {page !== 2 ? 'Next' : 'Save'}
-              </Button>
-            </div>
           </FormProvider>
         </Dialog.Panel>
       </ModalProvider>

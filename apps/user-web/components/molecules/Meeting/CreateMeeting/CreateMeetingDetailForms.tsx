@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import FormAreaControl from '@components/molecules/Form/FormAreaControl';
 import FormControl from '@components/molecules/Form/FormControl';
@@ -9,8 +9,6 @@ import { NewMeetingInput } from '@utils/validations';
 import FormSelectControl from '@components/molecules/Form/FormSelectControl';
 import Checkbox from '@components/atoms/Form/Checkbox';
 import StatelessFormRadioControl from '@components/molecules/Form/StatelessFormRadioControl';
-import StatelessInput from '@components/atoms/Form/StatelessInput';
-import Label from '@components/atoms/Form/Label';
 import { useWindowSize } from '@utils/hooks/useWindowSize';
 
 interface Props {
@@ -21,35 +19,35 @@ interface Props {
   }[];
 }
 
-const repeatOptions = [
-  { label: 'Every Day', value: 'everyday' },
-  { label: 'Every Week', value: 'everyweek' },
-  { label: 'Every Month', value: 'everymonth' },
+interface IRepeatOptions {
+  label: string;
+  value: 'day' | 'week' | 'month';
+}
+
+const repeatOptions: IRepeatOptions[] = [
+  { label: 'Every Day', value: 'day' },
+  { label: 'Every Week', value: 'week' },
+  { label: 'Every Month', value: 'month' },
 ];
 
 export default function CreateMeetingDetailForms({
   methods,
   roomsOptions,
 }: Props) {
+  const { watch, setValue } = methods;
   const windowSize = useWindowSize();
   const [isRegular, setIsRegular] = useState<0 | 1>(0);
-  const [repeat, setRepeat] =
-    useState<typeof repeatOptions[number]['value']>('everyday');
-  const [repeatFor, setRepeatFor] = useState<number>(1);
-
-  useEffect(() => {
-    if (repeatFor < 1) setRepeatFor(1);
-    if (repeatFor > 20) setRepeatFor(20);
-  }, [repeatFor]);
 
   function handleRegularMeetCheckbox() {
     setIsRegular((cv) => (cv === 1 ? 0 : 1));
   }
-  function handleRepeatTimeChange(val: typeof repeatOptions[number]['value']) {
-    setRepeat(val);
+
+  function handleRepeatTimeChange(val: IRepeatOptions['value']) {
+    setValue('repeat_duration', val);
   }
 
-  console.log({ isRegular, repeat, repeatFor });
+  console.log(watch('limit'), watch('repeat_duration'));
+  console.log({ isRegular });
   return (
     <>
       <div className="grid h-fit grid-cols-1 gap-3">
@@ -70,7 +68,7 @@ export default function CreateMeetingDetailForms({
           title="Status"
           options={MeetingStatusOptions}
         />
-        {methods.watch('isOnline') === 'online' ? (
+        {watch('isOnline') === 'online' ? (
           <FormControl
             label="Link to Meeting"
             id="onlineLink"
@@ -92,7 +90,7 @@ export default function CreateMeetingDetailForms({
         <FormDateTimeControl withTime label="Start Time" id="date_start" />
         <FormDateTimeControl
           withTime
-          minDate={methods.watch('date_start')}
+          minDate={watch('date_start')}
           label="End Time"
           id="date_end"
         />
@@ -112,21 +110,17 @@ export default function CreateMeetingDetailForms({
               title="Repeat"
               options={repeatOptions}
               handleChange={handleRepeatTimeChange}
-              selected={repeat}
+              selected={watch('repeat_duration') as string}
               topLabel
             />
 
-            <div className="mt-3 flex flex-col justify-start gap-0.5 md:mt-1">
-              <Label id="repeat-for">Repeat For</Label>
-              <StatelessInput
-                id="repeat-for"
-                type="number"
-                min={1}
-                max={20}
-                value={repeatFor}
-                onChange={(e) => setRepeatFor(Number(e.target.value))}
-              />
-            </div>
+            <FormControl
+              label="Repeat Limit"
+              id="limit"
+              aria-label="repeat-limit"
+              type="text"
+              pattern="^([1-9]|[12]\d|3[0-6])$"
+            />
           </div>
         )}
       </div>

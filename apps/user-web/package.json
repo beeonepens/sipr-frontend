@@ -94,7 +94,7 @@
     "tailwindcss-radix": "^2.0.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.5.3",
-    "vitest": "^0.9.3"
+    "vitest": "^0.13.1"
   },
   "resolutions": {
     "@types/react": "^18.0.0",
