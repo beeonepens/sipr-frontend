@@ -1,7 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import clsx from 'clsx';
 import { memo, useMemo } from 'react';
-import { Column, useGlobalFilter, useTable } from 'react-table';
+import { Column, useGlobalFilter, usePagination, useTable } from 'react-table';
 import AgendaTableAction from '@components/molecules/Agenda/AgendaTableAction';
+import AgendaTablePagination from '@components/molecules/Agenda/AgendaTablePagination';
 import ZeroAgenda from '@components/molecules/Agenda/ZeroAgenda';
 import { formatDateWithDay, formatMeetTime } from '@utils/formatDateTime';
 import { MeetWithDate } from '@utils/types/meet.dto';
@@ -71,17 +74,23 @@ function AgendaTable({ meets, handleSelectEvent, handleDeleteEvent }: Props) {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
-    state,
+    rows,
+    page,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     setGlobalFilter,
-  } = useTable({ columns, data }, useGlobalFilter);
+    state: { pageIndex, pageSize, globalFilter },
+  } = useTable({ columns, data }, useGlobalFilter, usePagination);
 
-  // if (meets.length < 1) {
-  //   return <ZeroAgenda />;
-  // }
   return (
     <>
       {/* table toolbar */}
@@ -91,7 +100,7 @@ function AgendaTable({ meets, handleSelectEvent, handleDeleteEvent }: Props) {
         <AgendaTableSearch
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          globalFilter={state.globalFilter}
+          globalFilter={globalFilter}
           setGlobalFilter={setGlobalFilter}
         />
       </div>
@@ -126,7 +135,7 @@ function AgendaTable({ meets, handleSelectEvent, handleDeleteEvent }: Props) {
           {/* Apply the table body props */}
           <tbody {...getTableBodyProps()}>
             {/* Loop over the table rows */}
-            {rows.map((row) => {
+            {page.map((row) => {
               // Prepare the row for display
               prepareRow(row);
               return (
@@ -160,6 +169,22 @@ function AgendaTable({ meets, handleSelectEvent, handleDeleteEvent }: Props) {
           </tbody>
         </table>
 
+        {rows.length > 1 && (
+          <AgendaTablePagination
+            paginationFn={{
+              canNextPage,
+              canPreviousPage,
+              gotoPage,
+              nextPage,
+              pageCount,
+              pageIndex,
+              pageOptions,
+              pageSize,
+              previousPage,
+              setPageSize,
+            }}
+          />
+        )}
         {rows.length < 1 && <ZeroAgenda notFound />}
       </div>
     </>
