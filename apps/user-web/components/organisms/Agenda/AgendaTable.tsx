@@ -58,6 +58,8 @@ function AgendaTable({ meets, handleSelectEvent, handleDeleteEvent }: Props) {
         name: meet.name_meeting,
         date: formatDateWithDay(meet.start_datetime),
         time: formatMeetTime(meet.start_datetime, meet.end_datetime),
+        start_datetime: meet.start_datetime,
+        end_datetime: meet.end_datetime,
         status: meet.isOnline === 1 ? 'Online' : 'Offline',
         actions: (
           <AgendaTableAction
