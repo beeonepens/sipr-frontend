@@ -7,12 +7,12 @@ import MeetingDetailsModal from '@components/molecules/Agenda/MeetingDetailsModa
 import DeleteMeetingModal from '@components/molecules/Agenda/DeleteMeetingModal';
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 import AgendaTable from '@components/organisms/Agenda/AgendaTable';
-import { formatToMs } from '@utils/formatDateTime';
 import { MeetWithDate } from '@utils/types/meet.dto';
 import {
   useMeetingQuery,
   useMeetTimeQuery,
 } from '@utils/hooks/queryHooks/useMeetingQuery';
+import { useAgendaTableData } from '@utils/hooks/agenda/useAgendaTableData';
 
 export default function Agenda() {
   const [isDetailModalOpen, setIsDetailModalOpen] = React.useState(false);
@@ -22,23 +22,7 @@ export default function Agenda() {
   const meetings = useMeetingQuery();
   const datetimes = useMeetTimeQuery();
 
-  const meetingList = React.useMemo(() => {
-    /** if meetings & datetime data not found, return empty array */
-    if (!meetings.data || !datetimes.data) return [];
-
-    return (
-      datetimes.data
-        /** combine datetime & meeting detail data */
-        .map((dt) => ({
-          ...dt,
-          ...meetings.data.find((meet) => meet.id_meet === dt.id_meet),
-        }))
-        /** sort by the nearest time */
-        .sort(
-          (a, b) => formatToMs(a.start_datetime) - formatToMs(b.start_datetime)
-        )
-    );
-  }, [meetings.data, datetimes.data]);
+  const meetingList = useAgendaTableData({ datetimes, meetings });
 
   function toggleDetailModal() {
     setIsDetailModalOpen((prevState) => !prevState);

@@ -9,7 +9,7 @@ export default function AgendaTableSearch({
   setGlobalFilter,
 }) {
   // const count = preGlobalFilteredRows.length;
-  const [value, setValue] = useState(globalFilter);
+  const [value, setValue] = useState(globalFilter || '');
   const onChange = useAsyncDebounce((val) => {
     setGlobalFilter(val || undefined);
   }, 200);
