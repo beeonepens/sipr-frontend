@@ -16,7 +16,7 @@ export const createMeeting = async (meet: NewMeetingInput) => {
     repeat: meet.repeat_duration,
   });
 
-  console.log({ regularDateStart, regularDateEnd, limit: meet.limit });
+  // console.log({ regularDateStart, regularDateEnd, limit: meet.limit });
   const { data } = await axios.post<NewMeetingResponse>(
     `${API_URL}/api/meet/store`,
     {

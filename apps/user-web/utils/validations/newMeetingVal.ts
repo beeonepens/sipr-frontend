@@ -11,6 +11,8 @@ export const NewMeetingSchema = z.object({
   repeat_duration: z.enum(['day', 'week', 'month']),
   room_id: z.number().optional(),
   onlineLink: z.string().optional(),
+  participants: z.array(z.string()).optional(),
+  teams: z.array(z.number()).optional(),
   offlineLoc: z
     .object({
       value: z.number(),

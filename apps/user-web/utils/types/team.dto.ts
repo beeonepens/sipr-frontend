@@ -1,0 +1,14 @@
+export interface Team {
+  id_team: number;
+  name_teams: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  team_invite_code: string;
+  id_pembuat: string;
+}
+
+export interface GetTeamRes {
+  data: Team[];
+  message: string;
+}
