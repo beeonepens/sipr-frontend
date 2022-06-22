@@ -1,34 +1,26 @@
 import Head from 'next/head';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { useUnreleased } from '@utils/store/useUnreleased';
 import { PlusCircleIcon } from '@heroicons/react/outline';
-import ParticipantSubHeader from '@components/organisms/Participant/ParticipantSubHeader';
-import TeamsItem from '@components/organisms/Participant/Teams/TeamsItem';
-import UnreleasedAlert from '@components/molecules/UnreleasedAlert';
+import TeamsItem from '@components/organisms/Teams/TeamsItem';
+import TeamsSearch from '@components/molecules/Teams/TeamsSearch';
 
 const teams = [1, 2, 3, 4];
 
 export default function Teams() {
-  const { setOpenModal } = useUnreleased();
-
-  useEffect(() => {
-    setOpenModal(true);
-  }, [setOpenModal]);
-
   return (
     <>
       <Head>
         <title>Teams | SIPR</title>
       </Head>
 
-      <ParticipantSubHeader />
+      {/* <ParticipantSubHeader /> */}
       <motion.article
         initial={{ opacity: 0.6, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         className="py-4 px-4 md:px-8"
       >
+        <TeamsSearch />
         <div
           className={clsx(
             'mt-4 mb-4 grid gap-6 lg:mb-2',
@@ -55,7 +47,7 @@ export default function Teams() {
           ))}
         </div>
 
-        <UnreleasedAlert />
+        {/* <UnreleasedAlert /> */}
       </motion.article>
     </>
   );
