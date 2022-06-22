@@ -14,6 +14,7 @@ export default function CreateMeetingParticipantForms() {
     perLoading: false,
     teaLoading: false,
   });
+
   const {
     personParticipants,
     addPersonParticipant,
@@ -98,7 +99,7 @@ export default function CreateMeetingParticipantForms() {
         </div>
 
         {/* add team participant */}
-        <div className="flex flex-col justify-start gap-0.5">
+        {/* <div className="flex flex-col justify-start gap-0.5">
           <Label id="add-team">Add Team</Label>
           <div className="flex w-full flex-row items-center gap-x-3">
             <div className="flex w-5/6 flex-row items-center">
@@ -121,7 +122,7 @@ export default function CreateMeetingParticipantForms() {
               {teamHelperMsg}
             </p>
           )}
-        </div>
+        </div> */}
       </div>
 
       <div className="grid h-fit grid-cols-1 gap-3">

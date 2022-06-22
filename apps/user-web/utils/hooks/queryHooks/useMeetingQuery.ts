@@ -38,3 +38,12 @@ export const useMeetTimeQuery = () => {
 
   return datetimes;
 };
+
+/** ---------------------- */
+/** Meeting list + Meeting Time */
+export const useMeetWithTimeQuery = () => {
+  const meetings = useMeetingQuery();
+  const datetimes = useMeetTimeQuery();
+
+  return { meetings, datetimes };
+};

@@ -8,10 +8,7 @@ import DeleteMeetingModal from '@components/molecules/Agenda/DeleteMeetingModal'
 import AgendaSubHeader from '@components/organisms/Agenda/AgendaSubHeader';
 import AgendaTable from '@components/organisms/Agenda/AgendaTable';
 import { MeetWithDate } from '@utils/types/meet.dto';
-import {
-  useMeetingQuery,
-  useMeetTimeQuery,
-} from '@utils/hooks/queryHooks/useMeetingQuery';
+import { useMeetWithTimeQuery } from '@utils/hooks/queryHooks/useMeetingQuery';
 import { useAgendaTableData } from '@utils/hooks/agenda/useAgendaTableData';
 
 export default function Agenda() {
@@ -19,8 +16,9 @@ export default function Agenda() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
   const [openEvent, setOpenEvent] = React.useState<MeetWithDate | null>(null);
 
-  const meetings = useMeetingQuery();
-  const datetimes = useMeetTimeQuery();
+  // const meetings = useMeetingQuery();
+  // const datetimes = useMeetTimeQuery();
+  const { meetings, datetimes } = useMeetWithTimeQuery();
 
   const meetingList = useAgendaTableData({ datetimes, meetings });
 
