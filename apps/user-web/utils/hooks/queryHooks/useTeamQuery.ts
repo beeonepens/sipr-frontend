@@ -1,4 +1,4 @@
-import { getTeamByMemberId } from '@utils/queries/teamQuery';
+import { getTeamById, getTeamByMemberId } from '@utils/queries/teamQuery';
 import { useQuery } from 'react-query';
 
 export const useUserTeamQuery = () => {
@@ -6,6 +6,12 @@ export const useUserTeamQuery = () => {
     ['teams', typeof window !== 'undefined' && localStorage.getItem('uid')],
     getTeamByMemberId
   );
+
+  return teams;
+};
+
+export const useTeamDetailQuery = (id: string) => {
+  const teams = useQuery(['teams', id], getTeamById);
 
   return teams;
 };

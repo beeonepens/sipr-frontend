@@ -3,9 +3,9 @@ import { API_URL } from '@utils/constant';
 
 import type { GetTeamByMemberRes, GetTeamRes } from '@utils/types/team.dto';
 
-export const getTeamById = async (id: string) => {
+export const getTeamById = async ({ queryKey }) => {
   const { data } = await axios.get<GetTeamRes>(
-    `${API_URL}/api/team/show?id=${id}`,
+    `${API_URL}/api/team/show?id=${queryKey[1]}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
