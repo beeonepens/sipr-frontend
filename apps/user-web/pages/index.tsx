@@ -1,8 +1,10 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Navbar from '@components/molecules/HomePage/Navbar';
 import Footer from '@components/molecules/HomePage/Footer';
 import { Button } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
+import DashboardImage from '../public/uploads/sipr_dashboard.png';
 
 export default function Home() {
   return (
@@ -29,9 +31,17 @@ export default function Home() {
             </LinkTo>
           </div>
 
-          <div className="mx-auto mt-20 w-3/4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/uploads/sipr_dashboard.png" alt="dashboard" />
+          <div className="mx-auto mt-20 w-[90%] rounded-lg md:w-3/4">
+            {/* <img src="/uploads/sipr_dashboard.png" alt="dashboard" /> */}
+            <Image
+              className="rounded-lg"
+              src={DashboardImage}
+              // src="/uploads/sipr_dashboard.png"
+              width={1280}
+              height={720}
+              alt="mslis dashboard"
+              placeholder="blur"
+            />
           </div>
         </div>
 
