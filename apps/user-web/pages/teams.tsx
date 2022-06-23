@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { PlusCircleIcon } from '@heroicons/react/outline';
-import TeamsItem from '@components/organisms/Teams/TeamsItem';
 import TeamsSearch from '@components/molecules/Teams/TeamsSearch';
+import NewTeams from '@components/organisms/Teams/NewTeams';
+import TeamsItem from '@components/organisms/Teams/TeamsItem';
 
 const teams = [1, 2, 3, 4];
 
@@ -30,24 +30,11 @@ export default function Teams() {
           )}
         >
           {/* add item button */}
-          <div
-            className={clsx(
-              'flex flex-col items-center justify-center rounded-lg bg-white py-4 px-3 shadow-md shadow-gray-300/25 outline-dashed outline-1 outline-gray-300 transition duration-75 hover:cursor-pointer hover:bg-gray-200 dark:bg-gray-900 dark:shadow-black/20 dark:outline-gray-700 dark:hover:bg-gray-800',
-              teams.length > 0 ? 'h-full w-full' : 'h-36 w-full'
-            )}
-          >
-            <PlusCircleIcon className="text-primary-600 dark:text-primary-300 mb-2 h-6 w-6" />
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              Create new team
-            </p>
-          </div>
-
+          <NewTeams totalTeams={teams.length} />
           {teams.map((item) => (
             <TeamsItem key={item} item={item} />
           ))}
         </div>
-
-        {/* <UnreleasedAlert /> */}
       </motion.article>
     </>
   );

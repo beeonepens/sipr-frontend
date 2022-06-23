@@ -5,7 +5,7 @@ import Label from '@components/atoms/Form/Label';
 import StatelessInput from '@components/atoms/Form/StatelessInput';
 import { useParticipantStore } from '@utils/store/useCreateMeetParticipant';
 import { searchPersonById } from '@utils/queries/userQuery';
-import { searchTeamById } from '@utils/queries/teamQuery';
+import { getTeamById as searchTeamById } from '@utils/queries/teamQuery';
 
 export default function CreateMeetingParticipantForms() {
   const [personInput, setPersonInput] = useState('');
