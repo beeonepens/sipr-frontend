@@ -8,7 +8,7 @@ This monorepo is powered by [turborepo](https://turborepo.org/) and [pnpm](https
 
 - `admin-web`: a [Next.js](https://nextjs.org) app for admin user
 - `user-web`: another [Next.js](https://nextjs.org) app for normal user
-- `ui`: a bunch of React component shared by both `admin-web` and `user-web` applications
+- `ui`: collections of React component shared by both `admin-web` and `user-web` applications
 - `config`: shared `eslint` configurations
 - `tsconfig`: shared `tsconfig.json` configuration
 
