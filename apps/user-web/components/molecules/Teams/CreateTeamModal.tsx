@@ -1,7 +1,12 @@
+import type { NewTeamResponse } from '@utils/types/team.dto';
+import { useState } from 'react';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { Button } from 'ui';
 import { XIcon } from '@heroicons/react/outline';
 import { Dialog } from '@headlessui/react';
+import { useMutation, useQueryClient } from 'react-query';
+import { AxiosError } from 'axios';
+import { createTeam } from '@utils/mutations/teamMutation';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { NewTeamInput, NewTeamSchema } from '@utils/validations/newTeamVal';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,6 +19,9 @@ interface Props {
 }
 
 export default function CreateTeamModal({ isModalOpen, toggleModal }: Props) {
+  const queryClient = useQueryClient();
+  const [inviteCode, setInviteCode] = useState('');
+
   /** function that run to close modal */
   const handleCloseModal = () => {
     toggleModal();
@@ -24,9 +32,31 @@ export default function CreateTeamModal({ isModalOpen, toggleModal }: Props) {
     resolver: zodResolver(NewTeamSchema),
   });
 
+  /** hooks for controlling the mutation */
+  const mutation = useMutation<NewTeamResponse, AxiosError, NewTeamInput>(
+    createTeam
+  );
+
   const onSubmit: SubmitHandler<NewTeamInput> = (data) => {
     console.log(data);
-    toggleModal();
+    // toggleModal();
+
+    mutation.mutate(data, {
+      onError: (error) => {
+        console.log(error);
+      },
+      onSuccess: (res) => {
+        console.log(res);
+        if (res.message === 'Succes') {
+          setInviteCode(res.data[0].team_invite_code);
+          queryClient.invalidateQueries([
+            'teams',
+            typeof window !== 'undefined' && localStorage.getItem('uid'),
+          ]);
+          toggleModal();
+        }
+      },
+    });
   };
 
   return (
@@ -55,7 +85,7 @@ export default function CreateTeamModal({ isModalOpen, toggleModal }: Props) {
           <FormProvider {...methods}>
             <form noValidate onSubmit={methods.handleSubmit(onSubmit)}>
               <div className="flex flex-col gap-4 py-6">
-                <FormControl id="name" label="Team Name *" type="text" />
+                <FormControl id="name_teams" label="Team Name *" type="text" />
                 <FormAreaControl
                   rows={3}
                   label="Team Description"
@@ -72,7 +102,7 @@ export default function CreateTeamModal({ isModalOpen, toggleModal }: Props) {
                 >
                   Cancel
                 </Button>
-                <Button text="sm" type="submit">
+                <Button isLoading={mutation.isLoading} text="sm" type="submit">
                   Save
                 </Button>
               </div>

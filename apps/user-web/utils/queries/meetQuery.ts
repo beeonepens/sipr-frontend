@@ -6,7 +6,7 @@ import type { GetAllMeetingRes } from '@utils/types/meet.dto';
 /** get array of meeting by user id */
 export const getMeetingByUid = async ({ queryKey }) => {
   const { data } = await axios.get<GetAllMeetingRes>(
-    `${API_URL}/api/meet/show?user_id=${queryKey[1]}`,
+    `${API_URL}/api/meet/show?participation_id=${queryKey[1]}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -34,7 +34,7 @@ export const getMeetingById = async ({ queryKey }) => {
 /** get array of meeting datetime by user id */
 export const getDateTimeByUid = async ({ queryKey }) => {
   const { data } = await axios.get<GetAllMeetingRes>(
-    `${API_URL}/api/meet/show?user_id=${queryKey[1]}`,
+    `${API_URL}/api/meet/show?participation_id=${queryKey[1]}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

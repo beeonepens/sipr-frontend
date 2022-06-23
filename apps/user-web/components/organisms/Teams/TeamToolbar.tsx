@@ -1,13 +1,13 @@
 import CreateTeamModal from '@components/molecules/Teams/CreateTeamModal';
-import { PlusCircleIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
+import {
+  PlusCircleIcon,
+  PlusIcon,
+  UserGroupIcon,
+} from '@heroicons/react/outline';
 import { useState } from 'react';
+import { Button } from 'ui';
 
-interface Props {
-  totalTeams: number;
-}
-
-export default function NewTeams({ totalTeams }: Props) {
+export default function TeamToolbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleModal() {
@@ -16,7 +16,7 @@ export default function NewTeams({ totalTeams }: Props) {
 
   return (
     <>
-      <button
+      {/* <button
         type="button"
         onClick={toggleModal}
         className={clsx(
@@ -28,7 +28,28 @@ export default function NewTeams({ totalTeams }: Props) {
         <p className="text-base text-gray-600 dark:text-gray-300">
           Create new team
         </p>
-      </button>
+      </button> */}
+
+      <div className="flex flex-row justify-start gap-6">
+        <Button onClick={toggleModal} padding="sm" text="sm">
+          <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+            <PlusIcon className="h-4 w-4" />
+            Create Team
+          </span>
+        </Button>
+
+        <Button
+          // onClick={toggleFilterModal}
+          padding="sm"
+          text="sm"
+          variant="outline"
+        >
+          <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+            <UserGroupIcon className="h-4 w-4" />
+            Join Team
+          </span>
+        </Button>
+      </div>
 
       <CreateTeamModal isModalOpen={isOpen} toggleModal={toggleModal} />
     </>

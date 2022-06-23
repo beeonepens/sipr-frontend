@@ -2,7 +2,7 @@ import Head from 'next/head';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import TeamsSearch from '@components/molecules/Teams/TeamsSearch';
-import NewTeams from '@components/organisms/Teams/NewTeams';
+import TeamToolbar from '@components/organisms/Teams/TeamToolbar';
 import TeamsItem from '@components/organisms/Teams/TeamsItem';
 import { useUserTeamQuery } from '@utils/hooks/queryHooks/useTeamQuery';
 
@@ -23,7 +23,10 @@ export default function Teams() {
         animate={{ opacity: 1, y: 0 }}
         className="py-4 px-4 md:px-8"
       >
-        <TeamsSearch />
+        <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
+          <TeamToolbar />
+          <TeamsSearch />
+        </div>
         {teams.isLoading && <h4>Loading</h4>}
         {teams.isSuccess && (
           <div
@@ -35,7 +38,7 @@ export default function Teams() {
             )}
           >
             {/* add item button */}
-            <NewTeams totalTeams={teams.data.length} />
+            {/* <TeamToolbar totalTeams={teams.data.length} /> */}
             {teams.data.map((item) => (
               <TeamsItem key={item.id_team} item={item} />
             ))}

@@ -1,14 +1,21 @@
 export interface TeamBase {
   id_team: number;
   name_teams: string;
+  description: string;
 }
 
 export interface Team extends TeamBase {
-  description: string;
   created_at: string;
   updated_at: string;
   team_invite_code: string;
   id_pembuat: string;
+}
+
+export interface TeamWithMember {
+  id_team: number;
+  name_team: string;
+  description: string;
+  member: number;
 }
 
 export interface GetTeamRes {
@@ -17,6 +24,11 @@ export interface GetTeamRes {
 }
 
 export interface GetTeamByMemberRes {
-  data: TeamBase[];
+  data: TeamWithMember[];
+  message: string;
+}
+
+export interface NewTeamResponse {
+  data: Team[];
   message: string;
 }
