@@ -5,7 +5,7 @@ import { GiftIcon, XIcon } from '@heroicons/react/outline';
 import { RELEASE_VERSION } from '@utils/constant';
 import { formatDate } from '@utils/formatDateTime';
 import { useEffect, useState } from 'react';
-import { releaseNotes } from 'release/sipr-release-0.4';
+import { releaseNotes } from 'release/sipr-release-0.7';
 import { Button } from 'ui';
 import MiniSidebarMenu from './MiniSidebarMenu';
 
@@ -67,6 +67,13 @@ export default function WhatsNewMenu() {
                 ))}
               </ul>
             </div>
+          </div>
+
+          <div className="my-2 text-sm text-gray-700 dark:text-gray-300">
+            <p>Note: </p>
+            <p>
+              This is alpha release, you can expect to find bug here and there.
+            </p>
           </div>
 
           <LinkTo
