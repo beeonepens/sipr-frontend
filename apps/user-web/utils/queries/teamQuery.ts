@@ -18,9 +18,9 @@ export const getTeamById = async (id: string) => {
   return data.data;
 };
 
-export const getTeamByMemberId = async (memberId: string) => {
+export const getTeamByMemberId = async ({ queryKey }) => {
   const { data } = await axios.get<GetTeamByMemberRes>(
-    `${API_URL}/api/team/show?id_member=${memberId}`,
+    `${API_URL}/api/team/show?id_member=${queryKey[1]}`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
