@@ -19,13 +19,15 @@ export default function AuthenticationLinks() {
     >
       {!isAuthenticated ? (
         <>
-          <LinkTo to="/register">
-            <Button fullWidth variant="outline">
-              Register
+          <LinkTo to="/login">
+            <Button padding="sm" fullWidth variant="outline">
+              Login
             </Button>
           </LinkTo>
-          <LinkTo to="/login">
-            <Button fullWidth>Login</Button>
+          <LinkTo to="/register">
+            <Button padding="sm" fullWidth>
+              Register
+            </Button>
           </LinkTo>
         </>
       ) : (
