@@ -8,6 +8,7 @@ import { XIcon } from '@heroicons/react/outline';
 
 import { NewMeetingInput, NewMeetingSchema } from '@utils/validations';
 import { useSynchronizeMeetingTime } from '@utils/hooks/meeting/useSynchronizeMeetingTime';
+import { useParticipantStore } from '@utils/store/useCreateMeetParticipant';
 import ModalProvider from '@components/atoms/Modal/ModalProvider';
 import { useCreateMeeting } from '@utils/hooks/meeting/useCreateMeeting';
 import CreateMeetingToast from '../Dashboard/CreateMeetingToast';
@@ -21,6 +22,9 @@ export interface Props {
 }
 
 function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
+  const { resetPersonParticipant, resetTeamParticipant } =
+    useParticipantStore();
+
   const [page, setPage] = useState<1 | 2>(1);
   const changePage = (action: 'next' | 'prev') => {
     if (page === 1 && action === 'next') setPage(2);
@@ -54,8 +58,10 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
   /** function that run to close modal */
   const handleCloseModal = () => {
     setPage(1);
-    toggleModal();
     methods.reset();
+    resetPersonParticipant();
+    resetTeamParticipant();
+    toggleModal();
   };
 
   /** form error log */
@@ -109,11 +115,7 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
                 >
                   {page !== 1 ? 'Back' : 'Cancel'}
                 </Button>
-                {page === 2 ? (
-                  <Button isLoading={isLoading} text="sm" type="submit">
-                    Save
-                  </Button>
-                ) : (
+                {page === 1 && (
                   <Button
                     isLoading={isLoading}
                     text="sm"
@@ -121,6 +123,11 @@ function CreateMeetingModal({ isModalOpen, toggleModal, rooms }: Props) {
                     type="button"
                   >
                     Next
+                  </Button>
+                )}
+                {page === 2 && (
+                  <Button isLoading={isLoading} text="sm" type="submit">
+                    Save
                   </Button>
                 )}
               </div>

@@ -14,7 +14,7 @@ interface Props {
   menuPlacement?: 'bottom' | 'auto' | 'top';
 }
 
-const customStyles = {
+export const customStyles = {
   control: (styles, state) => ({
     ...styles,
     background: '#fff',
@@ -47,7 +47,7 @@ const customStyles = {
   }),
 };
 
-const customStylesDark = {
+export const customStylesDark = {
   control: (styles, state) => ({
     ...styles,
     background: '#27272a',
@@ -117,5 +117,39 @@ export default function FormSelectControl({
         )}
       />
     </div>
+  );
+}
+
+type IVal = { label: string; value: string | number };
+interface StatelessProps extends Props {
+  value: IVal;
+  onChange: (val: IVal) => void;
+}
+
+export function FormSelectStateless({
+  id,
+  label = '',
+  options,
+  placeholder,
+  menuPlacement = 'auto',
+  onChange,
+  value,
+}: StatelessProps) {
+  const contentColor = useLogoColor();
+
+  return (
+    <Select
+      onChange={onChange}
+      value={value}
+      aria-label={label}
+      placeholder={placeholder}
+      options={options}
+      instanceId={id}
+      isSearchable
+      maxMenuHeight={200}
+      className="w-full"
+      menuPlacement={menuPlacement}
+      styles={contentColor === 'dark' ? customStyles : customStylesDark}
+    />
   );
 }

@@ -16,7 +16,7 @@ export const createMeeting = async (meet: NewMeetingInput) => {
     repeat: meet.repeat_duration,
   });
 
-  console.log({ regularDateStart, regularDateEnd, limit: meet.limit });
+  // console.log({ regularDateStart, regularDateEnd, limit: meet.limit });
   const { data } = await axios.post<NewMeetingResponse>(
     `${API_URL}/api/meet/store`,
     {
@@ -27,6 +27,10 @@ export const createMeeting = async (meet: NewMeetingInput) => {
       // date_end: [format(meet.date_end, SERVER_DATE_FOR)],
       date_start: regularDateStart,
       date_end: regularDateEnd,
+      participants:
+        meet.teams.length > 0
+          ? meet.participants
+          : [...meet.participants, String(localStorage.getItem('uid'))],
       user_id: String(localStorage.getItem('uid')),
     },
     {

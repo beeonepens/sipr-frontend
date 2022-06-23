@@ -27,8 +27,8 @@ const SideMenu = [
   },
   {
     alias: 'teams',
-    slug: '/participant',
-    label: 'Participant',
+    slug: '/teams',
+    label: 'Teams',
     icon: <UserGroupIcon className="h-6 w-6" />,
   },
   {

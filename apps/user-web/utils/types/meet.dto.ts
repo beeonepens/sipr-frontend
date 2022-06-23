@@ -11,7 +11,7 @@ export interface Datetime {
   end_datetime: string;
 }
 
-export interface Meet {
+export interface MeetBase {
   id_meet: number;
   name_meeting: string;
   description: string;
@@ -22,19 +22,37 @@ export interface Meet {
   user_id: string;
 }
 
-export interface MeetWithDate extends Meet, Datetime {}
+export interface MeetForMember extends MeetBase {
+  limit: number;
+  id_invitation: number;
+  isAccepted?: boolean;
+  reason?: string;
+  expiredDateTime: string;
+  id_invitee: string;
+  id_receiver: string;
+}
+
+export interface MeetWithDate extends MeetBase, Datetime {}
 
 export interface NewMeetingResponse {
   data: {
-    meet: Meet[];
+    meet: MeetBase[];
     datetime: Datetime[];
+  };
+  message: string;
+}
+
+export interface GetMeetByMemberRes {
+  data: {
+    meet: MeetForMember[];
+    datetime: Datetime[][];
   };
   message: string;
 }
 
 export interface GetAllMeetingRes {
   data: {
-    meet: Meet[];
+    meet: MeetBase[];
     datetime: Datetime[];
   };
   message: string;

@@ -1,21 +1,15 @@
 import Head from 'next/head';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import { useUnreleased } from '@utils/store/useUnreleased';
-import { PlusCircleIcon } from '@heroicons/react/outline';
-import ParticipantSubHeader from '@components/organisms/Participant/ParticipantSubHeader';
-import TeamsItem from '@components/organisms/Participant/Teams/TeamsItem';
-import UnreleasedAlert from '@components/molecules/UnreleasedAlert';
+import TeamsSearch from '@components/molecules/Teams/TeamsSearch';
+import TeamToolbar from '@components/organisms/Teams/TeamToolbar';
+import TeamsItem from '@components/organisms/Teams/TeamsItem';
+import { useUserTeamQuery } from '@utils/hooks/queryHooks/useTeamQuery';
 
-const teams = [1, 2, 3, 4];
+// const teams = [1, 2, 3, 4];
 
 export default function Teams() {
-  const { setOpenModal } = useUnreleased();
-
-  useEffect(() => {
-    setOpenModal(true);
-  }, [setOpenModal]);
+  const teams = useUserTeamQuery();
 
   return (
     <>
@@ -23,39 +17,33 @@ export default function Teams() {
         <title>Teams | SIPR</title>
       </Head>
 
-      <ParticipantSubHeader />
+      {/* <ParticipantSubHeader /> */}
       <motion.article
         initial={{ opacity: 0.6, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         className="py-4 px-4 md:px-8"
       >
-        <div
-          className={clsx(
-            'mt-4 mb-4 grid gap-6 lg:mb-2',
-            teams.length > 0
-              ? 'grid-cols-1 lg:grid-cols-3 xl:grid-cols-4'
-              : 'grid-cols-1'
-          )}
-        >
-          {/* add item button */}
+        <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
+          <TeamToolbar />
+          <TeamsSearch />
+        </div>
+        {teams.isLoading && <h4>Loading</h4>}
+        {teams.isSuccess && (
           <div
             className={clsx(
-              'flex flex-col items-center justify-center rounded-lg bg-white py-4 px-3 shadow-md shadow-gray-300/25 outline-dashed outline-1 outline-gray-300 transition duration-75 hover:cursor-pointer hover:bg-gray-200 dark:bg-gray-900 dark:shadow-black/20 dark:outline-gray-700 dark:hover:bg-gray-800',
-              teams.length > 0 ? 'h-full w-full' : 'h-36 w-full'
+              'mt-4 mb-4 grid gap-6 lg:mb-2',
+              teams.data.length > 0
+                ? 'grid-cols-1 lg:grid-cols-3 xl:grid-cols-4'
+                : 'grid-cols-1'
             )}
           >
-            <PlusCircleIcon className="text-primary-600 dark:text-primary-300 mb-2 h-6 w-6" />
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              Create new team
-            </p>
+            {/* add item button */}
+            {/* <TeamToolbar totalTeams={teams.data.length} /> */}
+            {teams.data.map((item) => (
+              <TeamsItem key={item.id_team} item={item} />
+            ))}
           </div>
-
-          {teams.map((item) => (
-            <TeamsItem key={item} item={item} />
-          ))}
-        </div>
-
-        <UnreleasedAlert />
+        )}
       </motion.article>
     </>
   );

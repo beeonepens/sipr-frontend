@@ -16,3 +16,18 @@ export const getUserById = async ({ queryKey }) => {
 
   return data.data;
 };
+
+export const searchPersonById = async (id: string) => {
+  const { data } = await axios.get<GetUserRes>(
+    `${API_URL}/api/user/show?nip=${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    }
+  );
+
+  if (data.message === 'Failed') return [];
+
+  return data.data;
+};

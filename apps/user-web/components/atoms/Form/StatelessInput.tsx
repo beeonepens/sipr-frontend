@@ -41,7 +41,7 @@ export default function StatelessInput({
 
   if (type === 'password')
     return (
-      <div className="relative">
+      <div className="relative w-full">
         <input
           type={!eyeOn ? 'password' : 'text'}
           id={id}
@@ -77,7 +77,7 @@ export default function StatelessInput({
       name={id}
       {...others}
       className={clsx(
-        'block rounded-lg bg-white disabled:cursor-not-allowed disabled:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:caret-gray-500 dark:disabled:bg-gray-900 sm:text-sm',
+        'block w-full rounded-lg bg-white disabled:cursor-not-allowed disabled:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:caret-gray-500 dark:disabled:bg-gray-900 sm:text-sm',
         error
           ? 'border-red-600 focus:border-red-800 focus:ring-red-800 dark:border-red-600 dark:focus:border-red-500 dark:focus:ring-red-500'
           : 'focus:border-primary-600 focus:ring-primary-600 dark:focus:border-primary-300 dark:focus:ring-primary-300 border-gray-300 dark:border-gray-600'

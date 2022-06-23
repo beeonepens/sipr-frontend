@@ -11,6 +11,7 @@ import { createMeeting } from '@utils/mutations/meetMutation';
 import { createRoom } from '@utils/mutations/roomMutatin';
 import { NewRoomResponse, Room } from '@utils/types/room.dto';
 import { NewRoomInput } from '@utils/validations/newRoomVal';
+import { useParticipantStore } from '@utils/store/useCreateMeetParticipant';
 
 interface Params {
   rooms: Room[];
@@ -21,6 +22,12 @@ export const useCreateMeeting = ({ rooms, toggleModal }: Params) => {
   const queryClient = useQueryClient();
   const [isLoading, setIsLoading] = React.useState(false);
   const [openToast, setOpenToast] = React.useState(false);
+  const {
+    personParticipants,
+    teamParticipants,
+    resetTeamParticipant,
+    resetPersonParticipant,
+  } = useParticipantStore();
 
   /** hooks for create meeting mutation */
   const meetingMutation = useMutation<
@@ -45,6 +52,47 @@ export const useCreateMeeting = ({ rooms, toggleModal }: Params) => {
       }));
   }, [rooms]);
 
+  /** function for handling new meeting mutation */
+  const handleMeetingMutation = (
+    meetData: NewMeetingInput,
+    roomId?: number
+  ) => {
+    meetingMutation.mutate(
+      {
+        ...meetData,
+        room_id: roomId,
+        participants: personParticipants.map((person) => person.id),
+        teams: teamParticipants.map((team) => Number(team.id)),
+      },
+      {
+        // eslint-disable-next-line no-shadow
+        onError: ({ message, response }) => {
+          setIsLoading(false);
+          console.log({ message, response });
+        },
+        // eslint-disable-next-line no-shadow
+        onSuccess: ({ data: meet, message }) => {
+          if (message === 'Succesfull') {
+            console.log({ meet, message });
+            queryClient.invalidateQueries([
+              'meetings',
+              typeof window !== 'undefined' && localStorage.getItem('uid'),
+            ]);
+            queryClient.invalidateQueries([
+              'datetimes',
+              typeof window !== 'undefined' && localStorage.getItem('uid'),
+            ]);
+            setIsLoading(false);
+            handleOpenToast(openToast, setOpenToast);
+            resetPersonParticipant();
+            resetTeamParticipant();
+            toggleModal();
+          }
+        },
+      }
+    );
+  };
+
   /** function that run on form-submit */
   const onSubmit: SubmitHandler<NewMeetingInput> = (data) => {
     console.log(data);
@@ -52,33 +100,7 @@ export const useCreateMeeting = ({ rooms, toggleModal }: Params) => {
 
     /** Offline meeting action */
     if (data.isOnline === 'offline') {
-      meetingMutation.mutate(
-        { ...data, room_id: data.offlineLoc?.value },
-        {
-          // eslint-disable-next-line no-shadow
-          onError: ({ message, response }) => {
-            setIsLoading(false);
-            console.log({ message, response });
-          },
-          // eslint-disable-next-line no-shadow
-          onSuccess: ({ data: meet, message }) => {
-            if (message === 'Succesfull') {
-              console.log({ meet, message });
-              queryClient.invalidateQueries([
-                'meetings',
-                typeof window !== 'undefined' && localStorage.getItem('uid'),
-              ]);
-              queryClient.invalidateQueries([
-                'datetimes',
-                typeof window !== 'undefined' && localStorage.getItem('uid'),
-              ]);
-              setIsLoading(false);
-              handleOpenToast(openToast, setOpenToast);
-              toggleModal();
-            }
-          },
-        }
-      );
+      handleMeetingMutation(data, data.offlineLoc.value);
     } else {
       /** Online meeting action */
       const newRoomData = {
@@ -100,35 +122,7 @@ export const useCreateMeeting = ({ rooms, toggleModal }: Params) => {
           /** if room mutation success, run meeting mutation */
           if (message === 'Succes') {
             console.log('create meeting');
-            meetingMutation.mutate(
-              { ...data, room_id: room[0].id_room },
-              {
-                // eslint-disable-next-line no-shadow
-                onError: ({ message, response }) => {
-                  setIsLoading(false);
-                  console.log({ message, response });
-                },
-                // eslint-disable-next-line no-shadow
-                onSuccess: ({ data: meet, message }) => {
-                  if (message === 'Succesfull') {
-                    console.log({ meet, message });
-                    queryClient.invalidateQueries([
-                      'meetings',
-                      typeof window !== 'undefined' &&
-                        localStorage.getItem('uid'),
-                    ]);
-                    queryClient.invalidateQueries([
-                      'datetimes',
-                      typeof window !== 'undefined' &&
-                        localStorage.getItem('uid'),
-                    ]);
-                    setIsLoading(false);
-                    handleOpenToast(openToast, setOpenToast);
-                    toggleModal();
-                  }
-                },
-              }
-            );
+            handleMeetingMutation(data, room[0].id_room);
           }
         },
       });
