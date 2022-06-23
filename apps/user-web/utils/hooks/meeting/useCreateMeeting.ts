@@ -22,7 +22,12 @@ export const useCreateMeeting = ({ rooms, toggleModal }: Params) => {
   const queryClient = useQueryClient();
   const [isLoading, setIsLoading] = React.useState(false);
   const [openToast, setOpenToast] = React.useState(false);
-  const { personParticipants, resetPersonParticipant } = useParticipantStore();
+  const {
+    personParticipants,
+    teamParticipants,
+    resetTeamParticipant,
+    resetPersonParticipant,
+  } = useParticipantStore();
 
   /** hooks for create meeting mutation */
   const meetingMutation = useMutation<
@@ -57,7 +62,7 @@ export const useCreateMeeting = ({ rooms, toggleModal }: Params) => {
         ...meetData,
         room_id: roomId,
         participants: personParticipants.map((person) => person.id),
-        teams: [],
+        teams: teamParticipants.map((team) => Number(team.id)),
       },
       {
         // eslint-disable-next-line no-shadow
@@ -80,6 +85,7 @@ export const useCreateMeeting = ({ rooms, toggleModal }: Params) => {
             setIsLoading(false);
             handleOpenToast(openToast, setOpenToast);
             resetPersonParticipant();
+            resetTeamParticipant();
             toggleModal();
           }
         },

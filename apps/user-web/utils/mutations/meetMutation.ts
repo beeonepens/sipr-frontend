@@ -27,7 +27,10 @@ export const createMeeting = async (meet: NewMeetingInput) => {
       // date_end: [format(meet.date_end, SERVER_DATE_FOR)],
       date_start: regularDateStart,
       date_end: regularDateEnd,
-      participants: [...meet.participants, localStorage.getItem('uid')],
+      participants:
+        meet.teams.length > 0
+          ? meet.participants
+          : [...meet.participants, String(localStorage.getItem('uid'))],
       user_id: String(localStorage.getItem('uid')),
     },
     {
