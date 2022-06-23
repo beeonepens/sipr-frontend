@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <>
       <hr className="opacity-100 dark:opacity-30" />
-      <div className="grid grid-cols-none bg-white md:grid-cols-2 md:grid-rows-none">
+      <div className="grid grid-cols-none bg-white dark:bg-gray-800 md:grid-cols-2 md:grid-rows-none">
         <div className="md:py-auto hidden px-4 md:mx-24 md:my-auto md:flex">
           <Logo color={logoColor} />
         </div>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-800">
         <hr className="opacity-100 dark:opacity-30" />
         <p className="text-primary-700 dark:text-primary-300 my-4 text-center font-bold">
           2022 mslis
