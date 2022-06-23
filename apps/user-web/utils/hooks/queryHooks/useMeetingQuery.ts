@@ -3,7 +3,7 @@ import {
   getMeetingById,
   getMeetingByUid,
 } from '@utils/queries/meetQuery';
-import { Datetime, Meet } from '@utils/types/meet.dto';
+import { Datetime, MeetBase as Meet } from '@utils/types/meet.dto';
 import { useQuery } from 'react-query';
 
 /** get all meeting data filtered by user id */

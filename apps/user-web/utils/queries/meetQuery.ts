@@ -1,11 +1,14 @@
 import axios from 'axios';
 import { API_URL } from '@utils/constant';
 
-import type { GetAllMeetingRes } from '@utils/types/meet.dto';
+import type {
+  GetAllMeetingRes,
+  GetMeetByMemberRes,
+} from '@utils/types/meet.dto';
 
 /** get array of meeting by user id */
 export const getMeetingByUid = async ({ queryKey }) => {
-  const { data } = await axios.get<GetAllMeetingRes>(
+  const { data } = await axios.get<GetMeetByMemberRes>(
     `${API_URL}/api/meet/show?participation_id=${queryKey[1]}`,
     {
       headers: {
@@ -33,7 +36,7 @@ export const getMeetingById = async ({ queryKey }) => {
 
 /** get array of meeting datetime by user id */
 export const getDateTimeByUid = async ({ queryKey }) => {
-  const { data } = await axios.get<GetAllMeetingRes>(
+  const { data } = await axios.get<GetMeetByMemberRes>(
     `${API_URL}/api/meet/show?participation_id=${queryKey[1]}`,
     {
       headers: {
@@ -42,5 +45,5 @@ export const getDateTimeByUid = async ({ queryKey }) => {
     }
   );
 
-  return data.data.datetime;
+  return data.data.datetime.map((dt) => dt[0]);
 };
