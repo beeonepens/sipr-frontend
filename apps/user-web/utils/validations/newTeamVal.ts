@@ -8,3 +8,9 @@ export const NewTeamSchema = z.object({
 
 /** TS types for the new team form */
 export type NewTeamInput = z.infer<typeof NewTeamSchema>;
+
+export const JoinTeamSchema = z.object({
+  kode: z.string().min(2, { message: 'Required' }),
+});
+
+export type JoinTeamInput = z.infer<typeof JoinTeamSchema>;

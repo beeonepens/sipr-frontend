@@ -32,3 +32,15 @@ export interface NewTeamResponse {
   data: Team[];
   message: string;
 }
+
+export interface JoinTeam {
+  id_team: number;
+  id_member: string;
+  updated_at: string;
+  created_at: string;
+  id: number;
+}
+export interface JoinTeamRes {
+  data: JoinTeam;
+  message: string;
+}

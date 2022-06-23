@@ -8,3 +8,12 @@ export function getInitialName(fullName: string) {
 
   return `${fName || ''}`;
 }
+
+export async function copyTextToClipboard(text: string) {
+  if ('clipboard' in navigator) {
+    const result = await navigator.clipboard.writeText(text);
+    return result;
+  }
+
+  return document.execCommand('copy', true, text);
+}
