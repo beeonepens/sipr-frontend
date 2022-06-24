@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Welcome to SIPR</title>
+        <title>Welcome to mslis</title>
       </Head>
 
       <Navbar />
@@ -20,7 +20,7 @@ export default function Home() {
             Manage Your Meetings With Ease!
           </h1>
 
-          <h4 className="text-primary-700 dark:text-primary-300 my-5 text-center text-xl font-medium sm:px-0 lg:px-72">
+          <h4 className="text-primary-600 dark:text-primary-400 my-5 text-center text-xl sm:px-0 lg:px-72">
             Mslis is a meeting management software that intends to facilitate
             meeting scheduling and prevent overlaps or clashes.
           </h4>
@@ -31,10 +31,10 @@ export default function Home() {
             </LinkTo>
           </div>
 
-          <div className="mx-auto mt-20 w-[90%] rounded-lg md:w-3/4">
+          <figure className="mx-auto mt-20 w-[90%] rounded-lg md:w-3/4">
             {/* <img src="/uploads/sipr_dashboard.png" alt="dashboard" /> */}
             <Image
-              className="rounded-lg"
+              className="rounded-lg "
               src={DashboardImage}
               // src="/uploads/sipr_dashboard.png"
               width={1280}
@@ -42,7 +42,7 @@ export default function Home() {
               alt="mslis dashboard"
               placeholder="blur"
             />
-          </div>
+          </figure>
         </div>
 
         <h1 className="text-primary-700 dark:text-primary-300 mt-20 mb-10 text-center text-4xl font-bold">

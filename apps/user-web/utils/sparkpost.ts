@@ -19,7 +19,7 @@ export const sendVerificationEmail = (params: SendVerificationMail) => {
       },
       content: {
         from: 'support@sipr.rulasfia.tech',
-        subject: 'SIPR Email Verification',
+        subject: 'MSLIS Email Verification',
         template_id: 'sipr-email-verification',
       },
       substitution_data: {

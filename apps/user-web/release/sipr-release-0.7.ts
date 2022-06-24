@@ -2,7 +2,7 @@ import { ReleaseNotes } from './sipr-release';
 
 export const releaseNotes: ReleaseNotes = {
   version: '0.7-alpha',
-  title: 'SIPR 0.7-alpha Release 🎉🎉',
+  title: 'mslis 0.7-alpha Release 🎉🎉',
   releaseDate: '24 June 2022',
   changelog: [
     "Create your team or join a team that you're already created using invitation code.",

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Script from 'next/script';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -25,6 +26,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <link rel="icon" href="/favicon.png" />
+      </Head>
       {/* react-query provider */}
       <QueryClientProvider client={queryClient}>
         {/* react-skeleton-loading color scheme */}
