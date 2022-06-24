@@ -54,7 +54,7 @@ export default function AgendaTableFilterModal({
         </Dialog.Description>
 
         <div className="my-8 grid w-fit grid-cols-2  items-center gap-y-6 gap-x-4">
-          <span className="font-medium">Sort By:</span>
+          <span className="font-medium dark:text-gray-300">Sort By:</span>
           <div>
             <SelectProvider
               data={['meet_name', 'start_time'] as typeof sortBy[]}
@@ -65,7 +65,7 @@ export default function AgendaTableFilterModal({
             />
           </div>
 
-          <span className="font-medium">Order:</span>
+          <span className="font-medium dark:text-gray-300">Order:</span>
           <div>
             <SelectProvider
               data={['asc', 'desc'] as typeof order[]}

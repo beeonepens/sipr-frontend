@@ -45,6 +45,6 @@ export const useMeetWithTimeQuery = () => {
   const meetings = useMeetingQuery();
   const datetimes = useMeetTimeQuery();
 
-  console.log({ meetings, datetimes });
+  // console.log({ meetings, datetimes });
   return { meetings, datetimes };
 };

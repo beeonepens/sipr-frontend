@@ -32,7 +32,7 @@ export default function MeetingOffline({ data }: Props) {
           data={chartData}
           // startAngle={270}
           lineWidth={20}
-          label={() => `${Math.round((primaryVal / totalVal) * 100)}%`}
+          label={() => `${Math.round((primaryVal / totalVal) * 100) || 0}%`}
           labelStyle={{
             fontWeight: 'bold',
             fontSize: '20px',

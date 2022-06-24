@@ -46,14 +46,14 @@ export default function MeetingDetailsModal({
             />
 
             <div className="mt-6 flex flex-row items-center justify-end">
-              <LinkTo to={`/agenda/${openEvent.id_meet}`}>
-                <Button>
-                  <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
-                    Edit Details
-                    <PencilAltIcon className="h-5 w-5" />
-                  </span>
-                </Button>
-              </LinkTo>
+              {/* <LinkTo to={`/agenda/${openEvent.id_meet}`}> */}
+              <Button isDisabled>
+                <span className="flex flex-row items-center justify-center gap-2 text-sm font-normal">
+                  Edit Details (under construction)
+                  <PencilAltIcon className="h-5 w-5" />
+                </span>
+              </Button>
+              {/* </LinkTo> */}
             </div>
           </>
         )}

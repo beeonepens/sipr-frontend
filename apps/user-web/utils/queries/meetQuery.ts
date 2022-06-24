@@ -17,7 +17,7 @@ export const getMeetingByUid = async ({ queryKey }) => {
     }
   );
 
-  return data.data.meet;
+  return data.data.meet ?? [];
 };
 
 /** get meeting by meeting id */
@@ -45,5 +45,5 @@ export const getDateTimeByUid = async ({ queryKey }) => {
     }
   );
 
-  return data.data.datetime.map((dt) => dt[0]);
+  return data.data.datetime ? data.data.datetime.map((dt) => dt[0]) : [];
 };

@@ -16,6 +16,7 @@ export default function MeetingAttended({ data }: Props) {
     (data.find((dt) => dt.title !== 'Attended')?.value || 0) +
     (data.find((dt) => dt.title === 'Attended')?.value || 0);
 
+  // console.log({ primaryVal, totalVal });
   return (
     <div className="col-span-1 flex h-full flex-col items-center justify-between gap-4 rounded-lg border border-gray-300 bg-white p-4 shadow-md shadow-gray-300/25 dark:border-gray-600 dark:bg-gray-800 dark:shadow-black/20">
       <h5 className="text-center font-semibold">Meeting Attended</h5>
@@ -24,7 +25,7 @@ export default function MeetingAttended({ data }: Props) {
           data={chartData}
           // startAngle={270}
           lineWidth={20}
-          label={() => `${Math.round((primaryVal / totalVal) * 100)}%`}
+          label={() => `${Math.round((primaryVal / totalVal) * 100) || 0}%`}
           labelStyle={{
             fontWeight: 'bold',
             fontSize: '24px',

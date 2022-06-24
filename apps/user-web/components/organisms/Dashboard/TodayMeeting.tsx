@@ -35,6 +35,8 @@ export default function TodayMeeting({ events }: Props) {
     return `End ${getTimeDifference(endTime)} Ago`;
   }
 
+  // console.log({ events });
+
   return (
     <div
       className={clsx(
