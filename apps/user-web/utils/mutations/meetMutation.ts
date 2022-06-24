@@ -56,6 +56,7 @@ export const updateMeeting = async ({ meet, id }: UpdateMeetParam) => {
     `${API_URL}/api/meet/update/${id}`,
     {
       ...meet,
+      name_meeting: meet.name,
       user_id: localStorage.getItem('uid'),
       room_id: meet.room_id,
       isOnline: meet.isOnline === 'online' ? 1 : 0,

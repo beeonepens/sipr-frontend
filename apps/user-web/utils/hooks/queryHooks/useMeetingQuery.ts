@@ -3,7 +3,11 @@ import {
   getMeetingById,
   getMeetingByUid,
 } from '@utils/queries/meetQuery';
-import { Datetime, MeetBase as Meet } from '@utils/types/meet.dto';
+import {
+  Datetime,
+  GetMeetDetailRes,
+  MeetBase as Meet,
+} from '@utils/types/meet.dto';
 import { useQuery } from 'react-query';
 
 /** get all meeting data filtered by user id */
@@ -21,9 +25,11 @@ export const useMeetDetailQuery = (
   id: string,
   onSuccess?: (data: { meet: Meet[]; datetime: Datetime[] }) => void
 ) => {
-  const meetings = useQuery(['meeting', id], getMeetingById, {
-    onSuccess,
-  });
+  const meetings = useQuery<GetMeetDetailRes['data']>(
+    ['meeting', id],
+    getMeetingById,
+    { onSuccess }
+  );
 
   return meetings;
 };

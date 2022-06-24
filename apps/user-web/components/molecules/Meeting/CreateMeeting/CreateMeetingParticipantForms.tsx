@@ -156,6 +156,7 @@ export default function CreateMeetingParticipantForms() {
           <ul className="rounded-lg border border-gray-300 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
             {allParticipants.map((par) => (
               <li
+                key={par.id}
                 className={
                   par.id !== allParticipants[allParticipants.length - 1].id
                     ? 'flex w-full flex-row items-center justify-between rounded-t-lg border-b border-gray-300 px-4 py-2 dark:border-gray-600'

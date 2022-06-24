@@ -58,13 +58,16 @@ export interface GetAllMeetingRes {
   message: string;
 }
 
-export interface GetMeetDetailRes extends GetAllMeetingRes {
-  data: GetAllMeetingRes['data'] & {
+export interface GetMeetDetailRes  {
+  data: {
+    meet: MeetBase[];
+    datetime: Datetime[];
     participant: {
       id_receiver: string;
       name: string;
     }[];
   };
+  message: string;
 }
 
 export interface MeetForCalendar {

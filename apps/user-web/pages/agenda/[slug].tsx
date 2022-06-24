@@ -63,6 +63,7 @@ export default function MeetingDetail() {
               meet={meeting.data.meet[0]}
               datetime={meeting.data.datetime}
               rooms={rooms.data.data}
+              participants={meeting.data.participant}
             />
           )}
         </div>
