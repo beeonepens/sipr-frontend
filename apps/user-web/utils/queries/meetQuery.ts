@@ -2,8 +2,8 @@ import axios from 'axios';
 import { API_URL } from '@utils/constant';
 
 import type {
-  GetAllMeetingRes,
   GetMeetByMemberRes,
+  GetMeetDetailRes,
 } from '@utils/types/meet.dto';
 
 /** get array of meeting by user id */
@@ -22,7 +22,7 @@ export const getMeetingByUid = async ({ queryKey }) => {
 
 /** get meeting by meeting id */
 export const getMeetingById = async ({ queryKey }) => {
-  const { data } = await axios.get<GetAllMeetingRes>(
+  const { data } = await axios.get<GetMeetDetailRes>(
     `${API_URL}/api/meet/show?id=${queryKey[1]}`,
     {
       headers: {

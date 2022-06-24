@@ -1,4 +1,9 @@
-import { differenceInHours, differenceInMinutes, format } from 'date-fns';
+import {
+  differenceInDays,
+  differenceInHours,
+  differenceInMinutes,
+  format,
+} from 'date-fns';
 
 /** result: 1 April 2022 */
 export const formatDate = (date: string) =>
@@ -64,4 +69,21 @@ export const getTimeDifference = (
     // eslint-disable-next-line prefer-template
     Math.abs(differenceInMinutes(new Date(startDate), new Date())) + ' Minutes'
   );
+};
+
+/** return full day difference in number */
+export const getDayDifference = (startDate: string, endDate: string) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  return differenceInDays(end, start);
+};
+
+export const getRepeatDuration = (startDate: string, endDate: string) => {
+  const dayDiff = getDayDifference(startDate, endDate);
+
+  if (dayDiff <= 7) return 'week';
+  if (dayDiff <= 1) return 'day';
+
+  return 'month';
 };

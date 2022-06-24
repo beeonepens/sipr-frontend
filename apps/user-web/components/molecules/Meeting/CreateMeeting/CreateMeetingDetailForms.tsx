@@ -19,12 +19,12 @@ interface Props {
   }[];
 }
 
-interface IRepeatOptions {
+export interface IRepeatOptions {
   label: string;
   value: 'day' | 'week' | 'month';
 }
 
-const repeatOptions: IRepeatOptions[] = [
+export const repeatOptions: IRepeatOptions[] = [
   { label: 'Every Day', value: 'day' },
   { label: 'Every Week', value: 'week' },
   { label: 'Every Month', value: 'month' },

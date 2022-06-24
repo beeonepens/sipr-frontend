@@ -61,7 +61,7 @@ export default function MeetingDetail() {
           {rooms.isSuccess && meeting.isSuccess && (
             <EditMeetingForms
               meet={meeting.data.meet[0]}
-              datetime={meeting.data.datetime[0]}
+              datetime={meeting.data.datetime}
               rooms={rooms.data.data}
             />
           )}
