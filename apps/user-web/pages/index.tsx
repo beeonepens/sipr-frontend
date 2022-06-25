@@ -4,6 +4,7 @@ import Navbar from '@components/molecules/HomePage/Navbar';
 import Footer from '@components/molecules/HomePage/Footer';
 import { Button } from 'ui';
 import LinkTo from '@components/atoms/LinkTo';
+import DemoSection from '@components/molecules/HomePage/DemoSection';
 import DashboardImage from '../public/uploads/sipr_dashboard.png';
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
             <LinkTo to="/register">
               <Button>Get Started</Button>
             </LinkTo>
+            <DemoSection />
           </div>
 
           <figure className="mx-auto mt-20 w-[90%] rounded-lg md:w-3/4">

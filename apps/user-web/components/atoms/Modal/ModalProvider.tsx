@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, MutableRefObject } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 
@@ -8,6 +8,8 @@ interface Props {
   children: JSX.Element;
   type?: 'dialog' | 'alert';
   ver?: 'panel' | 'overlay';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  initialFocus?: MutableRefObject<any>;
 }
 
 export default function ModalProvider({
@@ -16,11 +18,13 @@ export default function ModalProvider({
   onClose,
   ver = 'overlay',
   type = 'dialog',
+  initialFocus,
 }: Props) {
   return (
     <Transition show={isModalOpen} as={Fragment}>
       <Dialog
         as="div"
+        initialFocus={initialFocus}
         onClose={type === 'dialog' ? onClose : () => console.log('')}
         className="fixed inset-0 z-10 overflow-y-auto"
       >

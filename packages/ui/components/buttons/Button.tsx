@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { MutableRefObject } from 'react';
 import { LoadingIcon } from '../icons/LoadingIcon';
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
   isDisabled?: boolean;
   fullWidth?: boolean;
   onClick?: () => void;
+  ref?: MutableRefObject<any>;
 }
 
 export function Button({
@@ -27,9 +29,11 @@ export function Button({
   isDisabled = false,
   fullWidth,
   onClick,
+  ref,
 }: Props) {
   return (
     <button
+      ref={ref}
       onClick={onClick}
       // eslint-disable-next-line react/button-has-type
       type={type}
